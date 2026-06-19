@@ -23,12 +23,22 @@
     <!-- Google Verification -->
     <meta name="google-site-verification" content="HXkc3ycXBLPzDIhqsWxO33X47cscfb0n15kjCYCnz1k" />
     
-    <!-- Schema.org Data -->
+    <!-- ========== FAVICON (For Browser Tabs) ========== -->
+    <!-- Replace 'logo.png' with the actual path to your logo file in your website's root directory -->
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="shortcut icon" href="logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <!-- Fallback emoji favicon so you see a Kaaba icon immediately before uploading your logo -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕋</text></svg>">
+
+    <!-- Schema.org Data (For Google Search Results & Knowledge Panel) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "TravelAgency",
       "name": "Nadeem Hadi Travel & Tours",
+      "logo": "https://yourwebsite.com/logo.png",
+      "image": "https://yourwebsite.com/logo.png",
       "description": "Trusted travel agency offering Umrah packages, flight booking, visa assistance, and holiday tours.",
       "address": {
         "@type": "PostalAddress",
@@ -125,220 +135,6 @@
         .hero h2 { font-size: 2.5rem; color: var(--white); margin-bottom: 20px; }
         .hero p { font-size: 1.3rem; margin-bottom: 30px; color: #eee; }
         .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-
-        /* FLIGHT SEARCH SECTION */
-        .flight-search-section {
-            background: linear-gradient(135deg, #f0f4f2 0%, #ffffff 100%);
-            padding: 80px 20px;
-            position: relative;
-        }
-
-        .flight-search-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-green), var(--accent-gold), var(--primary-green));
-        }
-
-        .flight-search-box {
-            background: var(--white);
-            max-width: 1100px;
-            margin: 30px auto 0;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            border: 2px solid var(--light-gold);
-        }
-
-        .flight-tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .flight-tab {
-            padding: 12px 25px;
-            background: #f0f0f0;
-            border: 2px solid transparent;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #666;
-            transition: 0.3s;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-
-        .flight-tab.active {
-            background: var(--primary-green);
-            color: var(--white);
-            border-color: var(--accent-gold);
-        }
-
-        .flight-tab:hover {
-            background: var(--primary-green);
-            color: var(--white);
-        }
-
-        .flight-search-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .form-group {
-            position: relative;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--primary-green);
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .form-group i.field-icon {
-            position: absolute;
-            right: 15px;
-            top: 40px;
-            color: var(--accent-gold);
-            font-size: 1.1rem;
-            pointer-events: none;
-        }
-
-        .flight-search-form input,
-        .flight-search-form select {
-            width: 100%;
-            padding: 15px 45px 15px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 15px;
-            font-family: inherit;
-            background: #fafafa;
-            transition: 0.3s;
-        }
-
-        .flight-search-form input:focus,
-        .flight-search-form select:focus {
-            outline: none;
-            border-color: var(--accent-gold);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
-        }
-
-        .search-btn {
-            grid-column: 1 / -1;
-            padding: 16px 30px;
-            background: linear-gradient(135deg, var(--accent-gold), #b8962e);
-            color: var(--primary-green);
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: inherit;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .search-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
-        }
-
-        .flight-info-bar {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
-            padding: 20px;
-            background: var(--light-gold);
-            border-radius: 12px;
-        }
-
-        .flight-info-item {
-            text-align: center;
-            color: var(--primary-green);
-            font-size: 0.95rem;
-        }
-
-        .flight-info-item i {
-            font-size: 1.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .flight-info-item strong {
-            display: block;
-            font-size: 1.1rem;
-            margin-top: 3px;
-        }
-
-        /* Popular Routes */
-        .popular-routes {
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .popular-routes h3 {
-            color: var(--primary-green);
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-
-        .routes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .route-card {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            border: 2px solid #f0f0f0;
-            cursor: pointer;
-            transition: 0.3s;
-            text-align: center;
-        }
-
-        .route-card:hover {
-            border-color: var(--accent-gold);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .route-card .route-icon {
-            font-size: 1.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 8px;
-        }
-
-        .route-card .route-name {
-            font-weight: 600;
-            color: var(--primary-green);
-            font-size: 0.95rem;
-        }
-
-        .route-card .route-price {
-            font-size: 0.85rem;
-            color: #888;
-            margin-top: 3px;
-        }
 
         /* MADINAH BANNER */
         .madinah-banner {
@@ -456,9 +252,6 @@
             .feature-box { flex-direction: column; text-align: center; }
             .nav-links { gap: 15px; font-size: 1rem; }
             .logo { font-size: 1.4rem; }
-            .flight-search-box { padding: 25px 20px; }
-            .flight-search-form { grid-template-columns: 1fr; }
-            .flight-tab { padding: 10px 18px; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -474,7 +267,6 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="#hero">Home</a></li>
-                    <li><a href="#flights">Flights</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#packages">Packages</a></li>
                     <li><a href="#about">About Us</a></li>
@@ -497,187 +289,6 @@
                 <a href="tel:+923424397177" class="btn btn-call">
                     <i class="fas fa-phone-alt" aria-hidden="true"></i> Call Now
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FLIGHT SEARCH SECTION -->
-    <section id="flights" class="flight-search-section">
-        <div class="container">
-            <h2 class="section-title">Search & Book Flights</h2>
-            <p style="color: #666; max-width: 700px; margin: 0 auto 20px; font-size: 1.1rem;">
-                Find the best flight deals worldwide. Compare prices from hundreds of airlines instantly.
-            </p>
-
-            <div class="flight-search-box">
-                <!-- Trip Type Tabs -->
-                <div class="flight-tabs">
-                    <button type="button" class="flight-tab active" data-type="return">
-                        <i class="fas fa-exchange-alt" aria-hidden="true"></i> Round Trip
-                    </button>
-                    <button type="button" class="flight-tab" data-type="oneway">
-                        <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> One Way
-                    </button>
-                    <button type="button" class="flight-tab" data-type="multi">
-                        <i class="fas fa-route" aria-hidden="true"></i> Multi-City
-                    </button>
-                </div>
-
-                <!-- Flight Search Form -->
-                <form id="flightSearchForm" class="flight-search-form" target="_blank">
-                    <div class="form-group">
-                        <label for="origin">From</label>
-                        <input list="airports" type="text" id="origin" name="origin" placeholder="City or Airport" required>
-                        <i class="fas fa-plane-departure field-icon" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="destination">To</label>
-                        <input list="airports" type="text" id="destination" name="destination" placeholder="City or Airport" required>
-                        <i class="fas fa-plane-arrival field-icon" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="form-group" id="departDateGroup">
-                        <label for="departureDate">Departure Date</label>
-                        <input type="date" id="departureDate" name="departureDate" required>
-                        <i class="fas fa-calendar-alt field-icon" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="form-group" id="returnDateGroup">
-                        <label for="returnDate">Return Date</label>
-                        <input type="date" id="returnDate" name="returnDate">
-                        <i class="fas fa-calendar-check field-icon" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="passengers">Passengers</label>
-                        <select id="passengers" name="passengers">
-                            <option value="1">1 Adult</option>
-                            <option value="2">2 Adults</option>
-                            <option value="3">3 Adults</option>
-                            <option value="4">4 Adults</option>
-                            <option value="5">5+ Adults</option>
-                        </select>
-                        <i class="fas fa-user field-icon" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="cabinClass">Class</label>
-                        <select id="cabinClass" name="cabinClass">
-                            <option value="economy">Economy</option>
-                            <option value="premium">Premium Economy</option>
-                            <option value="business">Business</option>
-                            <option value="first">First Class</option>
-                        </select>
-                        <i class="fas fa-chair field-icon" aria-hidden="true"></i>
-                    </div>
-
-                    <button type="submit" class="search-btn">
-                        <i class="fas fa-search" aria-hidden="true"></i> Search Available Flights
-                    </button>
-                </form>
-
-                <!-- Airports Datalist -->
-                <datalist id="airports">
-                    <option value="Lahore (LHE)">
-                    <option value="Karachi (KHI)">
-                    <option value="Islamabad (ISB)">
-                    <option value="Sialkot (SKT)">
-                    <option value="Multan (MUX)">
-                    <option value="Peshawar (PEW)">
-                    <option value="Quetta (UET)">
-                    <option value="Faisalabad (LYP)">
-                    <option value="Jeddah (JED)">
-                    <option value="Madinah (MED)">
-                    <option value="Riyadh (RUH)">
-                    <option value="Dammam (DMM)">
-                    <option value="Dubai (DXB)">
-                    <option value="Abu Dhabi (AUH)">
-                    <option value="Sharjah (SHJ)">
-                    <option value="Doha (DOH)">
-                    <option value="Muscat (MCT)">
-                    <option value="Bahrain (BAH)">
-                    <option value="Kuwait (KWI)">
-                    <option value="Istanbul (IST)">
-                    <option value="London (LHR)">
-                    <option value="Manchester (MAN)">
-                    <option value="Paris (CDG)">
-                    <option value="Frankfurt (FRA)">
-                    <option value="Amsterdam (AMS)">
-                    <option value="New York (JFK)">
-                    <option value="Toronto (YYZ)">
-                    <option value="Singapore (SIN)">
-                    <option value="Bangkok (BKK)">
-                    <option value="Kuala Lumpur (KUL)">
-                    <option value="Tokyo (NRT)">
-                    <option value="Beijing (PEK)">
-                    <option value="Delhi (DEL)">
-                    <option value="Mumbai (BOM)">
-                    <option value="Dhaka (DAC)">
-                    <option value="Cairo (CAI)">
-                    <option value="Johannesburg (JNB)">
-                </datalist>
-
-                <!-- Info Bar -->
-                <div class="flight-info-bar">
-                    <div class="flight-info-item">
-                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                        Secure Booking
-                        <strong>100% Safe</strong>
-                    </div>
-                    <div class="flight-info-item">
-                        <i class="fas fa-tags" aria-hidden="true"></i>
-                        Best Prices
-                        <strong>Guaranteed</strong>
-                    </div>
-                    <div class="flight-info-item">
-                        <i class="fas fa-headset" aria-hidden="true"></i>
-                        24/7 Support
-                        <strong>Always Available</strong>
-                    </div>
-                    <div class="flight-info-item">
-                        <i class="fas fa-plane" aria-hidden="true"></i>
-                        500+ Airlines
-                        <strong>Worldwide</strong>
-                    </div>
-                </div>
-
-                <!-- Popular Routes -->
-                <div class="popular-routes">
-                    <h3><i class="fas fa-fire" style="color: #ff6b35;" aria-hidden="true"></i> Popular Routes from Pakistan</h3>
-                    <div class="routes-grid">
-                        <div class="route-card" data-from="Lahore" data-to="Jeddah">
-                            <div class="route-icon"><i class="fas fa-kaaba" aria-hidden="true"></i></div>
-                            <div class="route-name">Lahore → Jeddah</div>
-                            <div class="route-price">For Umrah</div>
-                        </div>
-                        <div class="route-card" data-from="Islamabad" data-to="Madinah">
-                            <div class="route-icon"><i class="fas fa-mosque" aria-hidden="true"></i></div>
-                            <div class="route-name">Islamabad → Madinah</div>
-                            <div class="route-price">For Umrah</div>
-                        </div>
-                        <div class="route-card" data-from="Karachi" data-to="Dubai">
-                            <div class="route-icon"><i class="fas fa-city" aria-hidden="true"></i></div>
-                            <div class="route-name">Karachi → Dubai</div>
-                            <div class="route-price">Most Popular</div>
-                        </div>
-                        <div class="route-card" data-from="Lahore" data-to="Istanbul">
-                            <div class="route-icon"><i class="fas fa-landmark" aria-hidden="true"></i></div>
-                            <div class="route-name">Lahore → Istanbul</div>
-                            <div class="route-price">Holiday Special</div>
-                        </div>
-                        <div class="route-card" data-from="Islamabad" data-to="London">
-                            <div class="route-icon"><i class="fas fa-globe-europe" aria-hidden="true"></i></div>
-                            <div class="route-name">Islamabad → London</div>
-                            <div class="route-price">Europe Route</div>
-                        </div>
-                        <div class="route-card" data-from="Sialkot" data-to="Dubai">
-                            <div class="route-icon"><i class="fas fa-plane" aria-hidden="true"></i></div>
-                            <div class="route-name">Sialkot → Dubai</div>
-                            <div class="route-price">Direct Flights</div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -845,135 +456,9 @@
         <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <!-- FLIGHT SEARCH JAVASCRIPT -->
     <script>
         // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // Set default dates
-        const today = new Date();
-        const departureDefault = new Date(today);
-        departureDefault.setDate(today.getDate() + 7);
-        const returnDefault = new Date(today);
-        returnDefault.setDate(today.getDate() + 14);
-
-        document.getElementById('departureDate').valueAsDate = departureDefault;
-        document.getElementById('returnDate').valueAsDate = returnDefault;
-        document.getElementById('departureDate').min = today.toISOString().split('T')[0];
-        document.getElementById('returnDate').min = today.toISOString().split('T')[0];
-
-        // Trip Type Tabs
-        let tripType = 'return';
-        document.querySelectorAll('.flight-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                document.querySelectorAll('.flight-tab').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                tripType = this.dataset.type;
-
-                const returnDateGroup = document.getElementById('returnDateGroup');
-                const returnDateInput = document.getElementById('returnDate');
-
-                if (tripType === 'oneway') {
-                    returnDateGroup.style.display = 'none';
-                    returnDateInput.required = false;
-                } else {
-                    returnDateGroup.style.display = 'block';
-                    returnDateInput.required = (tripType === 'return');
-                }
-            });
-        });
-
-        // City to IATA mapping (fixed duplicate key)
-        const cityToIATA = {
-            'lahore': 'LHE', 'karachi': 'KHI', 'islamabad': 'ISB', 'sialkot': 'SKT',
-            'multan': 'MUX', 'peshawar': 'PEW', 'quetta': 'UET', 'faisalabad': 'LYP',
-            'jeddah': 'JED', 'madinah': 'MED', 'riyadh': 'RUH', 'dammam': 'DMM',
-            'dubai': 'DXB', 'abu dhabi': 'AUH', 'sharjah': 'SHJ', 'doha': 'DOH',
-            'muscat': 'MCT', 'bahrain': 'BAH', 'kuwait': 'KWI',
-            'istanbul': 'IST', 'london': 'LON', 'manchester': 'MAN',
-            'paris': 'PAR', 'frankfurt': 'FRA', 'amsterdam': 'AMS',
-            'new york': 'NYC', 'toronto': 'YTO', 'singapore': 'SIN',
-            'bangkok': 'BKK', 'kuala lumpur': 'KUL', 'tokyo': 'TYO',
-            'beijing': 'BJS', 'delhi': 'DEL', 'mumbai': 'BOM', 'dhaka': 'DAC',
-            'cairo': 'CAI', 'johannesburg': 'JNB'
-        };
-
-        function getIATACode(input) {
-            if (!input) return '';
-            const match = input.match(/\(([A-Z]{3})\)/);
-            if (match) return match[1];
-            const cityName = input.toLowerCase().trim();
-            for (const [city, code] of Object.entries(cityToIATA)) {
-                if (cityName.includes(city)) return code;
-            }
-            if (/^[A-Z]{3}$/i.test(cityName)) return cityName.toUpperCase();
-            return input.substring(0, 3).toUpperCase();
-        }
-
-        // Form submission
-        document.getElementById('flightSearchForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const origin = getIATACode(document.getElementById('origin').value);
-            const destination = getIATACode(document.getElementById('destination').value);
-            const departureDate = document.getElementById('departureDate').value;
-            const returnDate = document.getElementById('returnDate').value;
-            const passengers = document.getElementById('passengers').value;
-            const cabinClass = document.getElementById('cabinClass').value;
-
-            if (!origin || !destination || !departureDate) {
-                alert('Please fill in all required fields');
-                return;
-            }
-
-            let searchUrl = `https://www.kiwi.com/en/search/results/${origin.toLowerCase()}/${destination.toLowerCase()}/${departureDate}`;
-            if (tripType === 'return' && returnDate) {
-                searchUrl += `/${returnDate}`;
-            }
-
-            const params = new URLSearchParams();
-            params.append('sortBy', 'price');
-            params.append('adults', passengers);
-            if (cabinClass === 'business') params.append('bookingToken', 'business');
-            if (tripType === 'oneway') params.append('travelType', 'oneway');
-
-            searchUrl += '?' + params.toString();
-            window.open(searchUrl, '_blank');
-
-            setTimeout(() => {
-                const confirmBooking = confirm('Flight search opened in new tab!\n\nWould you also like to contact us on WhatsApp for special group rates and assistance?');
-                if (confirmBooking) {
-                    const message = `Hello! I'm interested in booking a flight from ${origin} to ${destination} on ${departureDate}. Please share the best available rates.`;
-                    window.open(`https://wa.me/923424397177?text=${encodeURIComponent(message)}`, '_blank');
-                }
-            }, 1000);
-        });
-
-        // Popular routes click
-        document.querySelectorAll('.route-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const from = this.dataset.from;
-                const to = this.dataset.to;
-                document.getElementById('origin').value = from;
-                document.getElementById('destination').value = to;
-                document.getElementById('flights').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                const form = document.querySelector('.flight-search-box');
-                form.style.boxShadow = '0 0 0 4px #D4AF37';
-                setTimeout(() => {
-                    form.style.boxShadow = '0 15px 40px rgba(0,0,0,0.1)';
-                }, 1500);
-            });
-        });
-
-        // Update return date min
-        document.getElementById('departureDate').addEventListener('change', function() {
-            const minReturn = this.value;
-            document.getElementById('returnDate').min = minReturn;
-            const currentReturn = document.getElementById('returnDate').value;
-            if (currentReturn && currentReturn < minReturn) {
-                document.getElementById('returnDate').value = minReturn;
-            }
-        });
     </script>
 
 </body>
