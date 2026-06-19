@@ -11,10 +11,10 @@
     <meta name="author" content="Nadeem Hadi Travel & Tours">
     <meta name="robots" content="index, follow">
     
-    <!-- 👇 YOUR GOOGLE VERIFICATION CODE IS NOW HERE 👇 -->
+    <!-- Google Verification -->
     <meta name="google-site-verification" content="HXkc3ycXBLPzDIhqsWxO33X47cscfb0n15kjCYCnz1k" />
     
-    <!-- ========== Schema.org Data for Google ========== -->
+    <!-- Schema.org Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -34,9 +34,8 @@
     }
     </script>
     
-    <!-- Google Fonts -->
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
@@ -118,7 +117,7 @@
         .hero p { font-size: 1.3rem; margin-bottom: 30px; color: #eee; }
         .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
-        /* ========== FLIGHT SEARCH SECTION (WORKING) ========== */
+        /* FLIGHT SEARCH SECTION */
         .flight-search-section {
             background: linear-gradient(135deg, #f0f4f2 0%, #ffffff 100%);
             padding: 80px 20px;
@@ -460,7 +459,7 @@
     <header>
         <div class="container nav-container">
             <div class="logo">
-                <i class="fas fa-kaaba"></i>
+                <i class="fas fa-kaaba" aria-hidden="true"></i>
                 Nadeem Hadi Travel
             </div>
             <nav>
@@ -484,16 +483,16 @@
             <p>Nearest hotels, group departures, airport transfers, and excellent facilities for a blessed journey</p>
             <div class="btn-group">
                 <a href="https://wa.me/923424397177" class="btn btn-whatsapp">
-                    <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Us
                 </a>
                 <a href="tel:+923424397177" class="btn btn-call">
-                    <i class="fas fa-phone-alt"></i> Call Now
+                    <i class="fas fa-phone-alt" aria-hidden="true"></i> Call Now
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- ========== WORKING FLIGHT SEARCH SECTION ========== -->
+    <!-- FLIGHT SEARCH SECTION -->
     <section id="flights" class="flight-search-section">
         <div class="container">
             <h2 class="section-title">Search & Book Flights</h2>
@@ -505,44 +504,44 @@
                 <!-- Trip Type Tabs -->
                 <div class="flight-tabs">
                     <button type="button" class="flight-tab active" data-type="return">
-                        <i class="fas fa-exchange-alt"></i> Round Trip
+                        <i class="fas fa-exchange-alt" aria-hidden="true"></i> Round Trip
                     </button>
                     <button type="button" class="flight-tab" data-type="oneway">
-                        <i class="fas fa-long-arrow-alt-right"></i> One Way
+                        <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> One Way
                     </button>
                     <button type="button" class="flight-tab" data-type="multi">
-                        <i class="fas fa-route"></i> Multi-City
+                        <i class="fas fa-route" aria-hidden="true"></i> Multi-City
                     </button>
                 </div>
 
                 <!-- Flight Search Form -->
                 <form id="flightSearchForm" class="flight-search-form" target="_blank">
                     <div class="form-group">
-                        <label>From</label>
+                        <label for="origin">From</label>
                         <input list="airports" type="text" id="origin" name="origin" placeholder="City or Airport" required>
-                        <i class="fas fa-plane-departure field-icon"></i>
+                        <i class="fas fa-plane-departure field-icon" aria-hidden="true"></i>
                     </div>
 
                     <div class="form-group">
-                        <label>To</label>
+                        <label for="destination">To</label>
                         <input list="airports" type="text" id="destination" name="destination" placeholder="City or Airport" required>
-                        <i class="fas fa-plane-arrival field-icon"></i>
+                        <i class="fas fa-plane-arrival field-icon" aria-hidden="true"></i>
                     </div>
 
                     <div class="form-group" id="departDateGroup">
-                        <label>Departure Date</label>
+                        <label for="departureDate">Departure Date</label>
                         <input type="date" id="departureDate" name="departureDate" required>
-                        <i class="fas fa-calendar-alt field-icon"></i>
+                        <i class="fas fa-calendar-alt field-icon" aria-hidden="true"></i>
                     </div>
 
                     <div class="form-group" id="returnDateGroup">
-                        <label>Return Date</label>
+                        <label for="returnDate">Return Date</label>
                         <input type="date" id="returnDate" name="returnDate">
-                        <i class="fas fa-calendar-check field-icon"></i>
+                        <i class="fas fa-calendar-check field-icon" aria-hidden="true"></i>
                     </div>
 
                     <div class="form-group">
-                        <label>Passengers</label>
+                        <label for="passengers">Passengers</label>
                         <select id="passengers" name="passengers">
                             <option value="1">1 Adult</option>
                             <option value="2">2 Adults</option>
@@ -550,22 +549,22 @@
                             <option value="4">4 Adults</option>
                             <option value="5">5+ Adults</option>
                         </select>
-                        <i class="fas fa-user field-icon"></i>
+                        <i class="fas fa-user field-icon" aria-hidden="true"></i>
                     </div>
 
                     <div class="form-group">
-                        <label>Class</label>
+                        <label for="cabinClass">Class</label>
                         <select id="cabinClass" name="cabinClass">
                             <option value="economy">Economy</option>
                             <option value="premium">Premium Economy</option>
                             <option value="business">Business</option>
                             <option value="first">First Class</option>
                         </select>
-                        <i class="fas fa-chair field-icon"></i>
+                        <i class="fas fa-chair field-icon" aria-hidden="true"></i>
                     </div>
 
                     <button type="submit" class="search-btn">
-                        <i class="fas fa-search"></i> Search Available Flights
+                        <i class="fas fa-search" aria-hidden="true"></i> Search Available Flights
                     </button>
                 </form>
 
@@ -613,22 +612,22 @@
                 <!-- Info Bar -->
                 <div class="flight-info-bar">
                     <div class="flight-info-item">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
                         Secure Booking
                         <strong>100% Safe</strong>
                     </div>
                     <div class="flight-info-item">
-                        <i class="fas fa-tags"></i>
+                        <i class="fas fa-tags" aria-hidden="true"></i>
                         Best Prices
                         <strong>Guaranteed</strong>
                     </div>
                     <div class="flight-info-item">
-                        <i class="fas fa-headset"></i>
+                        <i class="fas fa-headset" aria-hidden="true"></i>
                         24/7 Support
                         <strong>Always Available</strong>
                     </div>
                     <div class="flight-info-item">
-                        <i class="fas fa-plane"></i>
+                        <i class="fas fa-plane" aria-hidden="true"></i>
                         500+ Airlines
                         <strong>Worldwide</strong>
                     </div>
@@ -636,35 +635,35 @@
 
                 <!-- Popular Routes -->
                 <div class="popular-routes">
-                    <h3><i class="fas fa-fire" style="color: #ff6b35;"></i> Popular Routes from Pakistan</h3>
+                    <h3><i class="fas fa-fire" style="color: #ff6b35;" aria-hidden="true"></i> Popular Routes from Pakistan</h3>
                     <div class="routes-grid">
                         <div class="route-card" data-from="Lahore" data-to="Jeddah">
-                            <div class="route-icon"><i class="fas fa-kaaba"></i></div>
+                            <div class="route-icon"><i class="fas fa-kaaba" aria-hidden="true"></i></div>
                             <div class="route-name">Lahore → Jeddah</div>
                             <div class="route-price">For Umrah</div>
                         </div>
                         <div class="route-card" data-from="Islamabad" data-to="Madinah">
-                            <div class="route-icon"><i class="fas fa-mosque"></i></div>
+                            <div class="route-icon"><i class="fas fa-mosque" aria-hidden="true"></i></div>
                             <div class="route-name">Islamabad → Madinah</div>
                             <div class="route-price">For Umrah</div>
                         </div>
                         <div class="route-card" data-from="Karachi" data-to="Dubai">
-                            <div class="route-icon"><i class="fas fa-city"></i></div>
+                            <div class="route-icon"><i class="fas fa-city" aria-hidden="true"></i></div>
                             <div class="route-name">Karachi → Dubai</div>
                             <div class="route-price">Most Popular</div>
                         </div>
                         <div class="route-card" data-from="Lahore" data-to="Istanbul">
-                            <div class="route-icon"><i class="fas fa-landmark"></i></div>
+                            <div class="route-icon"><i class="fas fa-landmark" aria-hidden="true"></i></div>
                             <div class="route-name">Lahore → Istanbul</div>
                             <div class="route-price">Holiday Special</div>
                         </div>
                         <div class="route-card" data-from="Islamabad" data-to="London">
-                            <div class="route-icon"><i class="fas fa-globe-europe"></i></div>
+                            <div class="route-icon"><i class="fas fa-globe-europe" aria-hidden="true"></i></div>
                             <div class="route-name">Islamabad → London</div>
                             <div class="route-price">Europe Route</div>
                         </div>
                         <div class="route-card" data-from="Sialkot" data-to="Dubai">
-                            <div class="route-icon"><i class="fas fa-plane"></i></div>
+                            <div class="route-icon"><i class="fas fa-plane" aria-hidden="true"></i></div>
                             <div class="route-name">Sialkot → Dubai</div>
                             <div class="route-price">Direct Flights</div>
                         </div>
@@ -686,15 +685,15 @@
             <div class="features-grid">
                 <div class="feature-box">
                     <div class="feature-text">Nearest Hotels<br>with Experienced Group Leader</div>
-                    <div class="feature-icon"><i class="fas fa-hotel"></i></div>
+                    <div class="feature-icon"><i class="fas fa-hotel" aria-hidden="true"></i></div>
                 </div>
                 <div class="feature-box">
                     <div class="feature-text">Departure from Lahore Airport and<br>Return also to Lahore Airport</div>
-                    <div class="feature-icon"><i class="fas fa-plane-departure"></i></div>
+                    <div class="feature-icon"><i class="fas fa-plane-departure" aria-hidden="true"></i></div>
                 </div>
                 <div class="feature-box">
                     <div class="feature-text">Complete Ziyarat Arrangements<br>and Comfortable Transportation</div>
-                    <div class="feature-icon"><i class="fas fa-bus-alt"></i></div>
+                    <div class="feature-icon"><i class="fas fa-bus-alt" aria-hidden="true"></i></div>
                 </div>
             </div>
         </div>
@@ -705,14 +704,14 @@
         <div class="container">
             <h2 class="section-title">Our Travel Services</h2>
             <div class="services-grid">
-                <div class="service-card"><i class="fas fa-kaaba"></i><h3>Umrah Packages</h3><p>Economy, VIP and Group Umrah packages with premium accommodations and guided support.</p></div>
-                <div class="service-card"><i class="fas fa-search-location"></i><h3>Flight Search</h3><p>Search and compare domestic and international flights at the best available fares.</p></div>
-                <div class="service-card"><i class="fas fa-plane-departure"></i><h3>Air Ticketing</h3><p>Affordable airline tickets with trusted international and regional carriers.</p></div>
-                <div class="service-card"><i class="fas fa-passport"></i><h3>Visa Assistance</h3><p>Professional visa consultation, documentation support and application guidance.</p></div>
-                <div class="service-card"><i class="fas fa-hotel"></i><h3>Hotel Booking</h3><p>Luxury and budget hotel reservations worldwide with excellent customer support.</p></div>
-                <div class="service-card"><i class="fas fa-globe"></i><h3>Holiday Tours</h3><p>Customized family, honeymoon, leisure and international tour packages.</p></div>
-                <div class="service-card"><i class="fas fa-shuttle-van"></i><h3>Airport Transfers</h3><p>Reliable airport pickup and drop-off services for a smooth journey.</p></div>
-                <div class="service-card"><i class="fas fa-map-marked-alt"></i><h3>Travel Consultation</h3><p>Expert travel planning, itinerary management and destination guidance.</p></div>
+                <div class="service-card"><i class="fas fa-kaaba" aria-hidden="true"></i><h3>Umrah Packages</h3><p>Economy, VIP and Group Umrah packages with premium accommodations and guided support.</p></div>
+                <div class="service-card"><i class="fas fa-search-location" aria-hidden="true"></i><h3>Flight Search</h3><p>Search and compare domestic and international flights at the best available fares.</p></div>
+                <div class="service-card"><i class="fas fa-plane-departure" aria-hidden="true"></i><h3>Air Ticketing</h3><p>Affordable airline tickets with trusted international and regional carriers.</p></div>
+                <div class="service-card"><i class="fas fa-passport" aria-hidden="true"></i><h3>Visa Assistance</h3><p>Professional visa consultation, documentation support and application guidance.</p></div>
+                <div class="service-card"><i class="fas fa-hotel" aria-hidden="true"></i><h3>Hotel Booking</h3><p>Luxury and budget hotel reservations worldwide with excellent customer support.</p></div>
+                <div class="service-card"><i class="fas fa-globe" aria-hidden="true"></i><h3>Holiday Tours</h3><p>Customized family, honeymoon, leisure and international tour packages.</p></div>
+                <div class="service-card"><i class="fas fa-shuttle-van" aria-hidden="true"></i><h3>Airport Transfers</h3><p>Reliable airport pickup and drop-off services for a smooth journey.</p></div>
+                <div class="service-card"><i class="fas fa-map-marked-alt" aria-hidden="true"></i><h3>Travel Consultation</h3><p>Expert travel planning, itinerary management and destination guidance.</p></div>
             </div>
         </div>
     </section>
@@ -726,14 +725,14 @@
                     <div class="featured-badge">Special Group Departure</div>
                     <div class="package-header"><h3>Complete Umrah Package</h3><div class="package-price">Contact for Price</div></div>
                     <div class="package-body">
-                        <div class="departure-info"><i class="fas fa-calendar-alt"></i> Departure: July 8</div>
+                        <div class="departure-info"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Departure: July 8</div>
                         <ul>
-                            <li><i class="fas fa-check-circle"></i> Return Air Ticket</li>
-                            <li><i class="fas fa-check-circle"></i> Umrah Visa Processing</li>
-                            <li><i class="fas fa-check-circle"></i> 5-Star Hotel Accommodation</li>
-                            <li><i class="fas fa-check-circle"></i> Ziyarat Tours</li>
-                            <li><i class="fas fa-check-circle"></i> Experienced Group Leader</li>
-                            <li><i class="fas fa-check-circle"></i> Airport Transfers</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Return Air Ticket</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Umrah Visa Processing</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 5-Star Hotel Accommodation</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Ziyarat Tours</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Experienced Group Leader</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Airport Transfers</li>
                         </ul>
                     </div>
                     <div class="package-footer"><a href="https://wa.me/923424397177" class="btn">Book Now</a></div>
@@ -742,10 +741,10 @@
                     <div class="package-header"><h3>Economy Package</h3><div class="package-price">Best Rates</div></div>
                     <div class="package-body">
                         <ul>
-                            <li><i class="fas fa-check-circle"></i> Umrah Visa</li>
-                            <li><i class="fas fa-check-circle"></i> Hotel Booking</li>
-                            <li><i class="fas fa-check-circle"></i> Airport Transfers</li>
-                            <li><i class="fas fa-check-circle"></i> Basic Facilities</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Umrah Visa</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Hotel Booking</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Airport Transfers</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Basic Facilities</li>
                         </ul>
                     </div>
                     <div class="package-footer"><a href="#contact" class="btn">Contact for Details</a></div>
@@ -754,10 +753,10 @@
                     <div class="package-header"><h3>VIP Package</h3><div class="package-price">Premium Service</div></div>
                     <div class="package-body">
                         <ul>
-                            <li><i class="fas fa-check-circle"></i> Hotels Right Next to Haram</li>
-                            <li><i class="fas fa-check-circle"></i> Private Transportation</li>
-                            <li><i class="fas fa-check-circle"></i> Special Business Class Tickets</li>
-                            <li><i class="fas fa-check-circle"></i> VIP Guide</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Hotels Right Next to Haram</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Private Transportation</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Special Business Class Tickets</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> VIP Guide</li>
                         </ul>
                     </div>
                     <div class="package-footer"><a href="#contact" class="btn">Contact for Details</a></div>
@@ -774,10 +773,10 @@
                 <p>At Nadeem Hadi Travel & Tours, we believe that travel is not just about moving from one place to another—it's about creating memories, finding spiritual peace, and experiencing the world.</p>
                 <p>Whether you are going for Umrah or planning a family vacation, we are here to make every step of your journey easy, comfortable, and memorable. Our experienced team provides 24/7 support so you never have to face any worries.</p>
                 <a href="#contact" class="btn btn-call" style="margin-top: 20px;">
-                    <i class="fas fa-headset"></i> Contact Us
+                    <i class="fas fa-headset" aria-hidden="true"></i> Contact Us
                 </a>
             </div>
-            <div class="about-image"></div>
+            <div class="about-image" aria-hidden="true"></div>
         </div>
     </section>
 
@@ -789,19 +788,19 @@
             <div class="contact-container">
                 <div class="contact-info">
                     <div class="contact-item">
-                        <i class="fas fa-user-tie"></i>
-                        <div><h4>Haji Nadeem Sahib</h4><a href="tel:03424397177">0342-4397177</a><a href="tel:03164815975">0316-4815975</a></div>
+                        <i class="fas fa-user-tie" aria-hidden="true"></i>
+                        <div><h2>Haji Nadeem Abass</h2><a href="tel:03424397177">0342-4397177</a><a href="tel:03164815975">0316-4815975</a></div>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-user-tie"></i>
-                        <div><h4>Muhammad Imtiaz</h4><a href="tel:03026901114">0302-6901114</a></div>
+                        <i class="fas fa-user-tie" aria-hidden="true"></i>
+                        <div><h3>Muhammad Imtiaz</h3><a href="tel:03026901114">0302-6901114</a></div>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                         <div><h4>Office Address</h4><p>Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha</p></div>
                     </div>
                     <div class="contact-item">
-                        <i class="fab fa-whatsapp"></i>
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
                         <div><h4>WhatsApp</h4><a href="https://wa.me/923424397177">Message us at 0342-4397177</a></div>
                     </div>
                 </div>
@@ -810,7 +809,7 @@
                     <input type="tel" placeholder="Phone Number" required>
                     <input type="email" placeholder="Email Address">
                     <textarea placeholder="Your message or travel details..." required></textarea>
-                    <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    <button type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message</button>
                 </form>
             </div>
         </div>
@@ -824,22 +823,25 @@
             <p>📞 0342-4397177 | 0316-4815975 | 0302-6901114</p>
             <p>📍 Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha, Pakistan</p>
             <div class="social-links">
-                <a href="https://wa.me/923424397177" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="tel:+923424397177"><i class="fas fa-phone-alt"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/923424397177" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                <a href="tel:+923424397177" aria-label="Call us"><i class="fas fa-phone-alt" aria-hidden="true"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
             </div>
-            <p style="margin-top: 30px; font-size: 0.9rem; color: #666;">&copy; 2026 Nadeem Hadi Travel & Tours. All Rights Reserved.</p>
+            <p style="margin-top: 30px; font-size: 0.9rem; color: #666;">&copy; <span id="current-year">2026</span> Nadeem Hadi Travel & Tours. All Rights Reserved.</p>
         </div>
     </footer>
 
     <!-- FLOATING WHATSAPP BUTTON -->
-    <a href="https://wa.me/923424397177" class="floating-wa" target="_blank" title="Contact us on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/923424397177" class="floating-wa" target="_blank" title="Contact us on WhatsApp" aria-label="WhatsApp us">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <!-- ========== FLIGHT SEARCH JAVASCRIPT ========== -->
+    <!-- FLIGHT SEARCH JAVASCRIPT -->
     <script>
-        // Set default dates (today + 7 days for departure, +14 for return)
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Set default dates
         const today = new Date();
         const departureDefault = new Date(today);
         departureDefault.setDate(today.getDate() + 7);
@@ -872,11 +874,11 @@
             });
         });
 
-        // City name to IATA code mapping
+        // City to IATA mapping (fixed duplicate key)
         const cityToIATA = {
             'lahore': 'LHE', 'karachi': 'KHI', 'islamabad': 'ISB', 'sialkot': 'SKT',
             'multan': 'MUX', 'peshawar': 'PEW', 'quetta': 'UET', 'faisalabad': 'LYP',
-            'jeddah': 'JED', 'madinah': 'MED', 'madinah': 'MED', 'riyadh': 'RUH', 'dammam': 'DMM',
+            'jeddah': 'JED', 'madinah': 'MED', 'riyadh': 'RUH', 'dammam': 'DMM',
             'dubai': 'DXB', 'abu dhabi': 'AUH', 'sharjah': 'SHJ', 'doha': 'DOH',
             'muscat': 'MCT', 'bahrain': 'BAH', 'kuwait': 'KWI',
             'istanbul': 'IST', 'london': 'LON', 'manchester': 'MAN',
@@ -889,20 +891,17 @@
 
         function getIATACode(input) {
             if (!input) return '';
-            // If already a code (3 letters)
             const match = input.match(/\(([A-Z]{3})\)/);
             if (match) return match[1];
-            // Try to find city name
             const cityName = input.toLowerCase().trim();
             for (const [city, code] of Object.entries(cityToIATA)) {
                 if (cityName.includes(city)) return code;
             }
-            // If user typed just 3 letters
             if (/^[A-Z]{3}$/i.test(cityName)) return cityName.toUpperCase();
             return input.substring(0, 3).toUpperCase();
         }
 
-        // Form submission - redirects to Kiwi.com search results
+        // Form submission
         document.getElementById('flightSearchForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -918,27 +917,20 @@
                 return;
             }
 
-            // Build Kiwi.com search URL
             let searchUrl = `https://www.kiwi.com/en/search/results/${origin.toLowerCase()}/${destination.toLowerCase()}/${departureDate}`;
-            
             if (tripType === 'return' && returnDate) {
                 searchUrl += `/${returnDate}`;
             }
 
-            // Add parameters
             const params = new URLSearchParams();
             params.append('sortBy', 'price');
             params.append('adults', passengers);
-            
             if (cabinClass === 'business') params.append('bookingToken', 'business');
             if (tripType === 'oneway') params.append('travelType', 'oneway');
 
             searchUrl += '?' + params.toString();
-
-            // Open in new tab
             window.open(searchUrl, '_blank');
 
-            // Also offer WhatsApp contact
             setTimeout(() => {
                 const confirmBooking = confirm('Flight search opened in new tab!\n\nWould you also like to contact us on WhatsApp for special group rates and assistance?');
                 if (confirmBooking) {
@@ -948,18 +940,14 @@
             }, 1000);
         });
 
-        // Popular Routes Click Handler
+        // Popular routes click
         document.querySelectorAll('.route-card').forEach(card => {
             card.addEventListener('click', function() {
                 const from = this.dataset.from;
                 const to = this.dataset.to;
                 document.getElementById('origin').value = from;
                 document.getElementById('destination').value = to;
-                
-                // Scroll to form
                 document.getElementById('flights').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                
-                // Highlight the form briefly
                 const form = document.querySelector('.flight-search-box');
                 form.style.boxShadow = '0 0 0 4px #D4AF37';
                 setTimeout(() => {
@@ -968,12 +956,13 @@
             });
         });
 
-        // Update return date minimum when departure date changes
+        // Update return date min
         document.getElementById('departureDate').addEventListener('change', function() {
-            document.getElementById('returnDate').min = this.value;
-            const returnDate = document.getElementById('returnDate').value;
-            if (returnDate && returnDate < this.value) {
-                document.getElementById('returnDate').value = this.value;
+            const minReturn = this.value;
+            document.getElementById('returnDate').min = minReturn;
+            const currentReturn = document.getElementById('returnDate').value;
+            if (currentReturn && currentReturn < minReturn) {
+                document.getElementById('returnDate').value = minReturn;
             }
         });
     </script>
