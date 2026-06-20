@@ -24,7 +24,6 @@
     <meta name="google-site-verification" content="HXkc3ycXBLPzDIhqsWxO33X47cscfb0n15kjCYCnz1k" />
     
     <!-- ========== FAVICON (For Browser Tabs) ========== -->
-    <!-- Replace 'logo.png' with the actual path to your logo file in your website's root directory -->
     <link rel="icon" href="logo.png" type="image/png">
     <link rel="shortcut icon" href="logo.png" type="image/png">
     <link rel="apple-touch-icon" href="logo.png">
@@ -184,8 +183,6 @@
         .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .package-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.3s; display: flex; flex-direction: column; border: 1px solid #eee; }
         .package-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-        .package-card.featured { border: 2px solid var(--accent-gold); position: relative; }
-        .featured-badge { position: absolute; top: 15px; right: 15px; background: var(--accent-gold); color: var(--primary-green); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; z-index: 10; }
         .package-header { background: var(--primary-green); color: var(--white); padding: 25px; text-align: center; }
         .package-header h3 { font-size: 1.6rem; margin-bottom: 10px; color: var(--accent-gold); }
         .package-price { font-size: 1.8rem; font-weight: 700; }
@@ -193,7 +190,6 @@
         .package-body ul { margin-bottom: 20px; }
         .package-body li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; }
         .package-body li i { color: var(--primary-green); font-size: 1.2rem; }
-        .departure-info { background: var(--light-gold); padding: 15px; border-radius: 10px; margin-bottom: 20px; font-size: 1.1rem; color: var(--dark-green); font-weight: 600; text-align: center; }
         .package-footer { padding: 0 25px 25px; text-align: center; }
         .package-footer .btn { width: 100%; background: var(--primary-green); color: var(--white); }
         .package-footer .btn:hover { background: var(--accent-gold); color: var(--primary-green); }
@@ -341,11 +337,9 @@
         <div class="container">
             <h2 class="section-title">Our Umrah Packages</h2>
             <div class="packages-grid">
-                <div class="package-card featured">
-                    <div class="featured-badge">Special Group Departure</div>
+                <div class="package-card">
                     <div class="package-header"><h3>Complete Umrah Package</h3><div class="package-price">Contact for Price</div></div>
                     <div class="package-body">
-                        <div class="departure-info"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Departure: July 8</div>
                         <ul>
                             <li><i class="fas fa-check-circle" aria-hidden="true"></i> Return Air Ticket</li>
                             <li><i class="fas fa-check-circle" aria-hidden="true"></i> Umrah Visa Processing</li>
