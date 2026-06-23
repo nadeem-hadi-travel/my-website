@@ -769,14 +769,6 @@ font-size: 1.2rem;
 margin-bottom: 30px;
 text-align: center;
 }
-.city-selector select {
-padding: 12px 20px;
-border: 2px solid var(--accent-gold);
-border-radius: 8px;
-font-size: 1rem;
-min-width: 300px;
-cursor: pointer;
-}
 .hotels-list {
 display: grid;
 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -1502,17 +1494,40 @@ Nadeem Hadi Travel
 <div class="container">
 <h2 class="section-title">Nearest Hotels with Experienced Staff</h2>
 <div class="city-selector">
-<label style="font-size: 1.1rem; font-weight: 600; margin-right: 15px;">Select City:</label>
-<select id="hotelCitySelect" onchange="loadHotelsByCity(this.value)">
-<option value="">Choose a city</option>
-<option value="Makkah">Makkah</option>
-<option value="Madinah">Madinah</option>
-<option value="Jeddah">Jeddah</option>
-<option value="Riyadh">Riyadh</option>
-<option value="Karachi">Karachi</option>
-<option value="Lahore">Lahore</option>
-<option value="Islamabad">Islamabad</option>
-</select>
+<div class="filter-buttons">
+<button class="filter-btn active" onclick="filterHotelsByCity('all', this)">
+<span class="service-icon">🌍</span>
+<span>All Cities</span>
+</button>
+<button class="filter-btn" onclick="filterHotelsByCity('Makkah', this)">
+<span class="service-icon">🕋</span>
+<span>Makkah</span>
+</button>
+<button class="filter-btn" onclick="filterHotelsByCity('Madinah', this)">
+<span class="service-icon">🕌</span>
+<span>Madinah</span>
+</button>
+<button class="filter-btn" onclick="filterHotelsByCity('Jeddah', this)">
+<span class="service-icon">🏙️</span>
+<span>Jeddah</span>
+</button>
+<button class="filter-btn" onclick="filterHotelsByCity('Riyadh', this)">
+<span class="service-icon">🏢</span>
+<span>Riyadh</span>
+</button>
+<button class="filter-btn" onclick="filterHotelsByCity('Karachi', this)">
+<span class="service-icon">🌊</span>
+<span>Karachi</span>
+</button>
+<button class="filter-btn" onclick="filterHotelsByCity('Lahore', this)">
+<span class="service-icon">🌳</span>
+<span>Lahore</span>
+</button>
+<button class="filter-btn" onclick="filterHotelsByCity('Islamabad', this)">
+<span class="service-icon">🏞️</span>
+<span>Islamabad</span>
+</button>
+</div>
 </div>
 <div id="hotelsContainer" class="hotels-list"></div>
 </div>
@@ -2550,6 +2565,9 @@ checkAuth();
 loadBookings();
 renderCustomPackages();
 updateUIText();
+// Load all hotels by default on page load
+filterHotelsByCity('all', document.querySelector('.city-selector .filter-btn'));
+
 // Check staff authentication
 if (checkStaffAuth()) {
 console.log('Staff already authenticated');
@@ -3103,12 +3121,15 @@ card.style.display = 'none';
 }
 });
 }
-function loadHotelsByCity(city) {
-const container = document.getElementById('hotelsContainer');
-if (!city) {
-container.innerHTML = '';
-return;
+function filterHotelsByCity(city, btn) {
+if(btn) {
+document.querySelectorAll('.city-selector .filter-btn').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
 }
+
+const container = document.getElementById('hotelsContainer');
+let hotels = [];
+
 const hotelsData = {
 'Makkah': [
 { name: 'Makkah Clock Royal Tower', distance: 0.2, experience: 15, rating: 4.8, reviews: 2500, price: 450, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400' },
@@ -3134,17 +3155,27 @@ const hotelsData = {
 { name: 'Serena Hotel Islamabad', distance: 1.8, experience: 19, rating: 4.7, reviews: 1700, price: 170, image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400' }
 ]
 };
-const hotels = hotelsData[city] || [];
+
+if (city === 'all') {
+Object.keys(hotelsData).forEach(c => {
+hotelsData[c].forEach(h => h.cityName = c);
+hotels = hotels.concat(hotelsData[c]);
+});
+} else {
+hotels = (hotelsData[city] || []).map(h => ({...h, cityName: city}));
+}
+
 if (hotels.length === 0) {
-container.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">No hotels found in ' + city + '</p>';
+container.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">No hotels found</p>';
 return;
 }
+
 container.innerHTML = hotels.map(hotel => `
 <div class="hotel-card">
 <img src="${hotel.image}" alt="${hotel.name}" onerror="this.src='https://via.placeholder.com/400x200?text=Hotel'">
 <div class="hotel-info">
 <h4>${hotel.name}</h4>
-<p style="color: #666; margin: 5px 0;">📍 ${hotel.distance} km from ${city} center</p>
+<p style="color: #666; margin: 5px 0;">📍 ${hotel.distance} km from ${hotel.cityName} center</p>
 <p class="hotel-experience">⭐ ${hotel.experience} years experienced staff</p>
 <p style="color: var(--accent-gold); font-weight: 600;">Rating: ${hotel.rating}/5 (${hotel.reviews} reviews)</p>
 <p style="font-size: 1.2rem; font-weight: 700; color: var(--primary-green); margin: 10px 0;">$${hotel.price}/night</p>
