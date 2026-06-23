@@ -247,7 +247,6 @@ padding: 80px 0;
 .airline-partners .section-title {
 color: var(--primary-green);
 }
-/* UPDATED: Smaller Airline Grid */
 .airline-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -274,7 +273,6 @@ transform: translateY(-8px);
 box-shadow: 0 15px 35px rgba(10,77,60,0.15);
 border-color: var(--accent-gold);
 }
-/* UPDATED: Smaller Airline Logos */
 .airline-logo {
 width: 60px;
 height: 60px;
@@ -668,6 +666,7 @@ transition: 0.2s;
 .btn-approve { background: #d4edda; color: #155724; }
 .btn-reject { background: #f8d7da; color: #721c24; }
 .btn-delete { background: #e2e3e5; color: #383d41; }
+.btn-pdf { background: #dc3545; color: white; }
 .action-btn:hover { opacity: 0.8; }
 .status-pill {
 padding: 5px 12px;
@@ -679,9 +678,6 @@ font-weight: 600;
 .pill-confirmed { background: #d4edda; color: #155724; }
 .pill-rejected { background: #f8d7da; color: #721c24; }
 
-/* ========================================= */
-/* FULLSCREEN ADMIN DASHBOARD (HIDDEN)       */
-/* ========================================= */
 #admin-fullscreen {
     display: none;
     position: fixed;
@@ -765,33 +761,49 @@ font-weight: 600;
 .admin-full-content .stat-card h4 { color: #666; font-size: 0.9rem; margin-bottom: 5px; }
 .admin-full-content .stat-card h2 { color: var(--primary-green); font-size: 2rem; margin: 0; }
 
-/* PRINT STYLES FOR E-TICKETS */
+/* ENHANCED PRINT/PDF STYLES */
 @media print {
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+    
     body * {
         visibility: hidden;
     }
+    
     #eticketsModal, #eticketsModal * {
         visibility: visible;
     }
+    
     #eticketsModal {
         position: absolute;
         left: 0;
         top: 0;
         width: 100%;
         height: auto;
-        background: white;
+        background: white !important;
         overflow: visible;
         display: block !important;
     }
+    
     .modal-content {
-        box-shadow: none;
-        margin: 0;
-        padding: 20px;
-        max-width: 100%;
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        border: none !important;
     }
+    
     .no-print, .close-modal {
         display: none !important;
     }
+    
+    .pdf-ticket {
+        page-break-inside: avoid;
+        border: 2px solid #0A4D3C !important;
+    }
+    
     .print-only-footer {
         display: block !important;
         position: fixed;
@@ -800,10 +812,15 @@ font-weight: 600;
         width: 100%;
         text-align: center;
         background: white;
-        padding: 15px 10px;
-        border-top: 2px solid #000;
-        font-size: 11pt;
-        color: black;
+        padding: 10px;
+        border-top: 2px solid #0A4D3C;
+        font-size: 10pt;
+        color: #333;
+    }
+    
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 }
 .print-only-footer {
@@ -867,7 +884,7 @@ font-family: inherit;
             <li class="active" onclick="showAdminPage('dashboard', this)"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
             <li onclick="showAdminPage('bookings', this)"><i class="fas fa-ticket-alt"></i> Manage Bookings</li>
             <li onclick="showAdminPage('inquiries', this)"><i class="fas fa-envelope"></i> Customer Inquiries</li>
-            <!-- REMOVED: Registered Users -->
+            <li onclick="showAdminPage('users', this)"><i class="fas fa-users"></i> Registered Users</li>
             <li onclick="showAdminPage('packages', this)"><i class="fas fa-box"></i> Edit Packages</li>
             <li onclick="exitAdminView()"><i class="fas fa-sign-out-alt"></i> Exit to Website</li>
         </ul>
@@ -889,7 +906,20 @@ font-family: inherit;
                     <div class="stat-card" style="border-left-color: #ffc107;"><h4>Pending Approval</h4><h2 id="fs-pending-bookings">0</h2></div>
                     <div class="stat-card" style="border-left-color: #28a745;"><h4>Est. Revenue</h4><h2 id="fs-revenue">PKR 0</h2></div>
                     <div class="stat-card" style="border-left-color: #dc3545;"><h4>Inquiries</h4><h2 id="fs-inquiries">0</h2></div>
+                    <div class="stat-card" style="border-left-color: #17a2b8;"><h4>Registered Users</h4><h2 id="fs-users">0</h2></div>
                 </div>
+                
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 30px;">
+                    <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+                        <h3 style="color: var(--primary-green); margin-bottom: 15px;">Booking Status Overview</h3>
+                        <div id="booking-status-chart" style="display: flex; align-items: flex-end; height: 150px; gap: 15px; padding: 20px 0;"></div>
+                    </div>
+                    <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+                        <h3 style="color: var(--primary-green); margin-bottom: 15px;">Recent Activity</h3>
+                        <div id="recent-activity" style="max-height: 150px; overflow-y: auto;"></div>
+                    </div>
+                </div>
+
                 <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
                     <h3 style="color: var(--primary-green); margin-bottom: 15px;">Recent Bookings</h3>
                     <table class="data-table">
@@ -919,7 +949,15 @@ font-family: inherit;
                 </div>
             </div>
 
-            <!-- REMOVED: full-page-users -->
+            <div id="full-page-users" class="admin-page" style="display: none;">
+                <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+                    <h3 style="color: var(--primary-green); margin-bottom: 15px;">Registered Users</h3>
+                    <table class="data-table">
+                        <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Reward Points</th><th>Joined Date</th><th>Actions</th></tr></thead>
+                        <tbody id="fs-all-users"></tbody>
+                    </table>
+                </div>
+            </div>
 
             <div id="full-page-packages" class="admin-page" style="display: none;">
                 <button class="btn" style="background: var(--accent-gold); color: var(--primary-green); margin-bottom: 20px;" onclick="openPackageEditor()">
@@ -931,7 +969,7 @@ font-family: inherit;
     </div>
 </div>
 
-<!-- ADMIN LOGIN MODAL (SECRET - NO VISIBLE LINK) -->
+<!-- ADMIN LOGIN MODAL -->
 <div id="adminLoginModal" class="modal">
 <div class="modal-content" style="max-width: 400px;">
 <span class="close-modal" onclick="closeModal('adminLoginModal')">&times;</span>
@@ -1085,6 +1123,17 @@ Nadeem Hadi Travel
 <div class="airline-card" onclick="openServiceDetails('Emirates Flight', 'Service')"><div class="airline-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Emirates_logo.svg/200px-Emirates_logo.svg.png" alt="Emirates" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="fallback-logo">EK</div></div><div class="airline-name">Emirates</div><div class="airline-category">UAE</div></div>
 <div class="airline-card" onclick="openServiceDetails('Qatar Airways Flight', 'Service')"><div class="airline-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Qatar_Airways_logo.svg/200px-Qatar_Airways_logo.svg.png" alt="Qatar Airways" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="fallback-logo">QR</div></div><div class="airline-name">Qatar Airways</div><div class="airline-category">Qatar</div></div>
 <div class="airline-card" onclick="openServiceDetails('Turkish Airlines Flight', 'Service')"><div class="airline-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Turkish_Airlines_logo_2019_compact.svg/200px-Turkish_Airlines_logo_2019_compact.svg.png" alt="Turkish Airlines" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="fallback-logo">TK</div></div><div class="airline-name">Turkish Airlines</div><div class="airline-category">Turkey</div></div>
+<div class="airline-card" onclick="openServiceDetails('Etihad Flight', 'Service')"><div class="airline-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Etihad_Airways_logo.svg/200px-Etihad_Airways_logo.svg.png" alt="Etihad" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="fallback-logo">EY</div></div><div class="airline-name">Etihad Airways</div><div class="airline-category">UAE</div></div>
+<div class="airline-card" onclick="openServiceDetails('Flydubai Flight', 'Service')"><div class="airline-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Flydubai_logo.svg/200px-Flydubai_logo.svg.png" alt="Flydubai" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="fallback-logo">FZ</div></div><div class="airline-name">Flydubai</div><div class="airline-category">UAE</div></div>
+<div class="airline-card" onclick="openServiceDetails('Air Arabia Flight', 'Service')"><div class="airline-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Air_Arabia_logo.svg/200px-Air_Arabia_logo.svg.png" alt="Air Arabia" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="fallback-logo">G9</div></div><div class="airline-name">Air Arabia</div><div class="airline-category">UAE</div></div>
+<div class="airline-card" onclick="openServiceDetails('Oman Air Flight', 'Service')"><div class="airline-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Oman_Air_logo.svg/200px-Oman_Air_logo.svg.png" alt="Oman Air" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="fallback-logo">WY</div></div><div class="airline-name">Oman Air</div><div class="airline-category">Oman</div></div>
+<div class="airline-card" onclick="openServiceDetails('Gulf Air Flight', 'Service')"><div class="airline-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Gulf_Air_logo.svg/200px-Gulf_Air_logo.svg.png" alt="Gulf Air" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="fallback-logo">GF</div></div><div class="airline-name">Gulf Air</div><div class="airline-category">Bahrain</div></div>
+<div class="airline-card" onclick="openServiceDetails('British Airways Flight', 'Service')"><div class="airline-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/British_Airways_logo_2015.svg/200px-British_Airways_logo_2015.svg.png" alt="British Airways" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="fallback-logo">BA</div></div><div class="airline-name">British Airways</div><div class="airline-category">UK</div></div>
+<div class="airline-card" onclick="openServiceDetails('Lufthansa Flight', 'Service')"><div class="airline-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Lufthansa_Logo_2018.svg/200px-Lufthansa_Logo_2018.svg.png" alt="Lufthansa" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="fallback-logo">LH</div></div><div class="airline-name">Lufthansa</div><div class="airline-category">Germany</div></div>
+<div class="airline-card" onclick="openServiceDetails('Air France Flight', 'Service')"><div class="airline-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Air_France_Logo_2019.svg/200px-Air_France_Logo_2019.svg.png" alt="Air France" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="fallback-logo">AF</div></div><div class="airline-name">Air France</div><div class="airline-category">France</div></div>
+<div class="airline-card" onclick="openServiceDetails('Malaysia Airlines Flight', 'Service')"><div class="airline-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Malaysia_Airlines_logo.svg/200px-Malaysia_Airlines_logo.svg.png" alt="Malaysia Airlines" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="fallback-logo">MH</div></div><div class="airline-name">Malaysia Airlines</div><div class="airline-category">Malaysia</div></div>
+<div class="airline-card" onclick="openServiceDetails('Thai Airways Flight', 'Service')"><div class="airline-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Thai_Airways_Logo.svg/200px-Thai_Airways_Logo.svg.png" alt="Thai Airways" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="fallback-logo">TG</div></div><div class="airline-name">Thai Airways</div><div class="airline-category">Thailand</div></div>
+<div class="airline-card" onclick="openServiceDetails('Singapore Airlines Flight', 'Service')"><div class="airline-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Singapore_Airlines_Logo.svg/200px-Singapore_Airlines_Logo.svg.png" alt="Singapore Airlines" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="fallback-logo">SQ</div></div><div class="airline-name">Singapore Airlines</div><div class="airline-category">Singapore</div></div>
 </div>
 
 <div style="text-align: center; margin-top: 50px; padding: 30px; background: var(--white); border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
@@ -1144,7 +1193,7 @@ Nadeem Hadi Travel
 </div>
 </section>
 
-<!-- FOOTER (NO ADMIN LINK VISIBLE) -->
+<!-- FOOTER -->
 <footer>
 <div class="container">
 <h3>Nadeem Hadi Travel & Tours</h3>
@@ -1236,7 +1285,6 @@ Nadeem Hadi Travel
 <div class="payment-option" onclick="selectPayment(this, 'Bank Transfer')"><i class="fas fa-university"></i><div>Bank Transfer</div></div>
 <div class="payment-option" onclick="selectPayment(this, 'JazzCash')"><i class="fas fa-mobile-alt"></i><div>JazzCash</div></div>
 <div class="payment-option" onclick="selectPayment(this, 'EasyPaisa')"><i class="fas fa-wallet"></i><div>EasyPaisa</div></div>
-<!-- ADDED: Automated Gateway Option -->
 <div class="payment-option" onclick="selectPayment(this, 'Automated Gateway')"><i class="fas fa-shield-alt"></i><div>Secure Gateway</div></div>
 <div class="payment-option" onclick="selectPayment(this, 'Cash on Delivery')"><i class="fas fa-money-bill-wave"></i><div>Cash</div></div>
 </div>
@@ -1252,22 +1300,37 @@ Nadeem Hadi Travel
 <div id="referralModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('referralModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 10px;">Referral Program</h2><p>Invite friends and earn rewards!</p><div class="referral-box"><p>Your Referral Code:</p><div class="referral-code" id="referralCode">NADEEM2026</div><p>Share this code with friends</p></div><button class="btn" style="width: 100%; margin-top: 20px; background: var(--primary-green); color: white;" onclick="copyReferralCode()"><i class="fas fa-copy"></i> Copy Code</button></div></div>
 <div id="scheduleModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('scheduleModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Travel Schedule</h2><div class="form-group"><label>Select Travel Date</label><input type="date" id="travelDate" onchange="showAvailableSlots()"></div><div id="availableSlots" style="margin-top: 20px; display: none;"><h4 style="margin-bottom: 15px; color: var(--primary-green);">Available Departure Times:</h4><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;"><button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="selectSlot('06:00 AM')">06:00 AM</button><button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="selectSlot('09:00 AM')">09:00 AM</button></div></div></div></div>
 
-<!-- SEARCH MODAL (UPDATED DESTINATIONS) -->
+<!-- SEARCH MODAL -->
 <div id="searchModal" class="modal"><div class="modal-content" style="max-width: 800px;"><span class="close-modal" onclick="closeModal('searchModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Advanced Search</h2><div class="search-container" style="box-shadow: none; padding: 0;"><div class="search-grid"><div class="form-group"><label>Destination</label>
 <select id="searchDestination">
-    <option value="">Select Destination / منزل منتخب کریں</option>
-    <option value="makkah">Makkah (مکہ مکرمہ)</option>
-    <option value="madinah">Madinah (مدینہ منورہ)</option>
-    <option value="jeddah">Jeddah (جدہ)</option>
-    <option value="riyadh">Riyadh (ریاض)</option>
-    <option value="dubai">Dubai (دبئی)</option>
-    <option value="istanbul">Istanbul (استنبول)</option>
-    <option value="baku">Baku (باکو)</option>
-    <option value="kuala-lumpur">Kuala Lumpur (کوالالمپور)</option>
-    <option value="bangkok">Bangkok (بینکاک)</option>
-    <option value="lahore">Lahore (لاہور)</option>
-    <option value="islamabad">Islamabad (اسلام آباد)</option>
-    <option value="karachi">Karachi (کراچی)</option>
+    <option value="">Select Destination</option>
+    <option value="makkah">Makkah</option>
+    <option value="madinah">Madinah</option>
+    <option value="jeddah">Jeddah</option>
+    <option value="riyadh">Riyadh</option>
+    <option value="dubai">Dubai</option>
+    <option value="istanbul">Istanbul</option>
+    <option value="baku">Baku</option>
+    <option value="kuala-lumpur">Kuala Lumpur</option>
+    <option value="bangkok">Bangkok</option>
+    <option value="lahore">Lahore</option>
+    <option value="islamabad">Islamabad</option>
+    <option value="karachi">Karachi</option>
+    <option value="london">London</option>
+    <option value="new-york">New York</option>
+    <option value="toronto">Toronto</option>
+    <option value="paris">Paris</option>
+    <option value="muscat">Muscat</option>
+    <option value="doha">Doha</option>
+    <option value="manama">Manama</option>
+    <option value="cairo">Cairo</option>
+    <option value="medina">Medina</option>
+    <option value="abu-dhabi">Abu Dhabi</option>
+    <option value="kuwait">Kuwait</option>
+    <option value="jordan">Jordan</option>
+    <option value="malaysia">Malaysia</option>
+    <option value="singapore">Singapore</option>
+    <option value="thailand">Thailand</option>
 </select>
 </div><div class="form-group"><label>Travel Type</label><select id="searchType"><option value="">Select Type</option><option value="umrah">Umrah</option><option value="flight">Flight</option></select></div></div><button class="btn" style="width: 100%; background: var(--primary-green); color: white;" onclick="performSearch()"><i class="fas fa-search"></i> Search</button></div></div></div>
 
@@ -1275,30 +1338,26 @@ Nadeem Hadi Travel
 <div id="checkoutModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('checkoutModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Quick Checkout</h2><button class="btn" style="width: 100%; background: var(--primary-green); color: white;" onclick="confirmCheckout()"><i class="fas fa-check-circle"></i> Confirm Booking</button></div></div>
 <div id="bookingSlotsModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('bookingSlotsModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Select Booking Time Slot</h2><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;"><button class="btn" style="background: var(--white); color: var(--primary-green); border: 2px solid var(--accent-gold);" onclick="bookSlot('9:00 AM - 11:00 AM')">9:00 AM - 11:00 AM</button><button class="btn" style="background: var(--white); color: var(--primary-green); border: 2px solid var(--accent-gold);" onclick="bookSlot('2:00 PM - 4:00 PM')">2:00 PM - 4:00 PM</button></div></div></div>
 
-<!-- E-TICKETS MODAL (UPDATED WITH PRINT BUTTON) -->
+<!-- E-TICKETS MODAL -->
 <div id="eticketsModal" class="modal">
 <div class="modal-content" style="max-width: 800px;">
 <span class="close-modal no-print" onclick="closeModal('eticketsModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px;">E-Tickets & Documents</h2>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;" class="no-print">E-Tickets & Documents</h2>
 <div id="ticketsList"></div>
-<div style="margin-top: 30px; padding: 25px; background: #f8f9fa; border-radius: 10px; border-left: 5px solid var(--primary-green); text-align: left; font-size: 0.95rem;">
-    <h3 style="color: var(--primary-green); margin-bottom: 15px; font-size: 1.3rem;"><i class="fas fa-info-circle"></i> General Information & Flight Policies</h3>
-    <h4 style="margin-top: 15px; color: var(--text-dark); font-size: 1.1rem;">Check-in Procedures</h4>
-    <p style="color: #555; line-height: 1.6;">Please check the airline's check-in procedures for this itinerary. Online check-in typically opens 24 to 48 hours before departure. Ensure your passport and visa are valid for at least 6 months.</p>
-    <h4 style="margin-top: 15px; color: var(--text-dark); font-size: 1.1rem;">Travel Emission</h4>
-    <p style="color: #555; line-height: 1.6;"><i class="fas fa-leaf" style="color: #25D366; margin-right: 8px;"></i> Flight(s) emissions: <strong>695.631 kg CO2</strong> per total number in party.</p>
-    <p style="font-size: 0.85rem; color: #888; margin-top: 5px; font-style: italic;">SOURCE: The dynamic fields coming from Travel Impact Explorer API response.</p>
-    <h4 style="margin-top: 15px; color: var(--text-dark); font-size: 1.1rem;">Data Protection Notice</h4>
-    <p style="color: #555; font-size: 0.9rem; line-height: 1.6;">
-        Your personal data will be processed in accordance with the applicable carrier's privacy policy and, if your booking is made via a reservation system provider ("GDS"), with its privacy policy. These are available at: 
-        <a href="https://nadeem-hadi-travel.github.io/my-website//privacy" target="_blank" style="color: var(--primary-green); text-decoration: underline; word-break: break-all;">https://nadeem-hadi-travel.github.io/my-website//privacy</a> 
-        or from the carrier or GDS directly. You should read this documentation, which applies to your booking and specifies, for example, how your personal data is collected, stored, used, disclosed and transferred. (applicable for interline carriage).
-    </p>
+
+<div class="no-print" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px;">
+    <button class="btn" style="background: var(--primary-green); color: white;" onclick="window.print()">
+        <i class="fas fa-print"></i> Print Ticket
+    </button>
+    <button class="btn" style="background: #dc3545; color: white;" onclick="saveAsPDF()">
+        <i class="fas fa-file-pdf"></i> Save as PDF
+    </button>
 </div>
-<!-- ADDED: Print Button -->
-<button class="btn no-print" style="width: 100%; background: var(--primary-green); color: white; margin-top: 20px;" onclick="window.print()">
-    <i class="fas fa-print"></i> Print E-Ticket / پرنٹ کریں
-</button>
+
+<div class="no-print" style="margin-top: 20px; padding: 15px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 8px; font-size: 0.9rem;">
+    <strong><i class="fas fa-info-circle"></i> How to Save as PDF:</strong>
+    <p style="margin-top: 8px; color: #555;">When the print dialog opens, select <strong>"Save as PDF"</strong> or <strong>"Microsoft Print to PDF"</strong> as the destination, then click Save.</p>
+</div>
 </div>
 </div>
 
@@ -1335,7 +1394,7 @@ Nadeem Hadi Travel
 </div>
 </div>
 
-<!-- ADDED: Hidden Footer for Print/PDF Only -->
+<!-- Hidden Footer for Print/PDF Only -->
 <div class="print-only-footer">
     <h4 style="color: var(--primary-green);">Nadeem Hadi Travel & Tours</h4>
     <p><strong>Your Trusted Partner for Blessed and Pleasant Journeys</strong></p>
@@ -1355,19 +1414,17 @@ let inquiries = JSON.parse(localStorage.getItem('inquiries')) || [];
 const ADMIN_CREDS = { user: 'admin', pass: 'admin123' };
 let currentLang = localStorage.getItem('siteLang') || 'en';
 let isAdminLoggedIn = false;
+let currentTicketBooking = null;
 
-// UPDATED: Default Packages with 325,000 PKR Price
 let customPackages = JSON.parse(localStorage.getItem('customPackages')) || [
     { id: 1, titleEn: 'Umrah Package - Economy', titleUr: 'عمرہ پیکیج - اکانومی', priceEn: 'PKR 325,000', priceUr: '3,25,000 روپے', meccaHotelEn: '3-Star, 500m from Haram', meccaHotelUr: '3 اسٹار، حرم سے 500 میٹر', medinaHotelEn: '3-Star, 500m from Nabawi', medinaHotelUr: '3 اسٹار، نبوی سے 500 میٹر', totalDays: 30, meccaDays: 15, medinaDays: 15 },
     { id: 2, titleEn: 'Umrah Package - VIP', titleUr: 'عمرہ پیکیج - وی آئی پی', priceEn: 'PKR 550,000', priceUr: '5,50,000 روپے', meccaHotelEn: '5-Star, 50m from Haram', meccaHotelUr: '5 اسٹار، حرم سے 50 میٹر', medinaHotelEn: '5-Star, 50m from Nabawi', medinaHotelUr: '5 اسٹار، نبوی سے 50 میٹر', totalDays: 21, meccaDays: 10, medinaDays: 11 }
 ];
 
-// SECRET: Check URL for admin access (hidden from customers)
 const urlParams = new URLSearchParams(window.location.search);
 const isAdminView = urlParams.get('view') === 'admin';
 
 if (isAdminView) {
-    // Show admin login modal first for security
     document.getElementById('adminLoginModal').style.display = 'block';
 }
 
@@ -1390,8 +1447,7 @@ function showAdminPage(pageName, element) {
     document.getElementById(`full-page-${pageName}`).style.display = 'block';
     document.querySelectorAll('.admin-sidebar li').forEach(el => el.classList.remove('active'));
     if(element) element.classList.add('active');
-    // REMOVED: users from titles
-    const titles = { dashboard: 'Dashboard Overview', bookings: 'Manage Bookings', inquiries: 'Customer Inquiries', packages: 'Edit Packages' };
+    const titles = { dashboard: 'Dashboard Overview', bookings: 'Manage Bookings', inquiries: 'Customer Inquiries', packages: 'Edit Packages', users: 'Registered Users' };
     document.getElementById('admin-page-title').textContent = titles[pageName] || 'Dashboard';
     loadFullAdminData();
 }
@@ -1401,12 +1457,43 @@ function loadFullAdminData() {
     const total = bookings.length;
     const pending = bookings.filter(b => b.status === 'pending').length;
     const confirmed = bookings.filter(b => b.status === 'confirmed').length;
+    const rejected = bookings.filter(b => b.status === 'rejected').length;
     const revenue = confirmed * 150000;
     
     document.getElementById('fs-total-bookings').textContent = total;
     document.getElementById('fs-pending-bookings').textContent = pending;
     document.getElementById('fs-revenue').textContent = 'PKR ' + revenue.toLocaleString();
     document.getElementById('fs-inquiries').textContent = inquiries.length;
+    document.getElementById('fs-users').textContent = users.length;
+
+    const maxVal = Math.max(pending, confirmed, rejected, 1);
+    document.getElementById('booking-status-chart').innerHTML = `
+        <div style="flex: 1; text-align: center;">
+            <div style="height: ${(pending/maxVal)*100}%; background: #ffc107; border-radius: 5px 5px 0 0; min-height: 10px; transition: height 0.5s;"></div>
+            <p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Pending<br>${pending}</p>
+        </div>
+        <div style="flex: 1; text-align: center;">
+            <div style="height: ${(confirmed/maxVal)*100}%; background: #28a745; border-radius: 5px 5px 0 0; min-height: 10px; transition: height 0.5s;"></div>
+            <p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Confirmed<br>${confirmed}</p>
+        </div>
+        <div style="flex: 1; text-align: center;">
+            <div style="height: ${(rejected/maxVal)*100}%; background: #dc3545; border-radius: 5px 5px 0 0; min-height: 10px; transition: height 0.5s;"></div>
+            <p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Rejected<br>${rejected}</p>
+        </div>
+    `;
+
+    const allActivities = [
+        ...bookings.map(b => ({ type: 'booking', text: `New booking ${b.id} by ${b.userName}`, date: b.createdAt })),
+        ...inquiries.map(i => ({ type: 'inquiry', text: `Inquiry from ${i.name}`, date: i.date }))
+    ].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+
+    document.getElementById('recent-activity').innerHTML = allActivities.length ? allActivities.map(a => `
+        <div style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 0.9rem;">
+            <i class="fas ${a.type === 'booking' ? 'fa-ticket-alt' : 'fa-envelope'}" style="color: var(--accent-gold); margin-right: 8px;"></i>
+            ${a.text}
+            <div style="font-size: 0.8rem; color: #999; margin-top: 5px;">${new Date(a.date).toLocaleString()}</div>
+        </div>
+    `).join('') : '<p style="color: #999; text-align: center;">No recent activity</p>';
 
     document.getElementById('fs-recent-bookings').innerHTML = bookings.slice(-5).reverse().map(b => `
         <tr><td><strong>${b.id}</strong></td><td>${b.userName}</td><td>${b.item}</td><td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td></tr>
@@ -1424,10 +1511,11 @@ function loadFullAdminData() {
                     <button class="action-btn btn-approve" onclick="updateBookingStatus('${b.id}', 'confirmed')"><i class="fas fa-check"></i></button>
                     <button class="action-btn btn-reject" onclick="updateBookingStatus('${b.id}', 'rejected')"><i class="fas fa-times"></i></button>
                 ` : ''}
+                <button class="action-btn btn-pdf" onclick="printTicket('${b.id}')" title="Print/PDF Ticket"><i class="fas fa-file-pdf"></i></button>
                 <button class="action-btn btn-delete" onclick="deleteBooking('${b.id}')"><i class="fas fa-trash"></i></button>
             </td>
         </tr>
-    `).join('') || '<tr><td colspan="6" style="text-align:center;">No bookings found</td></tr>';
+    `).join('') || '<tr><td colspan="7" style="text-align:center;">No bookings found</td></tr>';
 
     document.getElementById('fs-all-inquiries').innerHTML = inquiries.map((inq, i) => `
         <tr>
@@ -1441,7 +1529,18 @@ function loadFullAdminData() {
         </tr>
     `).join('') || '<tr><td colspan="4" style="text-align:center;">No inquiries</td></tr>';
 
-    // REMOVED: fs-all-users population
+    document.getElementById('fs-all-users').innerHTML = users.map((u, i) => `
+        <tr>
+            <td>${u.name}</td>
+            <td>${u.email}</td>
+            <td>${u.phone}</td>
+            <td>${u.rewardPoints || 0}</td>
+            <td>${new Date(u.registeredAt).toLocaleDateString()}</td>
+            <td>
+                <button class="action-btn btn-delete" onclick="deleteUser(${i})"><i class="fas fa-trash"></i></button>
+            </td>
+        </tr>
+    `).join('') || '<tr><td colspan="6" style="text-align:center;">No registered users</td></tr>';
 
     const pkgList = document.getElementById('fs-packages-list');
     if(pkgList) {
@@ -1471,16 +1570,12 @@ window.onload = function() {
     checkAuth();
     loadBookings();
     renderCustomPackages();
-    document.documentElement.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
-    document.documentElement.lang = currentLang;
     updateUIText();
 };
 
 function toggleLanguage() {
     currentLang = currentLang === 'en' ? 'ur' : 'en';
     localStorage.setItem('siteLang', currentLang);
-    document.documentElement.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
-    document.documentElement.lang = currentLang;
     renderCustomPackages();
     updateUIText();
 }
@@ -1643,12 +1738,84 @@ function loadDashboard() {
                 <p><strong>Date:</strong> ${b.date}</p>
                 <p><strong>Type:</strong> ${b.type}</p>
                 <span class="status-badge status-${b.status}">${b.status.toUpperCase()}</span>
+                <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button class="btn" style="background: var(--primary-green); color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="printTicket('${b.id}')">
+                        <i class="fas fa-print"></i> Print
+                    </button>
+                    <button class="btn" style="background: #dc3545; color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="printTicket('${b.id}'); setTimeout(saveAsPDF, 500);">
+                        <i class="fas fa-file-pdf"></i> Save as PDF
+                    </button>
+                </div>
             </div>
         `).join('');
     }
 }
 
 function loadBookings() { bookings = JSON.parse(localStorage.getItem('bookings')) || []; }
+
+function printTicket(bookingId) {
+    const booking = bookingId ? bookings.find(b => b.id === bookingId) : currentTicketBooking;
+    if(!booking) { showToast('No ticket to print'); return; }
+    
+    currentTicketBooking = booking;
+    const ticketsList = document.getElementById('ticketsList');
+    ticketsList.innerHTML = `
+        <div class="pdf-ticket" style="border: 2px solid var(--primary-green); padding: 30px; border-radius: 10px; background: #fff;">
+            <div style="text-align: center; border-bottom: 3px double var(--accent-gold); padding-bottom: 15px; margin-bottom: 20px;">
+                <h2 style="color: var(--primary-green); margin: 0;">🕋 Nadeem Hadi Travel & Tours</h2>
+                <p style="color: #666; margin: 5px 0; font-size: 0.9rem;">Your Trusted Partner for Blessed Journeys</p>
+                <h3 style="color: var(--accent-gold); margin-top: 15px;">E-TICKET / ای ٹکٹ</h3>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary-green);">
+                    <strong style="color: #666; font-size: 0.85rem;">PASSENGER NAME / مسافر کا نام</strong>
+                    <p style="font-size: 1.2rem; color: var(--primary-green); margin: 5px 0 0 0; font-weight: 600;">${booking.userName}</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent-gold);">
+                    <strong style="color: #666; font-size: 0.85rem;">BOOKING REF / بکنگ ریفرنس</strong>
+                    <p style="font-size: 1.2rem; color: var(--primary-green); margin: 5px 0 0 0; font-weight: 600;">${booking.id}</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary-green);">
+                    <strong style="color: #666; font-size: 0.85rem;">SERVICE / سروس</strong>
+                    <p style="font-size: 1.1rem; color: var(--text-dark); margin: 5px 0 0 0;">${booking.item}</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent-gold);">
+                    <strong style="color: #666; font-size: 0.85rem;">BOOKING DATE / بکنگ کی تاریخ</strong>
+                    <p style="font-size: 1.1rem; color: var(--text-dark); margin: 5px 0 0 0;">${booking.date}</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary-green);">
+                    <strong style="color: #666; font-size: 0.85rem;">TYPE / قسم</strong>
+                    <p style="font-size: 1.1rem; color: var(--text-dark); margin: 5px 0 0 0;">${booking.type}</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent-gold);">
+                    <strong style="color: #666; font-size: 0.85rem;">STATUS / حیثیت</strong>
+                    <p style="font-size: 1.1rem; margin: 5px 0 0 0;"><span class="status-badge status-${booking.status}">${booking.status.toUpperCase()}</span></p>
+                </div>
+            </div>
+            
+            <div style="background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 8px; text-align: center; font-size: 0.9rem;">
+                <strong>⚠️ Important:</strong> Please arrive at the airport 3 hours before departure.
+                <br>براہ کرم روانگی سے 3 گھنٹے پہلے ایئرپورٹ پہنچیں۔
+            </div>
+        </div>
+    `;
+    openETicketsModal();
+}
+
+function saveAsPDF() {
+    const booking = currentTicketBooking;
+    if(booking) {
+        document.title = `Ticket_${booking.id}_${booking.userName}`;
+    }
+    showToast('Opening PDF save dialog...');
+    setTimeout(() => {
+        window.print();
+        setTimeout(() => {
+            document.title = 'Nadeem Hadi Travel & Tours';
+        }, 1000);
+    }, 500);
+}
 
 function selectPayment(element, method) {
     document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
@@ -1672,7 +1839,6 @@ function selectPayment(element, method) {
             <p><strong>Account Number:</strong> 0316-4815975</p>
             <p><strong>Account Title:</strong> Nadeem Hadi Travel</p>`;
     } 
-    // ADDED: Automated Gateway Logic
     else if(method === 'Automated Gateway') {
         infoHtml = `<h4><i class="fas fa-shield-alt"></i> Automated Payment Gateway</h4>
             <p>Pay securely via JazzCash, EasyPaisa, or Bank Card through our secure payment partner.</p>
@@ -1713,7 +1879,7 @@ function processPayment() {
     if (!selectedPayment) { showToast('Please select a payment method'); return; }
     if(selectedPayment === 'Automated Gateway') {
         showToast('Redirecting to secure payment gateway...');
-        return; // The form submission handles the redirect
+        return;
     }
     const trxId = document.getElementById('trxId') ? document.getElementById('trxId').value : '';
     showToast('Payment processing...');
@@ -1759,7 +1925,6 @@ function showToast(message) {
 function showSection(sectionId) { document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' }); }
 window.onclick = function(event) { if (event.target.classList.contains('modal')) { event.target.style.display = 'none'; } }
 
-// UPDATED: Render Packages with Both English and Urdu
 function renderCustomPackages() {
     const grid = document.getElementById('packagesGrid');
     if(!grid) return;
@@ -1780,14 +1945,12 @@ function renderCustomPackages() {
         const medinaLabel = isUrdu ? 'مدینہ:' : 'Medina:';
 
         return `
-            <div class="package-card">
+            <div class="package-card" ${isUrdu ? 'dir="rtl" style="text-align: right; font-family: \'Noto Nastaliq Urdu\', serif;"' : ''}>
                 <div class="package-header">
-                    <h3 style="color: var(--accent-gold);">${pkg.titleEn}</h3>
-                    <h3 dir="rtl" lang="ur" style="font-family: 'Noto Nastaliq Urdu', serif; margin-top: 5px; font-size: 1.2rem; color: white;">${pkg.titleUr}</h3>
-                    <div class="package-price" style="margin-top: 10px;">${pkg.priceEn}</div>
-                    <div class="package-price" dir="rtl" lang="ur" style="font-size: 1.4rem; margin-top: 5px;">${pkg.priceUr}</div>
+                    <h3 style="color: var(--accent-gold);">${title}</h3>
+                    <div class="package-price" style="margin-top: 10px;">${price}</div>
                 </div>
-                <div class="package-body">
+                <div class="package-body" ${isUrdu ? 'dir="rtl" style="text-align: right;"' : ''}>
                     <ul>
                         <li><i class="fas fa-hotel"></i> ${meccaLabel} ${mecca}</li>
                         <li><i class="fas fa-hotel"></i> ${medinaLabel} ${medina}</li>
@@ -1867,7 +2030,6 @@ function deletePackage(id) {
     }
 }
 
-// SECRET ADMIN LOGIN (No visible link on website)
 function handleAdminLogin(e) {
     e.preventDefault();
     const user = document.getElementById('adminUser').value;
@@ -1907,6 +2069,15 @@ function deleteInquiry(index) {
     localStorage.setItem('inquiries', JSON.stringify(inquiries));
     showToast('Inquiry deleted.');
     refreshAdminView();
+}
+
+function deleteUser(index) {
+    if(confirm('Are you sure you want to delete this user?')) {
+        users.splice(index, 1);
+        localStorage.setItem('users', JSON.stringify(users));
+        showToast('User deleted.');
+        refreshAdminView();
+    }
 }
 
 function exportToExcel() {
