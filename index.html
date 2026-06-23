@@ -247,16 +247,17 @@ padding: 80px 0;
 .airline-partners .section-title {
 color: var(--primary-green);
 }
+/* UPDATED: Smaller Airline Grid */
 .airline-grid {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-gap: 25px;
+grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+gap: 15px;
 margin-top: 40px;
 }
 .airline-card {
 background: var(--white);
 border-radius: 15px;
-padding: 25px 15px;
+padding: 15px 10px;
 text-align: center;
 box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 transition: all 0.3s ease;
@@ -266,23 +267,24 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-min-height: 180px;
+min-height: 120px;
 }
 .airline-card:hover {
 transform: translateY(-8px);
 box-shadow: 0 15px 35px rgba(10,77,60,0.15);
 border-color: var(--accent-gold);
 }
+/* UPDATED: Smaller Airline Logos */
 .airline-logo {
-width: 100px;
-height: 100px;
+width: 60px;
+height: 60px;
 display: flex;
 align-items: center;
 justify-content: center;
-margin-bottom: 15px;
+margin-bottom: 10px;
 border-radius: 50%;
 background: #f8f9fa;
-padding: 10px;
+padding: 8px;
 transition: 0.3s;
 }
 .airline-card:hover .airline-logo {
@@ -304,14 +306,14 @@ display: none;
 display: block;
 }
 .airline-name {
-font-size: 1rem;
+font-size: 0.9rem;
 font-weight: 600;
 color: var(--text-dark);
 margin-top: 10px;
 line-height: 1.3;
 }
 .airline-category {
-font-size: 0.85rem;
+font-size: 0.8rem;
 color: #666;
 margin-top: 5px;
 font-style: italic;
@@ -763,6 +765,51 @@ font-weight: 600;
 .admin-full-content .stat-card h4 { color: #666; font-size: 0.9rem; margin-bottom: 5px; }
 .admin-full-content .stat-card h2 { color: var(--primary-green); font-size: 2rem; margin: 0; }
 
+/* PRINT STYLES FOR E-TICKETS */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #eticketsModal, #eticketsModal * {
+        visibility: visible;
+    }
+    #eticketsModal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        background: white;
+        overflow: visible;
+        display: block !important;
+    }
+    .modal-content {
+        box-shadow: none;
+        margin: 0;
+        padding: 20px;
+        max-width: 100%;
+    }
+    .no-print, .close-modal {
+        display: none !important;
+    }
+    .print-only-footer {
+        display: block !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        background: white;
+        padding: 15px 10px;
+        border-top: 2px solid #000;
+        font-size: 11pt;
+        color: black;
+    }
+}
+.print-only-footer {
+    display: none;
+}
+
 @media (max-width: 768px) {
 .hero h1 { font-size: 2.5rem; }
 .hero h2 { font-size: 1.8rem; }
@@ -778,9 +825,9 @@ font-weight: 600;
 .feature-circle { width: 80px; height: 80px; font-size: 2rem; }
 .feature-label { font-size: 0.9rem; }
 .modal-content { margin: 10% auto; padding: 25px; }
-.airline-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; }
-.airline-card { min-height: 150px; padding: 20px 10px; }
-.airline-logo { width: 80px; height: 80px; }
+.airline-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; }
+.airline-card { min-height: 100px; padding: 10px 5px; }
+.airline-logo { width: 50px; height: 50px; }
 .pakistani-airlines { padding: 25px 15px; }
 .pakistani-airlines h3 { font-size: 1.4rem; }
 #admin-fullscreen { flex-direction: column; }
@@ -820,7 +867,7 @@ font-family: inherit;
             <li class="active" onclick="showAdminPage('dashboard', this)"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
             <li onclick="showAdminPage('bookings', this)"><i class="fas fa-ticket-alt"></i> Manage Bookings</li>
             <li onclick="showAdminPage('inquiries', this)"><i class="fas fa-envelope"></i> Customer Inquiries</li>
-            <li onclick="showAdminPage('users', this)"><i class="fas fa-users"></i> Registered Users</li>
+            <!-- REMOVED: Registered Users -->
             <li onclick="showAdminPage('packages', this)"><i class="fas fa-box"></i> Edit Packages</li>
             <li onclick="exitAdminView()"><i class="fas fa-sign-out-alt"></i> Exit to Website</li>
         </ul>
@@ -872,15 +919,7 @@ font-family: inherit;
                 </div>
             </div>
 
-            <div id="full-page-users" class="admin-page" style="display: none;">
-                <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
-                    <h3 style="color: var(--primary-green); margin-bottom: 15px;">Registered Users</h3>
-                    <table class="data-table">
-                        <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Joined</th></tr></thead>
-                        <tbody id="fs-all-users"></tbody>
-                    </table>
-                </div>
-            </div>
+            <!-- REMOVED: full-page-users -->
 
             <div id="full-page-packages" class="admin-page" style="display: none;">
                 <button class="btn" style="background: var(--accent-gold); color: var(--primary-green); margin-bottom: 20px;" onclick="openPackageEditor()">
@@ -1197,12 +1236,14 @@ Nadeem Hadi Travel
 <div class="payment-option" onclick="selectPayment(this, 'Bank Transfer')"><i class="fas fa-university"></i><div>Bank Transfer</div></div>
 <div class="payment-option" onclick="selectPayment(this, 'JazzCash')"><i class="fas fa-mobile-alt"></i><div>JazzCash</div></div>
 <div class="payment-option" onclick="selectPayment(this, 'EasyPaisa')"><i class="fas fa-wallet"></i><div>EasyPaisa</div></div>
+<!-- ADDED: Automated Gateway Option -->
+<div class="payment-option" onclick="selectPayment(this, 'Automated Gateway')"><i class="fas fa-shield-alt"></i><div>Secure Gateway</div></div>
 <div class="payment-option" onclick="selectPayment(this, 'Cash on Delivery')"><i class="fas fa-money-bill-wave"></i><div>Cash</div></div>
 </div>
 <div id="paymentDetails" style="margin-top: 20px; display: none;">
     <div class="form-group"><label>Selected Payment Method: <span id="selectedPaymentMethod" style="color: var(--accent-gold); font-weight: 700;"></span></label></div>
     <div id="paymentMethodInfo" style="display: none;"></div>
-    <button class="btn" style="width: 100%; background: var(--accent-gold); color: var(--primary-green);" onclick="processPayment()">Proceed to Payment</button>
+    <button class="btn no-print" style="width: 100%; background: var(--accent-gold); color: var(--primary-green);" onclick="processPayment()">Proceed to Payment</button>
 </div>
 </div>
 </div>
@@ -1210,15 +1251,34 @@ Nadeem Hadi Travel
 <!-- OTHER MODALS -->
 <div id="referralModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('referralModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 10px;">Referral Program</h2><p>Invite friends and earn rewards!</p><div class="referral-box"><p>Your Referral Code:</p><div class="referral-code" id="referralCode">NADEEM2026</div><p>Share this code with friends</p></div><button class="btn" style="width: 100%; margin-top: 20px; background: var(--primary-green); color: white;" onclick="copyReferralCode()"><i class="fas fa-copy"></i> Copy Code</button></div></div>
 <div id="scheduleModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('scheduleModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Travel Schedule</h2><div class="form-group"><label>Select Travel Date</label><input type="date" id="travelDate" onchange="showAvailableSlots()"></div><div id="availableSlots" style="margin-top: 20px; display: none;"><h4 style="margin-bottom: 15px; color: var(--primary-green);">Available Departure Times:</h4><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;"><button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="selectSlot('06:00 AM')">06:00 AM</button><button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="selectSlot('09:00 AM')">09:00 AM</button></div></div></div></div>
-<div id="searchModal" class="modal"><div class="modal-content" style="max-width: 800px;"><span class="close-modal" onclick="closeModal('searchModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Advanced Search</h2><div class="search-container" style="box-shadow: none; padding: 0;"><div class="search-grid"><div class="form-group"><label>Destination</label><select id="searchDestination"><option value="">Select Destination</option><option value="makkah">Makkah</option><option value="madinah">Madinah</option></select></div><div class="form-group"><label>Travel Type</label><select id="searchType"><option value="">Select Type</option><option value="umrah">Umrah</option><option value="flight">Flight</option></select></div></div><button class="btn" style="width: 100%; background: var(--primary-green); color: white;" onclick="performSearch()"><i class="fas fa-search"></i> Search</button></div></div></div>
+
+<!-- SEARCH MODAL (UPDATED DESTINATIONS) -->
+<div id="searchModal" class="modal"><div class="modal-content" style="max-width: 800px;"><span class="close-modal" onclick="closeModal('searchModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Advanced Search</h2><div class="search-container" style="box-shadow: none; padding: 0;"><div class="search-grid"><div class="form-group"><label>Destination</label>
+<select id="searchDestination">
+    <option value="">Select Destination / منزل منتخب کریں</option>
+    <option value="makkah">Makkah (مکہ مکرمہ)</option>
+    <option value="madinah">Madinah (مدینہ منورہ)</option>
+    <option value="jeddah">Jeddah (جدہ)</option>
+    <option value="riyadh">Riyadh (ریاض)</option>
+    <option value="dubai">Dubai (دبئی)</option>
+    <option value="istanbul">Istanbul (استنبول)</option>
+    <option value="baku">Baku (باکو)</option>
+    <option value="kuala-lumpur">Kuala Lumpur (کوالالمپور)</option>
+    <option value="bangkok">Bangkok (بینکاک)</option>
+    <option value="lahore">Lahore (لاہور)</option>
+    <option value="islamabad">Islamabad (اسلام آباد)</option>
+    <option value="karachi">Karachi (کراچی)</option>
+</select>
+</div><div class="form-group"><label>Travel Type</label><select id="searchType"><option value="">Select Type</option><option value="umrah">Umrah</option><option value="flight">Flight</option></select></div></div><button class="btn" style="width: 100%; background: var(--primary-green); color: white;" onclick="performSearch()"><i class="fas fa-search"></i> Search</button></div></div></div>
+
 <div id="reviewsModal" class="modal"><div class="modal-content" style="max-width: 800px;"><span class="close-modal" onclick="closeModal('reviewsModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Customer Reviews</h2><div id="reviewsList"></div></div></div>
 <div id="checkoutModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('checkoutModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Quick Checkout</h2><button class="btn" style="width: 100%; background: var(--primary-green); color: white;" onclick="confirmCheckout()"><i class="fas fa-check-circle"></i> Confirm Booking</button></div></div>
 <div id="bookingSlotsModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('bookingSlotsModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Select Booking Time Slot</h2><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;"><button class="btn" style="background: var(--white); color: var(--primary-green); border: 2px solid var(--accent-gold);" onclick="bookSlot('9:00 AM - 11:00 AM')">9:00 AM - 11:00 AM</button><button class="btn" style="background: var(--white); color: var(--primary-green); border: 2px solid var(--accent-gold);" onclick="bookSlot('2:00 PM - 4:00 PM')">2:00 PM - 4:00 PM</button></div></div></div>
 
-<!-- E-TICKETS MODAL -->
+<!-- E-TICKETS MODAL (UPDATED WITH PRINT BUTTON) -->
 <div id="eticketsModal" class="modal">
 <div class="modal-content" style="max-width: 800px;">
-<span class="close-modal" onclick="closeModal('eticketsModal')">&times;</span>
+<span class="close-modal no-print" onclick="closeModal('eticketsModal')">&times;</span>
 <h2 style="color: var(--primary-green); margin-bottom: 20px;">E-Tickets & Documents</h2>
 <div id="ticketsList"></div>
 <div style="margin-top: 30px; padding: 25px; background: #f8f9fa; border-radius: 10px; border-left: 5px solid var(--primary-green); text-align: left; font-size: 0.95rem;">
@@ -1235,6 +1295,10 @@ Nadeem Hadi Travel
         or from the carrier or GDS directly. You should read this documentation, which applies to your booking and specifies, for example, how your personal data is collected, stored, used, disclosed and transferred. (applicable for interline carriage).
     </p>
 </div>
+<!-- ADDED: Print Button -->
+<button class="btn no-print" style="width: 100%; background: var(--primary-green); color: white; margin-top: 20px;" onclick="window.print()">
+    <i class="fas fa-print"></i> Print E-Ticket / پرنٹ کریں
+</button>
 </div>
 </div>
 
@@ -1271,6 +1335,15 @@ Nadeem Hadi Travel
 </div>
 </div>
 
+<!-- ADDED: Hidden Footer for Print/PDF Only -->
+<div class="print-only-footer">
+    <h4 style="color: var(--primary-green);">Nadeem Hadi Travel & Tours</h4>
+    <p><strong>Your Trusted Partner for Blessed and Pleasant Journeys</strong></p>
+    <p>📞 0342-4397177 | 0316-4815975 | 0302-6901114</p>
+    <p>📧 nadeemhaditravel@gmail.com</p>
+    <p>📍 Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha, Pakistan</p>
+</div>
+
 <script>
 document.getElementById('current-year').textContent = new Date().getFullYear();
 
@@ -1283,10 +1356,10 @@ const ADMIN_CREDS = { user: 'admin', pass: 'admin123' };
 let currentLang = localStorage.getItem('siteLang') || 'en';
 let isAdminLoggedIn = false;
 
+// UPDATED: Default Packages with 325,000 PKR Price
 let customPackages = JSON.parse(localStorage.getItem('customPackages')) || [
-    { id: 1, titleEn: 'Complete Umrah Package', titleUr: 'مکمل عمرہ پیکج', priceEn: 'Contact for Price', priceUr: 'قیمت کے لیے رابطہ کریں', meccaHotelEn: '5-Star, 500m from Haram', meccaHotelUr: '5 اسٹار، حرم سے 500 میٹر', medinaHotelEn: '5-Star, 500m from Nabawi', medinaHotelUr: '5 اسٹار، نبوی سے 500 میٹر', totalDays: 14, meccaDays: 7, medinaDays: 6 },
-    { id: 2, titleEn: 'Economy Package', titleUr: 'اقتصادی پیکج', priceEn: 'Best Rates', priceUr: 'بہترین نرخ', meccaHotelEn: 'Standard Hotel', meccaHotelUr: 'معمولی ہوٹل', medinaHotelEn: 'Standard Hotel', medinaHotelUr: 'معمولی ہوٹل', totalDays: 10, meccaDays: 5, medinaDays: 4 },
-    { id: 3, titleEn: 'VIP Package', titleUr: 'وی آئی پی پیکج', priceEn: 'Premium Service', priceUr: 'پریمیم سروس', meccaHotelEn: 'Right Next to Haram', meccaHotelUr: 'حرم کے بالکل قریب', medinaHotelEn: 'Right Next to Nabawi', medinaHotelUr: 'نبوی کے بالکل قریب', totalDays: 10, meccaDays: 5, medinaDays: 5 }
+    { id: 1, titleEn: 'Umrah Package - Economy', titleUr: 'عمرہ پیکیج - اکانومی', priceEn: 'PKR 325,000', priceUr: '3,25,000 روپے', meccaHotelEn: '3-Star, 500m from Haram', meccaHotelUr: '3 اسٹار، حرم سے 500 میٹر', medinaHotelEn: '3-Star, 500m from Nabawi', medinaHotelUr: '3 اسٹار، نبوی سے 500 میٹر', totalDays: 30, meccaDays: 15, medinaDays: 15 },
+    { id: 2, titleEn: 'Umrah Package - VIP', titleUr: 'عمرہ پیکیج - وی آئی پی', priceEn: 'PKR 550,000', priceUr: '5,50,000 روپے', meccaHotelEn: '5-Star, 50m from Haram', meccaHotelUr: '5 اسٹار، حرم سے 50 میٹر', medinaHotelEn: '5-Star, 50m from Nabawi', medinaHotelUr: '5 اسٹار، نبوی سے 50 میٹر', totalDays: 21, meccaDays: 10, medinaDays: 11 }
 ];
 
 // SECRET: Check URL for admin access (hidden from customers)
@@ -1317,7 +1390,8 @@ function showAdminPage(pageName, element) {
     document.getElementById(`full-page-${pageName}`).style.display = 'block';
     document.querySelectorAll('.admin-sidebar li').forEach(el => el.classList.remove('active'));
     if(element) element.classList.add('active');
-    const titles = { dashboard: 'Dashboard Overview', bookings: 'Manage Bookings', inquiries: 'Customer Inquiries', users: 'Registered Users', packages: 'Edit Packages' };
+    // REMOVED: users from titles
+    const titles = { dashboard: 'Dashboard Overview', bookings: 'Manage Bookings', inquiries: 'Customer Inquiries', packages: 'Edit Packages' };
     document.getElementById('admin-page-title').textContent = titles[pageName] || 'Dashboard';
     loadFullAdminData();
 }
@@ -1367,9 +1441,7 @@ function loadFullAdminData() {
         </tr>
     `).join('') || '<tr><td colspan="4" style="text-align:center;">No inquiries</td></tr>';
 
-    document.getElementById('fs-all-users').innerHTML = users.map(u => `
-        <tr><td>${u.name}</td><td>${u.email}</td><td>${u.phone}</td><td>${new Date(u.registeredAt).toLocaleDateString()}</td></tr>
-    `).join('') || '<tr><td colspan="4" style="text-align:center;">No users</td></tr>';
+    // REMOVED: fs-all-users population
 
     const pkgList = document.getElementById('fs-packages-list');
     if(pkgList) {
@@ -1599,7 +1671,19 @@ function selectPayment(element, method) {
         infoHtml = `<h4><i class="fas fa-wallet"></i> EasyPaisa Details</h4>
             <p><strong>Account Number:</strong> 0316-4815975</p>
             <p><strong>Account Title:</strong> Nadeem Hadi Travel</p>`;
-    } else if(method.includes('Card')) {
+    } 
+    // ADDED: Automated Gateway Logic
+    else if(method === 'Automated Gateway') {
+        infoHtml = `<h4><i class="fas fa-shield-alt"></i> Automated Payment Gateway</h4>
+            <p>Pay securely via JazzCash, EasyPaisa, or Bank Card through our secure payment partner.</p>
+            <form action="YOUR_PAYMENT_GATEWAY_LINK_HERE" method="GET" target="_blank" style="margin-top: 15px;">
+                <input type="hidden" name="amount" value="325000">
+                <input type="hidden" name="item_name" value="Umrah Package">
+                <button type="submit" class="btn" style="width: 100%; background: #28a745; color: white;">Pay PKR 325,000 Now / ابھی ادائیگی کریں</button>
+            </form>
+            <p style="font-size: 0.85rem; color: #666; margin-top: 10px;">You will be redirected to a secure payment page.</p>`;
+    }
+    else if(method.includes('Card')) {
         infoHtml = `<h4><i class="fas fa-credit-card"></i> Card Payment</h4>
             <p>Secure payment gateway will be initiated. (Demo Mode)</p>
             <div class="form-group" style="margin-top: 10px;"><label>Card Number</label><input type="text" placeholder="**** **** **** ****"></div>
@@ -1613,10 +1697,12 @@ function selectPayment(element, method) {
             <p><strong>Address:</strong> Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha</p>`;
     }
     
-    infoHtml += `<div class="form-group" style="margin-top: 15px;">
-        <label>Transaction ID / TRX / Reference Number</label>
-        <input type="text" id="trxId" placeholder="Enter TRX ID after payment">
-    </div>`;
+    if(method !== 'Automated Gateway') {
+        infoHtml += `<div class="form-group" style="margin-top: 15px;">
+            <label>Transaction ID / TRX / Reference Number</label>
+            <input type="text" id="trxId" placeholder="Enter TRX ID after payment">
+        </div>`;
+    }
     
     document.getElementById('paymentMethodInfo').innerHTML = infoHtml;
     document.getElementById('paymentMethodInfo').style.display = 'block';
@@ -1625,6 +1711,10 @@ function selectPayment(element, method) {
 
 function processPayment() {
     if (!selectedPayment) { showToast('Please select a payment method'); return; }
+    if(selectedPayment === 'Automated Gateway') {
+        showToast('Redirecting to secure payment gateway...');
+        return; // The form submission handles the redirect
+    }
     const trxId = document.getElementById('trxId') ? document.getElementById('trxId').value : '';
     showToast('Payment processing...');
     setTimeout(() => { 
@@ -1669,6 +1759,7 @@ function showToast(message) {
 function showSection(sectionId) { document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' }); }
 window.onclick = function(event) { if (event.target.classList.contains('modal')) { event.target.style.display = 'none'; } }
 
+// UPDATED: Render Packages with Both English and Urdu
 function renderCustomPackages() {
     const grid = document.getElementById('packagesGrid');
     if(!grid) return;
@@ -1690,7 +1781,12 @@ function renderCustomPackages() {
 
         return `
             <div class="package-card">
-                <div class="package-header"><h3>${title}</h3><div class="package-price">${price}</div></div>
+                <div class="package-header">
+                    <h3 style="color: var(--accent-gold);">${pkg.titleEn}</h3>
+                    <h3 dir="rtl" lang="ur" style="font-family: 'Noto Nastaliq Urdu', serif; margin-top: 5px; font-size: 1.2rem; color: white;">${pkg.titleUr}</h3>
+                    <div class="package-price" style="margin-top: 10px;">${pkg.priceEn}</div>
+                    <div class="package-price" dir="rtl" lang="ur" style="font-size: 1.4rem; margin-top: 5px;">${pkg.priceUr}</div>
+                </div>
                 <div class="package-body">
                     <ul>
                         <li><i class="fas fa-hotel"></i> ${meccaLabel} ${mecca}</li>
@@ -1700,7 +1796,7 @@ function renderCustomPackages() {
                         <li><i class="fas fa-check-circle"></i> ${ziyaratText}</li>
                     </ul>
                 </div>
-                <div class="package-footer"><button class="btn" onclick="openServiceDetails('${title}', 'Package')">${bookText}</button></div>
+                <div class="package-footer"><button class="btn" onclick="openServiceDetails('${pkg.titleEn}', 'Package')">${bookText}</button></div>
             </div>
         `;
     }).join('');
