@@ -1367,7 +1367,9 @@ font-family: inherit;
 </button>
 </form>
 <p style="margin-top: 15px; text-align: center; color: #666; font-size: 0.9rem;">
-Contact administrator if you forgot your credentials
+<strong>Default Credentials:</strong><br>
+Email: admin@nadeemhadi.com<br>
+Password: admin123
 </p>
 </div>
 </div>
@@ -1441,18 +1443,6 @@ Contact administrator if you forgot your credentials
 <i class="fas fa-save"></i> Save Staff Member
 </button>
 </form>
-</div>
-</div>
-
-<!-- ADMIN LOGIN MODAL (Legacy - redirects to staff login) -->
-<div id="adminLoginModal" class="modal">
-<div class="modal-content" style="max-width: 400px;">
-<span class="close-modal" onclick="closeModal('adminLoginModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px; text-align: center;">Staff Portal Login</h2>
-<p style="text-align: center; color: #666; margin-bottom: 20px;">Please use the staff login system</p>
-<button class="btn" style="width: 100%; background: var(--primary-green); color: white;" onclick="closeModal('adminLoginModal'); openStaffLogin();">
-<i class="fas fa-sign-in-alt"></i> Go to Staff Login
-</button>
 </div>
 </div>
 
@@ -2153,22 +2143,35 @@ if (savedPermissions) {
 }
 
 // ============================================
-// STAFF AUTHENTICATION
+// STAFF AUTHENTICATION - FIXED VERSION
 // ============================================
 function openStaffLogin() {
-    document.getElementById('staffLoginModal').style.display = 'block';
+    console.log('Opening staff login modal');
+    const modal = document.getElementById('staffLoginModal');
+    if (modal) {
+        modal.style.display = 'block';
+        console.log('Staff login modal displayed');
+    } else {
+        console.error('Staff login modal not found!');
+    }
 }
 
 function handleStaffLogin(e) {
     e.preventDefault();
+    console.log('Staff login attempt');
+    
     const email = document.getElementById('staffLoginEmail').value;
     const password = document.getElementById('staffLoginPassword').value;
+    
+    console.log('Login credentials:', { email, password: '***' });
     
     const staff = staffMembers.find(s => 
         (s.email === email || s.name === email) && 
         s.password === password && 
         s.status === 'active'
     );
+    
+    console.log('Staff found:', staff ? 'Yes' : 'No');
     
     if (staff) {
         currentStaffUser = staff;
@@ -2186,6 +2189,7 @@ function handleStaffLogin(e) {
         showToast(`Welcome, ${staff.name}! (${ROLES[staff.role].name})`);
     } else {
         showToast('Invalid credentials or account inactive!');
+        console.log('Login failed - invalid credentials');
     }
 }
 
@@ -2550,6 +2554,7 @@ function savePermissions() {
 // ADMIN DASHBOARD NAVIGATION
 // ============================================
 function showAdminDashboard() {
+    console.log('Showing admin dashboard');
     document.querySelectorAll('header, .hero, .madinah-banner, .section, footer, .floating-wa').forEach(el => {
         el.style.display = 'none';
     });
@@ -2742,12 +2747,14 @@ function refreshAdminView() {
 }
 
 // ============================================
-// INITIALIZATION
+// INITIALIZATION - FIXED VERSION
 // ============================================
 const urlParams = new URLSearchParams(window.location.search);
 const isAdminView = urlParams.get('view') === 'admin';
 
-window.onload = function() {
+window.addEventListener('DOMContentLoaded', function() {
+    console.log('Page loaded, checking admin view:', isAdminView);
+    
     checkAuth();
     loadBookings();
     renderCustomPackages();
@@ -2755,15 +2762,19 @@ window.onload = function() {
     
     // Check staff authentication
     if (checkStaffAuth()) {
+        console.log('Staff already authenticated');
         isAdminLoggedIn = true;
         if (isAdminView) {
             showAdminDashboard();
             updateUIBasedOnPermissions();
         }
     } else if (isAdminView) {
-        openStaffLogin();
+        console.log('Opening staff login for admin view');
+        setTimeout(() => {
+            openStaffLogin();
+        }, 100);
     }
-};
+});
 
 // ============================================
 // USER AUTHENTICATION (CUSTOMERS)
@@ -2846,7 +2857,13 @@ function checkAuth() {
     }
 }
 
-function closeModal(modalId) { document.getElementById(modalId).style.display = 'none'; }
+function closeModal(modalId) { 
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'none'; 
+    }
+}
+
 function openDashboard() {
     if (!currentUser) { showToast('Please login first'); openLoginModal(); return; }
     loadDashboard();
