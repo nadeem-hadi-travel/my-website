@@ -2564,6 +2564,23 @@ XLSX.writeFile(wb, "NadeemHadiTravel_Records.xlsx");
 logActivity('edit', `${currentStaffUser.name} exported data to Excel`);
 showToast('Excel file downloaded successfully!');
 }
-</script>
+</script type="module">
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDHJQ0Pc075Y_7rGy_JsyGRwqtlBFuM3u8",
+  authDomain: "nadeem-hadi-travel.firebaseapp.com",
+  projectId: "nadeem-hadi-travel",
+  storageBucket: "nadeem-hadi-travel.firebasestorage.app",
+  messagingSenderId: "413016091133",
+  appId: "1:413016091133:web:098b4d6f6a54be957d9194"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 </body>
 </html>
