@@ -2587,6 +2587,15 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 console.log("Firebase Connected!");
+    <!-- Admin Login Box - Chupaya hua -->
+<div id="loginBox" style="display:none;position:fixed;top:0;left:0;...
+  <div style="background:white;padding:40px;border-radius:15px;width:350px;text-align:center;">
+    <h2>Admin Login</h2>
+    <input type="email" id="email" placeholder="admin@nadeemtravel.com" style="width:100%;padding:14px;margin:10px 0;">
+    <input type="password" id="password" placeholder="Password" style="width:100%;padding:14px;margin:10px 0;">
+    <button onclick="login()">Login</button>
+  </div>
+</div>
 </script>
 </body>
 </html>
