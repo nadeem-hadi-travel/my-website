@@ -1344,13 +1344,6 @@ font-family: inherit;
 </div>
 <input type="hidden" id="staffRole">
 </div>
-<div class="form-group">
-<label><i class="fas fa-toggle-on" style="margin-right: 8px; color: var(--accent-gold);"></i>Status</label>
-<select id="staffStatus" required>
-<option value="active">Active</option>
-<option value="inactive">Inactive</option>
-</select>
-</div>
 <button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">
 <i class="fas fa-save"></i> Save Staff Member
 </button>
@@ -2044,59 +2037,43 @@ console.log('Staff login modal displayed');
 console.error('Staff login modal not found!');
 }
 }
-
 function handleStaffLogin(e) {
-    e.preventDefault();
-    console.log('Staff login attempt');
-    
-    // FIX: Added .trim() to remove hidden spaces and .toLowerCase() to ignore capital letters
-    const emailInput = document.getElementById('staffLoginEmail').value.trim().toLowerCase();
-    const password = document.getElementById('staffLoginPassword').value;
-    
-    console.log('Login credentials:', { email: emailInput, password: '***' });
+e.preventDefault();
+console.log('Staff login attempt');
+// FIX: Added .trim() and .toLowerCase() to ignore Chrome Autofill spaces/capitals
+const emailInput = document.getElementById('staffLoginEmail').value.trim().toLowerCase();
+const password = document.getElementById('staffLoginPassword').value;
+console.log('Login credentials:', { email: emailInput, password: '***' });
 
-    // FIX: Compare using lowercase to ensure case-insensitive matching
-    const staff = staffMembers.find(s => 
-        (s.email.toLowerCase() === emailInput || s.name.toLowerCase() === emailInput) && 
-        s.password === password && 
-        s.status === 'active'
-    );
-
-    console.log('Staff found:', staff ? 'Yes' : 'No');
-
-    if (staff) {
-        currentStaffUser = staff;
-        localStorage.setItem('currentStaffUser', JSON.stringify(staff));
-        staff.lastLogin = new Date().toISOString();
-        localStorage.setItem('staffMembers', JSON.stringify(staffMembers));
-        logActivity('login', `${staff.name} logged in`);
-        closeModal('staffLoginModal');
-        isAdminLoggedIn = true;
-        showAdminDashboard();
-        updateUIBasedOnPermissions();
-        showToast(`Welcome, ${staff.name}! (${ROLES[staff.role].name})`);
-    } else {
-        // DEBUG HELPER: Check exactly why it failed in the browser console (F12)
-        const userExists = staffMembers.find(s => s.email.toLowerCase() === emailInput || s.name.toLowerCase() === emailInput);
-        if (userExists && userExists.status !== 'active') {
-            console.warn('❌ Login failed: Account is INACTIVE.');
-        } else if (userExists) {
-            console.warn('❌ Login failed: Incorrect PASSWORD.');
-        } else {
-            console.warn('❌ Login failed: User NOT FOUND.');
-        }
-        
-        showToast('Invalid credentials or account inactive!');
-    }
+// FIX: Removed "s.status === 'active'" check so inactive accounts can still login
+const staff = staffMembers.find(s =>
+(s.email.toLowerCase() === emailInput || s.name.toLowerCase() === emailInput) &&
+s.password === password
+);
+console.log('Staff found:', staff ? 'Yes' : 'No');
+if (staff) {
+currentStaffUser = staff;
+localStorage.setItem('currentStaffUser', JSON.stringify(staff));
+staff.lastLogin = new Date().toISOString();
+localStorage.setItem('staffMembers', JSON.stringify(staffMembers));
+logActivity('login', `${staff.name} logged in`);
+closeModal('staffLoginModal');
+isAdminLoggedIn = true;
+showAdminDashboard();
+updateUIBasedOnPermissions();
+showToast(`Welcome, ${staff.name}! (${ROLES[staff.role].name})`);
+} else {
+showToast('Invalid credentials!');
+console.log('Login failed - invalid credentials');
 }
-
+}
 function checkStaffAuth() {
 const savedStaff = localStorage.getItem('currentStaffUser');
 if (savedStaff) {
 currentStaffUser = JSON.parse(savedStaff);
-// Verify staff still exists and is active
+// FIX: Removed "currentStaff.status === 'active'" check
 const currentStaff = staffMembers.find(s => s.id === currentStaffUser.id);
-if (currentStaff && currentStaff.status === 'active') {
+if (currentStaff) {
 currentStaffUser = currentStaff;
 return true;
 } else {
@@ -2228,7 +2205,7 @@ document.getElementById('staffName').value = staff.name;
 document.getElementById('staffEmail').value = staff.email;
 document.getElementById('staffPhone').value = staff.phone;
 document.getElementById('staffPassword').value = '';
-document.getElementById('staffStatus').value = staff.status;
+// FIX: Removed staffStatus assignment
 document.getElementById('staffRole').value = staff.role;
 document.querySelectorAll('.role-option').forEach(opt => opt.classList.remove('selected'));
 const roleOption = document.querySelector(`.role-option[onclick*="'${staff.role}'"]`);
@@ -2248,7 +2225,7 @@ name: document.getElementById('staffName').value,
 email: document.getElementById('staffEmail').value,
 phone: document.getElementById('staffPhone').value,
 role: document.getElementById('staffRole').value,
-status: document.getElementById('staffStatus').value
+status: 'active' // FIX: Always force status to active
 };
 if (!staffData.role) {
 showToast('Please select a role');
@@ -2342,7 +2319,6 @@ return `
 <div style="margin-top: 15px; font-size: 0.9rem; color: #666;">
 <p><i class="fas fa-phone" style="margin-right: 8px; color: var(--accent-gold);"></i>${staff.phone}</p>
 <p><i class="fas fa-clock" style="margin-right: 8px; color: var(--accent-gold);"></i>Last Login: ${lastLogin}</p>
-<p><i class="fas fa-${staff.status === 'active' ? 'check-circle' : 'times-circle'}" style="margin-right: 8px; color: ${staff.status === 'active' ? '#28a745' : '#dc3545'};"></i>${staff.status === 'active' ? 'Active' : 'Inactive'}</p>
 <p><i class="fas fa-calendar" style="margin-right: 8px; color: var(--accent-gold);"></i>Joined: ${new Date(staff.createdAt).toLocaleDateString()}</p>
 </div>
 <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
@@ -2618,52 +2594,41 @@ showToast('Email not found in our records');
 }
 }
 function handleRegister(e) {
-    e.preventDefault();
-    const name = document.getElementById('regName').value;
-    // FIX: Normalize email and phone to prevent duplicates with different casing
-    const email = document.getElementById('regEmail').value.trim().toLowerCase();
-    const phone = document.getElementById('regPhone').value.trim();
-    const password = document.getElementById('regPassword').value;
-    const confirmPassword = document.getElementById('regConfirmPassword').value;
-
-    if (password !== confirmPassword) { showToast('Passwords do not match!'); return; }
-    if (users.find(u => u.email.toLowerCase() === email || u.phone.trim() === phone)) { showToast('User already exists! Please login.'); return; }
-
-    const newUser = {
-        id: Date.now(), name, email, phone, password,
-        referralCode: 'NADEEM' + Math.floor(Math.random() * 10000),
-        rewardPoints: 0, registeredAt: new Date().toISOString(),
-        visaCopies: []
-    };
-    users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
-    showToast('Registration successful! Please login.');
-    closeModal('registerModal');
-    openLoginModal();
+e.preventDefault();
+const name = document.getElementById('regName').value;
+const email = document.getElementById('regEmail').value.trim().toLowerCase();
+const phone = document.getElementById('regPhone').value.trim();
+const password = document.getElementById('regPassword').value;
+const confirmPassword = document.getElementById('regConfirmPassword').value;
+if (password !== confirmPassword) { showToast('Passwords do not match!'); return; }
+if (users.find(u => u.email.toLowerCase() === email || u.phone.trim() === phone)) { showToast('User already exists! Please login.'); return; }
+const newUser = {
+id: Date.now(), name, email, phone, password,
+referralCode: 'NADEEM' + Math.floor(Math.random() * 10000),
+rewardPoints: 0, registeredAt: new Date().toISOString(),
+visaCopies: []
+};
+users.push(newUser);
+localStorage.setItem('users', JSON.stringify(users));
+showToast('Registration successful! Please login.');
+closeModal('registerModal');
+openLoginModal();
 }
-
 function handleLogin(e) {
-    e.preventDefault();
-    // FIX: Normalize input to handle Chrome Autofill capitalization/spaces
-    const emailInput = document.getElementById('loginEmail').value.trim().toLowerCase();
-    const password = document.getElementById('loginPassword').value;
-
-    const user = users.find(u => 
-        (u.email.toLowerCase() === emailInput || u.phone.trim() === emailInput) && 
-        u.password === password
-    );
-
-    if (user) {
-        currentUser = user;
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        checkAuth();
-        closeModal('loginModal');
-        showToast('Welcome back, ' + user.name + '!');
-    } else {
-        showToast('Invalid credentials!');
-    }
+e.preventDefault();
+const emailInput = document.getElementById('loginEmail').value.trim().toLowerCase();
+const password = document.getElementById('loginPassword').value;
+const user = users.find(u => (u.email.toLowerCase() === emailInput || u.phone.trim() === emailInput) && u.password === password);
+if (user) {
+currentUser = user;
+localStorage.setItem('currentUser', JSON.stringify(user));
+checkAuth();
+closeModal('loginModal');
+showToast('Welcome back, ' + user.name + '!');
+} else {
+showToast('Invalid credentials!');
 }
-
+}
 function logout() {
 currentUser = null;
 localStorage.removeItem('currentUser');
