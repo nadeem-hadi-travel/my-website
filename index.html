@@ -1939,10 +1939,11 @@ window.openRegisterModal = function() { document.getElementById('registerModal')
 window.openLoginModal = function() { document.getElementById('loginModal').style.display = 'block'; }
 window.openForgotPasswordModal = function() { document.getElementById('forgotPasswordModal').style.display = 'block'; }
 
+// FIX 1: Lowercase email during registration to match login query
 window.handleRegister = async function(e) {
   e.preventDefault();
   const name = document.getElementById('regName').value;
-  const email = document.getElementById('regEmail').value;
+  const email = document.getElementById('regEmail').value.trim().toLowerCase(); 
   const phone = document.getElementById('regPhone').value;
   const password = document.getElementById('regPassword').value;
   const confirm = document.getElementById('regConfirmPassword').value;
@@ -1955,24 +1956,44 @@ window.handleRegister = async function(e) {
     showToast("Registration successful! Please login.");
     closeModal('registerModal');
     openLoginModal();
-  } catch(err) { showToast("Error: " + err.message); }
+  } catch(err) { 
+    console.error(err);
+    showToast("Error: " + err.message); 
+  }
 }
 
+// FIX 2 & 4: Support Phone Login & Catch Database Errors
 window.handleLogin = async function(e) {
   e.preventDefault();
-  const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+  const identifier = document.getElementById('loginEmail').value.trim();
   const password = document.getElementById('loginPassword').value;
-  const q = query(collection(db, "users"), where("email", "==", email));
-  const snap = await getDocs(q);
+  
   let user = null;
-  snap.forEach(doc => { if(doc.data().password === password) user = { id: doc.id, ...doc.data() }; });
+  const isPhone = /^[0+]/.test(identifier); // Check if starts with 0 or +
+  
+  try {
+    if (isPhone) {
+      const q = query(collection(db, "users"), where("phone", "==", identifier));
+      const snap = await getDocs(q);
+      snap.forEach(doc => { if(doc.data().password === password) user = { id: doc.id, ...doc.data() }; });
+    } else {
+      const q = query(collection(db, "users"), where("email", "==", identifier.toLowerCase()));
+      const snap = await getDocs(q);
+      snap.forEach(doc => { if(doc.data().password === password) user = { id: doc.id, ...doc.data() }; });
+    }
+  } catch (err) {
+    console.error("Login error:", err);
+    showToast("Database error. Please check Firestore Security Rules in Firebase Console.");
+    return;
+  }
+
   if(user) {
     window.currentUser = user;
     localStorage.setItem('currentUser', JSON.stringify(user));
     closeModal('loginModal');
     checkAuth();
     showToast("Welcome, " + user.name + "!");
-  } else { showToast("Invalid email or password!"); }
+  } else { showToast("Invalid email/phone or password!"); }
 }
 
 window.handleForgotPassword = async function(e) {
