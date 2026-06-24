@@ -731,7 +731,6 @@ border-left: 5px solid var(--primary-green);
 }
 .admin-full-content .stat-card h4 { color: #666; font-size: 0.9rem; margin-bottom: 5px; }
 .admin-full-content .stat-card h2 { color: var(--primary-green); font-size: 2rem; margin: 0; }
-/* Service Filter Styles */
 .service-filter-section {
 background: #f8f9fa;
 padding: 40px 0;
@@ -764,7 +763,6 @@ border-color: var(--primary-green);
 .service-icon {
 font-size: 1.2rem;
 }
-/* Hotel City Selector */
 .city-selector {
 margin-bottom: 30px;
 text-align: center;
@@ -803,7 +801,6 @@ color: #FFA500;
 font-weight: 600;
 margin: 8px 0;
 }
-/* Forgot Password Link */
 .forgot-password-link {
 color: var(--accent-gold);
 text-decoration: underline;
@@ -814,7 +811,6 @@ display: inline-block;
 .forgot-password-link:hover {
 color: var(--primary-green);
 }
-/* File Upload Area */
 .file-upload-area {
 border: 2px dashed #ccc;
 padding: 20px;
@@ -845,16 +841,12 @@ background: #f5f5f5;
 margin-bottom: 8px;
 border-radius: 4px;
 }
-/* Company Name on Package Card */
 .company-name-on-card {
 font-size: 0.9rem;
 color: var(--accent-gold);
 margin-bottom: 5px;
 font-weight: 600;
 }
-/* ========================================= */
-/* STAFF MANAGEMENT STYLES                   */
-/* ========================================= */
 .staff-grid {
 display: grid;
 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -1012,9 +1004,6 @@ align-items: center;
 gap: 10px;
 flex-wrap: wrap;
 }
-/* ========================================= */
-/* FIXED: SINGLE A4 PAGE PRINT/PDF STYLES    */
-/* ========================================= */
 @media print {
 @page {
 size: A4 portrait;
@@ -1132,7 +1121,6 @@ font-family: inherit;
 </style>
 </head>
 <body>
-<!-- FULLSCREEN ADMIN DASHBOARD (HIDDEN FROM CUSTOMERS) -->
 <div id="admin-fullscreen">
 <div class="admin-sidebar">
 <div class="logo"><i class="fas fa-kaaba"></i> Staff Portal</div>
@@ -1219,7 +1207,6 @@ font-family: inherit;
 </button>
 <div id="fs-packages-list" class="dashboard-grid"></div>
 </div>
-<!-- STAFF MANAGEMENT PAGE -->
 <div id="full-page-staff" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
 <h3 style="color: var(--primary-green); margin: 0;">Staff Management</h3>
@@ -1235,7 +1222,6 @@ font-family: inherit;
 </div>
 <div id="staffList" class="staff-grid"></div>
 </div>
-<!-- PERMISSIONS PAGE -->
 <div id="full-page-permissions" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;">Role Permissions Matrix</h3>
 <p style="color: #666; margin-bottom: 20px;">Configure what each role can access and modify in the system.</p>
@@ -1259,7 +1245,6 @@ font-family: inherit;
 <i class="fas fa-save"></i> Save Permissions
 </button>
 </div>
-<!-- ACTIVITY LOG PAGE -->
 <div id="full-page-activity-log" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
 <h3 style="color: var(--primary-green); margin: 0;">Staff Activity Log</h3>
@@ -1274,7 +1259,6 @@ font-family: inherit;
 </div>
 </div>
 </div>
-<!-- STAFF LOGIN MODAL -->
 <div id="staffLoginModal" class="modal">
 <div class="modal-content" style="max-width: 450px;">
 <span class="close-modal" onclick="closeModal('staffLoginModal')">&times;</span>
@@ -1294,7 +1278,6 @@ font-family: inherit;
 </form>
 </div>
 </div>
-<!-- ADD/EDIT STAFF MODAL -->
 <div id="staffModal" class="modal">
 <div class="modal-content" style="max-width: 700px;">
 <span class="close-modal" onclick="closeModal('staffModal')">&times;</span>
@@ -1350,7 +1333,6 @@ font-family: inherit;
 </form>
 </div>
 </div>
-<!-- HEADER -->
 <header>
 <div class="container nav-container">
 <div class="logo">
@@ -1376,7 +1358,6 @@ Nadeem Hadi Travel
 </div>
 </div>
 </header>
-<!-- HERO SECTION -->
 <section id="hero" class="hero">
 <div class="hero-content">
 <h1>Nadeem Hadi Travel & Tours</h1>
@@ -1392,11 +1373,9 @@ Nadeem Hadi Travel
 </div>
 </div>
 </section>
-<!-- MADINAH BANNER -->
 <section class="madinah-banner">
 <h2>A Peaceful and Blessed Journey to Makkah and Madinah</h2>
 </section>
-<!-- FEATURES SECTION -->
 <section class="section">
 <div class="container">
 <h2 class="section-title">Our Special Facilities</h2>
@@ -1416,7 +1395,6 @@ Nadeem Hadi Travel
 </div>
 </div>
 </section>
-<!-- PLATFORM FEATURES SECTION -->
 <section class="section platform-features">
 <div class="container">
 <h2 class="section-title">Why Choose Our Platform</h2>
@@ -1438,35 +1416,18 @@ Nadeem Hadi Travel
 </div>
 </div>
 </section>
-<!-- SERVICE FILTER SECTION -->
 <section class="service-filter-section">
 <div class="container">
 <h2 class="section-title">Browse by Service Type</h2>
 <div class="filter-buttons">
-<button class="filter-btn active" onclick="filterByService('all', this)">
-<span class="service-icon">📋</span>
-<span>All Services</span>
-</button>
-<button class="filter-btn" onclick="filterByService('umrah', this)">
-<span class="service-icon">🕋</span>
-<span>Umrah</span>
-</button>
-<button class="filter-btn" onclick="filterByService('flight', this)">
-<span class="service-icon">✈️</span>
-<span>Flight</span>
-</button>
-<button class="filter-btn" onclick="filterByService('vacation', this)">
-<span class="service-icon">🏖️</span>
-<span>Vacation Trip</span>
-</button>
-<button class="filter-btn" onclick="filterByService('domestic', this)">
-<span class="service-icon">🚗</span>
-<span>Domestic Travel</span>
-</button>
+<button class="filter-btn active" onclick="filterByService('all', this)"><span class="service-icon">📋</span><span>All Services</span></button>
+<button class="filter-btn" onclick="filterByService('umrah', this)"><span class="service-icon">🕋</span><span>Umrah</span></button>
+<button class="filter-btn" onclick="filterByService('flight', this)"><span class="service-icon">✈️</span><span>Flight</span></button>
+<button class="filter-btn" onclick="filterByService('vacation', this)"><span class="service-icon">🏖️</span><span>Vacation Trip</span></button>
+<button class="filter-btn" onclick="filterByService('domestic', this)"><span class="service-icon">🚗</span><span>Domestic Travel</span></button>
 </div>
 </div>
 </section>
-<!-- SERVICES SECTION -->
 <section id="services" class="section" style="background: #f0f4f2;">
 <div class="container">
 <h2 class="section-title">Our Travel Services</h2>
@@ -1482,50 +1443,24 @@ Nadeem Hadi Travel
 </div>
 </div>
 </section>
-<!-- NEAREST HOTELS WITH CITIES -->
 <section class="section">
 <div class="container">
 <h2 class="section-title">Nearest Hotels with Experienced Staff</h2>
 <div class="city-selector">
 <div class="filter-buttons">
-<button class="filter-btn active" onclick="filterHotelsByCity('all', this)">
-<span class="service-icon">🌍</span>
-<span>All Cities</span>
-</button>
-<button class="filter-btn" onclick="filterHotelsByCity('Makkah', this)">
-<span class="service-icon">🕋</span>
-<span>Makkah</span>
-</button>
-<button class="filter-btn" onclick="filterHotelsByCity('Madinah', this)">
-<span class="service-icon">🕌</span>
-<span>Madinah</span>
-</button>
-<button class="filter-btn" onclick="filterHotelsByCity('Jeddah', this)">
-<span class="service-icon">🏙️</span>
-<span>Jeddah</span>
-</button>
-<button class="filter-btn" onclick="filterHotelsByCity('Riyadh', this)">
-<span class="service-icon">🏢</span>
-<span>Riyadh</span>
-</button>
-<button class="filter-btn" onclick="filterHotelsByCity('Karachi', this)">
-<span class="service-icon">🌊</span>
-<span>Karachi</span>
-</button>
-<button class="filter-btn" onclick="filterHotelsByCity('Lahore', this)">
-<span class="service-icon">🌳</span>
-<span>Lahore</span>
-</button>
-<button class="filter-btn" onclick="filterHotelsByCity('Islamabad', this)">
-<span class="service-icon">🏞️</span>
-<span>Islamabad</span>
-</button>
+<button class="filter-btn active" onclick="filterHotelsByCity('all', this)"><span class="service-icon">🌍</span><span>All Cities</span></button>
+<button class="filter-btn" onclick="filterHotelsByCity('Makkah', this)"><span class="service-icon">🕋</span><span>Makkah</span></button>
+<button class="filter-btn" onclick="filterHotelsByCity('Madinah', this)"><span class="service-icon">🕌</span><span>Madinah</span></button>
+<button class="filter-btn" onclick="filterHotelsByCity('Jeddah', this)"><span class="service-icon">🏙️</span><span>Jeddah</span></button>
+<button class="filter-btn" onclick="filterHotelsByCity('Riyadh', this)"><span class="service-icon">🏢</span><span>Riyadh</span></button>
+<button class="filter-btn" onclick="filterHotelsByCity('Karachi', this)"><span class="service-icon">🌊</span><span>Karachi</span></button>
+<button class="filter-btn" onclick="filterHotelsByCity('Lahore', this)"><span class="service-icon">🌳</span><span>Lahore</span></button>
+<button class="filter-btn" onclick="filterHotelsByCity('Islamabad', this)"><span class="service-icon">🏞️</span><span>Islamabad</span></button>
 </div>
 </div>
 <div id="hotelsContainer" class="hotels-list"></div>
 </div>
 </section>
-<!-- AIRLINE PARTNERS SECTION -->
 <section id="airline-partners" class="airline-partners">
 <div class="container">
 <h2 class="section-title">Our Airline Partners</h2>
@@ -1569,14 +1504,12 @@ Nadeem Hadi Travel
 </div>
 </div>
 </section>
-<!-- PACKAGES SECTION -->
 <section id="packages" class="section packages">
 <div class="container">
 <h2 class="section-title" id="packagesSectionTitle">Our Umrah Packages</h2>
 <div class="packages-grid" id="packagesGrid"></div>
 </div>
 </section>
-<!-- ABOUT SECTION -->
 <section id="about" class="section">
 <div class="container about-content">
 <div class="about-text">
@@ -1588,7 +1521,6 @@ Nadeem Hadi Travel
 <div class="about-image" aria-hidden="true"></div>
 </div>
 </section>
-<!-- CONTACT SECTION -->
 <section id="contact" class="section contact">
 <div class="container">
 <h2 class="section-title">Contact Us</h2>
@@ -1614,7 +1546,6 @@ Nadeem Hadi Travel
 </div>
 </div>
 </section>
-<!-- FOOTER -->
 <footer>
 <div class="container">
 <h3>Nadeem Hadi Travel & Tours</h3>
@@ -1634,7 +1565,6 @@ Nadeem Hadi Travel
 <i class="fab fa-whatsapp" aria-hidden="true"></i>
 </a>
 <div id="toast" class="toast"></div>
-<!-- REGISTRATION MODAL -->
 <div id="registerModal" class="modal">
 <div class="modal-content">
 <span class="close-modal" onclick="closeModal('registerModal')">&times;</span>
@@ -1652,7 +1582,6 @@ Nadeem Hadi Travel
 <p style="margin-top: 10px; text-align: center;"><a href="#" onclick="closeModal('registerModal'); openForgotPasswordModal();" class="forgot-password-link">Forgot Password?</a></p>
 </div>
 </div>
-<!-- LOGIN MODAL -->
 <div id="loginModal" class="modal">
 <div class="modal-content">
 <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
@@ -1665,7 +1594,6 @@ Nadeem Hadi Travel
 <p style="margin-top: 15px; text-align: center;"><a href="#" onclick="closeModal('loginModal'); openForgotPasswordModal();" class="forgot-password-link">Forgot Password?</a></p>
 </div>
 </div>
-<!-- FORGOT PASSWORD MODAL -->
 <div id="forgotPasswordModal" class="modal">
 <div class="modal-content" style="max-width: 450px;">
 <span class="close-modal" onclick="closeModal('forgotPasswordModal')">&times;</span>
@@ -1685,7 +1613,6 @@ Remember your password? <a href="#" onclick="closeModal('forgotPasswordModal'); 
 </p>
 </div>
 </div>
-<!-- SERVICE DETAILS MODAL -->
 <div id="serviceDetailsModal" class="modal">
 <div class="modal-content">
 <span class="close-modal" onclick="closeModal('serviceDetailsModal')">&times;</span>
@@ -1694,7 +1621,6 @@ Remember your password? <a href="#" onclick="closeModal('forgotPasswordModal'); 
 <button class="btn" style="width: 100%; background: var(--accent-gold); color: var(--primary-green);" onclick="confirmAddService()"><i class="fas fa-check-circle"></i> Confirm & Add to Booking</button>
 </div>
 </div>
-<!-- DASHBOARD MODAL -->
 <div id="dashboardModal" class="modal">
 <div class="modal-content" style="max-width: 900px;">
 <span class="close-modal" onclick="closeModal('dashboardModal')">&times;</span>
@@ -1709,7 +1635,6 @@ Remember your password? <a href="#" onclick="closeModal('forgotPasswordModal'); 
 <div class="booking-list" id="bookingList"><h3 style="color: var(--primary-green); margin: 30px 0 20px;">Your Bookings</h3></div>
 </div>
 </div>
-<!-- PAYMENT MODAL -->
 <div id="paymentModal" class="modal">
 <div class="modal-content">
 <span class="close-modal" onclick="closeModal('paymentModal')">&times;</span>
@@ -1731,58 +1656,25 @@ Remember your password? <a href="#" onclick="closeModal('forgotPasswordModal'); 
 </div>
 </div>
 </div>
-<!-- OTHER MODALS -->
 <div id="referralModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('referralModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 10px;">Referral Program</h2><p>Invite friends and earn rewards!</p><div class="referral-box"><p>Your Referral Code:</p><div class="referral-code" id="referralCode">NADEEM2026</div><p>Share this code with friends</p></div><button class="btn" style="width: 100%; margin-top: 20px; background: var(--primary-green); color: white;" onclick="copyReferralCode()"><i class="fas fa-copy"></i> Copy Code</button></div></div>
 <div id="scheduleModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('scheduleModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Travel Schedule</h2><div class="form-group"><label>Select Travel Date</label><input type="date" id="travelDate" onchange="showAvailableSlots()"></div><div id="availableSlots" style="margin-top: 20px; display: none;"><h4 style="margin-bottom: 15px; color: var(--primary-green);">Available Departure Times:</h4><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;"><button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="selectSlot('06:00 AM')">06:00 AM</button><button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="selectSlot('09:00 AM')">09:00 AM</button></div></div></div></div>
-<!-- SEARCH MODAL -->
 <div id="searchModal" class="modal"><div class="modal-content" style="max-width: 800px;"><span class="close-modal" onclick="closeModal('searchModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Advanced Search</h2><div class="search-container" style="box-shadow: none; padding: 0;"><div class="search-grid"><div class="form-group"><label>Destination</label>
 <select id="searchDestination">
 <option value="">Select Destination</option>
-<option value="makkah">Makkah</option>
-<option value="madinah">Madinah</option>
-<option value="jeddah">Jeddah</option>
-<option value="riyadh">Riyadh</option>
-<option value="dubai">Dubai</option>
-<option value="istanbul">Istanbul</option>
-<option value="baku">Baku</option>
-<option value="kuala-lumpur">Kuala Lumpur</option>
-<option value="bangkok">Bangkok</option>
-<option value="lahore">Lahore</option>
-<option value="islamabad">Islamabad</option>
-<option value="karachi">Karachi</option>
-<option value="london">London</option>
-<option value="new-york">New York</option>
-<option value="toronto">Toronto</option>
-<option value="paris">Paris</option>
-<option value="muscat">Muscat</option>
-<option value="doha">Doha</option>
-<option value="manama">Manama</option>
-<option value="cairo">Cairo</option>
-<option value="medina">Medina</option>
-<option value="abu-dhabi">Abu Dhabi</option>
-<option value="kuwait">Kuwait</option>
-<option value="jordan">Jordan</option>
-<option value="malaysia">Malaysia</option>
-<option value="singapore">Singapore</option>
-<option value="thailand">Thailand</option>
+<option value="makkah">Makkah</option><option value="madinah">Madinah</option><option value="jeddah">Jeddah</option><option value="riyadh">Riyadh</option><option value="dubai">Dubai</option><option value="istanbul">Istanbul</option><option value="baku">Baku</option><option value="kuala-lumpur">Kuala Lumpur</option><option value="bangkok">Bangkok</option><option value="lahore">Lahore</option><option value="islamabad">Islamabad</option><option value="karachi">Karachi</option><option value="london">London</option><option value="new-york">New York</option><option value="toronto">Toronto</option><option value="paris">Paris</option><option value="muscat">Muscat</option><option value="doha">Doha</option><option value="manama">Manama</option><option value="cairo">Cairo</option><option value="medina">Medina</option><option value="abu-dhabi">Abu Dhabi</option><option value="kuwait">Kuwait</option><option value="jordan">Jordan</option><option value="malaysia">Malaysia</option><option value="singapore">Singapore</option><option value="thailand">Thailand</option>
 </select>
 </div><div class="form-group"><label>Travel Type</label><select id="searchType"><option value="">Select Type</option><option value="umrah">Umrah</option><option value="flight">Flight</option></select></div></div><button class="btn" style="width: 100%; background: var(--primary-green); color: white;" onclick="performSearch()"><i class="fas fa-search"></i> Search</button></div></div></div>
 <div id="reviewsModal" class="modal"><div class="modal-content" style="max-width: 800px;"><span class="close-modal" onclick="closeModal('reviewsModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Customer Reviews</h2><div id="reviewsList"></div></div></div>
 <div id="checkoutModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('checkoutModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Quick Checkout</h2><button class="btn" style="width: 100%; background: var(--primary-green); color: white;" onclick="confirmCheckout()"><i class="fas fa-check-circle"></i> Confirm Booking</button></div></div>
 <div id="bookingSlotsModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('bookingSlotsModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Select Booking Time Slot</h2><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;"><button class="btn" style="background: var(--white); color: var(--primary-green); border: 2px solid var(--accent-gold);" onclick="bookSlot('9:00 AM - 11:00 AM')">9:00 AM - 11:00 AM</button><button class="btn" style="background: var(--white); color: var(--primary-green); border: 2px solid var(--accent-gold);" onclick="bookSlot('2:00 PM - 4:00 PM')">2:00 PM - 4:00 PM</button></div></div></div>
-<!-- E-TICKETS MODAL -->
 <div id="eticketsModal" class="modal">
 <div class="modal-content" style="max-width: 800px;">
 <span class="close-modal no-print" onclick="closeModal('eticketsModal')">&times;</span>
 <h2 style="color: var(--primary-green); margin-bottom: 20px;" class="no-print">E-Tickets & Documents</h2>
 <div id="ticketsList"></div>
 <div class="no-print" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px;">
-<button class="btn" style="background: var(--primary-green); color: white;" onclick="window.print()">
-<i class="fas fa-print"></i> Print Ticket
-</button>
-<button class="btn" style="background: #dc3545; color: white;" onclick="saveAsPDF()">
-<i class="fas fa-file-pdf"></i> Save as PDF
-</button>
+<button class="btn" style="background: var(--primary-green); color: white;" onclick="window.print()"><i class="fas fa-print"></i> Print Ticket</button>
+<button class="btn" style="background: #dc3545; color: white;" onclick="saveAsPDF()"><i class="fas fa-file-pdf"></i> Save as PDF</button>
 </div>
 <div class="no-print" style="margin-top: 20px; padding: 15px; background: #e8f5e9; border-left: 4px solid #28a745; border-radius: 8px; font-size: 0.9rem;">
 <strong><i class="fas fa-check-circle"></i> Single Page A4 PDF Ready:</strong>
@@ -1793,7 +1685,6 @@ Remember your password? <a href="#" onclick="closeModal('forgotPasswordModal'); 
 <div id="notificationsModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('notificationsModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Travel Notifications</h2><p>No new notifications.</p></div></div>
 <div id="trackingModal" class="modal"><div class="modal-content" style="max-width: 700px;"><span class="close-modal" onclick="closeModal('trackingModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Real-Time Tracking</h2><p>Tracking details will appear here.</p></div></div>
 <div id="insightsModal" class="modal"><div class="modal-content" style="max-width: 800px;"><span class="close-modal" onclick="closeModal('insightsModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 20px;">Travel Insights</h2><p>Your travel statistics will appear here.</p></div></div>
-<!-- PACKAGE EDITOR MODAL -->
 <div id="packageEditorModal" class="modal">
 <div class="modal-content" style="max-width: 800px;">
 <span class="close-modal" onclick="closeModal('packageEditorModal')">&times;</span>
@@ -1826,7 +1717,6 @@ Remember your password? <a href="#" onclick="closeModal('forgotPasswordModal'); 
 </form>
 </div>
 </div>
-<!-- BOOKING DETAILS MODAL -->
 <div id="bookingDetailsModal" class="modal">
 <div class="modal-content" style="max-width: 600px;">
 <span class="close-modal" onclick="closeModal('bookingDetailsModal')">&times;</span>
@@ -1844,7 +1734,6 @@ Remember your password? <a href="#" onclick="closeModal('forgotPasswordModal'); 
 </form>
 </div>
 </div>
-<!-- TICKET EDIT MODAL -->
 <div id="ticketEditModal" class="modal">
 <div class="modal-content" style="max-width: 600px;">
 <span class="close-modal" onclick="closeModal('ticketEditModal')">&times;</span>
@@ -1866,7 +1755,6 @@ Remember your password? <a href="#" onclick="closeModal('forgotPasswordModal'); 
 </form>
 </div>
 </div>
-<!-- USER DETAIL MODAL (ADMIN) -->
 <div id="userDetailModal" class="modal">
 <div class="modal-content" style="max-width: 700px;">
 <span class="close-modal" onclick="closeModal('userDetailModal')">&times;</span>
@@ -1876,16 +1764,13 @@ Remember your password? <a href="#" onclick="closeModal('forgotPasswordModal'); 
 <h3 style="color: var(--primary-green); margin-bottom: 15px;"><i class="fas fa-passport"></i> Umrah Visa Copies</h3>
 <div class="file-upload-area">
 <input type="file" id="visaFileInput" multiple accept=".pdf,.jpg,.jpeg,.png" style="display: none;" onchange="handleVisaUpload(this)">
-<button class="btn-upload" onclick="document.getElementById('visaFileInput').click()">
-<i class="fas fa-paperclip"></i> Attach Visa Copy
-</button>
+<button class="btn-upload" onclick="document.getElementById('visaFileInput').click()"><i class="fas fa-paperclip"></i> Attach Visa Copy</button>
 <p style="margin-top: 10px; color: #666; font-size: 0.9rem;">Supported formats: PDF, JPG, PNG (Max 5MB each)</p>
 </div>
 <div id="uploadedVisaFiles" class="uploaded-files" style="margin-top: 15px;"></div>
 </div>
 </div>
 </div>
-<!-- Hidden Footer for Print/PDF Only -->
 <div class="print-only-footer">
 <h4 style="color: var(--primary-green);">Nadeem Hadi Travel & Tours</h4>
 <p><strong>Your Trusted Partner for Blessed and Pleasant Journeys</strong></p>
@@ -1895,9 +1780,6 @@ Remember your password? <a href="#" onclick="closeModal('forgotPasswordModal'); 
 </div>
 <script>
 document.getElementById('current-year').textContent = new Date().getFullYear();
-// ============================================
-// GLOBAL DATA STORAGE
-// ============================================
 let currentUser = null;
 let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
 let users = JSON.parse(localStorage.getItem('users')) || [];
@@ -1907,150 +1789,42 @@ let currentLang = localStorage.getItem('siteLang') || 'en';
 let isAdminLoggedIn = false;
 let currentTicketBooking = null;
 let currentViewingUser = null;
-// ============================================
-// STAFF ROLES & PERMISSIONS SYSTEM
-// ============================================
 const ROLES = {
-admin: {
-name: 'Administrator',
-description: 'Full system access',
-color: '#dc3545',
-permissions: [
-'view_dashboard', 'manage_bookings', 'edit_bookings', 'delete_bookings',
-'manage_packages', 'edit_packages', 'delete_packages',
-'manage_users', 'delete_users', 'view_user_details', 'upload_visa',
-'manage_staff', 'edit_staff', 'delete_staff',
-'manage_permissions', 'view_activity_log',
-'manage_inquiries', 'delete_inquiries',
-'view_financial_reports', 'export_data',
-'edit_settings', 'system_configuration'
-]
-},
-manager: {
-name: 'Manager',
-description: 'Manage bookings & packages',
-color: '#ffc107',
-permissions: [
-'view_dashboard', 'manage_bookings', 'edit_bookings',
-'manage_packages', 'edit_packages',
-'view_users', 'view_user_details', 'upload_visa',
-'manage_inquiries',
-'view_financial_reports', 'export_data'
-]
-},
-agent: {
-name: 'Travel Agent',
-description: 'Handle bookings & inquiries',
-color: '#17a2b8',
-permissions: [
-'view_dashboard', 'manage_bookings', 'edit_bookings',
-'view_packages',
-'view_users', 'view_user_details',
-'manage_inquiries'
-]
-},
-accountant: {
-name: 'Accountant',
-description: 'View financial data',
-color: '#28a745',
-permissions: [
-'view_dashboard', 'view_bookings',
-'view_users',
-'view_financial_reports', 'export_data'
-]
-},
-support: {
-name: 'Support Staff',
-description: 'Customer support only',
-color: '#6c757d',
-permissions: [
-'view_dashboard', 'view_bookings',
-'view_users', 'view_user_details',
-'manage_inquiries'
-]
-}
+admin: { name: 'Administrator', description: 'Full system access', color: '#dc3545', permissions: ['view_dashboard','manage_bookings','edit_bookings','delete_bookings','manage_packages','edit_packages','delete_packages','manage_users','delete_users','view_user_details','upload_visa','manage_staff','edit_staff','delete_staff','manage_permissions','view_activity_log','manage_inquiries','delete_inquiries','view_financial_reports','export_data','edit_settings','system_configuration'] },
+manager: { name: 'Manager', description: 'Manage bookings & packages', color: '#ffc107', permissions: ['view_dashboard','manage_bookings','edit_bookings','manage_packages','edit_packages','view_users','view_user_details','upload_visa','manage_inquiries','view_financial_reports','export_data'] },
+agent: { name: 'Travel Agent', description: 'Handle bookings & inquiries', color: '#17a2b8', permissions: ['view_dashboard','manage_bookings','edit_bookings','view_packages','view_users','view_user_details','manage_inquiries'] },
+accountant: { name: 'Accountant', description: 'View financial data', color: '#28a745', permissions: ['view_dashboard','view_bookings','view_users','view_financial_reports','export_data'] },
+support: { name: 'Support Staff', description: 'Customer support only', color: '#6c757d', permissions: ['view_dashboard','view_bookings','view_users','view_user_details','manage_inquiries'] }
 };
 const PERMISSION_LABELS = {
-'view_dashboard': 'View Dashboard',
-'manage_bookings': 'Manage Bookings',
-'edit_bookings': 'Edit Bookings',
-'delete_bookings': 'Delete Bookings',
-'view_bookings': 'View Bookings Only',
-'manage_packages': 'Manage Packages',
-'edit_packages': 'Edit Packages',
-'delete_packages': 'Delete Packages',
-'view_packages': 'View Packages Only',
-'manage_users': 'Manage Users',
-'view_users': 'View Users Only',
-'delete_users': 'Delete Users',
-'view_user_details': 'View User Details',
-'upload_visa': 'Upload Visa Copies',
-'manage_staff': 'Manage Staff',
-'edit_staff': 'Edit Staff',
-'delete_staff': 'Delete Staff',
-'manage_permissions': 'Manage Permissions',
-'view_activity_log': 'View Activity Log',
-'manage_inquiries': 'Manage Inquiries',
-'delete_inquiries': 'Delete Inquiries',
-'view_financial_reports': 'View Financial Reports',
-'export_data': 'Export Data',
-'edit_settings': 'Edit Settings',
-'system_configuration': 'System Configuration'
+'view_dashboard':'View Dashboard','manage_bookings':'Manage Bookings','edit_bookings':'Edit Bookings','delete_bookings':'Delete Bookings','view_bookings':'View Bookings Only','manage_packages':'Manage Packages','edit_packages':'Edit Packages','delete_packages':'Delete Packages','view_packages':'View Packages Only','manage_users':'Manage Users','view_users':'View Users Only','delete_users':'Delete Users','view_user_details':'View User Details','upload_visa':'Upload Visa Copies','manage_staff':'Manage Staff','edit_staff':'Edit Staff','delete_staff':'Delete Staff','manage_permissions':'Manage Permissions','view_activity_log':'View Activity Log','manage_inquiries':'Manage Inquiries','delete_inquiries':'Delete Inquiries','view_financial_reports':'View Financial Reports','export_data':'Export Data','edit_settings':'Edit Settings','system_configuration':'System Configuration'
 };
 let staffMembers = JSON.parse(localStorage.getItem('staffMembers')) || [
-{
-id: 1,
-name: 'System Administrator',
-email: 'admin@nadeemhadi.com',
-phone: '0342-4397177',
-password: 'admin123',
-role: 'admin',
-status: 'active',
-createdAt: new Date().toISOString(),
-lastLogin: null
-}
+{ id: 1, name: 'System Administrator', email: 'admin@nadeemhadi.com', phone: '0342-4397177', password: 'admin123', role: 'admin', status: 'active', createdAt: new Date().toISOString(), lastLogin: null }
 ];
 let activityLog = JSON.parse(localStorage.getItem('activityLog')) || [];
 let currentStaffUser = null;
-// Load saved permissions if they exist
 const savedPermissions = localStorage.getItem('rolePermissions');
 if (savedPermissions) {
 try {
 const parsed = JSON.parse(savedPermissions);
-Object.keys(parsed).forEach(role => {
-if (ROLES[role]) {
-ROLES[role].permissions = parsed[role].permissions;
-}
-});
+Object.keys(parsed).forEach(role => { if (ROLES[role]) ROLES[role].permissions = parsed[role].permissions; });
 } catch(e) { console.error('Error loading permissions', e); }
 }
-// ============================================
-// STAFF AUTHENTICATION - FIXED VERSION
-// ============================================
+
+// ✅ FIXED: Staff Login - ignores Chrome autofill spaces/capitals, NO status check
 function openStaffLogin() {
-console.log('Opening staff login modal');
 const modal = document.getElementById('staffLoginModal');
-if (modal) {
-modal.style.display = 'block';
-console.log('Staff login modal displayed');
-} else {
-console.error('Staff login modal not found!');
-}
+if (modal) modal.style.display = 'block';
 }
 function handleStaffLogin(e) {
 e.preventDefault();
-console.log('Staff login attempt');
-// FIX: Added .trim() and .toLowerCase() to ignore Chrome Autofill spaces/capitals
 const emailInput = document.getElementById('staffLoginEmail').value.trim().toLowerCase();
 const password = document.getElementById('staffLoginPassword').value;
-console.log('Login credentials:', { email: emailInput, password: '***' });
-
-// FIX: Removed "s.status === 'active'" check so inactive accounts can still login
 const staff = staffMembers.find(s =>
 (s.email.toLowerCase() === emailInput || s.name.toLowerCase() === emailInput) &&
 s.password === password
 );
-console.log('Staff found:', staff ? 'Yes' : 'No');
 if (staff) {
 currentStaffUser = staff;
 localStorage.setItem('currentStaffUser', JSON.stringify(staff));
@@ -2064,23 +1838,15 @@ updateUIBasedOnPermissions();
 showToast(`Welcome, ${staff.name}! (${ROLES[staff.role].name})`);
 } else {
 showToast('Invalid credentials!');
-console.log('Login failed - invalid credentials');
 }
 }
 function checkStaffAuth() {
 const savedStaff = localStorage.getItem('currentStaffUser');
 if (savedStaff) {
 currentStaffUser = JSON.parse(savedStaff);
-// FIX: Removed "currentStaff.status === 'active'" check
 const currentStaff = staffMembers.find(s => s.id === currentStaffUser.id);
-if (currentStaff) {
-currentStaffUser = currentStaff;
-return true;
-} else {
-localStorage.removeItem('currentStaffUser');
-currentStaffUser = null;
-return false;
-}
+if (currentStaff) { currentStaffUser = currentStaff; return true; }
+else { localStorage.removeItem('currentStaffUser'); currentStaffUser = null; return false; }
 }
 return false;
 }
@@ -2100,91 +1866,33 @@ document.getElementById('permissionsMenuItem').style.display = hasPermission('ma
 document.getElementById('activityLogMenuItem').style.display = hasPermission('view_activity_log') ? 'flex' : 'none';
 }
 function staffLogout() {
-if (currentStaffUser) {
-logActivity('login', `${currentStaffUser.name} logged out`);
-}
+if (currentStaffUser) logActivity('login', `${currentStaffUser.name} logged out`);
 currentStaffUser = null;
 localStorage.removeItem('currentStaffUser');
 exitAdminView();
 }
-// ============================================
-// ACTIVITY LOGGING
-// ============================================
 function logActivity(type, message) {
-const logEntry = {
-id: Date.now() + Math.random(),
-type: type,
-message: message,
-timestamp: new Date().toISOString(),
-staffName: currentStaffUser ? currentStaffUser.name : 'System'
-};
+const logEntry = { id: Date.now() + Math.random(), type, message, timestamp: new Date().toISOString(), staffName: currentStaffUser ? currentStaffUser.name : 'System' };
 activityLog.unshift(logEntry);
-if (activityLog.length > 200) {
-activityLog = activityLog.slice(0, 200);
-}
+if (activityLog.length > 200) activityLog = activityLog.slice(0, 200);
 localStorage.setItem('activityLog', JSON.stringify(activityLog));
 }
 function loadActivityLog() {
-if (!hasPermission('view_activity_log')) {
-showToast('You do not have permission to view activity log');
-return;
-}
+if (!hasPermission('view_activity_log')) { showToast('You do not have permission to view activity log'); return; }
 const container = document.getElementById('activityLogList');
-if (activityLog.length === 0) {
-container.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">No activity recorded yet</p>';
-return;
-}
+if (activityLog.length === 0) { container.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">No activity recorded yet</p>'; return; }
 container.innerHTML = activityLog.slice(0, 100).map(log => {
-const iconClass = {
-'login': 'log-login',
-'edit': 'log-edit',
-'delete': 'log-delete',
-'create': 'log-create'
-}[log.type] || 'log-login';
-const icon = {
-'login': 'fa-sign-in-alt',
-'edit': 'fa-edit',
-'delete': 'fa-trash',
-'create': 'fa-plus'
-}[log.type] || 'fa-info';
-return `
-<div class="log-item">
-<div class="log-action">
-<div class="log-icon ${iconClass}">
-<i class="fas ${icon}"></i>
-</div>
-<div>
-<strong>${log.message}</strong>
-<div style="font-size: 0.85rem; color: #999; margin-top: 3px;">by ${log.staffName}</div>
-</div>
-</div>
-<div style="font-size: 0.85rem; color: #999;">
-${new Date(log.timestamp).toLocaleString()}
-</div>
-</div>
-`;
+const iconClass = { 'login':'log-login','edit':'log-edit','delete':'log-delete','create':'log-create' }[log.type] || 'log-login';
+const icon = { 'login':'fa-sign-in-alt','edit':'fa-edit','delete':'fa-trash','create':'fa-plus' }[log.type] || 'fa-info';
+return `<div class="log-item"><div class="log-action"><div class="log-icon ${iconClass}"><i class="fas ${icon}"></i></div><div><strong>${log.message}</strong><div style="font-size: 0.85rem; color: #999; margin-top: 3px;">by ${log.staffName}</div></div></div><div style="font-size: 0.85rem; color: #999;">${new Date(log.timestamp).toLocaleString()}</div></div>`;
 }).join('');
 }
 function clearActivityLog() {
-if (!hasPermission('manage_permissions')) {
-showToast('You do not have permission to clear activity log');
-return;
+if (!hasPermission('manage_permissions')) { showToast('You do not have permission to clear activity log'); return; }
+if (confirm('Are you sure you want to clear all activity logs?')) { activityLog = []; localStorage.setItem('activityLog', JSON.stringify(activityLog)); loadActivityLog(); showToast('Activity log cleared'); }
 }
-if (confirm('Are you sure you want to clear all activity logs? This cannot be undone.')) {
-activityLog = [];
-localStorage.setItem('activityLog', JSON.stringify(activityLog));
-loadActivityLog();
-showToast('Activity log cleared');
-}
-}
-// ============================================
-// STAFF MANAGEMENT
-// ============================================
 function openAddStaffModal() {
-if (!hasPermission('manage_staff')) {
-showToast('You do not have permission to manage staff');
-return;
-}
+if (!hasPermission('manage_staff')) { showToast('You do not have permission to manage staff'); return; }
 document.getElementById('staffModalTitle').textContent = 'Add New Staff Member';
 document.querySelector('#staffModal form').reset();
 document.getElementById('staffEditId').value = '';
@@ -2193,10 +1901,7 @@ document.querySelectorAll('.role-option').forEach(opt => opt.classList.remove('s
 document.getElementById('staffModal').style.display = 'block';
 }
 function openEditStaffModal(staffId) {
-if (!hasPermission('edit_staff')) {
-showToast('You do not have permission to edit staff');
-return;
-}
+if (!hasPermission('edit_staff')) { showToast('You do not have permission to edit staff'); return; }
 const staff = staffMembers.find(s => s.id === staffId);
 if (!staff) return;
 document.getElementById('staffModalTitle').textContent = 'Edit Staff Member';
@@ -2205,7 +1910,6 @@ document.getElementById('staffName').value = staff.name;
 document.getElementById('staffEmail').value = staff.email;
 document.getElementById('staffPhone').value = staff.phone;
 document.getElementById('staffPassword').value = '';
-// FIX: Removed staffStatus assignment
 document.getElementById('staffRole').value = staff.role;
 document.querySelectorAll('.role-option').forEach(opt => opt.classList.remove('selected'));
 const roleOption = document.querySelector(`.role-option[onclick*="'${staff.role}'"]`);
@@ -2217,6 +1921,7 @@ document.querySelectorAll('.role-option').forEach(opt => opt.classList.remove('s
 if (element) element.classList.add('selected');
 document.getElementById('staffRole').value = role;
 }
+// ✅ FIXED: Save staff - always forces status to 'active'
 function saveStaff(e) {
 e.preventDefault();
 const editId = document.getElementById('staffEditId').value;
@@ -2225,46 +1930,25 @@ name: document.getElementById('staffName').value,
 email: document.getElementById('staffEmail').value,
 phone: document.getElementById('staffPhone').value,
 role: document.getElementById('staffRole').value,
-status: 'active' // FIX: Always force status to active
+status: 'active'
 };
-if (!staffData.role) {
-showToast('Please select a role');
-return;
-}
+if (!staffData.role) { showToast('Please select a role'); return; }
 if (editId) {
 const index = staffMembers.findIndex(s => s.id === parseInt(editId));
 if (index !== -1) {
-staffMembers[index] = {
-...staffMembers[index],
-...staffData
-};
+staffMembers[index] = { ...staffMembers[index], ...staffData };
 const newPassword = document.getElementById('staffPassword').value;
-if (newPassword) {
-staffMembers[index].password = newPassword;
-}
+if (newPassword) staffMembers[index].password = newPassword;
 logActivity('edit', `${currentStaffUser.name} edited staff: ${staffData.name}`);
 showToast('Staff member updated successfully!');
 }
 } else {
 const password = document.getElementById('staffPassword').value;
-if (!password) {
-showToast('Password is required for new staff');
-return;
-}
-// Check for duplicate email
-if (staffMembers.find(s => s.email === staffData.email)) {
-showToast('A staff member with this email already exists');
-return;
-}
-const newStaff = {
-id: Date.now(),
-...staffData,
-password: password,
-createdAt: new Date().toISOString(),
-lastLogin: null
-};
+if (!password) { showToast('Password is required for new staff'); return; }
+if (staffMembers.find(s => s.email.toLowerCase() === staffData.email.toLowerCase())) { showToast('A staff member with this email already exists'); return; }
+const newStaff = { id: Date.now(), ...staffData, password, createdAt: new Date().toISOString(), lastLogin: null };
 staffMembers.push(newStaff);
-logActivity('create', `${currentStaffUser.name} added new staff: ${staffData.name} (${ROLES[staffData.role].name})`);
+logActivity('create', `${currentStaffUser.name} added new staff: ${staffData.name}`);
 showToast('Staff member added successfully!');
 }
 localStorage.setItem('staffMembers', JSON.stringify(staffMembers));
@@ -2272,16 +1956,10 @@ closeModal('staffModal');
 loadStaffList();
 }
 function deleteStaff(staffId) {
-if (!hasPermission('delete_staff')) {
-showToast('You do not have permission to delete staff');
-return;
-}
+if (!hasPermission('delete_staff')) { showToast('You do not have permission to delete staff'); return; }
 const staff = staffMembers.find(s => s.id === staffId);
 if (!staff) return;
-if (staff.id === currentStaffUser.id) {
-showToast('You cannot delete your own account!');
-return;
-}
+if (staff.id === currentStaffUser.id) { showToast('You cannot delete your own account!'); return; }
 if (confirm(`Are you sure you want to delete ${staff.name}?`)) {
 staffMembers = staffMembers.filter(s => s.id !== staffId);
 localStorage.setItem('staffMembers', JSON.stringify(staffMembers));
@@ -2290,57 +1968,27 @@ showToast('Staff member deleted');
 loadStaffList();
 }
 }
+// ✅ FIXED: Staff list - no more active/inactive badge
 function loadStaffList() {
 const container = document.getElementById('staffList');
 document.getElementById('total-staff').textContent = staffMembers.length;
 document.getElementById('admin-count').textContent = staffMembers.filter(s => s.role === 'admin').length;
 document.getElementById('manager-count').textContent = staffMembers.filter(s => s.role === 'manager').length;
 document.getElementById('agent-count').textContent = staffMembers.filter(s => s.role === 'agent').length;
-if (staffMembers.length === 0) {
-container.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">No staff members found</p>';
-return;
-}
+if (staffMembers.length === 0) { container.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">No staff members found</p>'; return; }
 container.innerHTML = staffMembers.map(staff => {
 const role = ROLES[staff.role];
 const initials = staff.name.split(' ').map(n => n[0]).join('').toUpperCase();
 const lastLogin = staff.lastLogin ? new Date(staff.lastLogin).toLocaleString() : 'Never';
-return `
-<div class="staff-card">
-<div class="staff-card-header">
-<div style="display: flex; align-items: center; gap: 15px;">
-<div class="staff-avatar">${initials}</div>
-<div>
-<h4 style="margin: 0; color: var(--primary-green);">${staff.name}</h4>
-<p style="margin: 5px 0 0 0; color: #666; font-size: 0.9rem;">${staff.email}</p>
-</div>
-</div>
-<span class="staff-role-badge role-${staff.role}">${role.name}</span>
-</div>
-<div style="margin-top: 15px; font-size: 0.9rem; color: #666;">
-<p><i class="fas fa-phone" style="margin-right: 8px; color: var(--accent-gold);"></i>${staff.phone}</p>
-<p><i class="fas fa-clock" style="margin-right: 8px; color: var(--accent-gold);"></i>Last Login: ${lastLogin}</p>
-<p><i class="fas fa-calendar" style="margin-right: 8px; color: var(--accent-gold);"></i>Joined: ${new Date(staff.createdAt).toLocaleDateString()}</p>
-</div>
-<div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
-${hasPermission('edit_staff') ? `<button class="action-btn btn-edit" onclick="openEditStaffModal(${staff.id})"><i class="fas fa-edit"></i> Edit</button>` : ''}
-${hasPermission('delete_staff') ? `<button class="action-btn btn-delete" onclick="deleteStaff(${staff.id})"><i class="fas fa-trash"></i> Delete</button>` : ''}
-</div>
-</div>
-`;
+return `<div class="staff-card"><div class="staff-card-header"><div style="display: flex; align-items: center; gap: 15px;"><div class="staff-avatar">${initials}</div><div><h4 style="margin: 0; color: var(--primary-green);">${staff.name}</h4><p style="margin: 5px 0 0 0; color: #666; font-size: 0.9rem;">${staff.email}</p></div></div><span class="staff-role-badge role-${staff.role}">${role.name}</span></div><div style="margin-top: 15px; font-size: 0.9rem; color: #666;"><p><i class="fas fa-phone" style="margin-right: 8px; color: var(--accent-gold);"></i>${staff.phone}</p><p><i class="fas fa-clock" style="margin-right: 8px; color: var(--accent-gold);"></i>Last Login: ${lastLogin}</p><p><i class="fas fa-calendar" style="margin-right: 8px; color: var(--accent-gold);"></i>Joined: ${new Date(staff.createdAt).toLocaleDateString()}</p></div><div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">${hasPermission('edit_staff') ? `<button class="action-btn btn-edit" onclick="openEditStaffModal(${staff.id})"><i class="fas fa-edit"></i> Edit</button>` : ''}${hasPermission('delete_staff') ? `<button class="action-btn btn-delete" onclick="deleteStaff(${staff.id})"><i class="fas fa-trash"></i> Delete</button>` : ''}</div></div>`;
 }).join('');
 }
-// ============================================
-// PERMISSIONS MANAGEMENT
-// ============================================
 function loadPermissionsMatrix() {
-if (!hasPermission('manage_permissions')) {
-showToast('You do not have permission to manage permissions');
-return;
-}
+if (!hasPermission('manage_permissions')) { showToast('You do not have permission to manage permissions'); return; }
 const tbody = document.getElementById('permissionsTableBody');
 const allPermissions = Object.keys(PERMISSION_LABELS);
 tbody.innerHTML = allPermissions.map(perm => {
-const roles = ['admin', 'manager', 'agent', 'accountant', 'support'];
+const roles = ['admin','manager','agent','accountant','support'];
 const checkboxes = roles.map(role => {
 const hasPerm = ROLES[role].permissions.includes(perm);
 return `<td><input type="checkbox" class="permission-checkbox" data-permission="${perm}" data-role="${role}" ${hasPerm ? 'checked' : ''} onchange="updatePermission('${role}', '${perm}', this.checked)"></td>`;
@@ -2349,36 +1997,20 @@ return `<tr><td style="text-align: left; font-weight: 500;">${PERMISSION_LABELS[
 }).join('');
 }
 function updatePermission(role, permission, checked) {
-if (checked) {
-if (!ROLES[role].permissions.includes(permission)) {
-ROLES[role].permissions.push(permission);
-}
-} else {
-ROLES[role].permissions = ROLES[role].permissions.filter(p => p !== permission);
-}
+if (checked) { if (!ROLES[role].permissions.includes(permission)) ROLES[role].permissions.push(permission); }
+else { ROLES[role].permissions = ROLES[role].permissions.filter(p => p !== permission); }
 }
 function savePermissions() {
-if (!hasPermission('manage_permissions')) {
-showToast('You do not have permission to save permissions');
-return;
-}
+if (!hasPermission('manage_permissions')) { showToast('You do not have permission to save permissions'); return; }
 const permissionsData = {};
-Object.keys(ROLES).forEach(role => {
-permissionsData[role] = { permissions: [...ROLES[role].permissions] };
-});
+Object.keys(ROLES).forEach(role => { permissionsData[role] = { permissions: [...ROLES[role].permissions] }; });
 localStorage.setItem('rolePermissions', JSON.stringify(permissionsData));
 logActivity('edit', `${currentStaffUser.name} updated role permissions`);
 showToast('Permissions saved successfully!');
 updateUIBasedOnPermissions();
 }
-// ============================================
-// ADMIN DASHBOARD NAVIGATION
-// ============================================
 function showAdminDashboard() {
-console.log('Showing admin dashboard');
-document.querySelectorAll('header, .hero, .madinah-banner, .section, footer, .floating-wa').forEach(el => {
-el.style.display = 'none';
-});
+document.querySelectorAll('header, .hero, .madinah-banner, .section, footer, .floating-wa').forEach(el => { el.style.display = 'none'; });
 document.getElementById('admin-fullscreen').style.display = 'flex';
 loadFullAdminData();
 }
@@ -2390,39 +2022,16 @@ window.history.pushState({}, document.title, window.location.pathname);
 window.location.reload();
 }
 function showAdminPage(pageName, element) {
-// Permission checks
-const pagePermissions = {
-'dashboard': 'view_dashboard',
-'bookings': 'view_bookings',
-'inquiries': 'manage_inquiries',
-'users': 'view_users',
-'packages': 'view_packages',
-'staff': 'manage_staff',
-'permissions': 'manage_permissions',
-'activity-log': 'view_activity_log'
-};
+const pagePermissions = { 'dashboard':'view_dashboard','bookings':'view_bookings','inquiries':'manage_inquiries','users':'view_users','packages':'view_packages','staff':'manage_staff','permissions':'manage_permissions','activity-log':'view_activity_log' };
 const requiredPermission = pagePermissions[pageName];
-if (requiredPermission && !hasPermission(requiredPermission)) {
-showToast(`You do not have permission to access ${pageName}`);
-return;
-}
+if (requiredPermission && !hasPermission(requiredPermission)) { showToast(`You do not have permission to access ${pageName}`); return; }
 document.querySelectorAll('.admin-page').forEach(el => el.style.display = 'none');
 document.getElementById(`full-page-${pageName}`).style.display = 'block';
 document.querySelectorAll('.admin-sidebar li').forEach(el => el.classList.remove('active'));
 if(element) element.classList.add('active');
-const titles = {
-dashboard: 'Dashboard Overview',
-bookings: 'Manage Bookings',
-inquiries: 'Customer Inquiries',
-packages: 'Edit Packages',
-users: 'Registered Users',
-staff: 'Staff Management',
-permissions: 'Role Permissions',
-'activity-log': 'Activity Log'
-};
+const titles = { dashboard:'Dashboard Overview',bookings:'Manage Bookings',inquiries:'Customer Inquiries',packages:'Edit Packages',users:'Registered Users',staff:'Staff Management',permissions:'Role Permissions','activity-log':'Activity Log' };
 document.getElementById('admin-page-title').textContent = titles[pageName] || 'Dashboard';
 loadFullAdminData();
-// Load page-specific data
 if (pageName === 'staff') loadStaffList();
 if (pageName === 'permissions') loadPermissionsMatrix();
 if (pageName === 'activity-log') loadActivityLog();
@@ -2439,146 +2048,49 @@ document.getElementById('fs-revenue').textContent = confirmed;
 document.getElementById('fs-inquiries').textContent = inquiries.length;
 document.getElementById('fs-users').textContent = users.length;
 const maxVal = Math.max(pending, confirmed, rejected, 1);
-document.getElementById('booking-status-chart').innerHTML = `
-<div style="flex: 1; text-align: center;">
-<div style="height: ${(pending/maxVal)*100}%; background: #ffc107; border-radius: 5px 5px 0 0; min-height: 10px; transition: height 0.5s;"></div>
-<p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Pending<br>${pending}</p>
-</div>
-<div style="flex: 1; text-align: center;">
-<div style="height: ${(confirmed/maxVal)*100}%; background: #28a745; border-radius: 5px 5px 0 0; min-height: 10px; transition: height 0.5s;"></div>
-<p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Confirmed<br>${confirmed}</p>
-</div>
-<div style="flex: 1; text-align: center;">
-<div style="height: ${(rejected/maxVal)*100}%; background: #dc3545; border-radius: 5px 5px 0 0; min-height: 10px; transition: height 0.5s;"></div>
-<p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Rejected<br>${rejected}</p>
-</div>
-`;
-const allActivities = [
-...bookings.map(b => ({ type: 'booking', text: `New booking ${b.id} by ${b.userName}`, date: b.createdAt })),
-...inquiries.map(i => ({ type: 'inquiry', text: `Inquiry from ${i.name}`, date: i.date }))
-].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
-document.getElementById('recent-activity').innerHTML = allActivities.length ? allActivities.map(a => `
-<div style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 0.9rem;">
-<i class="fas ${a.type === 'booking' ? 'fa-ticket-alt' : 'fa-envelope'}" style="color: var(--accent-gold); margin-right: 8px;"></i>
-${a.text}
-<div style="font-size: 0.8rem; color: #999; margin-top: 5px;">${new Date(a.date).toLocaleString()}</div>
-</div>
-`).join('') : '<p style="color: #999; text-align: center;">No recent activity</p>';
-document.getElementById('fs-recent-bookings').innerHTML = bookings.slice(-5).reverse().map(b => `
-<tr><td><strong>${b.id}</strong></td><td>${b.userName}</td><td>${b.item}</td><td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td></tr>
-`).join('') || '<tr><td colspan="4" style="text-align:center;">No recent bookings</td></tr>';
-// Bookings table with permission-based actions
+document.getElementById('booking-status-chart').innerHTML = `<div style="flex: 1; text-align: center;"><div style="height: ${(pending/maxVal)*100}%; background: #ffc107; border-radius: 5px 5px 0 0; min-height: 10px;"></div><p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Pending<br>${pending}</p></div><div style="flex: 1; text-align: center;"><div style="height: ${(confirmed/maxVal)*100}%; background: #28a745; border-radius: 5px 5px 0 0; min-height: 10px;"></div><p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Confirmed<br>${confirmed}</p></div><div style="flex: 1; text-align: center;"><div style="height: ${(rejected/maxVal)*100}%; background: #dc3545; border-radius: 5px 5px 0 0; min-height: 10px;"></div><p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Rejected<br>${rejected}</p></div>`;
+const allActivities = [...bookings.map(b => ({ type: 'booking', text: `New booking ${b.id} by ${b.userName}`, date: b.createdAt })),...inquiries.map(i => ({ type: 'inquiry', text: `Inquiry from ${i.name}`, date: i.date }))].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+document.getElementById('recent-activity').innerHTML = allActivities.length ? allActivities.map(a => `<div style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 0.9rem;"><i class="fas ${a.type === 'booking' ? 'fa-ticket-alt' : 'fa-envelope'}" style="color: var(--accent-gold); margin-right: 8px;"></i>${a.text}<div style="font-size: 0.8rem; color: #999; margin-top: 5px;">${new Date(a.date).toLocaleString()}</div></div>`).join('') : '<p style="color: #999; text-align: center;">No recent activity</p>';
+document.getElementById('fs-recent-bookings').innerHTML = bookings.slice(-5).reverse().map(b => `<tr><td><strong>${b.id}</strong></td><td>${b.userName}</td><td>${b.item}</td><td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td></tr>`).join('') || '<tr><td colspan="4" style="text-align:center;">No recent bookings</td></tr>';
 const canEditBookings = hasPermission('edit_bookings');
 const canDeleteBookings = hasPermission('delete_bookings');
 const canManageBookings = hasPermission('manage_bookings');
 document.getElementById('fs-all-bookings').innerHTML = [...bookings].reverse().map(b => {
 let actions = '';
-if (canManageBookings && b.status === 'pending') {
-actions += `<button class="action-btn btn-approve" onclick="updateBookingStatus('${b.id}', 'confirmed')"><i class="fas fa-check"></i></button>`;
-actions += `<button class="action-btn btn-reject" onclick="updateBookingStatus('${b.id}', 'rejected')"><i class="fas fa-times"></i></button>`;
-}
-if (canEditBookings) {
-actions += `<button class="action-btn btn-edit" onclick="openBookingDetailsModal('${b.id}')" title="Add/Edit Details"><i class="fas fa-file-signature"></i></button>`;
-actions += `<button class="action-btn" style="background: #ffc107; color: #333;" onclick="openTicketEditModal('${b.id}')" title="Edit Ticket"><i class="fas fa-edit"></i></button>`;
-}
+if (canManageBookings && b.status === 'pending') { actions += `<button class="action-btn btn-approve" onclick="updateBookingStatus('${b.id}', 'confirmed')"><i class="fas fa-check"></i></button>`; actions += `<button class="action-btn btn-reject" onclick="updateBookingStatus('${b.id}', 'rejected')"><i class="fas fa-times"></i></button>`; }
+if (canEditBookings) { actions += `<button class="action-btn btn-edit" onclick="openBookingDetailsModal('${b.id}')" title="Add/Edit Details"><i class="fas fa-file-signature"></i></button>`; actions += `<button class="action-btn" style="background: #ffc107; color: #333;" onclick="openTicketEditModal('${b.id}')" title="Edit Ticket"><i class="fas fa-edit"></i></button>`; }
 actions += `<button class="action-btn btn-pdf" onclick="printTicket('${b.id}')" title="Print/PDF Ticket"><i class="fas fa-file-pdf"></i></button>`;
-if (canDeleteBookings) {
-actions += `<button class="action-btn btn-delete" onclick="deleteBooking('${b.id}')"><i class="fas fa-trash"></i></button>`;
-}
-return `
-<tr>
-<td><strong>${b.id}</strong></td>
-<td>${b.userName}</td>
-<td>${b.item}</td>
-<td>${b.date}</td>
-<td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td>
-<td>${actions}</td>
-</tr>
-`}).join('') || '<tr><td colspan="7" style="text-align:center;">No bookings found</td></tr>';
+if (canDeleteBookings) actions += `<button class="action-btn btn-delete" onclick="deleteBooking('${b.id}')"><i class="fas fa-trash"></i></button>`;
+return `<tr><td><strong>${b.id}</strong></td><td>${b.userName}</td><td>${b.item}</td><td>${b.date}</td><td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td><td>${actions}</td></tr>`;
+}).join('') || '<tr><td colspan="7" style="text-align:center;">No bookings found</td></tr>';
 const canDeleteInquiries = hasPermission('delete_inquiries');
-document.getElementById('fs-all-inquiries').innerHTML = inquiries.map((inq, i) => `
-<tr>
-<td>${inq.name}</td>
-<td><a href="tel:${inq.phone}" style="color:var(--primary-green)">${inq.phone}</a></td>
-<td style="max-width: 300px;">${inq.message}</td>
-<td>
-<a href="https://wa.me/92${inq.phone.replace(/^0/, '')}" target="_blank" class="action-btn btn-approve"><i class="fab fa-whatsapp"></i></a>
-${canDeleteInquiries ? `<button class="action-btn btn-delete" onclick="deleteInquiry(${i})"><i class="fas fa-trash"></i></button>` : ''}
-</td>
-</tr>
-`).join('') || '<tr><td colspan="4" style="text-align:center;">No inquiries</td></tr>';
+document.getElementById('fs-all-inquiries').innerHTML = inquiries.map((inq, i) => `<tr><td>${inq.name}</td><td><a href="tel:${inq.phone}" style="color:var(--primary-green)">${inq.phone}</a></td><td style="max-width: 300px;">${inq.message}</td><td><a href="https://wa.me/92${inq.phone.replace(/^0/, '')}" target="_blank" class="action-btn btn-approve"><i class="fab fa-whatsapp"></i></a>${canDeleteInquiries ? `<button class="action-btn btn-delete" onclick="deleteInquiry(${i})"><i class="fas fa-trash"></i></button>` : ''}</td></tr>`).join('') || '<tr><td colspan="4" style="text-align:center;">No inquiries</td></tr>';
 const canDeleteUsers = hasPermission('delete_users');
 const canViewUserDetails = hasPermission('view_user_details');
-document.getElementById('fs-all-users').innerHTML = users.map((u, i) => `
-<tr>
-<td>${u.name}</td>
-<td>${u.email}</td>
-<td>${u.phone}</td>
-<td>${u.rewardPoints || 0}</td>
-<td>${new Date(u.registeredAt).toLocaleDateString()}</td>
-<td>
-${canViewUserDetails ? `<button class="action-btn btn-edit" onclick="openUserDetailModal(${i})" title="View Details & Upload Visa"><i class="fas fa-eye"></i></button>` : ''}
-${canDeleteUsers ? `<button class="action-btn btn-delete" onclick="deleteUser(${i})"><i class="fas fa-trash"></i></button>` : ''}
-</td>
-</tr>
-`).join('') || '<tr><td colspan="6" style="text-align:center;">No registered users</td></tr>';
+document.getElementById('fs-all-users').innerHTML = users.map((u, i) => `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.phone}</td><td>${u.rewardPoints || 0}</td><td>${new Date(u.registeredAt).toLocaleDateString()}</td><td>${canViewUserDetails ? `<button class="action-btn btn-edit" onclick="openUserDetailModal(${i})" title="View Details & Upload Visa"><i class="fas fa-eye"></i></button>` : ''}${canDeleteUsers ? `<button class="action-btn btn-delete" onclick="deleteUser(${i})"><i class="fas fa-trash"></i></button>` : ''}</td></tr>`).join('') || '<tr><td colspan="6" style="text-align:center;">No registered users</td></tr>';
 const canEditPackages = hasPermission('edit_packages');
 const canDeletePackages = hasPermission('delete_packages');
 const pkgList = document.getElementById('fs-packages-list');
 if(pkgList) {
-pkgList.innerHTML = customPackages.map(pkg => `
-<div class="dashboard-card" style="text-align: left; padding: 20px;">
-<h3 style="color: var(--accent-gold); margin-bottom: 10px;">${pkg.titleEn}</h3>
-<p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">${pkg.priceEn}</p>
-<p><strong>Mecca:</strong> ${pkg.meccaHotelEn}</p>
-<p><strong>Medina:</strong> ${pkg.medinaHotelEn}</p>
-<p><strong>Duration:</strong> ${pkg.totalDays} Days</p>
-${pkg.departureDate ? `<p><strong>Departure:</strong> ${pkg.departureDate}</p>` : ''}
-${pkg.returnDate ? `<p><strong>Return:</strong> ${pkg.returnDate}</p>` : ''}
-<div style="margin-top: 15px; display: flex; gap: 10px;">
-${canEditPackages ? `<button class="action-btn btn-approve" onclick="openPackageEditor(${pkg.id})"><i class="fas fa-edit"></i> Edit</button>` : ''}
-${canDeletePackages ? `<button class="action-btn btn-delete" onclick="deletePackage(${pkg.id})"><i class="fas fa-trash"></i> Delete</button>` : ''}
-</div>
-</div>
-`).join('');
+pkgList.innerHTML = customPackages.map(pkg => `<div class="dashboard-card" style="text-align: left; padding: 20px;"><h3 style="color: var(--accent-gold); margin-bottom: 10px;">${pkg.titleEn}</h3><p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">${pkg.priceEn}</p><p><strong>Mecca:</strong> ${pkg.meccaHotelEn}</p><p><strong>Medina:</strong> ${pkg.medinaHotelEn}</p><p><strong>Duration:</strong> ${pkg.totalDays} Days</p>${pkg.departureDate ? `<p><strong>Departure:</strong> ${pkg.departureDate}</p>` : ''}${pkg.returnDate ? `<p><strong>Return:</strong> ${pkg.returnDate}</p>` : ''}<div style="margin-top: 15px; display: flex; gap: 10px;">${canEditPackages ? `<button class="action-btn btn-approve" onclick="openPackageEditor(${pkg.id})"><i class="fas fa-edit"></i> Edit</button>` : ''}${canDeletePackages ? `<button class="action-btn btn-delete" onclick="deletePackage(${pkg.id})"><i class="fas fa-trash"></i> Delete</button>` : ''}</div></div>`).join('');
 }
 }
-function refreshAdminView() {
-if (isAdminLoggedIn) {
-loadFullAdminData();
-}
-}
-// ============================================
-// INITIALIZATION - FIXED VERSION
-// ============================================
+function refreshAdminView() { if (isAdminLoggedIn) loadFullAdminData(); }
 const urlParams = new URLSearchParams(window.location.search);
 const isAdminView = urlParams.get('view') === 'admin';
 window.addEventListener('DOMContentLoaded', function() {
-console.log('Page loaded, checking admin view:', isAdminView);
 checkAuth();
 loadBookings();
 renderCustomPackages();
 updateUIText();
-// Load all hotels by default on page load
 filterHotelsByCity('all', document.querySelector('.city-selector .filter-btn'));
-// Check staff authentication
 if (checkStaffAuth()) {
-console.log('Staff already authenticated');
 isAdminLoggedIn = true;
-if (isAdminView) {
-showAdminDashboard();
-updateUIBasedOnPermissions();
-}
+if (isAdminView) { showAdminDashboard(); updateUIBasedOnPermissions(); }
 } else if (isAdminView) {
-console.log('Opening staff login for admin view');
-setTimeout(() => {
-openStaffLogin();
-}, 100);
+setTimeout(() => { openStaffLogin(); }, 100);
 }
 });
-// ============================================
-// USER AUTHENTICATION (CUSTOMERS)
-// ============================================
 function openRegisterModal() { document.getElementById('registerModal').style.display = 'block'; }
 function openLoginModal() { document.getElementById('loginModal').style.display = 'block'; }
 function openForgotPasswordModal() { document.getElementById('forgotPasswordModal').style.display = 'block'; }
@@ -2586,13 +2098,10 @@ function handleForgotPassword(e) {
 e.preventDefault();
 const email = document.getElementById('forgotEmail').value;
 const user = users.find(u => u.email === email);
-if (user) {
-showToast('Password reset link sent to ' + email);
-closeModal('forgotPasswordModal');
-} else {
-showToast('Email not found in our records');
+if (user) { showToast('Password reset link sent to ' + email); closeModal('forgotPasswordModal'); }
+else { showToast('Email not found in our records'); }
 }
-}
+// ✅ FIXED: Customer register - case-insensitive email check
 function handleRegister(e) {
 e.preventDefault();
 const name = document.getElementById('regName').value;
@@ -2602,18 +2111,14 @@ const password = document.getElementById('regPassword').value;
 const confirmPassword = document.getElementById('regConfirmPassword').value;
 if (password !== confirmPassword) { showToast('Passwords do not match!'); return; }
 if (users.find(u => u.email.toLowerCase() === email || u.phone.trim() === phone)) { showToast('User already exists! Please login.'); return; }
-const newUser = {
-id: Date.now(), name, email, phone, password,
-referralCode: 'NADEEM' + Math.floor(Math.random() * 10000),
-rewardPoints: 0, registeredAt: new Date().toISOString(),
-visaCopies: []
-};
+const newUser = { id: Date.now(), name, email, phone, password, referralCode: 'NADEEM' + Math.floor(Math.random() * 10000), rewardPoints: 0, registeredAt: new Date().toISOString(), visaCopies: [] };
 users.push(newUser);
 localStorage.setItem('users', JSON.stringify(users));
 showToast('Registration successful! Please login.');
 closeModal('registerModal');
 openLoginModal();
 }
+// ✅ FIXED: Customer login - case-insensitive
 function handleLogin(e) {
 e.preventDefault();
 const emailInput = document.getElementById('loginEmail').value.trim().toLowerCase();
@@ -2629,12 +2134,7 @@ showToast('Welcome back, ' + user.name + '!');
 showToast('Invalid credentials!');
 }
 }
-function logout() {
-currentUser = null;
-localStorage.removeItem('currentUser');
-checkAuth();
-showToast('Logged out successfully');
-}
+function logout() { currentUser = null; localStorage.removeItem('currentUser'); checkAuth(); showToast('Logged out successfully'); }
 function checkAuth() {
 const savedUser = localStorage.getItem('currentUser');
 if (savedUser) {
@@ -2648,30 +2148,14 @@ document.getElementById('authLinks').style.display = 'block';
 document.getElementById('userInfo').style.display = 'none';
 }
 }
-function closeModal(modalId) {
-const modal = document.getElementById(modalId);
-if (modal) {
-modal.style.display = 'none';
-}
-}
-function openDashboard() {
-if (!currentUser) { showToast('Please login first'); openLoginModal(); return; }
-loadDashboard();
-document.getElementById('dashboardModal').style.display = 'block';
-}
+function closeModal(modalId) { const modal = document.getElementById(modalId); if (modal) modal.style.display = 'none'; }
+function openDashboard() { if (!currentUser) { showToast('Please login first'); openLoginModal(); return; } loadDashboard(); document.getElementById('dashboardModal').style.display = 'block'; }
 function openPaymentModal() { document.getElementById('paymentModal').style.display = 'block'; }
-function openReferralModal() {
-if (!currentUser) { showToast('Please login first'); openLoginModal(); return; }
-document.getElementById('referralCode').textContent = currentUser.referralCode;
-document.getElementById('referralModal').style.display = 'block';
-}
+function openReferralModal() { if (!currentUser) { showToast('Please login first'); openLoginModal(); return; } document.getElementById('referralCode').textContent = currentUser.referralCode; document.getElementById('referralModal').style.display = 'block'; }
 function openScheduleModal() { document.getElementById('scheduleModal').style.display = 'block'; }
 function openSearchModal() { document.getElementById('searchModal').style.display = 'block'; }
 function openReviewsModal() { document.getElementById('reviewsModal').style.display = 'block'; }
-function openCheckoutModal() {
-if (!currentUser) { showToast('Please login first'); openLoginModal(); return; }
-document.getElementById('checkoutModal').style.display = 'block';
-}
+function openCheckoutModal() { if (!currentUser) { showToast('Please login first'); openLoginModal(); return; } document.getElementById('checkoutModal').style.display = 'block'; }
 function openBookingSlotsModal() { document.getElementById('bookingSlotsModal').style.display = 'block'; }
 function openETicketsModal() { document.getElementById('eticketsModal').style.display = 'block'; }
 function openNotificationsModal() { document.getElementById('notificationsModal').style.display = 'block'; }
@@ -2683,11 +2167,7 @@ pendingService = { name, type };
 document.getElementById('serviceDetailsTitle').textContent = name;
 let detailsHtml = `<p style="font-size: 1.1rem; margin-bottom: 15px;">You are about to add <strong>${name}</strong> to your booking.</p>`;
 if(name.includes('Umrah') || type === 'Package') {
-detailsHtml += `<ul style="text-align: left; line-height: 2; margin-bottom: 20px; background: #f8f9fa; padding: 20px; border-radius: 10px;">
-<li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 10px;"></i> Return Air Ticket & Visa</li>
-<li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 10px;"></i> Hotel Accommodation</li>
-<li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 10px;"></i> Ziyarat Tours & Transport</li>
-</ul>`;
+detailsHtml += `<ul style="text-align: left; line-height: 2; margin-bottom: 20px; background: #f8f9fa; padding: 20px; border-radius: 10px;"><li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 10px;"></i> Return Air Ticket & Visa</li><li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 10px;"></i> Hotel Accommodation</li><li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 10px;"></i> Ziyarat Tours & Transport</li></ul>`;
 } else {
 detailsHtml += `<p style="color: #666; margin-bottom: 20px;">Our team will contact you to provide the best options and prices for this service.</p>`;
 }
@@ -2695,31 +2175,16 @@ document.getElementById('serviceDetailsContent').innerHTML = detailsHtml;
 document.getElementById('serviceDetailsModal').style.display = 'block';
 }
 function confirmAddService() {
-if (!currentUser) {
-showToast('Please login to book');
-closeModal('serviceDetailsModal');
-openLoginModal();
-return;
-}
+if (!currentUser) { showToast('Please login to book'); closeModal('serviceDetailsModal'); openLoginModal(); return; }
 createBooking(pendingService.name, pendingService.type);
 closeModal('serviceDetailsModal');
 }
 function createBooking(item, type) {
-const booking = {
-id: 'BK' + Date.now(), userId: currentUser.id, userName: currentUser.name,
-item: item, type: type, date: new Date().toLocaleDateString(),
-status: 'pending', createdAt: new Date().toISOString(),
-passengerDetails: {}
-};
+const booking = { id: 'BK' + Date.now(), userId: currentUser.id, userName: currentUser.name, item, type, date: new Date().toLocaleDateString(), status: 'pending', createdAt: new Date().toISOString(), passengerDetails: {} };
 bookings.push(booking);
 localStorage.setItem('bookings', JSON.stringify(bookings));
 showToast(item + ' booked successfully! We will contact you soon.');
-const message = `New Booking:
-Name: ${currentUser.name}
-Item: ${item}
-Type: ${type}
-Date: ${booking.date}
-Ref: ${booking.id}`;
+const message = `New Booking:\nName: ${currentUser.name}\nItem: ${item}\nType: ${type}\nDate: ${booking.date}\nRef: ${booking.id}`;
 window.open(`https://wa.me/923424397177?text=${encodeURIComponent(message)}`, '_blank');
 refreshAdminView();
 }
@@ -2736,42 +2201,15 @@ bookingList.innerHTML = '<p style="text-align: center; color: #999; padding: 40p
 bookingList.innerHTML = userBookings.map(b => {
 let detailsHtml = '';
 if(b.details && (b.details.pnr || b.details.flight || b.details.visa || b.details.meccaHotel)) {
-detailsHtml += `<div style="margin-top: 15px; background: #e8f5e9; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745; text-align: left;">
-<h5 style="color: #155724; margin-bottom: 10px;"><i class="fas fa-check-circle"></i> Confirmed Travel Details</h5>
-${b.details.pnr ? `<p style="margin: 5px 0;"><strong>PNR/Ticket:</strong> ${b.details.pnr}</p>` : ''}
-${b.details.flight ? `<p style="margin: 5px 0;"><strong>Flight/Airline:</strong> ${b.details.flight}</p>` : ''}
-${b.details.visa ? `<p style="margin: 5px 0;"><strong>Visa No:</strong> ${b.details.visa}</p>` : ''}
-${b.details.meccaHotel ? `<p style="margin: 5px 0;"><strong>Mecca Hotel:</strong> ${b.details.meccaHotel}</p>` : ''}
-${b.details.medinaHotel ? `<p style="margin: 5px 0;"><strong>Medina Hotel:</strong> ${b.details.medinaHotel}</p>` : ''}
-${b.details.notes ? `<p style="margin: 10px 0 0 0; font-style: italic; border-top: 1px dashed #ccc; padding-top: 10px;"><strong>Notes:</strong> ${b.details.notes}</p>` : ''}
-</div>`;
+detailsHtml += `<div style="margin-top: 15px; background: #e8f5e9; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745; text-align: left;"><h5 style="color: #155724; margin-bottom: 10px;"><i class="fas fa-check-circle"></i> Confirmed Travel Details</h5>${b.details.pnr ? `<p style="margin: 5px 0;"><strong>PNR/Ticket:</strong> ${b.details.pnr}</p>` : ''}${b.details.flight ? `<p style="margin: 5px 0;"><strong>Flight/Airline:</strong> ${b.details.flight}</p>` : ''}${b.details.visa ? `<p style="margin: 5px 0;"><strong>Visa No:</strong> ${b.details.visa}</p>` : ''}${b.details.meccaHotel ? `<p style="margin: 5px 0;"><strong>Mecca Hotel:</strong> ${b.details.meccaHotel}</p>` : ''}${b.details.medinaHotel ? `<p style="margin: 5px 0;"><strong>Medina Hotel:</strong> ${b.details.medinaHotel}</p>` : ''}${b.details.notes ? `<p style="margin: 10px 0 0 0; font-style: italic; border-top: 1px dashed #ccc; padding-top: 10px;"><strong>Notes:</strong> ${b.details.notes}</p>` : ''}</div>`;
 }
-return `
-<div class="booking-item">
-<h4>${b.item}</h4>
-<p><strong>Reference:</strong> ${b.id}</p>
-<p><strong>Date:</strong> ${b.date}</p>
-<p><strong>Type:</strong> ${b.type}</p>
-<span class="status-badge status-${b.status}">${b.status.toUpperCase()}</span>
-${detailsHtml}
-<div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
-<button class="btn" style="background: var(--primary-green); color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="printTicket('${b.id}')">
-<i class="fas fa-print"></i> Print
-</button>
-<button class="btn" style="background: #dc3545; color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="printTicket('${b.id}'); setTimeout(saveAsPDF, 500);">
-<i class="fas fa-file-pdf"></i> Save as PDF
-</button>
-</div>
-</div>
-`}).join('');
+return `<div class="booking-item"><h4>${b.item}</h4><p><strong>Reference:</strong> ${b.id}</p><p><strong>Date:</strong> ${b.date}</p><p><strong>Type:</strong> ${b.type}</p><span class="status-badge status-${b.status}">${b.status.toUpperCase()}</span>${detailsHtml}<div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;"><button class="btn" style="background: var(--primary-green); color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="printTicket('${b.id}')"><i class="fas fa-print"></i> Print</button><button class="btn" style="background: #dc3545; color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="printTicket('${b.id}'); setTimeout(saveAsPDF, 500);"><i class="fas fa-file-pdf"></i> Save as PDF</button></div></div>`;
+}).join('');
 }
 }
 function loadBookings() { bookings = JSON.parse(localStorage.getItem('bookings')) || []; }
 function openBookingDetailsModal(bookingId) {
-if (!hasPermission('edit_bookings')) {
-showToast('You do not have permission to edit bookings');
-return;
-}
+if (!hasPermission('edit_bookings')) { showToast('You do not have permission to edit bookings'); return; }
 const booking = bookings.find(b => b.id === bookingId);
 if(!booking) return;
 document.getElementById('detailsBookingId').value = bookingId;
@@ -2790,14 +2228,7 @@ e.preventDefault();
 const bookingId = document.getElementById('detailsBookingId').value;
 const index = bookings.findIndex(b => b.id === bookingId);
 if(index === -1) return;
-bookings[index].details = {
-pnr: document.getElementById('detailsPnr').value,
-flight: document.getElementById('detailsFlight').value,
-meccaHotel: document.getElementById('detailsMeccaHotel').value,
-medinaHotel: document.getElementById('detailsMedinaHotel').value,
-visa: document.getElementById('detailsVisa').value,
-notes: document.getElementById('detailsNotes').value
-};
+bookings[index].details = { pnr: document.getElementById('detailsPnr').value, flight: document.getElementById('detailsFlight').value, meccaHotel: document.getElementById('detailsMeccaHotel').value, medinaHotel: document.getElementById('detailsMedinaHotel').value, visa: document.getElementById('detailsVisa').value, notes: document.getElementById('detailsNotes').value };
 localStorage.setItem('bookings', JSON.stringify(bookings));
 closeModal('bookingDetailsModal');
 logActivity('edit', `${currentStaffUser.name} updated booking details for ${bookingId}`);
@@ -2805,10 +2236,7 @@ showToast('Booking details saved successfully!');
 refreshAdminView();
 }
 function openTicketEditModal(bookingId) {
-if (!hasPermission('edit_bookings')) {
-showToast('You do not have permission to edit tickets');
-return;
-}
+if (!hasPermission('edit_bookings')) { showToast('You do not have permission to edit tickets'); return; }
 const booking = bookings.find(b => b.id === bookingId);
 if(!booking) return;
 document.getElementById('editTicketId').value = bookingId;
@@ -2836,51 +2264,26 @@ showToast('Ticket details updated successfully!');
 refreshAdminView();
 }
 function openUserDetailModal(userIndex) {
-if (!hasPermission('view_user_details')) {
-showToast('You do not have permission to view user details');
-return;
-}
+if (!hasPermission('view_user_details')) { showToast('You do not have permission to view user details'); return; }
 currentViewingUser = users[userIndex];
 const user = currentViewingUser;
-let contentHtml = `
-<div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-<h4 style="color: var(--primary-green); margin-bottom: 15px;">User Information</h4>
-<p><strong>Name:</strong> ${user.name}</p>
-<p><strong>Email:</strong> ${user.email}</p>
-<p><strong>Phone:</strong> ${user.phone}</p>
-<p><strong>Reward Points:</strong> ${user.rewardPoints || 0}</p>
-<p><strong>Joined:</strong> ${new Date(user.registeredAt).toLocaleDateString()}</p>
-</div>
-`;
+let contentHtml = `<div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;"><h4 style="color: var(--primary-green); margin-bottom: 15px;">User Information</h4><p><strong>Name:</strong> ${user.name}</p><p><strong>Email:</strong> ${user.email}</p><p><strong>Phone:</strong> ${user.phone}</p><p><strong>Reward Points:</strong> ${user.rewardPoints || 0}</p><p><strong>Joined:</strong> ${new Date(user.registeredAt).toLocaleDateString()}</p></div>`;
 document.getElementById('userDetailContent').innerHTML = contentHtml;
 loadUploadedVisaFiles(userIndex);
 document.getElementById('userDetailModal').style.display = 'block';
 }
 function handleVisaUpload(input) {
-if (!hasPermission('upload_visa')) {
-showToast('You do not have permission to upload visa copies');
-return;
-}
+if (!hasPermission('upload_visa')) { showToast('You do not have permission to upload visa copies'); return; }
 if (!currentViewingUser || !input.files || input.files.length === 0) return;
 const files = Array.from(input.files);
 const userIndex = users.findIndex(u => u.id === currentViewingUser.id);
 if (userIndex === -1) return;
-if (!users[userIndex].visaCopies) {
-users[userIndex].visaCopies = [];
-}
+if (!users[userIndex].visaCopies) users[userIndex].visaCopies = [];
 files.forEach(file => {
-if (file.size > 5 * 1024 * 1024) {
-showToast(`File ${file.name} is too large (max 5MB)`);
-return;
-}
+if (file.size > 5 * 1024 * 1024) { showToast(`File ${file.name} is too large (max 5MB)`); return; }
 const reader = new FileReader();
 reader.onload = function(e) {
-users[userIndex].visaCopies.push({
-name: file.name,
-data: e.target.result,
-uploadedAt: new Date().toISOString(),
-uploadedBy: currentStaffUser ? currentStaffUser.name : 'Unknown'
-});
+users[userIndex].visaCopies.push({ name: file.name, data: e.target.result, uploadedAt: new Date().toISOString(), uploadedBy: currentStaffUser ? currentStaffUser.name : 'Unknown' });
 localStorage.setItem('users', JSON.stringify(users));
 loadUploadedVisaFiles(userIndex);
 logActivity('edit', `${currentStaffUser.name} uploaded visa for user ${currentViewingUser.name}`);
@@ -2892,25 +2295,11 @@ reader.readAsDataURL(file);
 function loadUploadedVisaFiles(userIndex) {
 const user = users[userIndex];
 const container = document.getElementById('uploadedVisaFiles');
-if (!user.visaCopies || user.visaCopies.length === 0) {
-container.innerHTML = '<p style="color: #999; text-align: center;">No visa copies uploaded yet</p>';
-return;
-}
-container.innerHTML = user.visaCopies.map((file, idx) => `
-<div class="file-item">
-<span><i class="fas fa-file"></i> ${file.name}</span>
-<div>
-<a href="${file.data}" download="${file.name}" style="color: var(--primary-green); margin-right: 10px;"><i class="fas fa-download"></i></a>
-${hasPermission('upload_visa') ? `<button onclick="deleteVisaFile(${userIndex}, ${idx})" style="background: none; border: none; color: #dc3545; cursor: pointer;"><i class="fas fa-trash"></i></button>` : ''}
-</div>
-</div>
-`).join('');
+if (!user.visaCopies || user.visaCopies.length === 0) { container.innerHTML = '<p style="color: #999; text-align: center;">No visa copies uploaded yet</p>'; return; }
+container.innerHTML = user.visaCopies.map((file, idx) => `<div class="file-item"><span><i class="fas fa-file"></i> ${file.name}</span><div><a href="${file.data}" download="${file.name}" style="color: var(--primary-green); margin-right: 10px;"><i class="fas fa-download"></i></a>${hasPermission('upload_visa') ? `<button onclick="deleteVisaFile(${userIndex}, ${idx})" style="background: none; border: none; color: #dc3545; cursor: pointer;"><i class="fas fa-trash"></i></button>` : ''}</div></div>`).join('');
 }
 function deleteVisaFile(userIndex, fileIndex) {
-if (!hasPermission('upload_visa')) {
-showToast('You do not have permission to delete visa files');
-return;
-}
+if (!hasPermission('upload_visa')) { showToast('You do not have permission to delete visa files'); return; }
 if (!confirm('Delete this visa copy?')) return;
 users[userIndex].visaCopies.splice(fileIndex, 1);
 localStorage.setItem('users', JSON.stringify(users));
@@ -2925,77 +2314,18 @@ currentTicketBooking = booking;
 const ticketsList = document.getElementById('ticketsList');
 let ticketDetailsHtml = '';
 if(booking.details && (booking.details.pnr || booking.details.flight || booking.details.visa || booking.details.meccaHotel)) {
-ticketDetailsHtml = `
-<div style="background: #e8f5e9; padding: 10px 15px; border-radius: 6px; border-left: 4px solid #28a745; margin-bottom: 12px; font-size: 0.85rem;">
-<h4 style="color: #155724; margin-bottom: 8px; text-align: center; font-size: 1rem;">Confirmed Travel Details / تصدیق شدہ سفری تفصیلات</h4>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-${booking.details.pnr ? `<div><strong>PNR:</strong> ${booking.details.pnr}</div>` : ''}
-${booking.details.flight ? `<div><strong>Flight:</strong> ${booking.details.flight}</div>` : ''}
-${booking.details.visa ? `<div><strong>Visa No:</strong> ${booking.details.visa}</div>` : ''}
-${booking.details.meccaHotel ? `<div><strong>Mecca Hotel:</strong> ${booking.details.meccaHotel}</div>` : ''}
-${booking.details.medinaHotel ? `<div><strong>Medina Hotel:</strong> ${booking.details.medinaHotel}</div>` : ''}
-</div>
-${booking.details.notes ? `<div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed #ccc; font-size: 0.8rem;"><strong>Notes:</strong> ${booking.details.notes}</div>` : ''}
-</div>`;
+ticketDetailsHtml = `<div style="background: #e8f5e9; padding: 10px 15px; border-radius: 6px; border-left: 4px solid #28a745; margin-bottom: 12px; font-size: 0.85rem;"><h4 style="color: #155724; margin-bottom: 8px; text-align: center; font-size: 1rem;">Confirmed Travel Details / تصدیق شدہ سفری تفصیلات</h4><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">${booking.details.pnr ? `<div><strong>PNR:</strong> ${booking.details.pnr}</div>` : ''}${booking.details.flight ? `<div><strong>Flight:</strong> ${booking.details.flight}</div>` : ''}${booking.details.visa ? `<div><strong>Visa No:</strong> ${booking.details.visa}</div>` : ''}${booking.details.meccaHotel ? `<div><strong>Mecca Hotel:</strong> ${booking.details.meccaHotel}</div>` : ''}${booking.details.medinaHotel ? `<div><strong>Medina Hotel:</strong> ${booking.details.medinaHotel}</div>` : ''}</div>${booking.details.notes ? `<div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed #ccc; font-size: 0.8rem;"><strong>Notes:</strong> ${booking.details.notes}</div>` : ''}</div>`;
 }
-ticketsList.innerHTML = `
-<div class="pdf-ticket" style="border: 3px double var(--primary-green); border-radius: 8px; background: #fff; width: 190mm; height: 277mm; padding: 8mm; box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden;">
-<div style="text-align: center; border-bottom: 2px solid var(--accent-gold); padding-bottom: 8px; margin-bottom: 12px;">
-<h2 style="color: var(--primary-green); margin: 0; font-size: 1.4rem;">🕋 Nadeem Hadi Travel & Tours</h2>
-<h3 style="color: var(--accent-gold); margin-top: 5px; font-size: 1.1rem;">E-TICKET / ای ٹکٹ</h3>
-</div>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
-<div style="background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid var(--primary-green);">
-<strong style="color: #666; font-size: 0.75rem;">PASSENGER NAME / مسافر کا نام</strong>
-<p style="font-size: 1rem; color: var(--primary-green); margin: 3px 0 0 0; font-weight: 600;">${booking.userName}</p>
-</div>
-<div style="background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid var(--accent-gold);">
-<strong style="color: #666; font-size: 0.75rem;">BOOKING REF / بکنگ ریفرنس</strong>
-<p style="font-size: 1rem; color: var(--primary-green); margin: 3px 0 0 0; font-weight: 600;">${booking.id}</p>
-</div>
-<div style="background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid var(--primary-green);">
-<strong style="color: #666; font-size: 0.75rem;">SERVICE / سروس</strong>
-<p style="font-size: 0.95rem; color: var(--text-dark); margin: 3px 0 0 0;">${booking.item}</p>
-</div>
-<div style="background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid var(--accent-gold);">
-<strong style="color: #666; font-size: 0.75rem;">BOOKING DATE / بکنگ کی تاریخ</strong>
-<p style="font-size: 0.95rem; color: var(--text-dark); margin: 3px 0 0 0;">${booking.date}</p>
-</div>
-<div style="background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid var(--primary-green);">
-<strong style="color: #666; font-size: 0.75rem;">TYPE / قسم</strong>
-<p style="font-size: 0.95rem; color: var(--text-dark); margin: 3px 0 0 0;">${booking.type}</p>
-</div>
-<div style="background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid var(--accent-gold);">
-<strong style="color: #666; font-size: 0.75rem;">STATUS / حیثیت</strong>
-<p style="font-size: 0.95rem; margin: 3px 0 0 0;"><span class="status-badge status-${booking.status}">${booking.status.toUpperCase()}</span></p>
-</div>
-</div>
-${ticketDetailsHtml}
-<div style="background: #fff3cd; border: 1px solid #ffc107; padding: 10px; border-radius: 6px; text-align: center; font-size: 0.8rem; margin-bottom: auto;">
-<strong>⚠️ Important:</strong> Please arrive at the airport 3 hours before departure.
-<br>براہ کرم روانگی سے 3 گھنٹے پہلے ایئرپورٹ پہنچیں۔
-</div>
-<div style="border-top: 2px dashed var(--primary-green); padding-top: 10px; text-align: center; font-size: 0.8rem; color: var(--text-dark); line-height: 1.6; margin-top: 10px;">
-<p style="font-weight: 600; color: var(--primary-green); margin-bottom: 3px; font-size: 0.9rem;">Your Trusted Partner for Blessed and Pleasant Journeys</p>
-<p style="margin: 1px 0;">📞 0342-4397177 | 0316-4815975 | 0302-6901114</p>
-<p style="margin: 1px 0;">📧 nadeemhaditravel@gmail.com</p>
-<p style="margin: 1px 0;">📍 Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha, Pakistan</p>
-</div>
-</div>
-`;
+ticketsList.innerHTML = `<div class="pdf-ticket" style="border: 3px double var(--primary-green); border-radius: 8px; background: #fff; width: 190mm; height: 277mm; padding: 8mm; box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden;"><div style="text-align: center; border-bottom: 2px solid var(--accent-gold); padding-bottom: 8px; margin-bottom: 12px;"><h2 style="color: var(--primary-green); margin: 0; font-size: 1.4rem;">🕋 Nadeem Hadi Travel & Tours</h2><h3 style="color: var(--accent-gold); margin-top: 5px; font-size: 1.1rem;">E-TICKET / ای ٹکٹ</h3></div><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;"><div style="background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid var(--primary-green);"><strong style="color: #666; font-size: 0.75rem;">PASSENGER NAME / مسافر کا نام</strong><p style="font-size: 1rem; color: var(--primary-green); margin: 3px 0 0 0; font-weight: 600;">${booking.userName}</p></div><div style="background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid var(--accent-gold);"><strong style="color: #666; font-size: 0.75rem;">BOOKING REF / بکنگ ریفرنس</strong><p style="font-size: 1rem; color: var(--primary-green); margin: 3px 0 0 0; font-weight: 600;">${booking.id}</p></div><div style="background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid var(--primary-green);"><strong style="color: #666; font-size: 0.75rem;">SERVICE / سروس</strong><p style="font-size: 0.95rem; color: var(--text-dark); margin: 3px 0 0 0;">${booking.item}</p></div><div style="background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid var(--accent-gold);"><strong style="color: #666; font-size: 0.75rem;">BOOKING DATE / بکنگ کی تاریخ</strong><p style="font-size: 0.95rem; color: var(--text-dark); margin: 3px 0 0 0;">${booking.date}</p></div><div style="background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid var(--primary-green);"><strong style="color: #666; font-size: 0.75rem;">TYPE / قسم</strong><p style="font-size: 0.95rem; color: var(--text-dark); margin: 3px 0 0 0;">${booking.type}</p></div><div style="background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid var(--accent-gold);"><strong style="color: #666; font-size: 0.75rem;">STATUS / حیثیت</strong><p style="font-size: 0.95rem; margin: 3px 0 0 0;"><span class="status-badge status-${booking.status}">${booking.status.toUpperCase()}</span></p></div></div>${ticketDetailsHtml}<div style="background: #fff3cd; border: 1px solid #ffc107; padding: 10px; border-radius: 6px; text-align: center; font-size: 0.8rem; margin-bottom: auto;"><strong>⚠️ Important:</strong> Please arrive at the airport 3 hours before departure.<br>براہ کرم روانگی سے 3 گھنٹے پہلے ایئرپورٹ پہنچیں۔</div><div style="border-top: 2px dashed var(--primary-green); padding-top: 10px; text-align: center; font-size: 0.8rem; color: var(--text-dark); line-height: 1.6; margin-top: 10px;"><p style="font-weight: 600; color: var(--primary-green); margin-bottom: 3px; font-size: 0.9rem;">Your Trusted Partner for Blessed and Pleasant Journeys</p><p style="margin: 1px 0;">📞 0342-4397177 | 0316-4815975 | 0302-6901114</p><p style="margin: 1px 0;">📧 nadeemhaditravel@gmail.com</p><p style="margin: 1px 0;">📍 Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha, Pakistan</p></div></div>`;
 openETicketsModal();
 }
 function saveAsPDF() {
 const booking = currentTicketBooking;
-if(booking) {
-document.title = `Ticket_${booking.id}_${booking.userName}`;
-}
+if(booking) document.title = `Ticket_${booking.id}_${booking.userName}`;
 showToast('Opening A4 PDF save dialog...');
 setTimeout(() => {
 window.print();
-setTimeout(() => {
-document.title = 'Nadeem Hadi Travel & Tours';
-}, 1000);
+setTimeout(() => { document.title = 'Nadeem Hadi Travel & Tours'; }, 1000);
 }, 500);
 }
 function selectPayment(element, method) {
@@ -3004,60 +2334,20 @@ element.classList.add('selected');
 selectedPayment = method;
 document.getElementById('selectedPaymentMethod').textContent = method;
 let infoHtml = '';
-if(method === 'Bank Transfer') {
-infoHtml = `<h4><i class="fas fa-university"></i> Bank Transfer Details</h4>
-<p><strong>Bank Name:</strong> Meezan Bank Limited</p>
-<p><strong>Account Title:</strong> Nadeem Hadi Travel & Tours</p>
-<p><strong>IBAN:</strong> PK36MEZN0001234567890123</p>
-<p style="color: #d32f2f; margin-top: 10px; font-size: 0.9rem;">Please transfer the exact amount and keep the receipt safe.</p>`;
-} else if(method === 'JazzCash') {
-infoHtml = `<h4><i class="fas fa-mobile-alt"></i> JazzCash Details</h4>
-<p><strong>Account Number:</strong> 0342-4397177</p>
-<p><strong>Account Title:</strong> Nadeem Hadi</p>`;
-} else if(method === 'EasyPaisa') {
-infoHtml = `<h4><i class="fas fa-wallet"></i> EasyPaisa Details</h4>
-<p><strong>Account Number:</strong> 0316-4815975</p>
-<p><strong>Account Title:</strong> Nadeem Hadi Travel</p>`;
-}
-else if(method === 'Automated Gateway') {
-infoHtml = `<h4><i class="fas fa-shield-alt"></i> Automated Payment Gateway</h4>
-<p>Pay securely via JazzCash, EasyPaisa, or Bank Card through our secure payment partner.</p>
-<form action="YOUR_PAYMENT_GATEWAY_LINK_HERE" method="GET" target="_blank" style="margin-top: 15px;">
-<input type="hidden" name="amount" value="325000">
-<input type="hidden" name="item_name" value="Umrah Package">
-<button type="submit" class="btn" style="width: 100%; background: #28a745; color: white;">Pay PKR 325,000 Now / ابھی ادائیگی کریں</button>
-</form>
-<p style="font-size: 0.85rem; color: #666; margin-top: 10px;">You will be redirected to a secure payment page.</p>`;
-}
-else if(method.includes('Card')) {
-infoHtml = `<h4><i class="fas fa-credit-card"></i> Card Payment</h4>
-<p>Secure payment gateway will be initiated. (Demo Mode)</p>
-<div class="form-group" style="margin-top: 10px;"><label>Card Number</label><input type="text" placeholder="**** **** **** ****"></div>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-<div class="form-group"><label>Expiry</label><input type="text" placeholder="MM/YY"></div>
-<div class="form-group"><label>CVV</label><input type="text" placeholder="***"></div>
-</div>`;
-} else {
-infoHtml = `<h4><i class="fas fa-money-bill-wave"></i> Cash Payment</h4>
-<p>Please visit our office to pay in cash.</p>
-<p><strong>Address:</strong> Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha</p>`;
-}
-if(method !== 'Automated Gateway') {
-infoHtml += `<div class="form-group" style="margin-top: 15px;">
-<label>Transaction ID / TRX / Reference Number</label>
-<input type="text" id="trxId" placeholder="Enter TRX ID after payment">
-</div>`;
-}
+if(method === 'Bank Transfer') { infoHtml = `<h4><i class="fas fa-university"></i> Bank Transfer Details</h4><p><strong>Bank Name:</strong> Meezan Bank Limited</p><p><strong>Account Title:</strong> Nadeem Hadi Travel & Tours</p><p><strong>IBAN:</strong> PK36MEZN0001234567890123</p><p style="color: #d32f2f; margin-top: 10px; font-size: 0.9rem;">Please transfer the exact amount and keep the receipt safe.</p>`; }
+else if(method === 'JazzCash') { infoHtml = `<h4><i class="fas fa-mobile-alt"></i> JazzCash Details</h4><p><strong>Account Number:</strong> 0342-4397177</p><p><strong>Account Title:</strong> Nadeem Hadi</p>`; }
+else if(method === 'EasyPaisa') { infoHtml = `<h4><i class="fas fa-wallet"></i> EasyPaisa Details</h4><p><strong>Account Number:</strong> 0316-4815975</p><p><strong>Account Title:</strong> Nadeem Hadi Travel</p>`; }
+else if(method === 'Automated Gateway') { infoHtml = `<h4><i class="fas fa-shield-alt"></i> Automated Payment Gateway</h4><p>Pay securely via JazzCash, EasyPaisa, or Bank Card through our secure payment partner.</p><form action="YOUR_PAYMENT_GATEWAY_LINK_HERE" method="GET" target="_blank" style="margin-top: 15px;"><input type="hidden" name="amount" value="325000"><input type="hidden" name="item_name" value="Umrah Package"><button type="submit" class="btn" style="width: 100%; background: #28a745; color: white;">Pay PKR 325,000 Now / ابھی ادائیگی کریں</button></form><p style="font-size: 0.85rem; color: #666; margin-top: 10px;">You will be redirected to a secure payment page.</p>`; }
+else if(method.includes('Card')) { infoHtml = `<h4><i class="fas fa-credit-card"></i> Card Payment</h4><p>Secure payment gateway will be initiated. (Demo Mode)</p><div class="form-group" style="margin-top: 10px;"><label>Card Number</label><input type="text" placeholder="**** **** **** ****"></div><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;"><div class="form-group"><label>Expiry</label><input type="text" placeholder="MM/YY"></div><div class="form-group"><label>CVV</label><input type="text" placeholder="***"></div></div>`; }
+else { infoHtml = `<h4><i class="fas fa-money-bill-wave"></i> Cash Payment</h4><p>Please visit our office to pay in cash.</p><p><strong>Address:</strong> Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha</p>`; }
+if(method !== 'Automated Gateway') { infoHtml += `<div class="form-group" style="margin-top: 15px;"><label>Transaction ID / TRX / Reference Number</label><input type="text" id="trxId" placeholder="Enter TRX ID after payment"></div>`; }
 document.getElementById('paymentMethodInfo').innerHTML = infoHtml;
 document.getElementById('paymentMethodInfo').style.display = 'block';
 document.getElementById('paymentDetails').style.display = 'block';
 }
 function processPayment() {
 if (!selectedPayment) { showToast('Please select a payment method'); return; }
-if(selectedPayment === 'Automated Gateway') {
-showToast('Redirecting to secure payment gateway...');
-return;
-}
+if(selectedPayment === 'Automated Gateway') { showToast('Redirecting to secure payment gateway...'); return; }
 const trxId = document.getElementById('trxId') ? document.getElementById('trxId').value : '';
 showToast('Payment processing...');
 setTimeout(() => {
@@ -3071,10 +2361,7 @@ function showAvailableSlots() { document.getElementById('availableSlots').style.
 function selectSlot(time) { showToast('Selected time slot: ' + time); closeModal('scheduleModal'); }
 function confirmCheckout() { showToast('Booking confirmed!'); closeModal('checkoutModal'); }
 function bookSlot(slot) { showToast('Booking slot reserved: ' + slot); closeModal('bookingSlotsModal'); }
-function copyReferralCode() {
-const code = document.getElementById('referralCode').textContent;
-navigator.clipboard.writeText(code).then(() => { showToast('Referral code copied!'); });
-}
+function copyReferralCode() { const code = document.getElementById('referralCode').textContent; navigator.clipboard.writeText(code).then(() => { showToast('Referral code copied!'); }); }
 function handleContactSubmit(e) {
 e.preventDefault();
 const name = document.getElementById('contactName').value;
@@ -3084,111 +2371,48 @@ const message = document.getElementById('contactMessage').value;
 const newInquiry = { name, phone, email, message, date: new Date().toISOString() };
 inquiries.push(newInquiry);
 localStorage.setItem('inquiries', JSON.stringify(inquiries));
-const msg = `Contact Form:
-Name: ${name}
-Phone: ${phone}
-Email: ${email}
-Message: ${message}`;
+const msg = `Contact Form:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nMessage: ${message}`;
 window.open(`https://wa.me/923424397177?text=${encodeURIComponent(msg)}`, '_blank');
 showToast('Message sent! We will contact you soon.');
 e.target.reset();
 refreshAdminView();
 }
-function showToast(message) {
-const toast = document.getElementById('toast');
-toast.textContent = message;
-toast.classList.add('show');
-setTimeout(() => { toast.classList.remove('show'); }, 3000);
-}
+function showToast(message) { const toast = document.getElementById('toast'); toast.textContent = message; toast.classList.add('show'); setTimeout(() => { toast.classList.remove('show'); }, 3000); }
 function showSection(sectionId) { document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' }); }
-window.onclick = function(event) { if (event.target.classList.contains('modal')) { event.target.style.display = 'none'; } }
+window.onclick = function(event) { if (event.target.classList.contains('modal')) event.target.style.display = 'none'; }
 function filterByService(serviceType, btn) {
 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
 btn.classList.add('active');
-const serviceCards = document.querySelectorAll('.service-card');
-serviceCards.forEach(card => {
-if (serviceType === 'all' || card.dataset.service === serviceType) {
-card.style.display = 'block';
-} else {
-card.style.display = 'none';
-}
-});
+document.querySelectorAll('.service-card').forEach(card => { card.style.display = (serviceType === 'all' || card.dataset.service === serviceType) ? 'block' : 'none'; });
 }
 function filterHotelsByCity(city, btn) {
-if(btn) {
-document.querySelectorAll('.city-selector .filter-btn').forEach(b => b.classList.remove('active'));
-btn.classList.add('active');
-}
+if(btn) { document.querySelectorAll('.city-selector .filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
 const container = document.getElementById('hotelsContainer');
 let hotels = [];
 const hotelsData = {
-'Makkah': [
-{ name: 'Makkah Clock Royal Tower', distance: 0.2, experience: 15, rating: 4.8, reviews: 2500, price: 450, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400' },
-{ name: 'Pullman ZamZam Makkah', distance: 0.3, experience: 12, rating: 4.6, reviews: 1800, price: 380, image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400' }
-],
-'Madinah': [
-{ name: 'Pullman ZamZam Madinah', distance: 0.1, experience: 14, rating: 4.7, reviews: 2200, price: 420, image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400' },
-{ name: 'Anwar Al Madinah Mövenpick', distance: 0.4, experience: 10, rating: 4.5, reviews: 1500, price: 350, image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400' }
-],
-'Jeddah': [
-{ name: 'Hilton Jeddah', distance: 2.5, experience: 18, rating: 4.6, reviews: 1900, price: 280, image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400' }
-],
-'Riyadh': [
-{ name: 'Four Seasons Riyadh', distance: 3.0, experience: 16, rating: 4.8, reviews: 2100, price: 320, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400' }
-],
-'Karachi': [
-{ name: 'Marriott Karachi', distance: 1.5, experience: 20, rating: 4.5, reviews: 1600, price: 180, image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400' }
-],
-'Lahore': [
-{ name: 'Pearl Continental Lahore', distance: 2.0, experience: 22, rating: 4.6, reviews: 1800, price: 160, image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400' }
-],
-'Islamabad': [
-{ name: 'Serena Hotel Islamabad', distance: 1.8, experience: 19, rating: 4.7, reviews: 1700, price: 170, image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400' }
-]
+'Makkah': [{ name: 'Makkah Clock Royal Tower', distance: 0.2, experience: 15, rating: 4.8, reviews: 2500, price: 450, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400' },{ name: 'Pullman ZamZam Makkah', distance: 0.3, experience: 12, rating: 4.6, reviews: 1800, price: 380, image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400' }],
+'Madinah': [{ name: 'Pullman ZamZam Madinah', distance: 0.1, experience: 14, rating: 4.7, reviews: 2200, price: 420, image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400' },{ name: 'Anwar Al Madinah Mövenpick', distance: 0.4, experience: 10, rating: 4.5, reviews: 1500, price: 350, image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400' }],
+'Jeddah': [{ name: 'Hilton Jeddah', distance: 2.5, experience: 18, rating: 4.6, reviews: 1900, price: 280, image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400' }],
+'Riyadh': [{ name: 'Four Seasons Riyadh', distance: 3.0, experience: 16, rating: 4.8, reviews: 2100, price: 320, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400' }],
+'Karachi': [{ name: 'Marriott Karachi', distance: 1.5, experience: 20, rating: 4.5, reviews: 1600, price: 180, image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400' }],
+'Lahore': [{ name: 'Pearl Continental Lahore', distance: 2.0, experience: 22, rating: 4.6, reviews: 1800, price: 160, image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400' }],
+'Islamabad': [{ name: 'Serena Hotel Islamabad', distance: 1.8, experience: 19, rating: 4.7, reviews: 1700, price: 170, image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400' }]
 };
-if (city === 'all') {
-Object.keys(hotelsData).forEach(c => {
-hotelsData[c].forEach(h => h.cityName = c);
-hotels = hotels.concat(hotelsData[c]);
-});
-} else {
-hotels = (hotelsData[city] || []).map(h => ({...h, cityName: city}));
-}
-if (hotels.length === 0) {
-container.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">No hotels found</p>';
-return;
-}
-container.innerHTML = hotels.map(hotel => `
-<div class="hotel-card">
-<img src="${hotel.image}" alt="${hotel.name}" onerror="this.src='https://via.placeholder.com/400x200?text=Hotel'">
-<div class="hotel-info">
-<h4>${hotel.name}</h4>
-<p style="color: #666; margin: 5px 0;">📍 ${hotel.distance} km from ${hotel.cityName} center</p>
-<p class="hotel-experience">⭐ ${hotel.experience} years experienced staff</p>
-<p style="color: var(--accent-gold); font-weight: 600;">Rating: ${hotel.rating}/5 (${hotel.reviews} reviews)</p>
-<p style="font-size: 1.2rem; font-weight: 700; color: var(--primary-green); margin: 10px 0;">$${hotel.price}/night</p>
-<button class="btn" style="width: 100%; background: var(--primary-green); color: white; padding: 10px;">View Details</button>
-</div>
-</div>
-`).join('');
+if (city === 'all') { Object.keys(hotelsData).forEach(c => { hotelsData[c].forEach(h => h.cityName = c); hotels = hotels.concat(hotelsData[c]); }); }
+else { hotels = (hotelsData[city] || []).map(h => ({...h, cityName: city})); }
+if (hotels.length === 0) { container.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">No hotels found</p>'; return; }
+container.innerHTML = hotels.map(hotel => `<div class="hotel-card"><img src="${hotel.image}" alt="${hotel.name}" onerror="this.src='https://via.placeholder.com/400x200?text=Hotel'"><div class="hotel-info"><h4>${hotel.name}</h4><p style="color: #666; margin: 5px 0;">📍 ${hotel.distance} km from ${hotel.cityName} center</p><p class="hotel-experience">⭐ ${hotel.experience} years experienced staff</p><p style="color: var(--accent-gold); font-weight: 600;">Rating: ${hotel.rating}/5 (${hotel.reviews} reviews)</p><p style="font-size: 1.2rem; font-weight: 700; color: var(--primary-green); margin: 10px 0;">$${hotel.price}/night</p><button class="btn" style="width: 100%; background: var(--primary-green); color: white; padding: 10px;">View Details</button></div></div>`).join('');
 }
 let customPackages = JSON.parse(localStorage.getItem('customPackages')) || [
 { id: 1, titleEn: 'Umrah Package - Economy', titleUr: 'عمرہ پیکیج - اکانومی', priceEn: 'PKR 325,000', priceUr: '3,25,000 روپے', meccaHotelEn: '3-Star, 500m from Haram', meccaHotelUr: '3 اسٹار، حرم سے 500 میٹر', medinaHotelEn: '3-Star, 500m from Nabawi', medinaHotelUr: '3 اسٹار، نبوی سے 500 میٹر', totalDays: 30, meccaDays: 15, medinaDays: 15, departureDate: '', returnDate: '' },
 { id: 2, titleEn: 'Umrah Package - VIP', titleUr: 'عمرہ پیکیج - وی آئی پی', priceEn: 'PKR 550,000', priceUr: '5,50,000 روپے', meccaHotelEn: '5-Star, 50m from Haram', meccaHotelUr: '5 اسٹار، حرم سے 50 میٹر', medinaHotelEn: '5-Star, 50m from Nabawi', medinaHotelUr: '5 اسٹار، نبوی سے 50 میٹر', totalDays: 21, meccaDays: 10, medinaDays: 11, departureDate: '', returnDate: '' }
 ];
-function toggleLanguage() {
-currentLang = currentLang === 'en' ? 'ur' : 'en';
-localStorage.setItem('siteLang', currentLang);
-renderCustomPackages();
-updateUIText();
-}
+function toggleLanguage() { currentLang = currentLang === 'en' ? 'ur' : 'en'; localStorage.setItem('siteLang', currentLang); renderCustomPackages(); updateUIText(); }
 function updateUIText() {
 const isUrdu = currentLang === 'ur';
 const pkgTitle = document.getElementById('packagesSectionTitle');
 if(pkgTitle) pkgTitle.textContent = isUrdu ? 'ہمارے عمرہ پیکجز' : 'Our Umrah Packages';
-document.querySelectorAll('.lang-btn').forEach(btn => {
-btn.textContent = isUrdu ? 'English' : 'اردو';
-});
+document.querySelectorAll('.lang-btn').forEach(btn => { btn.textContent = isUrdu ? 'English' : 'اردو'; });
 }
 function renderCustomPackages() {
 const grid = document.getElementById('packagesGrid');
@@ -3207,35 +2431,11 @@ const ziyaratText = isUrdu ? 'زیارت اور ٹرانسپورٹ' : 'Ziyarat &
 const bookText = isUrdu ? 'ابھی بک کریں' : 'Book Now';
 const meccaLabel = isUrdu ? 'مکہ:' : 'Mecca:';
 const medinaLabel = isUrdu ? 'مدینہ:' : 'Medina:';
-const companyName = 'Nadeem Hadi Travel';
-return `
-<div class="package-card" ${isUrdu ? 'dir="rtl" style="text-align: right; font-family: \'Noto Nastaliq Urdu\', serif;"' : ''}>
-<div class="package-header">
-<div class="company-name-on-card">${companyName}</div>
-<h3 style="color: var(--accent-gold);">${title}</h3>
-<div class="package-price" style="margin-top: 10px;">${price}</div>
-</div>
-<div class="package-body" ${isUrdu ? 'dir="rtl" style="text-align: right;"' : ''}>
-<ul>
-<li><i class="fas fa-hotel"></i> ${meccaLabel} ${mecca}</li>
-<li><i class="fas fa-hotel"></i> ${medinaLabel} ${medina}</li>
-<li><i class="fas fa-calendar-alt"></i> ${pkg.totalDays} ${daysText} (${pkg.meccaDays} ${meccaText}, ${pkg.medinaDays} ${medinaText})</li>
-${pkg.departureDate ? `<li><i class="fas fa-plane-departure"></i> Departure: ${pkg.departureDate}</li>` : ''}
-${pkg.returnDate ? `<li><i class="fas fa-plane-arrival"></i> Return: ${pkg.returnDate}</li>` : ''}
-<li><i class="fas fa-check-circle"></i> ${ticketText}</li>
-<li><i class="fas fa-check-circle"></i> ${ziyaratText}</li>
-</ul>
-</div>
-<div class="package-footer"><button class="btn" onclick="openServiceDetails('${pkg.titleEn}', 'Package')">${bookText}</button></div>
-</div>
-`;
+return `<div class="package-card" ${isUrdu ? 'dir="rtl" style="text-align: right; font-family: \'Noto Nastaliq Urdu\', serif;"' : ''}><div class="package-header"><div class="company-name-on-card">Nadeem Hadi Travel</div><h3 style="color: var(--accent-gold);">${title}</h3><div class="package-price" style="margin-top: 10px;">${price}</div></div><div class="package-body" ${isUrdu ? 'dir="rtl" style="text-align: right;"' : ''}><ul><li><i class="fas fa-hotel"></i> ${meccaLabel} ${mecca}</li><li><i class="fas fa-hotel"></i> ${medinaLabel} ${medina}</li><li><i class="fas fa-calendar-alt"></i> ${pkg.totalDays} ${daysText} (${pkg.meccaDays} ${meccaText}, ${pkg.medinaDays} ${medinaText})</li>${pkg.departureDate ? `<li><i class="fas fa-plane-departure"></i> Departure: ${pkg.departureDate}</li>` : ''}${pkg.returnDate ? `<li><i class="fas fa-plane-arrival"></i> Return: ${pkg.returnDate}</li>` : ''}<li><i class="fas fa-check-circle"></i> ${ticketText}</li><li><i class="fas fa-check-circle"></i> ${ziyaratText}</li></ul></div><div class="package-footer"><button class="btn" onclick="openServiceDetails('${pkg.titleEn}', 'Package')">${bookText}</button></div></div>`;
 }).join('');
 }
 function openPackageEditor(id = null) {
-if (!hasPermission('edit_packages')) {
-showToast('You do not have permission to edit packages');
-return;
-}
+if (!hasPermission('edit_packages')) { showToast('You do not have permission to edit packages'); return; }
 document.querySelector('#packageEditorModal form').reset();
 document.getElementById('pkgEditId').value = '';
 if(id) {
@@ -3293,10 +2493,7 @@ showToast('Package updated successfully!');
 refreshAdminView();
 }
 function deletePackage(id) {
-if (!hasPermission('delete_packages')) {
-showToast('You do not have permission to delete packages');
-return;
-}
+if (!hasPermission('delete_packages')) { showToast('You do not have permission to delete packages'); return; }
 const pkg = customPackages.find(p => p.id === id);
 if(confirm(`Delete package "${pkg.titleEn}"?`)) {
 customPackages = customPackages.filter(p => p.id !== id);
@@ -3308,10 +2505,7 @@ refreshAdminView();
 }
 }
 function updateBookingStatus(id, newStatus) {
-if (!hasPermission('manage_bookings')) {
-showToast('You do not have permission to manage bookings');
-return;
-}
+if (!hasPermission('manage_bookings')) { showToast('You do not have permission to manage bookings'); return; }
 const index = bookings.findIndex(b => b.id === id);
 if (index !== -1) {
 const oldStatus = bookings[index].status;
@@ -3324,10 +2518,7 @@ refreshAdminView();
 }
 }
 function deleteBooking(id) {
-if (!hasPermission('delete_bookings')) {
-showToast('You do not have permission to delete bookings');
-return;
-}
+if (!hasPermission('delete_bookings')) { showToast('You do not have permission to delete bookings'); return; }
 const booking = bookings.find(b => b.id === id);
 if(confirm('Are you sure you want to delete this booking record?')) {
 bookings = bookings.filter(b => b.id !== id);
@@ -3338,10 +2529,7 @@ refreshAdminView();
 }
 }
 function deleteInquiry(index) {
-if (!hasPermission('delete_inquiries')) {
-showToast('You do not have permission to delete inquiries');
-return;
-}
+if (!hasPermission('delete_inquiries')) { showToast('You do not have permission to delete inquiries'); return; }
 const inq = inquiries[index];
 inquiries.splice(index, 1);
 localStorage.setItem('inquiries', JSON.stringify(inquiries));
@@ -3350,10 +2538,7 @@ showToast('Inquiry deleted.');
 refreshAdminView();
 }
 function deleteUser(index) {
-if (!hasPermission('delete_users')) {
-showToast('You do not have permission to delete users');
-return;
-}
+if (!hasPermission('delete_users')) { showToast('You do not have permission to delete users'); return; }
 const user = users[index];
 if(confirm(`Are you sure you want to delete user "${user.name}"?`)) {
 users.splice(index, 1);
@@ -3364,37 +2549,16 @@ refreshAdminView();
 }
 }
 function exportToExcel() {
-if (!hasPermission('export_data')) {
-showToast('You do not have permission to export data');
-return;
-}
-if (typeof XLSX === 'undefined') {
-showToast('Excel library not loaded. Please check your internet connection.');
-return;
-}
+if (!hasPermission('export_data')) { showToast('You do not have permission to export data'); return; }
+if (typeof XLSX === 'undefined') { showToast('Excel library not loaded.'); return; }
 const wb = XLSX.utils.book_new();
-const bookingsData = bookings.map(b => ({
-'Ref ID': b.id, 'Customer': b.userName, 'User ID': b.userId,
-'Service/Package': b.item, 'Type': b.type, 'Date': b.date, 'Status': b.status,
-'PNR': b.details?.pnr || '', 'Flight': b.details?.flight || '', 'Visa': b.details?.visa || ''
-}));
+const bookingsData = bookings.map(b => ({ 'Ref ID': b.id, 'Customer': b.userName, 'User ID': b.userId, 'Service/Package': b.item, 'Type': b.type, 'Date': b.date, 'Status': b.status, 'PNR': b.details?.pnr || '', 'Flight': b.details?.flight || '', 'Visa': b.details?.visa || '' }));
 XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(bookingsData), "Bookings");
-const inqData = inquiries.map(i => ({
-'Name': i.name, 'Phone': i.phone, 'Email': i.email,
-'Message': i.message, 'Date': new Date(i.date).toLocaleString()
-}));
+const inqData = inquiries.map(i => ({ 'Name': i.name, 'Phone': i.phone, 'Email': i.email, 'Message': i.message, 'Date': new Date(i.date).toLocaleString() }));
 XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(inqData), "Inquiries");
-const usersData = users.map(u => ({
-'Name': u.name, 'Email': u.email, 'Phone': u.phone,
-'Reward Points': u.rewardPoints || 0, 'Joined Date': new Date(u.registeredAt).toLocaleDateString()
-}));
+const usersData = users.map(u => ({ 'Name': u.name, 'Email': u.email, 'Phone': u.phone, 'Reward Points': u.rewardPoints || 0, 'Joined Date': new Date(u.registeredAt).toLocaleDateString() }));
 XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(usersData), "Users");
-// Add staff data
-const staffData = staffMembers.map(s => ({
-'Name': s.name, 'Email': s.email, 'Phone': s.phone,
-'Role': ROLES[s.role].name, 'Status': s.status,
-'Last Login': s.lastLogin ? new Date(s.lastLogin).toLocaleString() : 'Never'
-}));
+const staffData = staffMembers.map(s => ({ 'Name': s.name, 'Email': s.email, 'Phone': s.phone, 'Role': ROLES[s.role].name, 'Status': s.status, 'Last Login': s.lastLogin ? new Date(s.lastLogin).toLocaleString() : 'Never' }));
 XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(staffData), "Staff");
 XLSX.writeFile(wb, "NadeemHadiTravel_Records.xlsx");
 logActivity('edit', `${currentStaffUser.name} exported data to Excel`);
