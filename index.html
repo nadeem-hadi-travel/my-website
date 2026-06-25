@@ -1751,8 +1751,9 @@ font-weight: 600;
 <div id="expenseModal" class="modal">
 <div class="modal-content" style="max-width: 600px;">
 <span class="close-modal" onclick="closeModal('expenseModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px;">Add Expense</h2>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;" id="expenseModalTitle">Add Expense</h2>
 <form onsubmit="saveExpense(event)">
+<input type="hidden" id="expEditId">  <!-- ✅ YEH LINE ADD KAREIN -->
 <div class="form-group"><label>Category</label>
 <select id="exp-category" required>
 <option value="transport">Transport</option>
@@ -3807,6 +3808,113 @@ showToast("Settings saved successfully!");
 showToast("Error: " + err.message);
 }
 }
+window.openExpenseModal = function(id) {
+const modal = document.getElementById('expenseModal');
+const title = document.getElementById('expenseModalTitle');
+
+// Form reset karein
+document.getElementById('expEditId').value = '';
+document.getElementById('exp-category').value = 'transport';
+document.getElementById('exp-description').value = '';
+document.getElementById('exp-amount').value = '';
+document.getElementById('exp-receipt-url').value = '';
+document.getElementById('exp-date').value = new Date().toISOString().split('T')[0];
+
+if (id) {
+// ✅ EDIT MODE
+const exp = window.expenses.find(e => e.id === id);
+if (exp) {
+title.textContent = 'Edit Expense';
+document.getElementById('expEditId').value = id;
+document.getElementById('exp-category').value = exp.category;
+document.getElementById('exp-description').value = exp.description;
+document.getElementById('exp-amount').value = exp.amount;
+document.getElementById('exp-date').value = exp.date;
+document.getElementById('exp-receipt-url').value = exp.receiptUrl || '';
+}
+} else {
+// ✅ NEW MODE
+title.textContent = 'Add Expense';
+}
+
+modal.style.display = 'block';
+}
+}
+window.saveExpense = async function(e) {
+e.preventDefault();
+const id = document.getElementById('expEditId').value;
+const data = {
+category: document.getElementById('exp-category').value,
+description: document.getElementById('exp-description').value,
+amount: parseFloat(document.getElementById('exp-amount').value),
+date: document.getElementById('exp-date').value,
+receiptUrl: document.getElementById('exp-receipt-url').value,
+addedBy: window.currentStaffUser ? window.currentStaffUser.name : 'System',
+updatedAt: serverTimestamp()
+};
+
+try {
+if (id) {
+// ✅ UPDATE EXISTING EXPENSE
+await updateDoc(doc(db, "expenses", id), data);
+await logActivity('edit', `Updated expense: ${data.description}`);
+showToast("Expense updated successfully!");
+} else {
+// ✅ ADD NEW EXPENSE
+data.createdAt = serverTimestamp();
+await addDoc(collection(db, "expenses"), data);
+await logActivity('create', `Added expense: ${data.description}`);
+showToast("Expense saved successfully!");
+}
+closeModal('expenseModal');
+
+// Form reset
+document.getElementById('expEditId').value = '';
+document.getElementById('exp-description').value = '';
+document.getElementById('exp-amount').value = '';
+document.getElementById('exp-receipt-url').value = '';
+} catch(err) { 
+showToast("Error: " + err.message); 
+}
+}
+window.loadExpenses = function() {
+const totalExpenses = window.expenses.reduce((sum, e) => sum + e.amount, 0);
+const now = new Date();
+const thisMonth = window.expenses.filter(e => {
+const d = new Date(e.date);
+return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+}).reduce((sum, e) => sum + e.amount, 0);
+const categories = new Set(window.expenses.map(e => e.category)).size;
+const totalRevenue = window.bookings.filter(b => b.status === 'confirmed').reduce((sum, b) => sum + (b.amount || 350000), 0);
+const profit = totalRevenue - totalExpenses;
+
+document.getElementById('exp-total').textContent = 'PKR ' + totalExpenses.toLocaleString();
+document.getElementById('exp-month').textContent = 'PKR ' + thisMonth.toLocaleString();
+document.getElementById('exp-categories').textContent = categories;
+document.getElementById('exp-profit').textContent = 'PKR ' + profit.toLocaleString();
+
+const tbody = document.getElementById('expenses-table-body');
+if(tbody) {
+tbody.innerHTML = window.expenses.slice().reverse().map(e => `
+<tr>
+<td>${e.date}</td>
+<td><span class="expense-category cat-${e.category}">${e.category}</span></td>
+<td>${e.description}</td>
+<td>PKR ${e.amount.toLocaleString()}</td>
+<td>${e.addedBy}</td>
+<td>
+${e.receiptUrl ? `<a href="${e.receiptUrl}" target="_blank" class="action-btn btn-edit" title="View Receipt"><i class="fas fa-eye"></i></a>` : ''}
+<button class="action-btn btn-edit" onclick="openExpenseModal('${e.id}')" title="Edit Expense">
+<i class="fas fa-edit"></i>
+</button>
+<button class="action-btn btn-delete" onclick="deleteExpense('${e.id}')" title="Delete Expense">
+<i class="fas fa-trash"></i>
+</button>
+</td>
+</tr>
+`).join('') || '<tr><td colspan="6" style="text-align:center;">No expenses recorded</td></tr>';
+}
+}  
 console.log("✅ Multi-Device Sync Ready!");
 </script>
 </body>
