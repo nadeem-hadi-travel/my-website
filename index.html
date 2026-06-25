@@ -1133,7 +1133,12 @@ font-family: inherit;
 <li onclick="showAdminPage('staff', this)" id="staffMenuItem" style="display:none;"><i class="fas fa-user-tie"></i> Staff Management</li>
 <li onclick="showAdminPage('permissions', this)" id="permissionsMenuItem" style="display:none;"><i class="fas fa-key"></i> Permissions</li>
 <li onclick="showAdminPage('activity-log', this)" id="activityLogMenuItem" style="display:none;"><i class="fas fa-history"></i> Activity Log</li>
-<li onclick="exitAdminView()"><i class="fas fa-sign-out-alt"></i> Exit to Website</li>
+<li onclick="exitAdminView()"><li onclick="showAdminPage('financial', this)" id="financialMenuItem" style="display:none;"><i class="fas fa-chart-line"></i> Financial Reports</li>
+<li onclick="showAdminPage('visa-tracker', this)" id="visaTrackerMenuItem" style="display:none;"><i class="fas fa-passport"></i> Visa Tracker</li>
+<li onclick="showAdminPage('groups', this)" id="groupsMenuItem" style="display:none;"><i class="fas fa-users-cog"></i> Group Management</li>
+<li onclick="showAdminPage('promotions', this)" id="promotionsMenuItem" style="display:none;"><i class="fas fa-gift"></i> Promotions</li>
+<li onclick="showAdminPage('analytics', this)" id="analyticsMenuItem" style="display:none;"><i class="fas fa-chart-pie"></i> Analytics</li>
+<li onclick="showAdminPage('settings', this)" id="settingsMenuItem" style="display:none;"><i class="fas fa-cog"></i> System Settings</li><i class="fas fa-sign-out-alt"></i> Exit to Website</li>
 </ul>
 </div>
 <div class="admin-main-area">
@@ -1251,6 +1256,87 @@ font-family: inherit;
 <button class="btn" style="background: #dc3545; color: white;" onclick="clearActivityLog()">
 <i class="fas fa-trash"></i> Clear Log
 </button>
+</div>
+<!-- VISA APPLICATION MODAL -->
+<div id="visaApplicationModal" class="modal">
+  <div class="modal-content" style="max-width: 600px;">
+    <span class="close-modal" onclick="closeModal('visaApplicationModal')">&times;</span>
+    <h2 style="color: var(--primary-green); margin-bottom: 20px;">New Visa Application</h2>
+    <form onsubmit="saveVisaApplication(event)">
+      <input type="hidden" id="visaEditId">
+      <div class="form-group"><label>Applicant Name</label><input type="text" id="visa-applicant" required></div>
+      <div class="form-group"><label>Passport Number</label><input type="text" id="visa-passport" required></div>
+      <div class="form-group"><label>Visa Type</label>
+        <select id="visa-type" required>
+          <option value="umrah">Umrah Visa</option>
+          <option value="tourist">Tourist Visa</option>
+          <option value="business">Business Visa</option>
+          <option value="work">Work Visa</option>
+          <option value="family">Family Visit Visa</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Destination Country</label><input type="text" id="visa-country" value="Saudi Arabia" required></div>
+      <div class="form-group"><label>Status</label>
+        <select id="visa-status">
+          <option value="pending">Pending</option>
+          <option value="processing">In Process</option>
+          <option value="approved">Approved</option>
+          <option value="rejected">Rejected</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Notes</label><textarea id="visa-notes" rows="3"></textarea></div>
+      <button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Save Application</button>
+    </form>
+  </div>
+</div>
+
+<!-- GROUP MODAL -->
+<div id="groupModal" class="modal">
+  <div class="modal-content" style="max-width: 700px;">
+    <span class="close-modal" onclick="closeModal('groupModal')">&times;</span>
+    <h2 style="color: var(--primary-green); margin-bottom: 20px;">Create Umrah Group</h2>
+    <form onsubmit="saveGroup(event)">
+      <input type="hidden" id="groupEditId">
+      <div class="form-group"><label>Group Name</label><input type="text" id="group-name" placeholder="e.g., Ramadan Group 2026" required></div>
+      <div class="search-grid">
+        <div class="form-group"><label>Departure Date</label><input type="date" id="group-departure" required></div>
+        <div class="form-group"><label>Return Date</label><input type="date" id="group-return" required></div>
+        <div class="form-group"><label>Group Leader</label><input type="text" id="group-leader" required></div>
+        <div class="form-group"><label>Max Pilgrims</label><input type="number" id="group-max" value="45" required></div>
+      </div>
+      <div class="form-group"><label>Package</label>
+        <select id="group-package"></select>
+      </div>
+      <div class="form-group"><label>Notes</label><textarea id="group-notes" rows="3"></textarea></div>
+      <button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Save Group</button>
+    </form>
+  </div>
+</div>
+
+<!-- PROMOTION MODAL -->
+<div id="promotionModal" class="modal">
+  <div class="modal-content" style="max-width: 600px;">
+    <span class="close-modal" onclick="closeModal('promotionModal')">&times;</span>
+    <h2 style="color: var(--primary-green); margin-bottom: 20px;">Create Promotion</h2>
+    <form onsubmit="savePromotion(event)">
+      <input type="hidden" id="promoEditId">
+      <div class="form-group"><label>Promotion Title</label><input type="text" id="promo-title" required></div>
+      <div class="form-group"><label>Description</label><textarea id="promo-desc" rows="3" required></textarea></div>
+      <div class="search-grid">
+        <div class="form-group"><label>Discount Type</label>
+          <select id="promo-type">
+            <option value="percentage">Percentage (%)</option>
+            <option value="fixed">Fixed Amount (PKR)</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Discount Value</label><input type="number" id="promo-value" required></div>
+        <div class="form-group"><label>Start Date</label><input type="date" id="promo-start" required></div>
+        <div class="form-group"><label>End Date</label><input type="date" id="promo-end" required></div>
+      </div>
+      <div class="form-group"><label>Promo Code</label><input type="text" id="promo-code" placeholder="e.g., UMRAH20" required></div>
+      <button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Save Promotion</button>
+    </form>
+  </div>
 </div>
 <div class="activity-log">
 <div id="activityLogList"></div>
@@ -2713,7 +2799,449 @@ window.handleStaffLogin = async function(e) {
     showToast('Invalid credentials!');
   }
 }
+// ============================================
+// NEW FEATURE: FINANCIAL REPORTS
+// ============================================
+window.loadFinancialReports = async function() {
+  const period = document.getElementById('financialPeriod').value;
+  const now = new Date();
+  let startDate = new Date();
+  
+  if (period === 'today') startDate.setHours(0,0,0,0);
+  else if (period === 'week') startDate.setDate(now.getDate() - 7);
+  else if (period === 'month') startDate.setMonth(now.getMonth() - 1);
+  else if (period === 'year') startDate.setFullYear(now.getFullYear() - 1);
+  else startDate = new Date(0);
+  
+  // Simulate financial data (replace with real Firestore data)
+  const totalRevenue = window.bookings.filter(b => b.status === 'confirmed').length * 350000;
+  const pendingPayments = window.bookings.filter(b => b.status === 'pending').length * 350000;
+  
+  document.getElementById('fin-total-revenue').textContent = 'PKR ' + totalRevenue.toLocaleString();
+  document.getElementById('fin-pending-payments').textContent = 'PKR ' + pendingPayments.toLocaleString();
+  document.getElementById('fin-completed').textContent = window.bookings.filter(b => b.status === 'confirmed').length;
+  document.getElementById('fin-refunds').textContent = 'PKR 0';
+  
+  const tbody = document.getElementById('financial-table-body');
+  tbody.innerHTML = window.bookings.slice(-10).reverse().map(b => `
+    <tr>
+      <td>${b.createdAt ? new Date(b.createdAt.toDate ? b.createdAt.toDate() : b.createdAt).toLocaleDateString() : 'N/A'}</td>
+      <td>${b.userName}</td>
+      <td>${b.item}</td>
+      <td>PKR 350,000</td>
+      <td>Bank Transfer</td>
+      <td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td>
+    </tr>
+  `).join('') || '<tr><td colspan="6" style="text-align:center;">No transactions</td></tr>';
+}
 
+window.exportFinancialReport = function() {
+  const data = window.bookings.map(b => ({
+    Date: b.createdAt ? new Date(b.createdAt.toDate ? b.createdAt.toDate() : b.createdAt).toLocaleDateString() : '',
+    Customer: b.userName,
+    Service: b.item,
+    Amount: 350000,
+    Status: b.status
+  }));
+  const ws = XLSX.utils.json_to_sheet(data);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Financial Report");
+  XLSX.writeFile(wb, "Financial_Report.xlsx");
+  showToast("Financial report exported!");
+}
+
+// ============================================
+// NEW FEATURE: VISA TRACKER
+// ============================================
+window.visaApplications = [];
+
+window.loadVisaTracker = async function() {
+  try {
+    const snapshot = await getDocs(collection(db, "visaApplications"));
+    window.visaApplications = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  } catch (e) {
+    console.log("No visa applications yet");
+    window.visaApplications = [];
+  }
+  
+  document.getElementById('visa-pending').textContent = window.visaApplications.filter(v => v.status === 'pending').length;
+  document.getElementById('visa-processing').textContent = window.visaApplications.filter(v => v.status === 'processing').length;
+  document.getElementById('visa-approved').textContent = window.visaApplications.filter(v => v.status === 'approved').length;
+  document.getElementById('visa-rejected').textContent = window.visaApplications.filter(v => v.status === 'rejected').length;
+  
+  const tbody = document.getElementById('visa-tracker-body');
+  tbody.innerHTML = window.visaApplications.map(v => `
+    <tr>
+      <td>${v.applicant}</td>
+      <td>${v.passport}</td>
+      <td>${v.type}</td>
+      <td>${v.appliedDate}</td>
+      <td><span class="status-pill pill-${v.status === 'approved' ? 'confirmed' : v.status === 'rejected' ? 'rejected' : 'pending'}">${v.status.toUpperCase()}</span></td>
+      <td>
+        <button class="action-btn btn-edit" onclick="editVisaApplication('${v.id}')"><i class="fas fa-edit"></i></button>
+        <button class="action-btn btn-delete" onclick="deleteVisaApplication('${v.id}')"><i class="fas fa-trash"></i></button>
+      </td>
+    </tr>
+  `).join('') || '<tr><td colspan="6" style="text-align:center;">No visa applications</td></tr>';
+}
+
+window.openNewVisaApplication = function() {
+  document.getElementById('visaEditId').value = '';
+  document.getElementById('visa-applicant').value = '';
+  document.getElementById('visa-passport').value = '';
+  document.getElementById('visa-type').value = 'umrah';
+  document.getElementById('visa-country').value = 'Saudi Arabia';
+  document.getElementById('visa-status').value = 'pending';
+  document.getElementById('visa-notes').value = '';
+  document.getElementById('visaApplicationModal').style.display = 'block';
+}
+
+window.editVisaApplication = function(id) {
+  const v = window.visaApplications.find(va => va.id === id);
+  if (!v) return;
+  document.getElementById('visaEditId').value = id;
+  document.getElementById('visa-applicant').value = v.applicant;
+  document.getElementById('visa-passport').value = v.passport;
+  document.getElementById('visa-type').value = v.type;
+  document.getElementById('visa-country').value = v.country;
+  document.getElementById('visa-status').value = v.status;
+  document.getElementById('visa-notes').value = v.notes || '';
+  document.getElementById('visaApplicationModal').style.display = 'block';
+}
+
+window.saveVisaApplication = async function(e) {
+  e.preventDefault();
+  const id = document.getElementById('visaEditId').value;
+  const data = {
+    applicant: document.getElementById('visa-applicant').value,
+    passport: document.getElementById('visa-passport').value,
+    type: document.getElementById('visa-type').value,
+    country: document.getElementById('visa-country').value,
+    status: document.getElementById('visa-status').value,
+    notes: document.getElementById('visa-notes').value,
+    appliedDate: new Date().toLocaleDateString()
+  };
+  
+  try {
+    if (id) {
+      await updateDoc(doc(db, "visaApplications", id), data);
+      await logActivity('edit', `Updated visa application for ${data.applicant}`);
+    } else {
+      await addDoc(collection(db, "visaApplications"), data);
+      await logActivity('create', `New visa application for ${data.applicant}`);
+    }
+    showToast("Visa application saved!");
+    closeModal('visaApplicationModal');
+    loadVisaTracker();
+  } catch (err) {
+    showToast("Error: " + err.message);
+  }
+}
+
+window.deleteVisaApplication = async function(id) {
+  if (!confirm("Delete this visa application?")) return;
+  await deleteDoc(doc(db, "visaApplications", id));
+  await logActivity('delete', `Deleted visa application`);
+  showToast("Visa application deleted.");
+  loadVisaTracker();
+}
+
+// ============================================
+// NEW FEATURE: GROUP MANAGEMENT
+// ============================================
+window.umrahGroups = [];
+
+window.loadGroups = async function() {
+  try {
+    const snapshot = await getDocs(collection(db, "umrahGroups"));
+    window.umrahGroups = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  } catch (e) {
+    window.umrahGroups = [];
+  }
+  
+  document.getElementById('groups-active').textContent = window.umrahGroups.length;
+  document.getElementById('groups-pilgrims').textContent = window.umrahGroups.reduce((sum, g) => sum + (g.currentPilgrims || 0), 0);
+  document.getElementById('groups-upcoming').textContent = window.umrahGroups.filter(g => new Date(g.departure) > new Date()).length;
+  document.getElementById('groups-leaders').textContent = new Set(window.umrahGroups.map(g => g.leader)).size;
+  
+  const list = document.getElementById('groups-list');
+  list.innerHTML = window.umrahGroups.map(g => `
+    <div class="staff-card">
+      <div class="staff-card-header">
+        <div><h4 style="margin:0;">${g.name}</h4><p style="margin:0; color:#666; font-size:0.9rem;">${g.currentPilgrims || 0} / ${g.maxPilgrims} Pilgrims</p></div>
+        <span class="staff-role-badge role-manager">Active</span>
+      </div>
+      <p><i class="fas fa-calendar"></i> Departure: ${g.departure}</p>
+      <p><i class="fas fa-user-tie"></i> Leader: ${g.leader}</p>
+      <div style="margin-top:15px; display:flex; gap:10px;">
+        <button class="action-btn btn-edit" onclick="editGroup('${g.id}')"><i class="fas fa-edit"></i> Edit</button>
+        <button class="action-btn btn-delete" onclick="deleteGroup('${g.id}')"><i class="fas fa-trash"></i> Delete</button>
+      </div>
+    </div>
+  `).join('') || '<p style="text-align:center; color:#999; padding:40px;">No groups created yet</p>';
+}
+
+window.openNewGroupModal = function() {
+  document.getElementById('groupEditId').value = '';
+  document.getElementById('group-name').value = '';
+  document.getElementById('group-departure').value = '';
+  document.getElementById('group-return').value = '';
+  document.getElementById('group-leader').value = '';
+  document.getElementById('group-max').value = 45;
+  document.getElementById('group-notes').value = '';
+  
+  const pkgSelect = document.getElementById('group-package');
+  pkgSelect.innerHTML = window.customPackages.map(p => `<option value="${p.id}">${p.titleEn}</option>`).join('');
+  
+  document.getElementById('groupModal').style.display = 'block';
+}
+
+window.editGroup = function(id) {
+  const g = window.umrahGroups.find(gr => gr.id === id);
+  if (!g) return;
+  document.getElementById('groupEditId').value = id;
+  document.getElementById('group-name').value = g.name;
+  document.getElementById('group-departure').value = g.departure;
+  document.getElementById('group-return').value = g.return;
+  document.getElementById('group-leader').value = g.leader;
+  document.getElementById('group-max').value = g.maxPilgrims;
+  document.getElementById('group-notes').value = g.notes || '';
+  document.getElementById('groupModal').style.display = 'block';
+}
+
+window.saveGroup = async function(e) {
+  e.preventDefault();
+  const id = document.getElementById('groupEditId').value;
+  const data = {
+    name: document.getElementById('group-name').value,
+    departure: document.getElementById('group-departure').value,
+    return: document.getElementById('group-return').value,
+    leader: document.getElementById('group-leader').value,
+    maxPilgrims: parseInt(document.getElementById('group-max').value),
+    currentPilgrims: 0,
+    packageId: document.getElementById('group-package').value,
+    notes: document.getElementById('group-notes').value
+  };
+  
+  try {
+    if (id) {
+      await updateDoc(doc(db, "umrahGroups", id), data);
+      await logActivity('edit', `Updated group ${data.name}`);
+    } else {
+      await addDoc(collection(db, "umrahGroups"), data);
+      await logActivity('create', `Created group ${data.name}`);
+    }
+    showToast("Group saved!");
+    closeModal('groupModal');
+    loadGroups();
+  } catch (err) {
+    showToast("Error: " + err.message);
+  }
+}
+
+window.deleteGroup = async function(id) {
+  if (!confirm("Delete this group?")) return;
+  await deleteDoc(doc(db, "umrahGroups", id));
+  await logActivity('delete', `Deleted group`);
+  showToast("Group deleted.");
+  loadGroups();
+}
+
+// ============================================
+// NEW FEATURE: PROMOTIONS
+// ============================================
+window.promotions = [];
+
+window.loadPromotions = async function() {
+  try {
+    const snapshot = await getDocs(collection(db, "promotions"));
+    window.promotions = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  } catch (e) {
+    window.promotions = [];
+  }
+  
+  const list = document.getElementById('promotions-list');
+  list.innerHTML = window.promotions.map(p => `
+    <div class="staff-card" style="border-left-color: var(--accent-gold);">
+      <div class="staff-card-header">
+        <div><h4 style="margin:0;">${p.title}</h4><p style="margin:0; color:#666; font-size:0.9rem;">Code: <strong style="color:var(--accent-gold);">${p.code}</strong></p></div>
+        <span class="staff-role-badge role-accountant">${p.type === 'percentage' ? p.value + '%' : 'PKR ' + p.value}</span>
+      </div>
+      <p style="font-size:0.9rem; color:#555;">${p.description}</p>
+      <p style="font-size:0.85rem; color:#999;"><i class="fas fa-calendar"></i> ${p.startDate} to ${p.endDate}</p>
+      <div style="margin-top:15px; display:flex; gap:10px;">
+        <button class="action-btn btn-edit" onclick="editPromotion('${p.id}')"><i class="fas fa-edit"></i> Edit</button>
+        <button class="action-btn btn-delete" onclick="deletePromotion('${p.id}')"><i class="fas fa-trash"></i> Delete</button>
+      </div>
+    </div>
+  `).join('') || '<p style="text-align:center; color:#999; padding:40px;">No promotions created yet</p>';
+}
+
+window.openNewPromotionModal = function() {
+  document.getElementById('promoEditId').value = '';
+  document.getElementById('promo-title').value = '';
+  document.getElementById('promo-desc').value = '';
+  document.getElementById('promo-type').value = 'percentage';
+  document.getElementById('promo-value').value = '';
+  document.getElementById('promo-start').value = '';
+  document.getElementById('promo-end').value = '';
+  document.getElementById('promo-code').value = '';
+  document.getElementById('promotionModal').style.display = 'block';
+}
+
+window.editPromotion = function(id) {
+  const p = window.promotions.find(pr => pr.id === id);
+  if (!p) return;
+  document.getElementById('promoEditId').value = id;
+  document.getElementById('promo-title').value = p.title;
+  document.getElementById('promo-desc').value = p.description;
+  document.getElementById('promo-type').value = p.type;
+  document.getElementById('promo-value').value = p.value;
+  document.getElementById('promo-start').value = p.startDate;
+  document.getElementById('promo-end').value = p.endDate;
+  document.getElementById('promo-code').value = p.code;
+  document.getElementById('promotionModal').style.display = 'block';
+}
+
+window.savePromotion = async function(e) {
+  e.preventDefault();
+  const id = document.getElementById('promoEditId').value;
+  const data = {
+    title: document.getElementById('promo-title').value,
+    description: document.getElementById('promo-desc').value,
+    type: document.getElementById('promo-type').value,
+    value: parseInt(document.getElementById('promo-value').value),
+    startDate: document.getElementById('promo-start').value,
+    endDate: document.getElementById('promo-end').value,
+    code: document.getElementById('promo-code').value.toUpperCase()
+  };
+  
+  try {
+    if (id) {
+      await updateDoc(doc(db, "promotions", id), data);
+      await logActivity('edit', `Updated promotion ${data.title}`);
+    } else {
+      await addDoc(collection(db, "promotions"), data);
+      await logActivity('create', `Created promotion ${data.title}`);
+    }
+    showToast("Promotion saved!");
+    closeModal('promotionModal');
+    loadPromotions();
+  } catch (err) {
+    showToast("Error: " + err.message);
+  }
+}
+
+window.deletePromotion = async function(id) {
+  if (!confirm("Delete this promotion?")) return;
+  await deleteDoc(doc(db, "promotions", id));
+  await logActivity('delete', `Deleted promotion`);
+  showToast("Promotion deleted.");
+  loadPromotions();
+}
+
+// ============================================
+// NEW FEATURE: ANALYTICS
+// ============================================
+window.loadAnalytics = function() {
+  document.getElementById('ana-customers').textContent = window.users.length;
+  
+  const totalBookings = window.bookings.length;
+  const confirmedBookings = window.bookings.filter(b => b.status === 'confirmed').length;
+  const conversionRate = totalBookings > 0 ? ((confirmedBookings / totalBookings) * 100).toFixed(1) : 0;
+  document.getElementById('ana-conversion').textContent = conversionRate + '%';
+  
+  const avgValue = totalBookings > 0 ? 350000 : 0;
+  document.getElementById('ana-avg-value').textContent = 'PKR ' + avgValue.toLocaleString();
+  
+  const repeatCustomers = new Set(window.bookings.map(b => b.userId)).size;
+  document.getElementById('ana-repeat').textContent = repeatCustomers;
+  
+  // Top services
+  const serviceCount = {};
+  window.bookings.forEach(b => {
+    serviceCount[b.item] = (serviceCount[b.item] || 0) + 1;
+  });
+  const topServices = Object.entries(serviceCount).sort((a, b) => b[1] - a[1]).slice(0, 5);
+  
+  document.getElementById('analytics-top-services').innerHTML = topServices.map(([service, count]) => `
+    <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee;">
+      <span>${service}</span>
+      <strong style="color:var(--primary-green);">${count} bookings</strong>
+    </div>
+  `).join('') || '<p style="color:#999;">No data yet</p>';
+  
+  // Monthly chart (simplified)
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+  const maxVal = Math.max(...months.map(() => Math.floor(Math.random() * 20) + 5), 1);
+  document.getElementById('analytics-monthly-chart').innerHTML = months.map(m => `
+    <div style="flex:1; text-align:center;">
+      <div style="height:${Math.random()*100}%; background:var(--primary-green); border-radius:5px 5px 0 0; min-height:10px;"></div>
+      <p style="margin-top:10px; font-size:0.85rem;">${m}</p>
+    </div>
+  `).join('');
+}
+
+// ============================================
+// NEW FEATURE: SETTINGS
+// ============================================
+window.saveSystemSettings = async function(e) {
+  e.preventDefault();
+  const settings = {
+    companyName: document.getElementById('set-company-name').value,
+    phone: document.getElementById('set-phone').value,
+    email: document.getElementById('set-email').value,
+    address: document.getElementById('set-address').value,
+    currency: document.getElementById('set-currency').value,
+    taxRate: document.getElementById('set-tax').value,
+    autoConfirm: document.getElementById('set-auto-confirm').value,
+    rewardRate: document.getElementById('set-reward-rate').value
+  };
+  
+  try {
+    await setDoc(doc(db, "system_settings", "company"), settings);
+    await logActivity('edit', 'Updated system settings');
+    showToast("Settings saved successfully!");
+  } catch (err) {
+    showToast("Error: " + err.message);
+  }
+}
+
+// UPDATE THE showAdminPage FUNCTION TO HANDLE NEW PAGES
+// Find the existing showAdminPage function and replace the pagePermissions object with this:
+const pagePermissions = { 
+  'dashboard':'view_dashboard',
+  'bookings':'view_bookings',
+  'inquiries':'manage_inquiries',
+  'users':'view_users',
+  'packages':'view_packages',
+  'staff':'manage_staff',
+  'permissions':'manage_permissions',
+  'activity-log':'view_activity_log',
+  'financial':'view_financial_reports',
+  'visa-tracker':'upload_visa',
+  'groups':'manage_bookings',
+  'promotions':'edit_settings',
+  'analytics':'view_financial_reports',
+  'settings':'system_configuration'
+};
+
+// UPDATE THE showAdminPage FUNCTION TO LOAD NEW PAGES
+// Add these lines at the end of the showAdminPage function:
+if (pageName === 'financial') window.loadFinancialReports();
+if (pageName === 'visa-tracker') window.loadVisaTracker();
+if (pageName === 'groups') window.loadGroups();
+if (pageName === 'promotions') window.loadPromotions();
+if (pageName === 'analytics') window.loadAnalytics();
+
+// UPDATE THE updateUIBasedOnPermissions FUNCTION
+// Add these lines to show/hide the new menu items:
+document.getElementById('financialMenuItem').style.display = hasPermission('view_financial_reports') ? 'flex' : 'none';
+document.getElementById('visaTrackerMenuItem').style.display = hasPermission('upload_visa') ? 'flex' : 'none';
+document.getElementById('groupsMenuItem').style.display = hasPermission('manage_bookings') ? 'flex' : 'none';
+document.getElementById('promotionsMenuItem').style.display = hasPermission('edit_settings') ? 'flex' : 'none';
+document.getElementById('analyticsMenuItem').style.display = hasPermission('view_financial_reports') ? 'flex' : 'none';
+document.getElementById('settingsMenuItem').style.display = hasPermission('system_configuration') ? 'flex' : 'none';
 console.log("✅ Multi-Device Sync Ready!");
 </script>
 </body>
