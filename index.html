@@ -674,8 +674,16 @@ margin-bottom: 40px;
 text-align: center;
 border-bottom: 1px solid rgba(255,255,255,0.1);
 padding-bottom: 20px;
+}.admin-sidebar ul { 
+    list-style: none; 
+    padding: 0; 
+    flex: 1; 
+    overflow-y: auto; 
+    max-height: calc(100vh - 150px); 
 }
-.admin-sidebar ul { list-style: none; padding: 0; flex: 1; }
+.admin-sidebar ul::-webkit-scrollbar { width: 6px; }
+.admin-sidebar ul::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); }
+.admin-sidebar ul::-webkit-scrollbar-thumb { background: var(--accent-gold); border-radius: 3px; }
 .admin-sidebar li {
 padding: 12px 15px;
 margin-bottom: 5px;
