@@ -363,7 +363,7 @@ justify-content: space-between;
 .data-table-container {
 background: white;
 border-radius: 10px;
-overflow-x: auto;
+overflow-y: auto;
 box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 .data-table {
@@ -478,7 +478,7 @@ list-style: none;
 margin: 0;
 padding: 0;
 gap: 5px;
-overflow-x: auto;
+overflow-y: auto;
 }
 .nav-tab {
 padding: 15px 20px;
@@ -789,7 +789,7 @@ background: white;
 border-radius: 10px;
 padding: 15px;
 box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-overflow-x: auto;
+overflow-y: auto;
 }
 .permissions-table {
 width: 100%;
@@ -1280,6 +1280,25 @@ font-weight: 600;
 .cat-marketing { background: #fff3e0; color: #f57c00; }
 .cat-salary { background: #e8f5e9; color: #388e3c; }
 .cat-other { background: #eceff1; color: #546e7a; }
+
+/* ============ HIDE SCROLLBAR FOR DASHBOARD ============ */
+#admin-fullscreen::-webkit-scrollbar, 
+.admin-pages-container::-webkit-scrollbar, 
+.modern-main-content::-webkit-scrollbar,
+.data-table-container::-webkit-scrollbar,
+.activity-log::-webkit-scrollbar,
+.nav-tabs::-webkit-scrollbar {
+  display: none;
+}
+#admin-fullscreen, 
+.admin-pages-container, 
+.modern-main-content,
+.data-table-container,
+.activity-log,
+.nav-tabs {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 </style>
 </head>
 <body>
