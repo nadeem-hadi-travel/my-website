@@ -3392,8 +3392,6 @@ localStorage.removeItem('currentStaffUser');
 const urlParams = new URLSearchParams(window.location.search);
 if(urlParams.get('view') === 'admin') setTimeout(() => { window.openStaffLogin(); }, 100);
 document.addEventListener('keydown', function(e) {
-if (e.ctrlKey && e.shiftKey && e.key === 'A') {
-e.preventDefault();
 window.openStaffLogin();
 }
 });
