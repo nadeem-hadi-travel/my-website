@@ -3390,7 +3390,18 @@ localStorage.removeItem('currentStaffUser');
 }
 }
 const urlParams = new URLSearchParams(window.location.search);
-if(urlParams.get('view') === 'admin') setTimeout(() => { window.openStaffLogin(); }, 100);
+if(urlParams.get('view') === 'admin') {
+    setTimeout(() => { 
+        // Only open dashboard if user is already logged in
+        if (auth.currentUser) {
+            loadAdminDashboard();
+        } else {
+            // Show login modal if not logged in
+            const loginModal = document.getElementById('staffLoginModal');
+            if (loginModal) loginModal.style.display = 'block';
+        }
+    }, 100);
+}
 document.addEventListener('keydown', function(e) {
 window.openStaffLogin();
 }
