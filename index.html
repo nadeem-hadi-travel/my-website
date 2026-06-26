@@ -2751,24 +2751,23 @@ document.getElementById('staffModal').style.display = 'block';
 window.handleStaffPhotoUpload = async function(input) {
 const file = input.files[0];
 if(!file) return;
-window.handleStaffPhotoUpload = async function(input) {
-    const file = input.files[0];
-    if(!file) return;
-    
-    // ✅ File size check removed - any size allowed now
-    
-    showToast("Uploading photo...");
-    try {
-        const fileName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
-        const storageRef = ref(storage, `staff_photos/${fileName}`);
-        await uploadBytes(storageRef, file);
-        const url = await getDownloadURL(storageRef);
-        document.getElementById('staffPhotoUrl').value = url;
-        document.getElementById('staffPhotoPreview').innerHTML = `<img src="${url}" style="max-width: 150px; border-radius: 10px; border: 2px solid var(--accent-gold);">`;
-        showToast("Photo uploaded!");
-    } catch(err) {
-        showToast("Upload failed: " + err.message);
-    }
+if(file.size > 2 * 1024 * 1024) {
+showToast("File too large (Max 2MB)");
+return;
+}
+showToast("Uploading photo...");
+try {
+const fileName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+const storageRef = ref(storage, `staff_photos/${fileName}`);
+await uploadBytes(storageRef, file);
+const url = await getDownloadURL(storageRef);
+document.getElementById('staffPhotoUrl').value = url;
+document.getElementById('staffPhotoPreview').innerHTML = `<img src="${url}" style="max-width: 150px; border-radius: 10px; border: 2px solid var(--accent-gold);" onerror="this.style.display='none'">`;
+showToast("Photo uploaded!");
+} catch(err) {
+console.error("Upload error:", err);
+showToast("Upload failed: " + err.message);
+}
 }
 window.selectRole = function(role, el) {
 document.querySelectorAll('.role-option').forEach(o => o.classList.remove('selected'));
