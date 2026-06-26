@@ -1399,7 +1399,7 @@ font-weight: 600;
 </div>
 <div id="full-page-visa-tracker" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-<h3 style="color: var(--primary-green); margin: 0;"> Visa Tracker</h3>
+<h3 style="color: var(--primary-green); margin: 0;">📋 Visa Tracker</h3>
 <button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="openNewVisaApplication()"><i class="fas fa-plus"></i> New Application</button>
 </div>
 <div class="stats-row">
@@ -1436,7 +1436,7 @@ font-weight: 600;
 <div id="promotions-list" class="staff-grid"></div>
 </div>
 <div id="full-page-analytics" class="admin-page" style="display: none;">
-<h3 style="color: var(--primary-green); margin-bottom: 20px;">📊 Analytics</h3>
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"> Analytics</h3>
 <div class="stats-row">
 <div class="stat-card"><h4>Customers</h4><h2 id="ana-customers">0</h2></div>
 <div class="stat-card" style="border-left-color: #28a745;"><h4>Conversion</h4><h2 id="ana-conversion">0%</h2></div>
@@ -1995,27 +1995,27 @@ Nadeem Hadi Travel
 <option value="makkah">🕋 Makkah</option>
 <option value="madinah">🕌 Madinah</option>
 <option value="jeddah">🏙️ Jeddah</option>
-<option value="dubai">🏗️ Dubai</option>
+<option value="dubai">️ Dubai</option>
 <option value="istanbul">🕌 Istanbul</option>
 <option value="baku">🏛️ Baku</option>
 <option value="bangkok">🏯 Bangkok</option>
-<option value="london">🇧 London</option>
+<option value="london">🇬 London</option>
 <option value="kuala-lumpur">🏙️ Kuala Lumpur</option>
-<option value="lahore"> Lahore</option>
+<option value="lahore">🌳 Lahore</option>
 <option value="islamabad">🏞️ Islamabad</option>
 <option value="karachi">🌊 Karachi</option>
 <option value="new-york">🗽 New York</option>
 <option value="toronto">🍁 Toronto</option>
-<option value="paris"> Paris</option>
+<option value="paris">🗼 Paris</option>
 <option value="muscat">🕌 Muscat</option>
 <option value="doha">🏙️ Doha</option>
 <option value="manama">🏛️ Manama</option>
-<option value="cairo">️ Cairo</option>
-<option value="abu-dhabi">🏗️ Abu Dhabi</option>
+<option value="cairo">🏛️ Cairo</option>
+<option value="abu-dhabi">️ Abu Dhabi</option>
 <option value="kuwait">🏙️ Kuwait</option>
-<option value="jordan">️ Jordan</option>
+<option value="jordan">🏜️ Jordan</option>
 <option value="malaysia">🌴 Malaysia</option>
-<option value="singapore">🏙️ Singapore</option>
+<option value="singapore">️ Singapore</option>
 <option value="thailand">🏖️ Thailand</option>
 </select>
 </div>
@@ -2023,7 +2023,7 @@ Nadeem Hadi Travel
 <label><i class="fas fa-plane" style="color: var(--accent-gold); margin-right: 5px;"></i>Travel Type</label>
 <select id="searchType">
 <option value="">Select Type</option>
-<option value="umrah">🕋 Umrah</option>
+<option value="umrah"> Umrah</option>
 <option value="flight">✈️ Flight</option>
 </select>
 </div>
@@ -2139,7 +2139,7 @@ Nadeem Hadi Travel
 <div class="print-only-footer">
 <h4 style="color: var(--primary-green);">Nadeem Hadi Travel & Tours</h4>
 <p><strong>Your Trusted Partner for Blessed and Pleasant Journeys</strong></p>
-<p>📞 0342-4397177 | 0316-4815975 | 0302-6901114</p>
+<p> 0342-4397177 | 0316-4815975 | 0302-6901114</p>
 <p>📍 Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha, Pakistan</p>
 </div>
 <script type="module">
@@ -2268,6 +2268,20 @@ window.ROLES = docSnap.data().roles;
 }
 } catch (e) { console.log("Using default roles."); }
 }
+
+// Update greeting based on time of day
+window.updateGreeting = function() {
+const hour = new Date().getHours();
+let greeting = 'morning';
+if (hour >= 12 && hour < 17) {
+greeting = 'afternoon';
+} else if (hour >= 17) {
+greeting = 'evening';
+}
+const el = document.getElementById('greetingTime');
+if(el) el.textContent = greeting;
+}
+
 window.addEventListener('DOMContentLoaded', async () => {
 document.getElementById('current-year').textContent = new Date().getFullYear();
 await initializeDefaultAdmin();
@@ -2276,6 +2290,21 @@ await loadRolesFromFirestore();
 setupRealtimeListeners();
 window.checkAuth();
 window.renderCustomPackages();
+
+// === FIX: Restore Staff Session on Refresh ===
+const savedStaff = localStorage.getItem('currentStaffUser');
+if (savedStaff) {
+try {
+window.currentStaffUser = JSON.parse(savedStaff);
+window.isAdminLoggedIn = true;
+showAdminDashboard();
+updateUIBasedOnPermissions();
+} catch (e) {
+localStorage.removeItem('currentStaffUser');
+}
+}
+// ============================================
+
 const urlParams = new URLSearchParams(window.location.search);
 if(urlParams.get('view') === 'admin') setTimeout(() => { window.openStaffLogin(); }, 100);
 });
@@ -2476,7 +2505,7 @@ document.getElementById('ticketsList').innerHTML = `
 </div>
 <div style="margin-top: 15px; padding-top: 12px; border-top: 1px solid #eee; font-size: 0.75rem; color: #666; text-align: center;">
 <p><strong>Nadeem Hadi Travel & Tours</strong> | Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha</p>
-<p>📞 0342-4397177 | 0316-4815975 | 0302-6901114</p>
+<p> 0342-4397177 | 0316-4815975 | 0302-6901114</p>
 </div>
 </div>
 `;
@@ -2496,23 +2525,11 @@ document.getElementById('serviceDetailsModal').style.display = 'block';
 window.confirmAddService = function() { showToast("Service added to your inquiry!"); closeModal('serviceDetailsModal'); }
 
 // ============ MODERN DASHBOARD FUNCTIONS ============
-window.updateGreeting = function() {
-const hour = new Date().getHours();
-let greeting = 'morning';
-if (hour >= 12 && hour < 17) {
-greeting = 'afternoon';
-} else if (hour >= 17) {
-greeting = 'evening';
-}
-const el = document.getElementById('greetingTime');
-if(el) el.textContent = greeting;
-}
-
-window.showDashboardHome = function() {
+window.showDashboardHome = function(element) {
 document.getElementById('dashboardHome').style.display = 'block';
 document.getElementById('adminPagesContainer').style.display = 'none';
 document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-document.querySelector('.nav-tab').classList.add('active');
+if(element) element.classList.add('active');
 }
 
 window.showAdminPageFromGrid = function(pageName, element) {
@@ -3190,6 +3207,7 @@ await logActivity('login', `${staff.name} logged in`);
 closeModal('staffLoginModal');
 window.isAdminLoggedIn = true;
 showAdminDashboard();
+updateUIBasedOnPermissions();
 showToast(`Welcome, ${staff.name}!`);
 } else {
 showToast('Invalid credentials!');
