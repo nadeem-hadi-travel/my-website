@@ -462,6 +462,7 @@ transition: all 0.3s;
 border-bottom: 3px solid transparent;
 white-space: nowrap;
 font-size: 0.95rem;
+position: relative;
 }
 .nav-tab:hover {
 color: white;
@@ -470,6 +471,54 @@ background: rgba(255,255,255,0.1);
 .nav-tab.active {
 color: white;
 border-bottom-color: var(--accent-gold);
+}
+.nav-tab.has-dropdown .chevron {
+font-size: 0.7rem;
+margin-left: 5px;
+transition: transform 0.3s;
+}
+.nav-tab.has-dropdown.open .chevron {
+transform: rotate(180deg);
+}
+.nav-dropdown {
+display: none;
+position: absolute;
+top: 100%;
+left: 0;
+background: rgba(30, 60, 114, 0.98);
+min-width: 240px;
+box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+border-radius: 0 0 8px 8px;
+z-index: 1000;
+padding: 8px 0;
+backdrop-filter: blur(10px);
+}
+.nav-dropdown.show {
+display: block;
+animation: slideDown 0.3s ease;
+}
+@keyframes slideDown {
+from { opacity: 0; transform: translateY(-10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.nav-dropdown a {
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 10px 20px;
+color: rgba(255,255,255,0.9);
+cursor: pointer;
+transition: all 0.2s;
+font-size: 0.9rem;
+}
+.nav-dropdown a:hover {
+background: rgba(255,255,255,0.1);
+color: var(--accent-gold);
+padding-left: 25px;
+}
+.nav-dropdown a i {
+width: 20px;
+color: var(--accent-gold);
 }
 .nav-arrow {
 color: white;
@@ -973,6 +1022,119 @@ transition: 0.3s;
 background: var(--dark-green);
 transform: translateX(-3px);
 }
+/* Document category badges */
+.doc-category {
+display: inline-block;
+padding: 4px 10px;
+border-radius: 12px;
+font-size: 0.75rem;
+font-weight: 600;
+}
+.cat-template { background: #e3f2fd; color: #1976d2; }
+.cat-policy { background: #f3e5f5; color: #7b1fa2; }
+.cat-report { background: #fff3e0; color: #f57c00; }
+.cat-contract { background: #e8f5e9; color: #388e3c; }
+.cat-invoice { background: #fce4ec; color: #c2185b; }
+.cat-other { background: #eceff1; color: #546e7a; }
+/* Profile card style */
+.profile-card {
+background: white;
+border-radius: 15px;
+padding: 30px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+margin-bottom: 20px;
+}
+.profile-header {
+display: flex;
+align-items: center;
+gap: 20px;
+padding-bottom: 20px;
+border-bottom: 2px solid #f0f0f0;
+margin-bottom: 20px;
+}
+.profile-avatar-lg {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+background: var(--accent-gold);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 3rem;
+color: var(--primary-green);
+font-weight: 700;
+overflow: hidden;
+}
+.profile-avatar-lg img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+/* Calendar style */
+.calendar-grid {
+display: grid;
+grid-template-columns: repeat(7, 1fr);
+gap: 5px;
+background: white;
+padding: 20px;
+border-radius: 10px;
+}
+.calendar-day {
+aspect-ratio: 1;
+background: #f8f9fa;
+border-radius: 8px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+font-size: 0.9rem;
+cursor: pointer;
+transition: 0.2s;
+}
+.calendar-day:hover { background: var(--light-gold); }
+.calendar-day.today { background: var(--accent-gold); color: white; font-weight: 700; }
+.calendar-day.has-event { border: 2px solid var(--primary-green); }
+/* Task list */
+.task-item {
+background: white;
+padding: 15px;
+border-radius: 10px;
+margin-bottom: 10px;
+border-left: 4px solid var(--accent-gold);
+display: flex;
+justify-content: space-between;
+align-items: center;
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.task-item.completed {
+opacity: 0.6;
+border-left-color: #28a745;
+}
+.task-item.completed .task-title {
+text-decoration: line-through;
+}
+.task-title { font-weight: 600; color: var(--primary-green); }
+.task-meta { font-size: 0.85rem; color: #666; margin-top: 4px; }
+/* Notification item */
+.notification-item {
+background: white;
+padding: 15px;
+border-radius: 10px;
+margin-bottom: 10px;
+display: flex;
+gap: 15px;
+align-items: flex-start;
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.notification-icon {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+}
 @media print {
 @page {
 size: A4 portrait;
@@ -1065,6 +1227,7 @@ font-size: 1.5rem;
 .role-selector { grid-template-columns: 1fr; }
 .booking-type-selector { grid-template-columns: 1fr; }
 .ticket-body { grid-template-columns: 1fr; }
+.nav-dropdown { min-width: 200px; }
 }
 @media (max-width: 480px) {
 .search-grid { grid-template-columns: 1fr; }
@@ -1103,17 +1266,84 @@ font-weight: 600;
 <div class="modern-header">
 <h1 class="greeting-text">Good <span id="greetingTime">afternoon</span>, <strong id="staffDisplayName">STAFF NAME</strong></h1>
 </div>
-<!-- Top Navigation Bar -->
+<!-- Top Navigation Bar with Dropdowns -->
 <div class="modern-nav-bar">
 <ul class="nav-tabs">
-<li class="nav-tab active" onclick="showDashboardHome(this)">Self Services</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('bookings', this)">Me</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('staff', this)">My Team</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('users', this)">My Client Groups</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('bookings', this)">Sales</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('financial', this)">Supply Chain Execution</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('expenses', this)">Procurement</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('settings', this)">Tools</li>
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('self-services-dropdown', this)">
+Self Services <i class="fas fa-chevron-down chevron"></i>
+<div class="nav-dropdown" id="self-services-dropdown">
+<a onclick="showAdminPageFromGrid('my-profile', this)"><i class="fas fa-user"></i> My Profile</a>
+<a onclick="showAdminPageFromGrid('my-tasks', this)"><i class="fas fa-tasks"></i> My Tasks</a>
+<a onclick="showAdminPageFromGrid('calendar', this)"><i class="fas fa-calendar"></i> Calendar</a>
+<a onclick="showAdminPageFromGrid('notifications', this)"><i class="fas fa-bell"></i> Notifications</a>
+<a onclick="showAdminPageFromGrid('messages', this)"><i class="fas fa-envelope"></i> Messages</a>
+</div>
+</li>
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('me-dropdown', this)">
+Me <i class="fas fa-chevron-down chevron"></i>
+<div class="nav-dropdown" id="me-dropdown">
+<a onclick="showAdminPageFromGrid('my-bookings', this)"><i class="fas fa-ticket-alt"></i> My Bookings</a>
+<a onclick="showAdminPageFromGrid('my-performance', this)"><i class="fas fa-chart-line"></i> My Performance</a>
+<a onclick="showAdminPageFromGrid('my-leaves', this)"><i class="fas fa-calendar-times"></i> Leave Requests</a>
+<a onclick="showAdminPageFromGrid('my-expenses', this)"><i class="fas fa-receipt"></i> My Expenses</a>
+</div>
+</li>
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('team-dropdown', this)">
+My Team <i class="fas fa-chevron-down chevron"></i>
+<div class="nav-dropdown" id="team-dropdown">
+<a onclick="showAdminPageFromGrid('staff', this)"><i class="fas fa-users"></i> Team Members</a>
+<a onclick="showAdminPageFromGrid('team-performance', this)"><i class="fas fa-chart-bar"></i> Team Performance</a>
+<a onclick="showAdminPageFromGrid('assign-tasks', this)"><i class="fas fa-tasks"></i> Assign Tasks</a>
+<a onclick="showAdminPageFromGrid('attendance', this)"><i class="fas fa-clock"></i> Attendance</a>
+</div>
+</li>
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('clients-dropdown', this)">
+My Client Groups <i class="fas fa-chevron-down chevron"></i>
+<div class="nav-dropdown" id="clients-dropdown">
+<a onclick="showAdminPageFromGrid('groups', this)"><i class="fas fa-users-cog"></i> All Groups</a>
+<a onclick="showAdminPageFromGrid('active-groups', this)"><i class="fas fa-user-check"></i> Active Groups</a>
+<a onclick="showAdminPageFromGrid('upcoming-groups', this)"><i class="fas fa-calendar-plus"></i> Upcoming Groups</a>
+<a onclick="showAdminPageFromGrid('users', this)"><i class="fas fa-user-friends"></i> All Clients</a>
+</div>
+</li>
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('sales-dropdown', this)">
+Sales <i class="fas fa-chevron-down chevron"></i>
+<div class="nav-dropdown" id="sales-dropdown">
+<a onclick="showAdminPageFromGrid('bookings', this)"><i class="fas fa-ticket-alt"></i> All Bookings</a>
+<a onclick="showAdminPageFromGrid('pending-sales', this)"><i class="fas fa-hourglass-half"></i> Pending Sales</a>
+<a onclick="showAdminPageFromGrid('confirmed-sales', this)"><i class="fas fa-check-circle"></i> Confirmed Sales</a>
+<a onclick="showAdminPageFromGrid('sales-reports', this)"><i class="fas fa-chart-pie"></i> Sales Reports</a>
+<a onclick="showAdminPageFromGrid('inquiries', this)"><i class="fas fa-envelope"></i> Inquiries</a>
+</div>
+</li>
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('supply-dropdown', this)">
+Supply Chain Execution <i class="fas fa-chevron-down chevron"></i>
+<div class="nav-dropdown" id="supply-dropdown">
+<a onclick="showAdminPageFromGrid('vendors', this)"><i class="fas fa-truck"></i> Vendors</a>
+<a onclick="showAdminPageFromGrid('suppliers', this)"><i class="fas fa-handshake"></i> Suppliers</a>
+<a onclick="showAdminPageFromGrid('logistics', this)"><i class="fas fa-shipping-fast"></i> Logistics</a>
+<a onclick="showAdminPageFromGrid('tracking', this)"><i class="fas fa-map-marker-alt"></i> Tracking</a>
+</div>
+</li>
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('procurement-dropdown', this)">
+Procurement <i class="fas fa-chevron-down chevron"></i>
+<div class="nav-dropdown" id="procurement-dropdown">
+<a onclick="showAdminPageFromGrid('expenses', this)"><i class="fas fa-money-bill-wave"></i> Expenses</a>
+<a onclick="showAdminPageFromGrid('purchase-orders', this)"><i class="fas fa-file-invoice"></i> Purchase Orders</a>
+<a onclick="showAdminPageFromGrid('invoices', this)"><i class="fas fa-file-invoice-dollar"></i> Invoices</a>
+<a onclick="showAdminPageFromGrid('payments', this)"><i class="fas fa-credit-card"></i> Payments</a>
+</div>
+</li>
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('tools-dropdown', this)">
+Tools <i class="fas fa-chevron-down chevron"></i>
+<div class="nav-dropdown" id="tools-dropdown">
+<a onclick="showAdminPageFromGrid('documents', this)"><i class="fas fa-folder"></i> All Documents</a>
+<a onclick="showAdminPageFromGrid('templates', this)"><i class="fas fa-file-alt"></i> Templates</a>
+<a onclick="showAdminPageFromGrid('reports', this)"><i class="fas fa-file-excel"></i> Reports</a>
+<a onclick="showAdminPageFromGrid('visa-tracker', this)"><i class="fas fa-passport"></i> Visa Tracker</a>
+<a onclick="showAdminPageFromGrid('promotions', this)"><i class="fas fa-gift"></i> Promotions</a>
+</div>
+</li>
 <li class="nav-tab" onclick="showAdminPageFromGrid('dashboard', this)">Dashboard</li>
 </ul>
 <div class="nav-arrow">›</div>
@@ -1177,9 +1407,9 @@ font-weight: 600;
 <div class="app-icon green"><i class="fas fa-gift"></i></div>
 <div class="app-label">Promotions</div>
 </div>
-<div class="app-item" onclick="showAdminPageFromGrid('analytics', this)" id="appAnalytics">
-<div class="app-icon blue"><i class="fas fa-chart-pie"></i></div>
-<div class="app-label">Analytics</div>
+<div class="app-item" onclick="showAdminPageFromGrid('documents', this)" id="appDocuments">
+<div class="app-icon purple"><i class="fas fa-folder"></i></div>
+<div class="app-label">Documents</div>
 </div>
 <!-- Row 3 -->
 <div class="app-item" onclick="showAdminPageFromGrid('settings', this)" id="appSettings">
@@ -1218,6 +1448,7 @@ font-weight: 600;
 </div>
 </div>
 <div class="admin-full-content">
+<!-- Dashboard Page -->
 <div id="full-page-dashboard" class="admin-page" style="display: none;">
 <div class="stats-row">
 <div class="stat-card"><h4>Total Bookings</h4><h2 id="fs-total-bookings">0</h2></div>
@@ -1244,15 +1475,17 @@ font-weight: 600;
 </table>
 </div>
 </div>
+<!-- Bookings Page -->
 <div id="full-page-bookings" class="admin-page" style="display: none;">
 <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
 <h3 style="color: var(--primary-green); margin-bottom: 15px;">All Bookings</h3>
 <table class="data-table">
-<thead><tr><th>Ref ID</th><th>Customer</th><th>Gender</th><th>Service</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+<thead><tr><th>Ref ID</th><th>Customer</th><th>Gender</th><th>Service</th><th>Date</th><th>Status</th><th>Attachments</th><th>Actions</th></tr></thead>
 <tbody id="fs-all-bookings"></tbody>
 </table>
 </div>
 </div>
+<!-- Inquiries Page -->
 <div id="full-page-inquiries" class="admin-page" style="display: none;">
 <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
 <h3 style="color: var(--primary-green); margin-bottom: 15px;">Customer Inquiries</h3>
@@ -1262,6 +1495,7 @@ font-weight: 600;
 </table>
 </div>
 </div>
+<!-- Users Page -->
 <div id="full-page-users" class="admin-page" style="display: none;">
 <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
 <h3 style="color: var(--primary-green); margin-bottom: 15px;">Registered Users</h3>
@@ -1271,12 +1505,14 @@ font-weight: 600;
 </table>
 </div>
 </div>
+<!-- Packages Page -->
 <div id="full-page-packages" class="admin-page" style="display: none;">
 <button class="btn" style="background: var(--accent-gold); color: var(--primary-green); margin-bottom: 20px;" onclick="openPackageEditor()">
 <i class="fas fa-plus"></i> Add New Package
 </button>
 <div id="fs-packages-list" class="dashboard-grid"></div>
 </div>
+<!-- Staff Page -->
 <div id="full-page-staff" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
 <h3 style="color: var(--primary-green); margin: 0;">Staff Management</h3>
@@ -1292,6 +1528,7 @@ font-weight: 600;
 </div>
 <div id="staffList" class="staff-grid"></div>
 </div>
+<!-- Permissions Page -->
 <div id="full-page-permissions" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;">Role Permissions Matrix</h3>
 <p style="color: #666; margin-bottom: 20px;">Configure what each role can access and modify in the system.</p>
@@ -1314,6 +1551,7 @@ font-weight: 600;
 <i class="fas fa-save"></i> Save Permissions
 </button>
 </div>
+<!-- Activity Log Page -->
 <div id="full-page-activity-log" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
 <h3 style="color: var(--primary-green); margin: 0;">Staff Activity Log</h3>
@@ -1325,6 +1563,7 @@ font-weight: 600;
 <div id="activityLogList"></div>
 </div>
 </div>
+<!-- Financial Page -->
 <div id="full-page-financial" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;">💰 Financial Reports</h3>
 <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
@@ -1354,6 +1593,7 @@ font-weight: 600;
 </table>
 </div>
 </div>
+<!-- Expenses Page -->
 <div id="full-page-expenses" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
 <h3 style="color: var(--primary-green); margin: 0;">💸 Expenses Management</h3>
@@ -1375,6 +1615,7 @@ font-weight: 600;
 </table>
 </div>
 </div>
+<!-- Visa Tracker Page -->
 <div id="full-page-visa-tracker" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
 <h3 style="color: var(--primary-green); margin: 0;"> Visa Tracker</h3>
@@ -1393,6 +1634,7 @@ font-weight: 600;
 </table>
 </div>
 </div>
+<!-- Groups Page -->
 <div id="full-page-groups" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
 <h3 style="color: var(--primary-green); margin: 0;">👥 Group Management</h3>
@@ -1406,6 +1648,7 @@ font-weight: 600;
 </div>
 <div id="groups-list" class="staff-grid"></div>
 </div>
+<!-- Promotions Page -->
 <div id="full-page-promotions" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
 <h3 style="color: var(--primary-green); margin: 0;">🎁 Promotions</h3>
@@ -1413,6 +1656,293 @@ font-weight: 600;
 </div>
 <div id="promotions-list" class="staff-grid"></div>
 </div>
+<!-- Documents Page (NEW) -->
+<div id="full-page-documents" class="admin-page" style="display: none;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+<h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-folder"></i> Document Management</h3>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="openDocumentUploadModal()">
+<i class="fas fa-plus"></i> Upload Document
+</button>
+</div>
+<div class="stats-row">
+<div class="stat-card"><h4>Total Documents</h4><h2 id="doc-total">0</h2></div>
+<div class="stat-card" style="border-left-color: #dc3545;"><h4>PDF Files</h4><h2 id="doc-pdf">0</h2></div>
+<div class="stat-card" style="border-left-color: #17a2b8;"><h4>Images</h4><h2 id="doc-images">0</h2></div>
+<div class="stat-card" style="border-left-color: #28a745;"><h4>This Month</h4><h2 id="doc-month">0</h2></div>
+</div>
+<div style="margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+<button class="btn" style="background: var(--primary-green); color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="filterDocuments('all')">All</button>
+<button class="btn" style="background: #dc3545; color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="filterDocuments('pdf')">PDF</button>
+<button class="btn" style="background: #17a2b8; color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="filterDocuments('image')">Images</button>
+<button class="btn" style="background: #ffc107; color: #333; padding: 8px 15px; font-size: 0.9rem;" onclick="filterDocuments('other')">Other</button>
+</div>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<table class="data-table">
+<thead><tr><th>Name</th><th>Category</th><th>Size</th><th>Uploaded By</th><th>Date</th><th>Actions</th></tr></thead>
+<tbody id="documents-table-body"></tbody>
+</table>
+</div>
+</div>
+<!-- My Profile Page (NEW) -->
+<div id="full-page-my-profile" class="admin-page" style="display: none;">
+<div class="profile-card">
+<div class="profile-header">
+<div class="profile-avatar-lg" id="profileAvatarLg">A</div>
+<div>
+<h2 style="color: var(--primary-green); margin: 0;" id="profileFullName">Staff Name</h2>
+<p style="color: #666; margin: 5px 0;" id="profileRole">Role</p>
+<p style="color: #999; font-size: 0.9rem;" id="profileEmail">email@example.com</p>
+</div>
+</div>
+<div class="search-grid">
+<div class="form-group"><label><i class="fas fa-phone" style="color: var(--accent-gold); margin-right: 8px;"></i>Phone</label><input type="text" id="profilePhone" readonly></div>
+<div class="form-group"><label><i class="fas fa-calendar" style="color: var(--accent-gold); margin-right: 8px;"></i>Joined</label><input type="text" id="profileJoined" readonly></div>
+<div class="form-group"><label><i class="fas fa-clock" style="color: var(--accent-gold); margin-right: 8px;"></i>Last Login</label><input type="text" id="profileLastLogin" readonly></div>
+<div class="form-group"><label><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 8px;"></i>Status</label><input type="text" id="profileStatus" readonly></div>
+</div>
+<button class="btn" style="background: var(--primary-green); color: white;" onclick="editMyProfile()"><i class="fas fa-edit"></i> Edit Profile</button>
+</div>
+</div>
+<!-- My Tasks Page (NEW) -->
+<div id="full-page-my-tasks" class="admin-page" style="display: none;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-tasks"></i> My Tasks</h3>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="openTaskModal()"><i class="fas fa-plus"></i> Add Task</button>
+</div>
+<div class="stats-row">
+<div class="stat-card"><h4>Total Tasks</h4><h2 id="tasks-total">0</h2></div>
+<div class="stat-card" style="border-left-color: #ffc107;"><h4>Pending</h4><h2 id="tasks-pending">0</h2></div>
+<div class="stat-card" style="border-left-color: #28a745;"><h4>Completed</h4><h2 id="tasks-completed">0</h2></div>
+</div>
+<div id="tasksList"></div>
+</div>
+<!-- Calendar Page (NEW) -->
+<div id="full-page-calendar" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-calendar"></i> Calendar</h3>
+<div style="background: white; padding: 20px; border-radius: 10px;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<button class="btn" style="background: var(--primary-green); color: white; padding: 8px 15px;" onclick="changeMonth(-1)"><i class="fas fa-chevron-left"></i></button>
+<h3 id="calendarMonth" style="color: var(--primary-green);"></h3>
+<button class="btn" style="background: var(--primary-green); color: white; padding: 8px 15px;" onclick="changeMonth(1)"><i class="fas fa-chevron-right"></i></button>
+</div>
+<div class="calendar-grid" id="calendarGrid"></div>
+</div>
+</div>
+<!-- Notifications Page (NEW) -->
+<div id="full-page-notifications" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-bell"></i> Notifications</h3>
+<div id="notificationsList"></div>
+</div>
+<!-- Messages Page (NEW) -->
+<div id="full-page-messages" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-envelope"></i> Messages</h3>
+<div id="messagesList" style="background: white; padding: 20px; border-radius: 10px;">
+<p style="color: #666; text-align: center; padding: 40px;">No messages yet</p>
+</div>
+</div>
+<!-- My Bookings Page (NEW) -->
+<div id="full-page-my-bookings" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-ticket-alt"></i> My Bookings</h3>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<table class="data-table">
+<thead><tr><th>Ref ID</th><th>Customer</th><th>Service</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+<tbody id="my-bookings-body"></tbody>
+</table>
+</div>
+</div>
+<!-- My Performance Page (NEW) -->
+<div id="full-page-my-performance" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-chart-line"></i> My Performance</h3>
+<div class="stats-row">
+<div class="stat-card"><h4>Bookings Handled</h4><h2 id="perf-bookings">0</h2></div>
+<div class="stat-card" style="border-left-color: #28a745;"><h4>Confirmed</h4><h2 id="perf-confirmed">0</h2></div>
+<div class="stat-card" style="border-left-color: #ffc107;"><h4>Revenue Generated</h4><h2 id="perf-revenue">PKR 0</h2></div>
+<div class="stat-card" style="border-left-color: #17a2b8;"><h4>Customer Rating</h4><h2 id="perf-rating">5.0</h2></div>
+</div>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<h3 style="color: var(--primary-green); margin-bottom: 15px;">Monthly Performance</h3>
+<div id="performance-chart" style="display: flex; align-items: flex-end; height: 200px; gap: 15px; padding: 20px 0;"></div>
+</div>
+</div>
+<!-- My Leaves Page (NEW) -->
+<div id="full-page-my-leaves" class="admin-page" style="display: none;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-calendar-times"></i> Leave Requests</h3>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="openLeaveModal()"><i class="fas fa-plus"></i> Request Leave</button>
+</div>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<table class="data-table">
+<thead><tr><th>Type</th><th>From</th><th>To</th><th>Days</th><th>Reason</th><th>Status</th></tr></thead>
+<tbody id="leaves-table-body"></tbody>
+</table>
+</div>
+</div>
+<!-- My Expenses Page (NEW) -->
+<div id="full-page-my-expenses" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-receipt"></i> My Expenses</h3>
+<div class="stats-row">
+<div class="stat-card"><h4>Total Submitted</h4><h2 id="my-exp-total">PKR 0</h2></div>
+<div class="stat-card" style="border-left-color: #28a745;"><h4>Approved</h4><h2 id="my-exp-approved">PKR 0</h2></div>
+<div class="stat-card" style="border-left-color: #ffc107;"><h4>Pending</h4><h2 id="my-exp-pending">PKR 0</h2></div>
+</div>
+</div>
+<!-- Team Performance Page (NEW) -->
+<div id="full-page-team-performance" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-chart-bar"></i> Team Performance</h3>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<table class="data-table">
+<thead><tr><th>Staff</th><th>Role</th><th>Bookings</th><th>Revenue</th><th>Rating</th></tr></thead>
+<tbody id="team-performance-body"></tbody>
+</table>
+</div>
+</div>
+<!-- Assign Tasks Page (NEW) -->
+<div id="full-page-assign-tasks" class="admin-page" style="display: none;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-tasks"></i> Assign Tasks</h3>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="openTaskModal()"><i class="fas fa-plus"></i> New Task</button>
+</div>
+<div id="assignTasksList"></div>
+</div>
+<!-- Attendance Page (NEW) -->
+<div id="full-page-attendance" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-clock"></i> Attendance</h3>
+<div class="stats-row">
+<div class="stat-card"><h4>Present Today</h4><h2 id="att-present">0</h2></div>
+<div class="stat-card" style="border-left-color: #dc3545;"><h4>Absent</h4><h2 id="att-absent">0</h2></div>
+<div class="stat-card" style="border-left-color: #ffc107;"><h4>On Leave</h4><h2 id="att-leave">0</h2></div>
+</div>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<table class="data-table">
+<thead><tr><th>Staff</th><th>Check In</th><th>Check Out</th><th>Hours</th><th>Status</th></tr></thead>
+<tbody id="attendance-body"></tbody>
+</table>
+</div>
+</div>
+<!-- Active Groups Page (NEW) -->
+<div id="full-page-active-groups" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-user-check"></i> Active Groups</h3>
+<div id="active-groups-list" class="staff-grid"></div>
+</div>
+<!-- Upcoming Groups Page (NEW) -->
+<div id="full-page-upcoming-groups" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-calendar-plus"></i> Upcoming Groups</h3>
+<div id="upcoming-groups-list" class="staff-grid"></div>
+</div>
+<!-- Pending Sales Page (NEW) -->
+<div id="full-page-pending-sales" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-hourglass-half"></i> Pending Sales</h3>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<table class="data-table">
+<thead><tr><th>Ref ID</th><th>Customer</th><th>Service</th><th>Amount</th><th>Date</th><th>Actions</th></tr></thead>
+<tbody id="pending-sales-body"></tbody>
+</table>
+</div>
+</div>
+<!-- Confirmed Sales Page (NEW) -->
+<div id="full-page-confirmed-sales" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-check-circle"></i> Confirmed Sales</h3>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<table class="data-table">
+<thead><tr><th>Ref ID</th><th>Customer</th><th>Service</th><th>Amount</th><th>Date</th></tr></thead>
+<tbody id="confirmed-sales-body"></tbody>
+</table>
+</div>
+</div>
+<!-- Sales Reports Page (NEW) -->
+<div id="full-page-sales-reports" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-chart-pie"></i> Sales Reports</h3>
+<div class="stats-row">
+<div class="stat-card"><h4>Total Sales</h4><h2 id="sales-total">0</h2></div>
+<div class="stat-card" style="border-left-color: #28a745;"><h4>Total Revenue</h4><h2 id="sales-revenue">PKR 0</h2></div>
+<div class="stat-card" style="border-left-color: #ffc107;"><h4>Avg. Value</h4><h2 id="sales-avg">PKR 0</h2></div>
+<div class="stat-card" style="border-left-color: #17a2b8;"><h4>Conversion</h4><h2 id="sales-conversion">0%</h2></div>
+</div>
+</div>
+<!-- Vendors Page (NEW) -->
+<div id="full-page-vendors" class="admin-page" style="display: none;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-truck"></i> Vendors</h3>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="showToast('Vendor management coming soon')"><i class="fas fa-plus"></i> Add Vendor</button>
+</div>
+<div id="vendors-list" class="staff-grid"></div>
+</div>
+<!-- Suppliers Page (NEW) -->
+<div id="full-page-suppliers" class="admin-page" style="display: none;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-handshake"></i> Suppliers</h3>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="showToast('Supplier management coming soon')"><i class="fas fa-plus"></i> Add Supplier</button>
+</div>
+<div id="suppliers-list" class="staff-grid"></div>
+</div>
+<!-- Logistics Page (NEW) -->
+<div id="full-page-logistics" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-shipping-fast"></i> Logistics</h3>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<p style="text-align: center; padding: 40px; color: #666;">Logistics management module - Coming soon</p>
+</div>
+</div>
+<!-- Tracking Page (NEW) -->
+<div id="full-page-tracking" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-map-marker-alt"></i> Tracking</h3>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<p style="text-align: center; padding: 40px; color: #666;">Shipment tracking module - Coming soon</p>
+</div>
+</div>
+<!-- Purchase Orders Page (NEW) -->
+<div id="full-page-purchase-orders" class="admin-page" style="display: none;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-file-invoice"></i> Purchase Orders</h3>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="showToast('PO management coming soon')"><i class="fas fa-plus"></i> New PO</button>
+</div>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<p style="text-align: center; padding: 40px; color: #666;">Purchase orders module - Coming soon</p>
+</div>
+</div>
+<!-- Invoices Page (NEW) -->
+<div id="full-page-invoices" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-file-invoice-dollar"></i> Invoices</h3>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<p style="text-align: center; padding: 40px; color: #666;">Invoice management module - Coming soon</p>
+</div>
+</div>
+<!-- Payments Page (NEW) -->
+<div id="full-page-payments" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-credit-card"></i> Payments</h3>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<p style="text-align: center; padding: 40px; color: #666;">Payment tracking module - Coming soon</p>
+</div>
+</div>
+<!-- Templates Page (NEW) -->
+<div id="full-page-templates" class="admin-page" style="display: none;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-file-alt"></i> Templates</h3>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="openDocumentUploadModal('template')"><i class="fas fa-plus"></i> Upload Template</button>
+</div>
+<div id="templates-list" class="staff-grid"></div>
+</div>
+<!-- Reports Page (NEW) -->
+<div id="full-page-reports" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-file-excel"></i> Reports</h3>
+<div class="staff-grid">
+<div class="staff-card" onclick="exportToExcel()" style="cursor: pointer;">
+<h4 style="color: var(--primary-green);"><i class="fas fa-file-excel" style="color: #28a745;"></i> Complete Report</h4>
+<p style="color: #666; margin: 10px 0;">All bookings, expenses, users, and financial data</p>
+<button class="btn" style="background: var(--primary-green); color: white; padding: 8px 15px; font-size: 0.9rem;"><i class="fas fa-download"></i> Download</button>
+</div>
+<div class="staff-card" onclick="exportFinancialReport()" style="cursor: pointer;">
+<h4 style="color: var(--primary-green);"><i class="fas fa-chart-line" style="color: #17a2b8;"></i> Financial Report</h4>
+<p style="color: #666; margin: 10px 0;">Revenue, expenses, and profit summary</p>
+<button class="btn" style="background: var(--primary-green); color: white; padding: 8px 15px; font-size: 0.9rem;"><i class="fas fa-download"></i> Download</button>
+</div>
+<div class="staff-card" onclick="showToast('Sales report coming soon')" style="cursor: pointer;">
+<h4 style="color: var(--primary-green);"><i class="fas fa-chart-pie" style="color: #ffc107;"></i> Sales Report</h4>
+<p style="color: #666; margin: 10px 0;">Detailed sales analysis by service type</p>
+<button class="btn" style="background: var(--primary-green); color: white; padding: 8px 15px; font-size: 0.9rem;"><i class="fas fa-download"></i> Download</button>
+</div>
+</div>
+</div>
+<!-- Analytics Page -->
 <div id="full-page-analytics" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;">📊 Analytics</h3>
 <div class="stats-row">
@@ -1430,6 +1960,7 @@ font-weight: 600;
 <div id="analytics-monthly-chart" style="display: flex; align-items: flex-end; height: 150px; gap: 15px; padding: 20px 0;"></div>
 </div>
 </div>
+<!-- Settings Page -->
 <div id="full-page-settings" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;">⚙️ System Settings</h3>
 <div style="background: white; padding: 30px; border-radius: 10px;">
@@ -1505,6 +2036,22 @@ font-weight: 600;
 <input type="hidden" id="staffPhotoUrl">
 </div>
 <div class="form-group">
+<label><i class="fas fa-id-card" style="margin-right: 8px; color: var(--accent-gold);"></i>CNIC Number</label>
+<input type="text" id="staffCNIC" placeholder="XXXXX-XXXXXXX-X">
+</div>
+<div class="form-group">
+<label><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--accent-gold);"></i>Address</label>
+<input type="text" id="staffAddress" placeholder="Full address">
+</div>
+<div class="form-group">
+<label><i class="fas fa-money-bill" style="margin-right: 8px; color: var(--accent-gold);"></i>Salary (PKR)</label>
+<input type="number" id="staffSalary" placeholder="Monthly salary">
+</div>
+<div class="form-group">
+<label><i class="fas fa-calendar" style="margin-right: 8px; color: var(--accent-gold);"></i>Joining Date</label>
+<input type="date" id="staffJoiningDate">
+</div>
+<div class="form-group">
 <label><i class="fas fa-lock" style="margin-right: 8px; color: var(--accent-gold);"></i>Password</label>
 <input type="password" id="staffPassword" placeholder="Min 6 characters" minlength="6">
 <small style="color: #999;">Leave blank to keep current password when editing</small>
@@ -1538,6 +2085,82 @@ font-weight: 600;
 <button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">
 <i class="fas fa-save"></i> Save Staff Member
 </button>
+</form>
+</div>
+</div>
+<!-- Document Upload Modal (NEW) -->
+<div id="documentUploadModal" class="modal">
+<div class="modal-content" style="max-width: 600px;">
+<span class="close-modal" onclick="closeModal('documentUploadModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Upload Document</h2>
+<form onsubmit="saveDocument(event)">
+<div class="form-group"><label>Document Title</label><input type="text" id="doc-title" required placeholder="e.g., Visa Template"></div>
+<div class="form-group"><label>Category</label>
+<select id="doc-category" required>
+<option value="template">Template</option>
+<option value="policy">Policy Document</option>
+<option value="report">Report</option>
+<option value="contract">Contract</option>
+<option value="invoice">Invoice</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="form-group"><label>Description</label><textarea id="doc-description" rows="3"></textarea></div>
+<div class="form-group"><label>Upload File</label>
+<div class="file-upload-area">
+<input type="file" id="doc-file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx" style="display: none;" onchange="handleDocumentFileUpload(this)">
+<button type="button" class="btn-upload" onclick="document.getElementById('doc-file').click()"><i class="fas fa-upload"></i> Select File</button>
+<p style="margin-top: 10px; color: #666; font-size: 0.9rem;">PDF, Images, Word, Excel (Max 10MB)</p>
+</div>
+<input type="hidden" id="doc-file-url">
+</div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">
+<i class="fas fa-save"></i> Upload Document
+</button>
+</form>
+</div>
+</div>
+<!-- Task Modal (NEW) -->
+<div id="taskModal" class="modal">
+<div class="modal-content" style="max-width: 500px;">
+<span class="close-modal" onclick="closeModal('taskModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Add Task</h2>
+<form onsubmit="saveTask(event)">
+<div class="form-group"><label>Task Title</label><input type="text" id="task-title" required></div>
+<div class="form-group"><label>Description</label><textarea id="task-description" rows="3"></textarea></div>
+<div class="form-group"><label>Assign To</label>
+<select id="task-assignee"></select>
+</div>
+<div class="form-group"><label>Due Date</label><input type="date" id="task-due"></div>
+<div class="form-group"><label>Priority</label>
+<select id="task-priority">
+<option value="low">Low</option>
+<option value="medium" selected>Medium</option>
+<option value="high">High</option>
+</select>
+</div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Save Task</button>
+</form>
+</div>
+</div>
+<!-- Leave Modal (NEW) -->
+<div id="leaveModal" class="modal">
+<div class="modal-content" style="max-width: 500px;">
+<span class="close-modal" onclick="closeModal('leaveModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Request Leave</h2>
+<form onsubmit="saveLeave(event)">
+<div class="form-group"><label>Leave Type</label>
+<select id="leave-type">
+<option value="sick">Sick Leave</option>
+<option value="casual">Casual Leave</option>
+<option value="annual">Annual Leave</option>
+<option value="emergency">Emergency</option>
+</select>
+</div>
+<div class="form-group"><label>From Date</label><input type="date" id="leave-from" required></div>
+<div class="form-group"><label>To Date</label><input type="date" id="leave-to" required></div>
+<div class="form-group"><label>Reason</label><textarea id="leave-reason" rows="3" required></textarea></div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Submit Request</button>
 </form>
 </div>
 </div>
@@ -1813,7 +2436,6 @@ Nadeem Hadi Travel
 <li><a onclick="openDashboard()">My Bookings</a></li>
 <li id="authLinks"><a onclick="openRegisterModal()">Register</a></li>
 <li><a href="#contact">Contact</a></li>
-<li><a onclick="openStaffLogin()" style="color: var(--accent-gold); font-weight: 600;"><i class="fas fa-user-shield"></i> Staff</a></li>
 </ul>
 </nav>
 <div class="user-info" id="userInfo" style="display: none;">
@@ -2048,8 +2670,9 @@ Nadeem Hadi Travel
 </form>
 </div>
 </div>
+<!-- Updated Booking Details Modal with Attachments -->
 <div id="bookingDetailsModal" class="modal">
-<div class="modal-content" style="max-width: 600px;">
+<div class="modal-content" style="max-width: 700px;">
 <span class="close-modal" onclick="closeModal('bookingDetailsModal')">&times;</span>
 <h2 style="color: var(--primary-green); margin-bottom: 20px;">Add / Edit Booking Details</h2>
 <p style="margin-bottom: 15px; color: #666;">Ref ID: <strong id="detailsRefId"></strong></p>
@@ -2060,6 +2683,15 @@ Nadeem Hadi Travel
 <div class="form-group"><label><i class="fas fa-hotel" style="margin-right: 8px; color: var(--accent-gold);"></i>Mecca Hotel Name</label><input type="text" id="detailsMeccaHotel"></div>
 <div class="form-group"><label><i class="fas fa-hotel" style="margin-right: 8px; color: var(--accent-gold);"></i>Medina Hotel Name</label><input type="text" id="detailsMedinaHotel"></div>
 <div class="form-group"><label><i class="fas fa-passport" style="margin-right: 8px; color: var(--accent-gold);"></i>Visa Number</label><input type="text" id="detailsVisa"></div>
+<div class="form-group">
+<label><i class="fas fa-paperclip" style="margin-right: 8px; color: var(--accent-gold);"></i>Attachments</label>
+<div class="file-upload-area">
+<input type="file" id="bookingAttachments" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" style="display: none;" onchange="handleBookingAttachmentUpload(this)">
+<button type="button" class="btn-upload" onclick="document.getElementById('bookingAttachments').click()"><i class="fas fa-upload"></i> Upload Files</button>
+<p style="margin-top: 10px; color: #666; font-size: 0.9rem;">PDF, Images, Documents (Max 5MB each)</p>
+</div>
+<div id="uploadedBookingFiles" class="uploaded-files" style="margin-top: 12px;"></div>
+</div>
 <div class="form-group"><label><i class="fas fa-sticky-note" style="margin-right: 8px; color: var(--accent-gold);"></i>Admin Notes</label><textarea id="detailsNotes"></textarea></div>
 <button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;"><i class="fas fa-save"></i> Save Details</button>
 </form>
@@ -2146,6 +2778,8 @@ window.staffMembers = [];
 window.customPackages = [];
 window.activityLog = [];
 window.expenses = [];
+window.documents = [];
+window.tasks = [];
 window.currentUser = null;
 window.currentStaffUser = null;
 window.isAdminLoggedIn = false;
@@ -2153,15 +2787,17 @@ window.selectedPayment = null;
 window.currentTicketBooking = null;
 window.currentViewingUser = null;
 window.currentDocumentUrl = null;
+window.currentDocFilter = 'all';
+window.calendarDate = new Date();
 window.ROLES = {
-admin: { name: 'Administrator', permissions: ['view_dashboard','manage_bookings','edit_bookings','delete_bookings','manage_packages','edit_packages','delete_packages','manage_users','delete_users','view_user_details','upload_visa','manage_staff','edit_staff','delete_staff','manage_permissions','view_activity_log','manage_inquiries','delete_inquiries','view_financial_reports','export_data','edit_settings','system_configuration','manage_expenses'] },
-manager: { name: 'Manager', permissions: ['view_dashboard','manage_bookings','edit_bookings','manage_packages','edit_packages','view_users','view_user_details','upload_visa','manage_inquiries','view_financial_reports','export_data','manage_expenses'] },
+admin: { name: 'Administrator', permissions: ['view_dashboard','manage_bookings','edit_bookings','delete_bookings','manage_packages','edit_packages','delete_packages','manage_users','delete_users','view_user_details','upload_visa','manage_staff','edit_staff','delete_staff','manage_permissions','view_activity_log','manage_inquiries','delete_inquiries','view_financial_reports','export_data','edit_settings','system_configuration','manage_expenses','manage_documents'] },
+manager: { name: 'Manager', permissions: ['view_dashboard','manage_bookings','edit_bookings','manage_packages','edit_packages','view_users','view_user_details','upload_visa','manage_inquiries','view_financial_reports','export_data','manage_expenses','manage_documents'] },
 agent: { name: 'Travel Agent', permissions: ['view_dashboard','manage_bookings','edit_bookings','view_packages','view_users','view_user_details','manage_inquiries'] },
 accountant: { name: 'Accountant', permissions: ['view_dashboard','view_bookings','view_users','view_financial_reports','export_data','manage_expenses'] },
 support: { name: 'Support Staff', permissions: ['view_dashboard','view_bookings','view_users','view_user_details','manage_inquiries'] }
 };
 window.PERMISSION_LABELS = {
-'view_dashboard':'View Dashboard','manage_bookings':'Manage Bookings','edit_bookings':'Edit Bookings','delete_bookings':'Delete Bookings','view_bookings':'View Bookings Only','manage_packages':'Manage Packages','edit_packages':'Edit Packages','delete_packages':'Delete Packages','view_packages':'View Packages Only','manage_users':'Manage Users','view_users':'View Users Only','delete_users':'Delete Users','view_user_details':'View User Details','upload_visa':'Upload Visa Copies','manage_staff':'Manage Staff','edit_staff':'Edit Staff','delete_staff':'Delete Staff','manage_permissions':'Manage Permissions','view_activity_log':'View Activity Log','manage_inquiries':'Manage Inquiries','delete_inquiries':'Delete Inquiries','view_financial_reports':'View Financial Reports','export_data':'Export Data','edit_settings':'Edit Settings','system_configuration':'System Configuration','manage_expenses':'Manage Expenses'
+'view_dashboard':'View Dashboard','manage_bookings':'Manage Bookings','edit_bookings':'Edit Bookings','delete_bookings':'Delete Bookings','view_bookings':'View Bookings Only','manage_packages':'Manage Packages','edit_packages':'Edit Packages','delete_packages':'Delete Packages','view_packages':'View Packages Only','manage_users':'Manage Users','view_users':'View Users Only','delete_users':'Delete Users','view_user_details':'View User Details','upload_visa':'Upload Visa Copies','manage_staff':'Manage Staff','edit_staff':'Edit Staff','delete_staff':'Delete Staff','manage_permissions':'Manage Permissions','view_activity_log':'View Activity Log','manage_inquiries':'Manage Inquiries','delete_inquiries':'Delete Inquiries','view_financial_reports':'View Financial Reports','export_data':'Export Data','edit_settings':'Edit Settings','system_configuration':'System Configuration','manage_expenses':'Manage Expenses','manage_documents':'Manage Documents'
 };
 function setupRealtimeListeners() {
 onSnapshot(collection(db, "bookings"), (snapshot) => {
@@ -2208,6 +2844,14 @@ window.loadRecentActivity();
 onSnapshot(collection(db, "expenses"), (snapshot) => {
 window.expenses = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 if(window.isAdminLoggedIn) window.loadExpenses();
+});
+onSnapshot(collection(db, "documents"), (snapshot) => {
+window.documents = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+if(window.isAdminLoggedIn) window.renderDocuments();
+});
+onSnapshot(collection(db, "tasks"), (snapshot) => {
+window.tasks = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+if(window.isAdminLoggedIn) window.renderTasks();
 });
 }
 async function initializeDefaultAdmin() {
@@ -2277,6 +2921,13 @@ localStorage.removeItem('currentStaffUser');
 }
 const urlParams = new URLSearchParams(window.location.search);
 if(urlParams.get('view') === 'admin') setTimeout(() => { window.openStaffLogin(); }, 100);
+// Keyboard shortcut: Ctrl+Shift+A to open staff login
+document.addEventListener('keydown', function(e) {
+if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+e.preventDefault();
+window.openStaffLogin();
+}
+});
 });
 window.showToast = function(message) {
 const toast = document.getElementById('toast');
@@ -2293,6 +2944,27 @@ document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
 }
 window.onclick = function(event) {
 if (event.target.classList.contains('modal')) event.target.style.display = 'none';
+}
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+if (!e.target.closest('.nav-tab.has-dropdown')) {
+document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('show'));
+document.querySelectorAll('.nav-tab.has-dropdown').forEach(t => t.classList.remove('open'));
+}
+});
+window.toggleDropdown = function(dropdownId, element) {
+event.stopPropagation();
+const dropdown = document.getElementById(dropdownId);
+const allDropdowns = document.querySelectorAll('.nav-dropdown');
+const allTabs = document.querySelectorAll('.nav-tab.has-dropdown');
+allDropdowns.forEach(d => {
+if (d.id !== dropdownId) d.classList.remove('show');
+});
+allTabs.forEach(t => {
+if (t !== element) t.classList.remove('open');
+});
+dropdown.classList.toggle('show');
+element.classList.toggle('open');
 }
 window.hasPermission = function(permission) {
 if (!window.currentStaffUser) return false;
@@ -2497,7 +3169,7 @@ window.showDashboardHome = function(element) {
 document.getElementById('dashboardHome').style.display = 'block';
 document.getElementById('adminPagesContainer').style.display = 'none';
 document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-if(element) element.classList.add('active');
+if(element && element.classList.contains('nav-tab')) element.classList.add('active');
 }
 window.showAdminPageFromGrid = function(pageName, element) {
 const pagePermissions = {
@@ -2506,7 +3178,16 @@ const pagePermissions = {
 'permissions':'manage_permissions','activity-log':'view_activity_log',
 'financial':'view_financial_reports','expenses':'manage_expenses',
 'visa-tracker':'upload_visa','groups':'manage_bookings','promotions':'edit_settings',
-'analytics':'view_financial_reports','settings':'system_configuration'
+'analytics':'view_financial_reports','settings':'system_configuration',
+'documents':'manage_documents','my-profile':'view_dashboard','my-tasks':'view_dashboard',
+'calendar':'view_dashboard','notifications':'view_dashboard','messages':'view_dashboard',
+'my-bookings':'view_bookings','my-performance':'view_dashboard','my-leaves':'view_dashboard',
+'my-expenses':'view_dashboard','team-performance':'view_dashboard','assign-tasks':'manage_staff',
+'attendance':'manage_staff','active-groups':'view_bookings','upcoming-groups':'view_bookings',
+'pending-sales':'view_bookings','confirmed-sales':'view_bookings','sales-reports':'view_financial_reports',
+'vendors':'manage_bookings','suppliers':'manage_bookings','logistics':'manage_bookings',
+'tracking':'manage_bookings','purchase-orders':'manage_expenses','invoices':'view_financial_reports',
+'payments':'view_financial_reports','templates':'manage_documents','reports':'export_data'
 };
 const requiredPermission = pagePermissions[pageName];
 if (requiredPermission && !hasPermission(requiredPermission)) {
@@ -2528,7 +3209,16 @@ packages:'Edit Packages',users:'Registered Users',staff:'Staff Management',
 permissions:'Role Permissions','activity-log':'Activity Log',
 financial:'Financial Reports',expenses:'Expenses Management',
 'visa-tracker':'Visa Tracker',groups:'Group Management',
-promotions:'Promotions',analytics:'Analytics',settings:'System Settings'
+promotions:'Promotions',analytics:'Analytics',settings:'System Settings',
+documents:'Document Management','my-profile':'My Profile','my-tasks':'My Tasks',
+calendar:'Calendar',notifications:'Notifications',messages:'Messages',
+'my-bookings':'My Bookings','my-performance':'My Performance','my-leaves':'Leave Requests',
+'my-expenses':'My Expenses','team-performance':'Team Performance','assign-tasks':'Assign Tasks',
+attendance:'Attendance','active-groups':'Active Groups','upcoming-groups':'Upcoming Groups',
+'pending-sales':'Pending Sales','confirmed-sales':'Confirmed Sales','sales-reports':'Sales Reports',
+vendors:'Vendors',suppliers:'Suppliers',logistics:'Logistics',tracking:'Tracking',
+'purchase-orders':'Purchase Orders',invoices:'Invoices',payments:'Payments',
+templates:'Templates',reports:'Reports'
 };
 document.getElementById('admin-page-title').textContent = titles[pageName] || 'Dashboard';
 window.loadFullAdminData();
@@ -2545,6 +3235,23 @@ if (pageName === 'visa-tracker') window.loadVisaTracker();
 if (pageName === 'groups') window.loadGroups();
 if (pageName === 'promotions') window.loadPromotions();
 if (pageName === 'analytics') window.loadAnalytics();
+if (pageName === 'documents') window.loadDocuments();
+if (pageName === 'my-profile') window.loadMyProfile();
+if (pageName === 'my-tasks' || pageName === 'assign-tasks') window.renderTasks();
+if (pageName === 'calendar') window.renderCalendar();
+if (pageName === 'notifications') window.loadNotifications();
+if (pageName === 'my-bookings') window.loadMyBookings();
+if (pageName === 'my-performance') window.loadMyPerformance();
+if (pageName === 'my-leaves') window.loadLeaves();
+if (pageName === 'my-expenses') window.loadMyExpenses();
+if (pageName === 'team-performance') window.loadTeamPerformance();
+if (pageName === 'attendance') window.loadAttendance();
+if (pageName === 'active-groups') window.loadActiveGroups();
+if (pageName === 'upcoming-groups') window.loadUpcomingGroups();
+if (pageName === 'pending-sales') window.loadPendingSales();
+if (pageName === 'confirmed-sales') window.loadConfirmedSales();
+if (pageName === 'sales-reports') window.loadSalesReports();
+if (pageName === 'templates') window.loadTemplates();
 }
 window.showAdminDashboard = function() {
 document.querySelectorAll('header, .hero, .madinah-banner, .section, footer, .floating-wa').forEach(el => { el.style.display = 'none'; });
@@ -2575,6 +3282,7 @@ document.getElementById('appExpenses').style.display = hasPermission('manage_exp
 document.getElementById('appVisa').style.display = hasPermission('upload_visa') ? 'flex' : 'none';
 document.getElementById('appGroups').style.display = hasPermission('manage_bookings') ? 'flex' : 'none';
 document.getElementById('appPromotions').style.display = hasPermission('edit_settings') ? 'flex' : 'none';
+document.getElementById('appDocuments').style.display = hasPermission('manage_documents') ? 'flex' : 'none';
 document.getElementById('appAnalytics').style.display = hasPermission('view_financial_reports') ? 'flex' : 'none';
 document.getElementById('appSettings').style.display = hasPermission('system_configuration') ? 'flex' : 'none';
 }
@@ -2635,8 +3343,10 @@ actions += `<button class="action-btn" style="background: #ffc107; color: #333;"
 }
 actions += `<button class="action-btn btn-pdf" onclick="printTicket('${b.id}')" title="Print/PDF Ticket"><i class="fas fa-file-pdf"></i></button>`;
 if (canDeleteBookings) actions += `<button class="action-btn btn-delete" onclick="deleteBooking('${b.id}')"><i class="fas fa-trash"></i></button>`;
-return `<tr><td><strong>${b.id}</strong></td><td>${b.userName}</td><td>${b.gender || '-'}</td><td>${b.item}</td><td>${b.date}</td><td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td><td>${actions}</td></tr>`;
-}).join('') || '<tr><td colspan="7" style="text-align:center;">No bookings found</td></tr>';
+const attachCount = (b.attachments || []).length;
+const attachBadge = attachCount > 0 ? `<span style="background: var(--accent-gold); color: var(--primary-green); padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600;"><i class="fas fa-paperclip"></i> ${attachCount}</span>` : '<span style="color: #999;">—</span>';
+return `<tr><td><strong>${b.id}</strong></td><td>${b.userName}</td><td>${b.gender || '-'}</td><td>${b.item}</td><td>${b.date}</td><td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td><td>${attachBadge}</td><td>${actions}</td></tr>`;
+}).join('') || '<tr><td colspan="8" style="text-align:center;">No bookings found</td></tr>';
 const canDeleteInquiries = hasPermission('delete_inquiries');
 document.getElementById('fs-all-inquiries').innerHTML = window.inquiries.map((inq) =>
 `<tr><td>${inq.name}</td><td><a href="tel:${inq.phone}" style="color:var(--primary-green)">${inq.phone}</a></td><td style="max-width: 300px;">${inq.message}</td><td><a href="https://wa.me/92${inq.phone.replace(/^0/, '')}" target="_blank" class="action-btn btn-approve"><i class="fab fa-whatsapp"></i></a>${canDeleteInquiries ? `<button class="action-btn btn-delete" onclick="deleteInquiry('${inq.id}')"><i class="fas fa-trash"></i></button>` : ''}</td></tr>`
@@ -2672,6 +3382,9 @@ list.innerHTML = window.staffMembers.map(s => `
 <span class="staff-role-badge role-${s.role}">${window.ROLES[s.role].name}</span>
 </div>
 <p><i class="fas fa-phone"></i> ${s.phone}</p>
+${s.cnic ? `<p><i class="fas fa-id-card"></i> CNIC: ${s.cnic}</p>` : ''}
+${s.salary ? `<p><i class="fas fa-money-bill"></i> Salary: PKR ${Number(s.salary).toLocaleString()}</p>` : ''}
+${s.joiningDate ? `<p><i class="fas fa-calendar"></i> Joined: ${s.joiningDate}</p>` : ''}
 <div style="margin-top:15px; display:flex; gap:10px;">
 <button class="action-btn btn-edit" onclick="openAddStaffModal('${s.id}')"><i class="fas fa-edit"></i> Edit</button>
 ${hasPermission('delete_staff') ? `<button class="action-btn btn-delete" onclick="deleteStaff('${s.id}')"><i class="fas fa-trash"></i> Delete</button>` : ''}
@@ -2691,6 +3404,10 @@ document.getElementById('staffName').value = s.name;
 document.getElementById('staffEmail').value = s.email;
 document.getElementById('staffPhone').value = s.phone;
 document.getElementById('staffPassword').value = '';
+document.getElementById('staffCNIC').value = s.cnic || '';
+document.getElementById('staffAddress').value = s.address || '';
+document.getElementById('staffSalary').value = s.salary || '';
+document.getElementById('staffJoiningDate').value = s.joiningDate || '';
 document.getElementById('staffPhotoUrl').value = s.photoUrl || '';
 if(s.photoUrl) {
 document.getElementById('staffPhotoPreview').innerHTML = `<img src="${s.photoUrl}" style="max-width: 150px; border-radius: 10px; border: 2px solid var(--accent-gold);" onerror="this.style.display='none'">`;
@@ -2702,6 +3419,10 @@ document.getElementById('staffName').value = '';
 document.getElementById('staffEmail').value = '';
 document.getElementById('staffPhone').value = '';
 document.getElementById('staffPassword').value = '';
+document.getElementById('staffCNIC').value = '';
+document.getElementById('staffAddress').value = '';
+document.getElementById('staffSalary').value = '';
+document.getElementById('staffJoiningDate').value = '';
 document.querySelectorAll('.role-option').forEach(o => o.classList.remove('selected'));
 document.getElementById('staffRole').value = '';
 }
@@ -2710,7 +3431,6 @@ document.getElementById('staffModal').style.display = 'block';
 window.handleStaffPhotoUpload = async function(input) {
 const file = input.files[0];
 if(!file) return;
-// Updated to 2MB limit
 if(file.size > 2 * 1024 * 1024) {
 showToast("File too large (Max 2MB)");
 return;
@@ -2741,6 +3461,10 @@ const data = {
 name: document.getElementById('staffName').value,
 email: document.getElementById('staffEmail').value.toLowerCase(),
 phone: document.getElementById('staffPhone').value,
+cnic: document.getElementById('staffCNIC').value,
+address: document.getElementById('staffAddress').value,
+salary: document.getElementById('staffSalary').value,
+joiningDate: document.getElementById('staffJoiningDate').value,
 role: document.getElementById('staffRole').value,
 status: 'active',
 photoUrl: document.getElementById('staffPhotoUrl').value
@@ -2838,7 +3562,7 @@ showToast("Generating comprehensive report...");
 const wb = XLSX.utils.book_new();
 const bookingsData = window.bookings.map(b => ({
 RefID: b.id, Customer: b.userName, Phone: b.phone || '', Email: b.email || '',
-Gender: b.gender || '', Service: b.item, Amount: b.amount || 0, Date: b.date, Status: b.status, Notes: b.notes || ''
+Gender: b.gender || '', Service: b.item, Amount: b.amount || 0, Date: b.date, Status: b.status, Notes: b.notes || '', Attachments: (b.attachments || []).length
 }));
 const wsBookings = XLSX.utils.json_to_sheet(bookingsData);
 XLSX.utils.book_append_sheet(wb, wsBookings, "Bookings");
@@ -2855,7 +3579,6 @@ const wsUsers = XLSX.utils.json_to_sheet(usersData);
 XLSX.utils.book_append_sheet(wb, wsUsers, "Users");
 const inquiriesData = window.inquiries.map(i => ({
 Name: i.name, Phone: i.phone, Email: i.email || '', Message: i.message,
-Date: i.email || '', Message: i.message,
 Date: i.createdAt ? new Date(i.createdAt.toDate ? i.createdAt.toDate() : i.createdAt).toLocaleDateString() : ''
 }));
 const wsInquiries = XLSX.utils.json_to_sheet(inquiriesData);
@@ -2872,14 +3595,20 @@ Metric: 'Total Revenue', Value: totalRevenue, Status: 'Confirmed Bookings'
 const wsFinancial = XLSX.utils.json_to_sheet(financialData);
 XLSX.utils.book_append_sheet(wb, wsFinancial, "Financial Summary");
 const staffData = window.staffMembers.map(s => ({
-Name: s.name, Email: s.email, Phone: s.phone, Role: s.role, Status: s.status,
+Name: s.name, Email: s.email, Phone: s.phone, Role: s.role, Status: s.status, CNIC: s.cnic || '', Salary: s.salary || '',
 LastLogin: s.lastLogin ? new Date(s.lastLogin.toDate ? s.lastLogin.toDate() : s.lastLogin).toLocaleDateString() : 'Never'
 }));
 const wsStaff = XLSX.utils.json_to_sheet(staffData);
 XLSX.utils.book_append_sheet(wb, wsStaff, "Staff");
+const documentsData = window.documents.map(d => ({
+Title: d.title, Category: d.category, FileName: d.fileName, Size: d.fileSize, UploadedBy: d.uploadedBy,
+Date: d.uploadedAt ? new Date(d.uploadedAt).toLocaleDateString() : ''
+}));
+const wsDocuments = XLSX.utils.json_to_sheet(documentsData);
+XLSX.utils.book_append_sheet(wb, wsDocuments, "Documents");
 const dateStr = new Date().toISOString().split('T')[0];
 XLSX.writeFile(wb, `NadeemHadi_Complete_Report_${dateStr}.xlsx`);
-showToast("Complete report exported with 6 sheets!");
+showToast("Complete report exported with 7 sheets!");
 }
 window.renderCustomPackages = function() {
 const grid = document.getElementById('packagesGrid');
@@ -2985,7 +3714,75 @@ document.getElementById('detailsMeccaHotel').value = b.meccaHotel || '';
 document.getElementById('detailsMedinaHotel').value = b.medinaHotel || '';
 document.getElementById('detailsVisa').value = b.visa || '';
 document.getElementById('detailsNotes').value = b.notes || '';
+renderBookingAttachments(b.attachments || []);
 document.getElementById('bookingDetailsModal').style.display = 'block';
+}
+window.renderBookingAttachments = function(files) {
+const container = document.getElementById('uploadedBookingFiles');
+if (!files || files.length === 0) {
+container.innerHTML = '<p style="color: #999;">No attachments uploaded.</p>';
+return;
+}
+container.innerHTML = files.map((f, index) => {
+const isImage = /\.(jpg|jpeg|png|gif)$/i.test(f.name);
+const isPDF = /\.pdf$/i.test(f.name);
+const icon = isImage ? 'fa-image' : isPDF ? 'fa-file-pdf' : 'fa-file';
+const size = f.size ? (f.size / 1024).toFixed(1) + ' KB' : '';
+return `
+<div class="file-item">
+<span><i class="fas ${icon}" style="margin-right: 8px; color: var(--primary-green);"></i>${f.name} <small style="color: #999;">(${size})</small></span>
+<div>
+<button class="action-btn btn-view" onclick="viewDocument('${f.url}', '${f.name}')" title="View"><i class="fas fa-eye"></i></button>
+<button class="action-btn btn-edit" onclick="downloadDocument('${f.url}', '${f.name}')" title="Download"><i class="fas fa-download"></i></button>
+<button class="action-btn btn-delete" onclick="deleteBookingAttachment(${index})" title="Delete"><i class="fas fa-trash"></i></button>
+</div>
+</div>
+`;
+}).join('');
+}
+window.handleBookingAttachmentUpload = async function(input) {
+const files = input.files;
+if (!files.length) return;
+const bookingId = document.getElementById('detailsBookingId').value;
+const booking = window.bookings.find(b => b.id === bookingId);
+const attachments = booking?.attachments || [];
+showToast("Uploading files...");
+try {
+for (let f of files) {
+if (f.size > 5 * 1024 * 1024) {
+showToast(`File ${f.name} is too large (Max 5MB)`);
+continue;
+}
+const fileName = `${Date.now()}_${f.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+const storageRef = ref(storage, `booking_attachments/${bookingId}/${fileName}`);
+await uploadBytes(storageRef, f);
+const url = await getDownloadURL(storageRef);
+attachments.push({
+name: f.name,
+url: url,
+size: f.size,
+type: f.type,
+uploadedAt: new Date().toISOString()
+});
+}
+await updateDoc(doc(db, "bookings", bookingId), { attachments });
+await logActivity('edit', `Uploaded attachments for booking ${bookingId}`);
+showToast("Files uploaded successfully!");
+renderBookingAttachments(attachments);
+} catch (err) {
+console.error(err);
+showToast("Upload failed: " + err.message);
+}
+}
+window.deleteBookingAttachment = async function(index) {
+if (!confirm("Delete this attachment?")) return;
+const bookingId = document.getElementById('detailsBookingId').value;
+const booking = window.bookings.find(b => b.id === bookingId);
+const attachments = booking.attachments || [];
+attachments.splice(index, 1);
+await updateDoc(doc(db, "bookings", bookingId), { attachments });
+showToast("Attachment deleted");
+renderBookingAttachments(attachments);
 }
 window.saveBookingDetails = async function(e) {
 e.preventDefault();
@@ -3376,7 +4173,7 @@ ${e.receiptUrl ? `<button class="action-btn btn-view" onclick="viewDocument('${e
 <button class="action-btn btn-delete" onclick="deleteExpense('${e.id}')" title="Delete Expense"><i class="fas fa-trash"></i></button>
 </td>
 </tr>
-`).join('') || '<tr><td colspan="6" style="text-align:center;">No expenses recorded</td></tr>';
+`).join('') || '<tr><td colspan="7" style="text-align:center;">No expenses recorded</td></tr>';
 }
 }
 window.loadFinancialReports = async function() {
@@ -3736,6 +4533,450 @@ await setDoc(doc(db, "system_settings", "company"), settings);
 await logActivity('edit', 'Updated system settings');
 showToast("Settings saved successfully!");
 } catch (err) { showToast("Error: " + err.message); }
+}
+// ============ NEW FUNCTIONS FOR ENHANCED FEATURES ============
+// Documents Management
+window.loadDocuments = function() {
+renderDocuments();
+}
+window.renderDocuments = function() {
+let filteredDocs = window.documents;
+if (window.currentDocFilter === 'pdf') {
+filteredDocs = window.documents.filter(d => d.fileName && /\.pdf$/i.test(d.fileName));
+} else if (window.currentDocFilter === 'image') {
+filteredDocs = window.documents.filter(d => d.fileName && /\.(jpg|jpeg|png|gif)$/i.test(d.fileName));
+} else if (window.currentDocFilter === 'other') {
+filteredDocs = window.documents.filter(d => d.fileName && !/\.(pdf|jpg|jpeg|png|gif)$/i.test(d.fileName));
+}
+document.getElementById('doc-total').textContent = window.documents.length;
+document.getElementById('doc-pdf').textContent = window.documents.filter(d => d.fileName && /\.pdf$/i.test(d.fileName)).length;
+document.getElementById('doc-images').textContent = window.documents.filter(d => d.fileName && /\.(jpg|jpeg|png|gif)$/i.test(d.fileName)).length;
+const thisMonth = window.documents.filter(d => {
+const uploadDate = new Date(d.uploadedAt);
+const now = new Date();
+return uploadDate.getMonth() === now.getMonth() && uploadDate.getFullYear() === now.getFullYear();
+}).length;
+document.getElementById('doc-month').textContent = thisMonth;
+const tbody = document.getElementById('documents-table-body');
+if (tbody) {
+tbody.innerHTML = filteredDocs.map(d => {
+const isImage = /\.(jpg|jpeg|png|gif)$/i.test(d.fileName);
+const isPDF = /\.pdf$/i.test(d.fileName);
+const icon = isImage ? 'fa-image' : isPDF ? 'fa-file-pdf' : 'fa-file';
+const size = d.fileSize ? (d.fileSize / 1024).toFixed(1) + ' KB' : 'N/A';
+return `
+<tr>
+<td><i class="fas ${icon}" style="margin-right: 8px; color: var(--primary-green);"></i>${d.title}</td>
+<td><span class="doc-category cat-${d.category}">${d.category}</span></td>
+<td>${size}</td>
+<td>${d.uploadedBy || 'System'}</td>
+<td>${d.uploadedAt ? new Date(d.uploadedAt).toLocaleDateString() : 'N/A'}</td>
+<td>
+<button class="action-btn btn-view" onclick="viewDocument('${d.fileUrl}', '${d.fileName}')" title="View"><i class="fas fa-eye"></i></button>
+<button class="action-btn btn-edit" onclick="downloadDocument('${d.fileUrl}', '${d.fileName}')" title="Download"><i class="fas fa-download"></i></button>
+<button class="action-btn btn-delete" onclick="deleteDocument('${d.id}')" title="Delete"><i class="fas fa-trash"></i></button>
+</td>
+</tr>
+`;
+}).join('') || '<tr><td colspan="6" style="text-align:center;">No documents found</td></tr>';
+}
+}
+window.filterDocuments = function(filter) {
+window.currentDocFilter = filter;
+renderDocuments();
+}
+window.openDocumentUploadModal = function(category) {
+document.getElementById('doc-title').value = '';
+document.getElementById('doc-category').value = category || 'template';
+document.getElementById('doc-description').value = '';
+document.getElementById('doc-file-url').value = '';
+document.getElementById('doc-file-url').dataset.fileName = '';
+document.getElementById('doc-file-url').dataset.fileSize = '';
+document.getElementById('documentUploadModal').style.display = 'block';
+}
+window.handleDocumentFileUpload = async function(input) {
+const file = input.files[0];
+if (!file) return;
+if (file.size > 10 * 1024 * 1024) {
+showToast("File too large (Max 10MB)");
+return;
+}
+showToast("Uploading document...");
+try {
+const fileName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+const storageRef = ref(storage, `documents/${fileName}`);
+await uploadBytes(storageRef, file);
+const url = await getDownloadURL(storageRef);
+document.getElementById('doc-file-url').value = url;
+document.getElementById('doc-file-url').dataset.fileName = file.name;
+document.getElementById('doc-file-url').dataset.fileSize = file.size;
+showToast("Document uploaded!");
+} catch (err) {
+console.error(err);
+showToast("Upload failed: " + err.message);
+}
+}
+window.saveDocument = async function(e) {
+e.preventDefault();
+const fileInput = document.getElementById('doc-file-url');
+if (!fileInput.value) {
+showToast("Please select a file first");
+return;
+}
+const data = {
+title: document.getElementById('doc-title').value,
+category: document.getElementById('doc-category').value,
+description: document.getElementById('doc-description').value,
+fileUrl: fileInput.value,
+fileName: fileInput.dataset.fileName || 'document',
+fileSize: parseInt(fileInput.dataset.fileSize) || 0,
+uploadedBy: window.currentStaffUser ? window.currentStaffUser.name : 'System',
+uploadedAt: new Date().toISOString()
+};
+try {
+await addDoc(collection(db, "documents"), data);
+await logActivity('create', `Uploaded document: ${data.title}`);
+showToast("Document saved successfully!");
+closeModal('documentUploadModal');
+loadDocuments();
+} catch (err) {
+showToast("Error: " + err.message);
+}
+}
+window.deleteDocument = async function(id) {
+if (!confirm("Delete this document?")) return;
+await deleteDoc(doc(db, "documents", id));
+await logActivity('delete', `Deleted document`);
+showToast("Document deleted.");
+loadDocuments();
+}
+// My Profile
+window.loadMyProfile = function() {
+if (!window.currentStaffUser) return;
+const s = window.currentStaffUser;
+const avatar = document.getElementById('profileAvatarLg');
+if (s.photoUrl) {
+avatar.innerHTML = `<img src="${s.photoUrl}" alt="${s.name}" style="width:100%;height:100%;object-fit:cover;">`;
+} else {
+avatar.textContent = s.name.charAt(0).toUpperCase();
+}
+document.getElementById('profileFullName').textContent = s.name;
+document.getElementById('profileRole').textContent = window.ROLES[s.role].name;
+document.getElementById('profileEmail').textContent = s.email;
+document.getElementById('profilePhone').value = s.phone || '';
+document.getElementById('profileJoined').value = s.createdAt ? new Date(s.createdAt.toDate ? s.createdAt.toDate() : s.createdAt).toLocaleDateString() : 'N/A';
+document.getElementById('profileLastLogin').value = s.lastLogin ? new Date(s.lastLogin.toDate ? s.lastLogin.toDate() : s.lastLogin).toLocaleString() : 'Never';
+document.getElementById('profileStatus').value = s.status || 'Active';
+}
+window.editMyProfile = function() {
+showToast("Profile editing coming soon");
+}
+// Tasks
+window.openTaskModal = function() {
+document.getElementById('task-title').value = '';
+document.getElementById('task-description').value = '';
+document.getElementById('task-due').value = '';
+document.getElementById('task-priority').value = 'medium';
+const assigneeSelect = document.getElementById('task-assignee');
+assigneeSelect.innerHTML = '<option value="">Select Staff</option>' +
+window.staffMembers.map(s => `<option value="${s.id}">${s.name} (${window.ROLES[s.role].name})</option>`).join('');
+document.getElementById('taskModal').style.display = 'block';
+}
+window.saveTask = async function(e) {
+e.preventDefault();
+const data = {
+title: document.getElementById('task-title').value,
+description: document.getElementById('task-description').value,
+assigneeId: document.getElementById('task-assignee').value,
+dueDate: document.getElementById('task-due').value,
+priority: document.getElementById('task-priority').value,
+status: 'pending',
+createdBy: window.currentStaffUser ? window.currentStaffUser.name : 'System',
+createdAt: new Date().toISOString()
+};
+try {
+await addDoc(collection(db, "tasks"), data);
+await logActivity('create', `Created task: ${data.title}`);
+showToast("Task created!");
+closeModal('taskModal');
+} catch (err) {
+showToast("Error: " + err.message);
+}
+}
+window.renderTasks = function() {
+const list = document.getElementById('tasksList');
+const assignList = document.getElementById('assignTasksList');
+const myTasks = window.tasks.filter(t => !t.assigneeId || t.assigneeId === (window.currentStaffUser?.id || ''));
+const stats = {
+total: window.tasks.length,
+pending: window.tasks.filter(t => t.status === 'pending').length,
+completed: window.tasks.filter(t => t.status === 'completed').length
+};
+const totalEl = document.getElementById('tasks-total');
+if (totalEl) totalEl.textContent = stats.total;
+const pendingEl = document.getElementById('tasks-pending');
+if (pendingEl) pendingEl.textContent = stats.pending;
+const completedEl = document.getElementById('tasks-completed');
+if (completedEl) completedEl.textContent = stats.completed;
+const taskHtml = myTasks.map(t => {
+const assignee = window.staffMembers.find(s => s.id === t.assigneeId);
+const priorityColor = t.priority === 'high' ? '#dc3545' : t.priority === 'medium' ? '#ffc107' : '#28a745';
+return `
+<div class="task-item ${t.status === 'completed' ? 'completed' : ''}">
+<div>
+<div class="task-title">${t.title}</div>
+<div class="task-meta">
+<span style="color: ${priorityColor};">● ${t.priority}</span>
+${t.dueDate ? ` | Due: ${t.dueDate}` : ''}
+${assignee ? ` | Assigned: ${assignee.name}` : ''}
+</div>
+${t.description ? `<p style="color: #666; margin-top: 5px; font-size: 0.9rem;">${t.description}</p>` : ''}
+</div>
+<div>
+${t.status !== 'completed' ? `<button class="action-btn btn-approve" onclick="toggleTaskStatus('${t.id}', 'completed')"><i class="fas fa-check"></i></button>` : `<button class="action-btn btn-edit" onclick="toggleTaskStatus('${t.id}', 'pending')"><i class="fas fa-undo"></i></button>`}
+<button class="action-btn btn-delete" onclick="deleteTask('${t.id}')"><i class="fas fa-trash"></i></button>
+</div>
+</div>
+`;
+}).join('') || '<p style="text-align:center; color:#999; padding:40px;">No tasks yet</p>';
+if (list) list.innerHTML = taskHtml;
+if (assignList) assignList.innerHTML = taskHtml;
+}
+window.toggleTaskStatus = async function(id, status) {
+await updateDoc(doc(db, "tasks", id), { status });
+showToast("Task updated");
+}
+window.deleteTask = async function(id) {
+if (!confirm("Delete this task?")) return;
+await deleteDoc(doc(db, "tasks", id));
+showToast("Task deleted");
+}
+// Calendar
+window.renderCalendar = function() {
+const date = window.calendarDate;
+const year = date.getFullYear();
+const month = date.getMonth();
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+document.getElementById('calendarMonth').textContent = `${monthNames[month]} ${year}`;
+const firstDay = new Date(year, month, 1).getDay();
+const daysInMonth = new Date(year, month + 1, 0).getDate();
+const today = new Date();
+let html = '';
+const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+dayNames.forEach(d => {
+html += `<div style="text-align:center; font-weight:600; color:var(--primary-green); padding:10px;">${d}</div>`;
+});
+for (let i = 0; i < firstDay; i++) {
+html += `<div></div>`;
+}
+for (let day = 1; day <= daysInMonth; day++) {
+const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+const hasEvent = window.bookings.some(b => {
+const bDate = new Date(b.createdAt?.toDate ? b.createdAt.toDate() : b.createdAt);
+return bDate.getDate() === day && bDate.getMonth() === month && bDate.getFullYear() === year;
+});
+html += `<div class="calendar-day ${isToday ? 'today' : ''} ${hasEvent ? 'has-event' : ''}">${day}</div>`;
+}
+document.getElementById('calendarGrid').innerHTML = html;
+}
+window.changeMonth = function(delta) {
+window.calendarDate.setMonth(window.calendarDate.getMonth() + delta);
+renderCalendar();
+}
+// Notifications
+window.loadNotifications = function() {
+const list = document.getElementById('notificationsList');
+const recentBookings = window.bookings.slice(-10).reverse();
+const recentActivities = window.activityLog.slice(-10).reverse();
+let html = '';
+recentBookings.forEach(b => {
+html += `
+<div class="notification-item">
+<div class="notification-icon" style="background: #d4edda; color: #155724;"><i class="fas fa-ticket-alt"></i></div>
+<div style="flex:1;">
+<strong>New Booking</strong> from ${b.userName}
+<div style="color: #666; font-size: 0.85rem;">${b.item} - ${b.status}</div>
+</div>
+</div>
+`;
+});
+list.innerHTML = html || '<p style="text-align:center; color:#999; padding:40px;">No notifications</p>';
+}
+// My Bookings (for staff)
+window.loadMyBookings = function() {
+const tbody = document.getElementById('my-bookings-body');
+const myBookings = window.bookings.filter(b => b.createdBy === window.currentStaffUser?.name);
+tbody.innerHTML = myBookings.map(b => `
+<tr>
+<td><strong>${b.id}</strong></td>
+<td>${b.userName}</td>
+<td>${b.item}</td>
+<td>${b.date}</td>
+<td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td>
+<td>
+<button class="action-btn btn-edit" onclick="openBookingDetailsModal('${b.id}')"><i class="fas fa-edit"></i></button>
+<button class="action-btn btn-pdf" onclick="printTicket('${b.id}')"><i class="fas fa-file-pdf"></i></button>
+</td>
+</tr>
+`).join('') || '<tr><td colspan="6" style="text-align:center;">No bookings found</td></tr>';
+}
+// My Performance
+window.loadMyPerformance = function() {
+const myBookings = window.bookings.filter(b => b.createdBy === window.currentStaffUser?.name);
+const confirmed = myBookings.filter(b => b.status === 'confirmed');
+const revenue = confirmed.reduce((sum, b) => sum + (b.amount || 0), 0);
+document.getElementById('perf-bookings').textContent = myBookings.length;
+document.getElementById('perf-confirmed').textContent = confirmed.length;
+document.getElementById('perf-revenue').textContent = 'PKR ' + revenue.toLocaleString();
+document.getElementById('perf-rating').textContent = '5.0';
+const chart = document.getElementById('performance-chart');
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+chart.innerHTML = months.map(m => `
+<div style="flex:1; text-align:center;">
+<div style="height:${Math.random()*100}%; background:var(--accent-gold); border-radius:5px 5px 0 0; min-height:10px;"></div>
+<p style="margin-top:10px; font-size:0.85rem;">${m}</p>
+</div>
+`).join('');
+}
+// Leaves
+window.openLeaveModal = function() {
+document.getElementById('leave-from').value = '';
+document.getElementById('leave-to').value = '';
+document.getElementById('leave-reason').value = '';
+document.getElementById('leaveModal').style.display = 'block';
+}
+window.saveLeave = async function(e) {
+e.preventDefault();
+const from = new Date(document.getElementById('leave-from').value);
+const to = new Date(document.getElementById('leave-to').value);
+const days = Math.ceil((to - from) / (1000 * 60 * 60 * 24)) + 1;
+showToast(`Leave request submitted for ${days} days`);
+closeModal('leaveModal');
+}
+window.loadLeaves = function() {
+const tbody = document.getElementById('leaves-table-body');
+if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:#999;">No leave requests</td></tr>';
+}
+// My Expenses
+window.loadMyExpenses = function() {
+const myExpenses = window.expenses.filter(e => e.addedBy === window.currentStaffUser?.name);
+const total = myExpenses.reduce((sum, e) => sum + e.amount, 0);
+document.getElementById('my-exp-total').textContent = 'PKR ' + total.toLocaleString();
+document.getElementById('my-exp-approved').textContent = 'PKR 0';
+document.getElementById('my-exp-pending').textContent = 'PKR ' + total.toLocaleString();
+}
+// Team Performance
+window.loadTeamPerformance = function() {
+const tbody = document.getElementById('team-performance-body');
+tbody.innerHTML = window.staffMembers.map(s => {
+const staffBookings = window.bookings.filter(b => b.createdBy === s.name);
+const revenue = staffBookings.filter(b => b.status === 'confirmed').reduce((sum, b) => sum + (b.amount || 0), 0);
+return `
+<tr>
+<td>${s.name}</td>
+<td><span class="staff-role-badge role-${s.role}">${window.ROLES[s.role].name}</span></td>
+<td>${staffBookings.length}</td>
+<td>PKR ${revenue.toLocaleString()}</td>
+<td>5.0</td>
+</tr>
+`;
+}).join('') || '<tr><td colspan="5" style="text-align:center;">No staff data</td></tr>';
+}
+// Attendance
+window.loadAttendance = function() {
+document.getElementById('att-present').textContent = window.staffMembers.length;
+document.getElementById('att-absent').textContent = 0;
+document.getElementById('att-leave').textContent = 0;
+const tbody = document.getElementById('attendance-body');
+tbody.innerHTML = window.staffMembers.map(s => `
+<tr>
+<td>${s.name}</td>
+<td>09:00 AM</td>
+<td>06:00 PM</td>
+<td>9 hrs</td>
+<td><span class="status-pill pill-confirmed">Present</span></td>
+</tr>
+`).join('') || '<tr><td colspan="5" style="text-align:center;">No attendance data</td></tr>';
+}
+// Active/Upcoming Groups
+window.loadActiveGroups = function() {
+const list = document.getElementById('active-groups-list');
+const active = window.umrahGroups.filter(g => new Date(g.departure) <= new Date() && new Date(g.return) >= new Date());
+list.innerHTML = active.map(g => `
+<div class="staff-card">
+<h4 style="color: var(--primary-green);">${g.name}</h4>
+<p>${g.currentPilgrims || 0} / ${g.maxPilgrims} Pilgrims</p>
+<p>Leader: ${g.leader}</p>
+</div>
+`).join('') || '<p style="text-align:center; color:#999; padding:40px;">No active groups</p>';
+}
+window.loadUpcomingGroups = function() {
+const list = document.getElementById('upcoming-groups-list');
+const upcoming = window.umrahGroups.filter(g => new Date(g.departure) > new Date());
+list.innerHTML = upcoming.map(g => `
+<div class="staff-card">
+<h4 style="color: var(--primary-green);">${g.name}</h4>
+<p>Departure: ${g.departure}</p>
+<p>${g.currentPilgrims || 0} / ${g.maxPilgrims} Pilgrims</p>
+</div>
+`).join('') || '<p style="text-align:center; color:#999; padding:40px;">No upcoming groups</p>';
+}
+// Sales Pages
+window.loadPendingSales = function() {
+const tbody = document.getElementById('pending-sales-body');
+const pending = window.bookings.filter(b => b.status === 'pending');
+tbody.innerHTML = pending.map(b => `
+<tr>
+<td><strong>${b.id}</strong></td>
+<td>${b.userName}</td>
+<td>${b.item}</td>
+<td>PKR ${(b.amount || 0).toLocaleString()}</td>
+<td>${b.date}</td>
+<td>
+<button class="action-btn btn-approve" onclick="updateBookingStatus('${b.id}', 'confirmed')"><i class="fas fa-check"></i></button>
+<button class="action-btn btn-reject" onclick="updateBookingStatus('${b.id}', 'rejected')"><i class="fas fa-times"></i></button>
+</td>
+</tr>
+`).join('') || '<tr><td colspan="6" style="text-align:center;">No pending sales</td></tr>';
+}
+window.loadConfirmedSales = function() {
+const tbody = document.getElementById('confirmed-sales-body');
+const confirmed = window.bookings.filter(b => b.status === 'confirmed');
+tbody.innerHTML = confirmed.map(b => `
+<tr>
+<td><strong>${b.id}</strong></td>
+<td>${b.userName}</td>
+<td>${b.item}</td>
+<td>PKR ${(b.amount || 0).toLocaleString()}</td>
+<td>${b.date}</td>
+</tr>
+`).join('') || '<tr><td colspan="5" style="text-align:center;">No confirmed sales</td></tr>';
+}
+window.loadSalesReports = function() {
+const total = window.bookings.length;
+const revenue = window.bookings.filter(b => b.status === 'confirmed').reduce((sum, b) => sum + (b.amount || 0), 0);
+const avg = total > 0 ? revenue / total : 0;
+const confirmed = window.bookings.filter(b => b.status === 'confirmed').length;
+const conversion = total > 0 ? (confirmed / total * 100).toFixed(1) : 0;
+document.getElementById('sales-total').textContent = total;
+document.getElementById('sales-revenue').textContent = 'PKR ' + revenue.toLocaleString();
+document.getElementById('sales-avg').textContent = 'PKR ' + Math.round(avg).toLocaleString();
+document.getElementById('sales-conversion').textContent = conversion + '%';
+}
+// Templates
+window.loadTemplates = function() {
+const list = document.getElementById('templates-list');
+const templates = window.documents.filter(d => d.category === 'template');
+list.innerHTML = templates.map(d => `
+<div class="staff-card">
+<h4 style="color: var(--primary-green);"><i class="fas fa-file-alt"></i> ${d.title}</h4>
+<p style="color: #666; margin: 10px 0;">${d.description || 'No description'}</p>
+<div style="display:flex; gap:10px;">
+<button class="action-btn btn-view" onclick="viewDocument('${d.fileUrl}', '${d.fileName}')"><i class="fas fa-eye"></i> View</button>
+<button class="action-btn btn-edit" onclick="downloadDocument('${d.fileUrl}', '${d.fileName}')"><i class="fas fa-download"></i></button>
+</div>
+</div>
+`).join('') || '<p style="text-align:center; color:#999; padding:40px;">No templates uploaded yet</p>';
 }
 console.log("✅ All systems operational!");
 </script>
