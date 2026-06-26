@@ -671,6 +671,7 @@ border-bottom: 3px solid transparent;
 white-space: nowrap;
 font-size: 0.95rem;
 position: relative;
+user-select: none;
 }
 .nav-tab:hover {
 color: white;
@@ -1519,7 +1520,7 @@ scrollbar-width: none;
 <div class="modern-nav-bar">
 <ul class="nav-tabs">
 <li class="nav-tab" onclick="showAdminPageFromGrid('dashboard', this)">Dashboard</li>
-<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('my-profile', this); toggleDropdown('self-services-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('self-services-dropdown', this)">
 Self Services <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="self-services-dropdown">
 <a onclick="showAdminPageFromGrid('my-profile', this)"><i class="fas fa-user"></i> My Profile</a>
@@ -1529,7 +1530,7 @@ Self Services <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('messages', this)"><i class="fas fa-envelope"></i> Messages</a>
 </div>
 </li>
-<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('my-bookings', this); toggleDropdown('me-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('me-dropdown', this)">
 Me <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="me-dropdown">
 <a onclick="showAdminPageFromGrid('my-bookings', this)"><i class="fas fa-ticket-alt"></i> My Bookings</a>
@@ -1538,7 +1539,7 @@ Me <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('my-expenses', this)"><i class="fas fa-receipt"></i> My Expenses</a>
 </div>
 </li>
-<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('staff', this); toggleDropdown('team-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('team-dropdown', this)">
 My Team <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="team-dropdown">
 <a onclick="showAdminPageFromGrid('staff', this)"><i class="fas fa-users"></i> Team Members</a>
@@ -1547,7 +1548,7 @@ My Team <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('attendance', this)"><i class="fas fa-clock"></i> Attendance</a>
 </div>
 </li>
-<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('groups', this); toggleDropdown('clients-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('clients-dropdown', this)">
 My Client Groups <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="clients-dropdown">
 <a onclick="showAdminPageFromGrid('groups', this)"><i class="fas fa-users-cog"></i> All Groups</a>
@@ -1556,7 +1557,7 @@ My Client Groups <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('users', this)"><i class="fas fa-user-friends"></i> All Clients</a>
 </div>
 </li>
-<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('bookings', this); toggleDropdown('sales-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('sales-dropdown', this)">
 Sales <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="sales-dropdown">
 <a onclick="showAdminPageFromGrid('bookings', this)"><i class="fas fa-ticket-alt"></i> All Bookings</a>
@@ -1566,7 +1567,7 @@ Sales <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('inquiries', this)"><i class="fas fa-envelope"></i> Inquiries</a>
 </div>
 </li>
-<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('vendors', this); toggleDropdown('supply-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('supply-dropdown', this)">
 Supply Chain Execution <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="supply-dropdown">
 <a onclick="showAdminPageFromGrid('vendors', this)"><i class="fas fa-truck"></i> Vendors</a>
@@ -1575,7 +1576,7 @@ Supply Chain Execution <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('tracking', this)"><i class="fas fa-map-marker-alt"></i> Tracking</a>
 </div>
 </li>
-<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('expenses', this); toggleDropdown('procurement-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('procurement-dropdown', this)">
 Procurement <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="procurement-dropdown">
 <a onclick="showAdminPageFromGrid('expenses', this)"><i class="fas fa-money-bill-wave"></i> Expenses</a>
@@ -1584,7 +1585,7 @@ Procurement <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('payments', this)"><i class="fas fa-credit-card"></i> Payments</a>
 </div>
 </li>
-<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('documents', this); toggleDropdown('tools-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="toggleDropdown('tools-dropdown', this)">
 Tools <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="tools-dropdown">
 <a onclick="showAdminPageFromGrid('documents', this)"><i class="fas fa-folder"></i> All Documents</a>
@@ -3325,23 +3326,29 @@ document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
 window.onclick = function(event) {
 if (event.target.classList.contains('modal')) event.target.style.display = 'none';
 }
+// ============ ADMIN NAV DROPDOWN - FIXED ============
+// Close admin dropdowns when clicking outside
 document.addEventListener('click', function(e) {
 if (!e.target.closest('.nav-tab.has-dropdown')) {
 document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('show'));
 document.querySelectorAll('.nav-tab.has-dropdown').forEach(t => t.classList.remove('open'));
 }
 });
+// Toggle admin nav dropdown - ONLY toggles, does NOT navigate
 window.toggleDropdown = function(dropdownId, element) {
-event.stopPropagation();
+if (event) event.stopPropagation();
 const dropdown = document.getElementById(dropdownId);
 const allDropdowns = document.querySelectorAll('.nav-dropdown');
 const allTabs = document.querySelectorAll('.nav-tab.has-dropdown');
+// Close all other dropdowns
 allDropdowns.forEach(d => {
 if (d.id !== dropdownId) d.classList.remove('show');
 });
+// Remove open class from all other tabs
 allTabs.forEach(t => {
 if (t !== element) t.classList.remove('open');
 });
+// Toggle current dropdown
 dropdown.classList.toggle('show');
 element.classList.toggle('open');
 }
@@ -3548,8 +3555,12 @@ window.showDashboardHome = function(element) {
 document.getElementById('dashboardHome').style.display = 'block';
 document.getElementById('adminPagesContainer').style.display = 'none';
 document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+// Close all dropdowns when going back to home
+document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('show'));
+document.querySelectorAll('.nav-tab.has-dropdown').forEach(t => t.classList.remove('open'));
 if(element && element.classList.contains('nav-tab')) element.classList.add('active');
 }
+// FIXED: showAdminPageFromGrid now closes all dropdowns after navigation
 window.showAdminPageFromGrid = function(pageName, element) {
 const pagePermissions = {
 'dashboard':'view_dashboard','bookings':'view_bookings','inquiries':'manage_inquiries',
@@ -3573,11 +3584,15 @@ if (requiredPermission && !hasPermission(requiredPermission)) {
 showToast(`You do not have permission to access ${pageName}`);
 return;
 }
+// ✅ CLOSE ALL DROPDOWNS when navigating to a page
+document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('show'));
+document.querySelectorAll('.nav-tab.has-dropdown').forEach(t => t.classList.remove('open'));
 document.getElementById('dashboardHome').style.display = 'none';
 document.getElementById('adminPagesContainer').style.display = 'block';
 document.querySelectorAll('.admin-page').forEach(el => el.style.display = 'none');
 const pageEl = document.getElementById(`full-page-${pageName}`);
 if(pageEl) pageEl.style.display = 'block';
+// Update active tab styling
 document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
 if(element) {
 let tab = element.closest('.nav-tab');
@@ -3659,13 +3674,10 @@ document.getElementById('staffDisplayName').textContent = window.currentStaffUse
 const roleBadge = document.getElementById('currentStaffRole');
 roleBadge.textContent = window.ROLES[window.currentStaffUser.role].name;
 roleBadge.className = `staff-role-badge role-${window.currentStaffUser.role}`;
-
-// Helper function to safely toggle element display
 const safeToggle = (id, show) => {
 const el = document.getElementById(id);
 if (el) el.style.display = show ? 'flex' : 'none';
 };
-
 safeToggle('appStaff', hasPermission('manage_staff'));
 safeToggle('appPermissions', hasPermission('manage_permissions'));
 safeToggle('appActivity', hasPermission('view_activity_log'));
@@ -3678,7 +3690,6 @@ safeToggle('appDocuments', hasPermission('manage_documents'));
 safeToggle('appAnalytics', hasPermission('view_financial_reports'));
 safeToggle('appSettings', hasPermission('system_configuration'));
 }
-
 window.loadDashboardStats = function() {
 const total = window.bookings.length;
 const pending = window.bookings.filter(b => b.status === 'pending').length;
@@ -5058,7 +5069,6 @@ loadDocuments();
 showToast("Error: " + err.message);
 }
 }
-// ✅ FIXED: Removed extra parenthesis
 window.deleteDocument = async function(id) {
 if (!confirm("Delete this document?")) return;
 await deleteDoc(doc(db, "documents", id));
@@ -5084,7 +5094,6 @@ document.getElementById('profileJoined').value = s.createdAt ? new Date(s.create
 document.getElementById('profileLastLogin').value = s.lastLogin ? new Date(s.lastLogin.toDate ? s.lastLogin.toDate() : s.lastLogin).toLocaleString() : 'Never';
 document.getElementById('profileStatus').value = s.status || 'Active';
 }
-// ✅ NEW: Working Edit Profile function
 window.editMyProfile = function() {
 if (!window.currentStaffUser) return;
 const s = window.currentStaffUser;
@@ -5460,28 +5469,7 @@ list.innerHTML = templates.map(d => `
 </div>
 `).join('') || '<p style="text-align:center; color:#999; padding:40px;">No templates uploaded yet</p>';
 }
-console.log("✅ All systems operational - Syntax error fixed!");
-</script>
-  <script>
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobileDropdown'); 
-  const icon = document.getElementById('hamburgerIcon'); 
-  menu.classList.toggle('active');
-  if (menu.classList.contains('active')) {
-    icon.classList.remove('fa-bars');
-    icon.classList.add('fa-times'); 
-  } else {
-    icon.classList.remove('fa-times');
-    icon.classList.add('fa-bars');
-  }
-}
-function closeMobileMenu() {
-  const menu = document.getElementById('mobileDropdown');
-  const icon = document.getElementById('hamburgerIcon');
-  menu.classList.remove('active');
-  icon.classList.remove('fa-times');
-  icon.classList.add('fa-bars');
-}
+console.log("✅ All systems operational - Dropdown navigation fixed!");
 </script>
 </body>
 </html>
