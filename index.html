@@ -52,8 +52,6 @@ gtag('config', 'G-3XLE0T3EWY');
 --bg-cream: #FAF6F1;
 --text-dark: #1A2E2A;
 --white: #FFFFFF;
---modern-blue: #1e3c72;
---modern-blue-light: #2a5298;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -409,186 +407,57 @@ font-weight: 600;
 .pill-pending { background: #fff3cd; color: #856404; }
 .pill-confirmed { background: #d4edda; color: #155724; }
 .pill-rejected { background: #f8d7da; color: #721c24; }
-
-/* ============ MODERN STAFF PORTAL DASHBOARD ============ */
 #admin-fullscreen {
 display: none;
 position: fixed;
 top: 0; left: 0; width: 100%; height: 100%;
 background: #f4f7f6;
 z-index: 9999;
+flex-direction: row;
+}
+.admin-sidebar {
+width: 260px;
+background: var(--primary-green);
+color: white;
+padding: 20px;
+display: flex;
+flex-direction: column;
+box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+.admin-sidebar .logo {
+color: var(--accent-gold);
+font-size: 1.5rem;
+margin-bottom: 40px;
+text-align: center;
+border-bottom: 1px solid rgba(255,255,255,0.1);
+padding-bottom: 20px;
+}
+.admin-sidebar ul { list-style: none; padding: 0; flex: 1; overflow-y: auto; max-height: calc(100vh - 150px); }
+.admin-sidebar ul::-webkit-scrollbar { width: 6px; }
+.admin-sidebar ul::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); }
+.admin-sidebar ul::-webkit-scrollbar-thumb { background: var(--accent-gold); border-radius: 3px; }
+.admin-sidebar li {
+padding: 12px 15px;
+margin-bottom: 5px;
+border-radius: 8px;
+cursor: pointer;
+transition: 0.3s;
+display: flex;
+align-items: center;
+gap: 10px;
+font-size: 1rem;
+}
+.admin-sidebar li:hover, .admin-sidebar li.active {
+background: rgba(255,255,255,0.15);
+color: var(--accent-gold);
+}
+.admin-sidebar li i { width: 20px; text-align: center; }
+.admin-main-area {
+flex: 1;
+display: flex;
 flex-direction: column;
 overflow-y: auto;
 }
-
-.modern-header {
-background: linear-gradient(135deg, var(--modern-blue) 0%, var(--modern-blue-light) 100%);
-padding: 25px 40px;
-color: white;
-}
-
-.greeting-text {
-font-size: 2.2rem;
-font-weight: 300;
-margin: 0;
-}
-
-.modern-nav-bar {
-background: rgba(30, 60, 114, 0.95);
-padding: 0 40px;
-border-bottom: 2px solid rgba(255,255,255,0.1);
-position: sticky;
-top: 0;
-z-index: 100;
-display: flex;
-align-items: center;
-justify-content: space-between;
-}
-
-.nav-tabs {
-display: flex;
-list-style: none;
-margin: 0;
-padding: 0;
-gap: 5px;
-overflow-x: auto;
-}
-
-.nav-tab {
-padding: 15px 20px;
-color: rgba(255,255,255,0.7);
-cursor: pointer;
-transition: all 0.3s;
-border-bottom: 3px solid transparent;
-white-space: nowrap;
-font-size: 0.95rem;
-}
-
-.nav-tab:hover {
-color: white;
-background: rgba(255,255,255,0.1);
-}
-
-.nav-tab.active {
-color: white;
-border-bottom-color: white;
-}
-
-.nav-arrow {
-color: white;
-font-size: 2rem;
-cursor: pointer;
-padding: 0 10px;
-}
-
-.modern-main-content {
-background: linear-gradient(rgba(30, 60, 114, 0.88), rgba(42, 82, 152, 0.88)),
-url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-background-size: cover;
-background-position: center;
-background-attachment: fixed;
-min-height: calc(100vh - 150px);
-padding: 40px;
-}
-
-.apps-section {
-max-width: 1400px;
-margin: 0 auto;
-}
-
-.apps-title {
-color: white;
-font-size: 1.2rem;
-font-weight: 600;
-margin-bottom: 30px;
-text-transform: uppercase;
-letter-spacing: 1px;
-}
-
-.apps-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-gap: 30px;
-padding: 20px 0;
-}
-
-.app-item {
-display: flex;
-flex-direction: column;
-align-items: center;
-cursor: pointer;
-transition: transform 0.3s;
-}
-
-.app-item:hover {
-transform: translateY(-5px);
-}
-
-.app-icon {
-width: 80px;
-height: 80px;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 2rem;
-color: white;
-margin-bottom: 12px;
-box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-transition: all 0.3s;
-}
-
-.app-icon:hover {
-transform: scale(1.1);
-box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-}
-
-.app-icon.orange { background: #f97316; }
-.app-icon.teal { background: #14b8a6; }
-.app-icon.red { background: #ef4444; }
-.app-icon.pink { background: #ec4899; }
-.app-icon.blue { background: #3b82f6; }
-.app-icon.purple { background: #a855f7; }
-.app-icon.green { background: #22c55e; }
-.app-icon.white { 
-background: white;
-color: var(--modern-blue);
-}
-
-.app-label {
-color: white;
-text-align: center;
-font-size: 0.85rem;
-line-height: 1.3;
-font-weight: 500;
-}
-
-.app-icon-plus {
-width: 80px;
-height: 80px;
-border-radius: 50%;
-border: 3px dashed rgba(255,255,255,0.5);
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 3rem;
-color: white;
-cursor: pointer;
-transition: all 0.3s;
-}
-
-.app-icon-plus:hover {
-border-color: white;
-background: rgba(255,255,255,0.1);
-}
-
-/* Admin Pages Container (shown when navigating from app grid) */
-.admin-pages-container {
-display: none;
-background: #f4f7f6;
-min-height: 100vh;
-}
-
 .admin-topbar {
 background: white;
 padding: 15px 30px;
@@ -602,21 +471,17 @@ z-index: 100;
 flex-wrap: wrap;
 gap: 10px;
 }
-
 .admin-topbar h2 { color: var(--primary-green); font-size: 1.5rem; margin: 0; }
-
 .admin-full-content {
 padding: 30px;
 flex: 1;
 }
-
 .admin-full-content .stats-row {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 gap: 20px;
 margin-bottom: 30px;
 }
-
 .admin-full-content .stat-card {
 background: white;
 padding: 20px;
@@ -624,10 +489,8 @@ border-radius: 10px;
 box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 border-left: 5px solid var(--primary-green);
 }
-
 .admin-full-content .stat-card h4 { color: #666; font-size: 0.9rem; margin-bottom: 5px; }
 .admin-full-content .stat-card h2 { color: var(--primary-green); font-size: 2rem; margin: 0; }
-
 .file-upload-area {
 border: 2px dashed #ccc;
 padding: 15px;
@@ -928,6 +791,7 @@ font-size: 0.7rem;
 text-align: center;
 border-radius: 5px;
 }
+/* DOCUMENT VIEWER */
 .document-viewer {
 background: white;
 border-radius: 10px;
@@ -953,27 +817,6 @@ gap: 10px;
 margin-top: 15px;
 justify-content: center;
 }
-
-/* Back button for admin pages */
-.back-to-dashboard {
-background: var(--primary-green);
-color: white;
-padding: 10px 20px;
-border: none;
-border-radius: 8px;
-cursor: pointer;
-font-size: 0.95rem;
-margin-bottom: 20px;
-display: inline-flex;
-align-items: center;
-gap: 8px;
-transition: 0.3s;
-}
-.back-to-dashboard:hover {
-background: var(--dark-green);
-transform: translateX(-3px);
-}
-
 @media print {
 @page {
 size: A4 portrait;
@@ -1048,21 +891,11 @@ display: none;
 .nav-links { gap: 12px; font-size: 0.95rem; }
 .logo { font-size: 1.3rem; }
 .modal-content { margin: 10% auto; padding: 20px; }
-.greeting-text { font-size: 1.5rem; }
-.modern-header { padding: 20px; }
-.modern-nav-bar { padding: 0 15px; }
-.nav-tab { padding: 12px 15px; font-size: 0.85rem; }
-.modern-main-content { padding: 20px; }
-.apps-grid {
-grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-gap: 20px;
-}
-.app-icon, .app-icon-plus {
-width: 60px;
-height: 60px;
-font-size: 1.5rem;
-}
-.app-label { font-size: 0.75rem; }
+#admin-fullscreen { flex-direction: column; }
+.admin-sidebar { width: 100%; flex-direction: row; overflow-x: auto; padding: 10px; }
+.admin-sidebar .logo { display: none; }
+.admin-sidebar ul { display: flex; gap: 5px; }
+.admin-sidebar li { white-space: nowrap; margin: 0; padding: 8px 12px; font-size: 0.85rem; }
 .role-selector { grid-template-columns: 1fr; }
 .booking-type-selector { grid-template-columns: 1fr; }
 .ticket-body { grid-template-columns: 1fr; }
@@ -1098,149 +931,44 @@ font-weight: 600;
 </style>
 </head>
 <body>
-<!-- ============ MODERN STAFF PORTAL ============ -->
 <div id="admin-fullscreen">
-<!-- Greeting Header -->
-<div class="modern-header">
-<h1 class="greeting-text">Good <span id="greetingTime">afternoon</span>, <span id="staffDisplayName">STAFF NAME</span></h1>
-</div>
-
-<!-- Top Navigation Bar -->
-<div class="modern-nav-bar">
-<ul class="nav-tabs">
-<li class="nav-tab active" onclick="showDashboardHome(this)">Self Services</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('bookings', this)">Me</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('staff', this)">My Team</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('users', this)">My Client Groups</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('bookings', this)">Sales</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('financial', this)">Supply Chain Execution</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('expenses', this)">Procurement</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('settings', this)">Tools</li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('dashboard', this)">Dashboard</li>
+<div class="admin-sidebar">
+<div class="logo"><i class="fas fa-kaaba"></i> Staff Portal</div>
+<ul>
+<li class="active" onclick="showAdminPage('dashboard', this)"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+<li onclick="showAdminPage('bookings', this)"><i class="fas fa-ticket-alt"></i> Manage Bookings</li>
+<li onclick="showAdminPage('inquiries', this)"><i class="fas fa-envelope"></i> Customer Inquiries</li>
+<li onclick="showAdminPage('users', this)"><i class="fas fa-users"></i> Registered Users</li>
+<li onclick="showAdminPage('packages', this)"><i class="fas fa-box"></i> Edit Packages</li>
+<li onclick="showAdminPage('staff', this)" id="staffMenuItem" style="display:none;"><i class="fas fa-user-tie"></i> Staff Management</li>
+<li onclick="showAdminPage('permissions', this)" id="permissionsMenuItem" style="display:none;"><i class="fas fa-key"></i> Permissions</li>
+<li onclick="showAdminPage('activity-log', this)" id="activityLogMenuItem" style="display:none;"><i class="fas fa-history"></i> Activity Log</li>
+<li onclick="showAdminPage('financial', this)" id="financialMenuItem" style="display:none;"><i class="fas fa-chart-line"></i> Financial Reports</li>
+<li onclick="showAdminPage('expenses', this)" id="expensesMenuItem" style="display:none;"><i class="fas fa-money-bill-wave"></i> Expenses</li>
+<li onclick="showAdminPage('visa-tracker', this)" id="visaTrackerMenuItem" style="display:none;"><i class="fas fa-passport"></i> Visa Tracker</li>
+<li onclick="showAdminPage('groups', this)" id="groupsMenuItem" style="display:none;"><i class="fas fa-users-cog"></i> Group Management</li>
+<li onclick="showAdminPage('promotions', this)" id="promotionsMenuItem" style="display:none;"><i class="fas fa-gift"></i> Promotions</li>
+<li onclick="showAdminPage('analytics', this)" id="analyticsMenuItem" style="display:none;"><i class="fas fa-chart-pie"></i> Analytics</li>
+<li onclick="showAdminPage('settings', this)" id="settingsMenuItem" style="display:none;"><i class="fas fa-cog"></i> System Settings</li>
+<li onclick="exitAdminView()" style="margin-top: auto; background: rgba(255,255,255,0.05);"><i class="fas fa-sign-out-alt"></i> Exit to Website</li>
 </ul>
-<div class="nav-arrow">›</div>
 </div>
-
-<!-- Main Content Area - App Grid -->
-<div class="modern-main-content" id="dashboardHome">
-<div class="apps-section">
-<h2 class="apps-title">APPS</h2>
-<div class="apps-grid">
-<!-- Row 1 -->
-<div class="app-item" onclick="showAdminPageFromGrid('dashboard', this)">
-<div class="app-icon orange"><i class="fas fa-tachometer-alt"></i></div>
-<div class="app-label">Dashboard<br>Overview</div>
-</div>
-
-<div class="app-item" onclick="showAdminPageFromGrid('bookings', this)">
-<div class="app-icon teal"><i class="fas fa-ticket-alt"></i></div>
-<div class="app-label">Manage<br>Bookings</div>
-</div>
-
-<div class="app-item" onclick="showAdminPageFromGrid('inquiries', this)">
-<div class="app-icon orange"><i class="fas fa-envelope"></i></div>
-<div class="app-label">Customer<br>Inquiries</div>
-</div>
-
-<div class="app-item" onclick="showAdminPageFromGrid('users', this)">
-<div class="app-icon red"><i class="fas fa-users"></i></div>
-<div class="app-label">Registered<br>Users</div>
-</div>
-
-<div class="app-item" onclick="showAdminPageFromGrid('packages', this)">
-<div class="app-icon pink"><i class="fas fa-box"></i></div>
-<div class="app-label">Edit<br>Packages</div>
-</div>
-
-<div class="app-item" onclick="showAdminPageFromGrid('staff', this)" id="appStaff">
-<div class="app-icon pink"><i class="fas fa-user-tie"></i></div>
-<div class="app-label">Staff<br>Management</div>
-</div>
-
-<div class="app-item" onclick="showAdminPageFromGrid('permissions', this)" id="appPermissions">
-<div class="app-icon blue"><i class="fas fa-key"></i></div>
-<div class="app-label">Role<br>Permissions</div>
-</div>
-
-<!-- Row 2 -->
-<div class="app-item" onclick="showAdminPageFromGrid('activity-log', this)" id="appActivity">
-<div class="app-icon blue"><i class="fas fa-history"></i></div>
-<div class="app-label">Activity<br>Log</div>
-</div>
-
-<div class="app-item" onclick="showAdminPageFromGrid('financial', this)" id="appFinancial">
-<div class="app-icon purple"><i class="fas fa-chart-line"></i></div>
-<div class="app-label">Financial<br>Reports</div>
-</div>
-
-<div class="app-item" onclick="showAdminPageFromGrid('expenses', this)" id="appExpenses">
-<div class="app-icon green"><i class="fas fa-money-bill-wave"></i></div>
-<div class="app-label">Expenses<br>Management</div>
-</div>
-
-<div class="app-item" onclick="showAdminPageFromGrid('visa-tracker', this)" id="appVisa">
-<div class="app-icon orange"><i class="fas fa-passport"></i></div>
-<div class="app-label">Visa<br>Tracker</div>
-</div>
-
-<div class="app-item" onclick="showAdminPageFromGrid('groups', this)" id="appGroups">
-<div class="app-icon teal"><i class="fas fa-users-cog"></i></div>
-<div class="app-label">Group<br>Management</div>
-</div>
-
-<div class="app-item" onclick="showAdminPageFromGrid('promotions', this)" id="appPromotions">
-<div class="app-icon green"><i class="fas fa-gift"></i></div>
-<div class="app-label">Promotions</div>
-</div>
-
-<div class="app-item" onclick="showAdminPageFromGrid('analytics', this)" id="appAnalytics">
-<div class="app-icon blue"><i class="fas fa-chart-pie"></i></div>
-<div class="app-label">Analytics</div>
-</div>
-
-<!-- Row 3 -->
-<div class="app-item" onclick="showAdminPageFromGrid('settings', this)" id="appSettings">
-<div class="app-icon white"><i class="fas fa-cog"></i></div>
-<div class="app-label">System<br>Settings</div>
-</div>
-
-<div class="app-item" onclick="openNewBookingModal()">
-<div class="app-icon blue"><i class="fas fa-plus-circle"></i></div>
-<div class="app-label">New<br>Booking</div>
-</div>
-
-<div class="app-item" onclick="exportToExcel()">
-<div class="app-icon green"><i class="fas fa-file-excel"></i></div>
-<div class="app-label">Export<br>Reports</div>
-</div>
-
-<div class="app-item" onclick="exitAdminView()">
-<div class="app-icon red"><i class="fas fa-sign-out-alt"></i></div>
-<div class="app-label">Exit to<br>Website</div>
-</div>
-
-<!-- Add More Button -->
-<div class="app-item" onclick="showToast('More apps coming soon!')">
-<div class="app-icon-plus">+</div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- Admin Pages Container (hidden by default, shown when navigating) -->
-<div class="admin-pages-container" id="adminPagesContainer">
+<div class="admin-main-area">
 <div class="admin-topbar">
 <h2 id="admin-page-title">Dashboard Overview</h2>
 <div class="staff-info-bar">
 <span id="currentStaffInfo" style="color: #666;">Welcome, <strong id="currentStaffName">Admin</strong></span>
 <span id="currentStaffRole" class="staff-role-badge role-admin">Administrator</span>
-<button class="btn" style="background: var(--accent-gold); color: var(--primary-green); padding: 8px 15px; font-size: 0.9rem;" onclick="showDashboardHome()">
-<i class="fas fa-th"></i> Back to Apps
+<button class="btn" style="background: #25D366; color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="exportToExcel()">
+<i class="fas fa-file-excel"></i> Export All Reports
+</button>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green); padding: 8px 15px; font-size: 0.9rem;" onclick="openNewBookingModal()">
+<i class="fas fa-plus"></i> New Booking
 </button>
 </div>
 </div>
 <div class="admin-full-content">
-<div id="full-page-dashboard" class="admin-page" style="display: none;">
+<div id="full-page-dashboard" class="admin-page">
 <div class="stats-row">
 <div class="stat-card"><h4>Total Bookings</h4><h2 id="fs-total-bookings">0</h2></div>
 <div class="stat-card" style="border-left-color: #ffc107;"><h4>Pending Approval</h4><h2 id="fs-pending-bookings">0</h2></div>
@@ -1329,7 +1057,8 @@ font-weight: 600;
 <th>Support</th>
 </tr>
 </thead>
-<tbody id="permissionsTableBody"></tbody>
+<tbody id="permissionsTableBody">
+</tbody>
 </table>
 </div>
 <button class="btn" style="background: var(--primary-green); color: white; margin-top: 20px;" onclick="savePermissions()">
@@ -1378,7 +1107,7 @@ font-weight: 600;
 </div>
 <div id="full-page-expenses" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
-<h3 style="color: var(--primary-green); margin: 0;">💸 Expenses Management</h3>
+<h3 style="color: var(--primary-green); margin: 0;"> Expenses Management</h3>
 <button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="openExpenseModal()">
 <i class="fas fa-plus"></i> Add Expense
 </button>
@@ -1417,7 +1146,7 @@ font-weight: 600;
 </div>
 <div id="full-page-groups" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-<h3 style="color: var(--primary-green); margin: 0;">👥 Group Management</h3>
+<h3 style="color: var(--primary-green); margin: 0;"> Group Management</h3>
 <button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="openNewGroupModal()"><i class="fas fa-plus"></i> Create Group</button>
 </div>
 <div class="stats-row">
@@ -1478,7 +1207,6 @@ font-weight: 600;
 </div>
 </div>
 </div>
-
 <!-- Admin Modals -->
 <div id="staffLoginModal" class="modal">
 <div class="modal-content" style="max-width: 450px;">
@@ -1997,26 +1725,26 @@ Nadeem Hadi Travel
 <option value="jeddah">🏙️ Jeddah</option>
 <option value="dubai">🏗️ Dubai</option>
 <option value="istanbul">🕌 Istanbul</option>
-<option value="baku">🏛️ Baku</option>
+<option value="baku">️ Baku</option>
 <option value="bangkok">🏯 Bangkok</option>
-<option value="london">🇧 London</option>
-<option value="kuala-lumpur">🏙️ Kuala Lumpur</option>
-<option value="lahore"> Lahore</option>
+<option value="london">🇬🇧 London</option>
+<option value="kuala-lumpur">️ Kuala Lumpur</option>
+<option value="lahore">🌳 Lahore</option>
 <option value="islamabad">🏞️ Islamabad</option>
 <option value="karachi">🌊 Karachi</option>
-<option value="new-york">🗽 New York</option>
+<option value="new-york"> New York</option>
 <option value="toronto">🍁 Toronto</option>
-<option value="paris"> Paris</option>
+<option value="paris">🗼 Paris</option>
 <option value="muscat">🕌 Muscat</option>
 <option value="doha">🏙️ Doha</option>
 <option value="manama">🏛️ Manama</option>
-<option value="cairo">️ Cairo</option>
+<option value="cairo">🏛️ Cairo</option>
 <option value="abu-dhabi">🏗️ Abu Dhabi</option>
-<option value="kuwait">🏙️ Kuwait</option>
-<option value="jordan">️ Jordan</option>
+<option value="kuwait">️ Kuwait</option>
+<option value="jordan">🏜️ Jordan</option>
 <option value="malaysia">🌴 Malaysia</option>
 <option value="singapore">🏙️ Singapore</option>
-<option value="thailand">🏖️ Thailand</option>
+<option value="thailand">️ Thailand</option>
 </select>
 </div>
 <div class="form-group">
@@ -2139,7 +1867,7 @@ Nadeem Hadi Travel
 <div class="print-only-footer">
 <h4 style="color: var(--primary-green);">Nadeem Hadi Travel & Tours</h4>
 <p><strong>Your Trusted Partner for Blessed and Pleasant Journeys</strong></p>
-<p>📞 0342-4397177 | 0316-4815975 | 0302-6901114</p>
+<p> 0342-4397177 | 0316-4815975 | 0302-6901114</p>
 <p>📍 Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha, Pakistan</p>
 </div>
 <script type="module">
@@ -2276,6 +2004,21 @@ await loadRolesFromFirestore();
 setupRealtimeListeners();
 window.checkAuth();
 window.renderCustomPackages();
+
+// === FIX: Restore Staff Session on Refresh ===
+const savedStaff = localStorage.getItem('currentStaffUser');
+if (savedStaff) {
+try {
+window.currentStaffUser = JSON.parse(savedStaff);
+window.isAdminLoggedIn = true;
+showAdminDashboard();
+updateUIBasedOnPermissions();
+} catch (e) {
+localStorage.removeItem('currentStaffUser');
+}
+}
+// ============================================
+
 const urlParams = new URLSearchParams(window.location.search);
 if(urlParams.get('view') === 'admin') setTimeout(() => { window.openStaffLogin(); }, 100);
 });
@@ -2494,28 +2237,36 @@ document.getElementById('serviceDetailsContent').innerHTML = `<p>Details for ${t
 document.getElementById('serviceDetailsModal').style.display = 'block';
 }
 window.confirmAddService = function() { showToast("Service added to your inquiry!"); closeModal('serviceDetailsModal'); }
-
-// ============ MODERN DASHBOARD FUNCTIONS ============
-window.updateGreeting = function() {
-const hour = new Date().getHours();
-let greeting = 'morning';
-if (hour >= 12 && hour < 17) {
-greeting = 'afternoon';
-} else if (hour >= 17) {
-greeting = 'evening';
+window.showAdminDashboard = function() {
+document.querySelectorAll('header, .hero, .madinah-banner, .section, footer, .floating-wa').forEach(el => { el.style.display = 'none'; });
+document.getElementById('admin-fullscreen').style.display = 'flex';
+window.loadFullAdminData();
+window.loadDashboardStats();
 }
-const el = document.getElementById('greetingTime');
-if(el) el.textContent = greeting;
+window.exitAdminView = function() {
+window.isAdminLoggedIn = false; window.currentStaffUser = null;
+localStorage.removeItem('currentStaffUser');
+window.history.pushState({}, document.title, window.location.pathname);
+window.location.reload();
 }
-
-window.showDashboardHome = function() {
-document.getElementById('dashboardHome').style.display = 'block';
-document.getElementById('adminPagesContainer').style.display = 'none';
-document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-document.querySelector('.nav-tab').classList.add('active');
+window.updateUIBasedOnPermissions = function() {
+if (!window.currentStaffUser) return;
+document.getElementById('currentStaffName').textContent = window.currentStaffUser.name;
+const roleBadge = document.getElementById('currentStaffRole');
+roleBadge.textContent = window.ROLES[window.currentStaffUser.role].name;
+roleBadge.className = `staff-role-badge role-${window.currentStaffUser.role}`;
+document.getElementById('staffMenuItem').style.display = hasPermission('manage_staff') ? 'flex' : 'none';
+document.getElementById('permissionsMenuItem').style.display = hasPermission('manage_permissions') ? 'flex' : 'none';
+document.getElementById('activityLogMenuItem').style.display = hasPermission('view_activity_log') ? 'flex' : 'none';
+document.getElementById('financialMenuItem').style.display = hasPermission('view_financial_reports') ? 'flex' : 'none';
+document.getElementById('expensesMenuItem').style.display = hasPermission('manage_expenses') ? 'flex' : 'none';
+document.getElementById('visaTrackerMenuItem').style.display = hasPermission('upload_visa') ? 'flex' : 'none';
+document.getElementById('groupsMenuItem').style.display = hasPermission('manage_bookings') ? 'flex' : 'none';
+document.getElementById('promotionsMenuItem').style.display = hasPermission('edit_settings') ? 'flex' : 'none';
+document.getElementById('analyticsMenuItem').style.display = hasPermission('view_financial_reports') ? 'flex' : 'none';
+document.getElementById('settingsMenuItem').style.display = hasPermission('system_configuration') ? 'flex' : 'none';
 }
-
-window.showAdminPageFromGrid = function(pageName, element) {
+window.showAdminPage = function(pageName, element) {
 const pagePermissions = {
 'dashboard':'view_dashboard','bookings':'view_bookings','inquiries':'manage_inquiries',
 'users':'view_users','packages':'view_packages','staff':'manage_staff',
@@ -2529,18 +2280,11 @@ if (requiredPermission && !hasPermission(requiredPermission)) {
 showToast(`You do not have permission to access ${pageName}`);
 return;
 }
-// Hide dashboard home, show admin pages container
-document.getElementById('dashboardHome').style.display = 'none';
-document.getElementById('adminPagesContainer').style.display = 'block';
-// Hide all pages, show selected
 document.querySelectorAll('.admin-page').forEach(el => el.style.display = 'none');
 const pageEl = document.getElementById(`full-page-${pageName}`);
 if(pageEl) pageEl.style.display = 'block';
-// Update nav tabs
-document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-if(element && element.classList.contains('nav-tab')) {
-element.classList.add('active');
-}
+document.querySelectorAll('.admin-sidebar li').forEach(el => el.classList.remove('active'));
+if(element) element.classList.add('active');
 const titles = {
 dashboard:'Dashboard Overview',bookings:'Manage Bookings',inquiries:'Customer Inquiries',
 packages:'Edit Packages',users:'Registered Users',staff:'Staff Management',
@@ -2565,43 +2309,6 @@ if (pageName === 'groups') window.loadGroups();
 if (pageName === 'promotions') window.loadPromotions();
 if (pageName === 'analytics') window.loadAnalytics();
 }
-
-window.showAdminDashboard = function() {
-document.querySelectorAll('header, .hero, .madinah-banner, .section, footer, .floating-wa').forEach(el => { el.style.display = 'none'; });
-document.getElementById('admin-fullscreen').style.display = 'flex';
-window.updateGreeting();
-window.updateUIBasedOnPermissions();
-window.loadFullAdminData();
-window.loadDashboardStats();
-}
-
-window.exitAdminView = function() {
-window.isAdminLoggedIn = false; window.currentStaffUser = null;
-localStorage.removeItem('currentStaffUser');
-window.history.pushState({}, document.title, window.location.pathname);
-window.location.reload();
-}
-
-window.updateUIBasedOnPermissions = function() {
-if (!window.currentStaffUser) return;
-document.getElementById('currentStaffName').textContent = window.currentStaffUser.name;
-document.getElementById('staffDisplayName').textContent = window.currentStaffUser.name.toUpperCase();
-const roleBadge = document.getElementById('currentStaffRole');
-roleBadge.textContent = window.ROLES[window.currentStaffUser.role].name;
-roleBadge.className = `staff-role-badge role-${window.currentStaffUser.role}`;
-// Show/hide app icons based on permissions
-document.getElementById('appStaff').style.display = hasPermission('manage_staff') ? 'flex' : 'none';
-document.getElementById('appPermissions').style.display = hasPermission('manage_permissions') ? 'flex' : 'none';
-document.getElementById('appActivity').style.display = hasPermission('view_activity_log') ? 'flex' : 'none';
-document.getElementById('appFinancial').style.display = hasPermission('view_financial_reports') ? 'flex' : 'none';
-document.getElementById('appExpenses').style.display = hasPermission('manage_expenses') ? 'flex' : 'none';
-document.getElementById('appVisa').style.display = hasPermission('upload_visa') ? 'flex' : 'none';
-document.getElementById('appGroups').style.display = hasPermission('manage_bookings') ? 'flex' : 'none';
-document.getElementById('appPromotions').style.display = hasPermission('edit_settings') ? 'flex' : 'none';
-document.getElementById('appAnalytics').style.display = hasPermission('view_financial_reports') ? 'flex' : 'none';
-document.getElementById('appSettings').style.display = hasPermission('system_configuration') ? 'flex' : 'none';
-}
-
 window.loadDashboardStats = function() {
 const total = window.bookings.length;
 const pending = window.bookings.filter(b => b.status === 'pending').length;
@@ -3190,6 +2897,7 @@ await logActivity('login', `${staff.name} logged in`);
 closeModal('staffLoginModal');
 window.isAdminLoggedIn = true;
 showAdminDashboard();
+updateUIBasedOnPermissions();
 showToast(`Welcome, ${staff.name}!`);
 } else {
 showToast('Invalid credentials!');
