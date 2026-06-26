@@ -82,210 +82,188 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 .nav-links { display: flex; gap: 25px; flex-wrap: wrap; align-items: center; }
 .nav-links a { color: var(--white); font-size: 1.1rem; font-weight: 500; transition: 0.3s; padding: 5px 0; border-bottom: 2px solid transparent; cursor: pointer; }
 .nav-links a:hover { color: var(--accent-gold); border-bottom: 2px solid var(--accent-gold); }
-
 /* ============ CLICK-TO-OPEN DROPDOWN MENU ============ */
 .dropdown-wrapper {
-  position: relative;
-  display: inline-block;
+position: relative;
+display: inline-block;
 }
-
 .dropdown-toggle {
-  background: var(--accent-gold);
-  color: var(--primary-green);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: inherit;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+background: var(--accent-gold);
+color: var(--primary-green);
+border: none;
+padding: 10px 20px;
+border-radius: 50px;
+font-weight: 600;
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 8px;
+font-family: inherit;
+font-size: 1rem;
+transition: all 0.3s ease;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-
 .dropdown-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+transform: translateY(-2px);
+box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
 }
-
 .dropdown-toggle .chevron-icon {
-  transition: transform 0.3s ease;
-  font-size: 0.8rem;
+transition: transform 0.3s ease;
+font-size: 0.8rem;
 }
-
 .dropdown-toggle.active .chevron-icon {
-  transform: rotate(180deg);
+transform: rotate(180deg);
 }
-
 .dropdown-menu {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  background: white;
-  min-width: 240px;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1100;
-  overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.05);
+position: absolute;
+top: calc(100% + 10px);
+right: 0;
+background: white;
+min-width: 240px;
+border-radius: 12px;
+box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+opacity: 0;
+visibility: hidden;
+transform: translateY(-10px);
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+z-index: 1100;
+overflow: hidden;
+border: 1px solid rgba(0,0,0,0.05);
 }
-
 .dropdown-menu::before {
-  content: '';
-  position: absolute;
-  top: -6px;
-  right: 20px;
-  width: 12px;
-  height: 12px;
-  background: white;
-  transform: rotate(45deg);
-  border-left: 1px solid rgba(0,0,0,0.05);
-  border-top: 1px solid rgba(0,0,0,0.05);
+content: '';
+position: absolute;
+top: -6px;
+right: 20px;
+width: 12px;
+height: 12px;
+background: white;
+transform: rotate(45deg);
+border-left: 1px solid rgba(0,0,0,0.05);
+border-top: 1px solid rgba(0,0,0,0.05);
 }
-
 .dropdown-menu.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+opacity: 1;
+visibility: visible;
+transform: translateY(0);
 }
-
 .dropdown-menu a,
 .dropdown-menu button {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 18px;
-  color: var(--text-dark);
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
-  border: none;
-  background: transparent;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  font-family: inherit;
-  border-left: 3px solid transparent;
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 12px 18px;
+color: var(--text-dark);
+text-decoration: none;
+font-size: 0.95rem;
+transition: all 0.2s ease;
+border: none;
+background: transparent;
+width: 100%;
+text-align: left;
+cursor: pointer;
+font-family: inherit;
+border-left: 3px solid transparent;
 }
-
 .dropdown-menu a:hover,
 .dropdown-menu button:hover {
-  background: var(--light-gold);
-  color: var(--primary-green);
-  padding-left: 22px;
-  border-left-color: var(--accent-gold);
+background: var(--light-gold);
+color: var(--primary-green);
+padding-left: 22px;
+border-left-color: var(--accent-gold);
 }
-
 .dropdown-menu a i,
 .dropdown-menu button i {
-  width: 20px;
-  color: var(--accent-gold);
-  font-size: 1rem;
+width: 20px;
+color: var(--accent-gold);
+font-size: 1rem;
 }
-
 .dropdown-divider {
-  height: 1px;
-  background: #eee;
-  margin: 5px 0;
+height: 1px;
+background: #eee;
+margin: 5px 0;
 }
-
 /* ============ MOBILE HAMBURGER DROPDOWN ============ */
 .hamburger-btn {
-  display: none;
-  background: transparent;
-  border: 2px solid var(--accent-gold);
-  color: var(--accent-gold);
-  width: 45px;
-  height: 45px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1.3rem;
-  transition: all 0.3s ease;
-  align-items: center;
-  justify-content: center;
+display: none;
+background: transparent;
+border: 2px solid var(--accent-gold);
+color: var(--accent-gold);
+width: 45px;
+height: 45px;
+border-radius: 10px;
+cursor: pointer;
+font-size: 1.3rem;
+transition: all 0.3s ease;
+align-items: center;
+justify-content: center;
 }
-
 .hamburger-btn:hover {
-  background: var(--accent-gold);
-  color: var(--primary-green);
+background: var(--accent-gold);
+color: var(--primary-green);
 }
-
 .mobile-dropdown {
-  display: none;
-  position: fixed;
-  top: 70px;
-  left: 0;
-  right: 0;
-  background: white;
-  max-height: calc(100vh - 70px);
-  overflow-y: auto;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  z-index: 999;
-  transform: translateY(-100%);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border-top: 3px solid var(--accent-gold);
+display: none;
+position: fixed;
+top: 70px;
+left: 0;
+right: 0;
+background: white;
+max-height: calc(100vh - 70px);
+overflow-y: auto;
+box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+z-index: 999;
+transform: translateY(-100%);
+transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+border-top: 3px solid var(--accent-gold);
 }
-
 .mobile-dropdown.show {
-  transform: translateY(0);
+transform: translateY(0);
 }
-
 .mobile-dropdown a {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 16px 25px;
-  color: var(--text-dark);
-  text-decoration: none;
-  font-size: 1.05rem;
-  font-weight: 500;
-  border-bottom: 1px solid #f0f0f0;
-  transition: all 0.2s ease;
-  cursor: pointer;
+display: flex;
+align-items: center;
+gap: 15px;
+padding: 16px 25px;
+color: var(--text-dark);
+text-decoration: none;
+font-size: 1.05rem;
+font-weight: 500;
+border-bottom: 1px solid #f0f0f0;
+transition: all 0.2s ease;
+cursor: pointer;
 }
-
 .mobile-dropdown a:hover {
-  background: var(--light-gold);
-  color: var(--primary-green);
-  padding-left: 35px;
+background: var(--light-gold);
+color: var(--primary-green);
+padding-left: 35px;
 }
-
 .mobile-dropdown a i {
-  color: var(--accent-gold);
-  width: 24px;
-  text-align: center;
+color: var(--accent-gold);
+width: 24px;
+text-align: center;
 }
-
 .mobile-dropdown .mobile-cta {
-  padding: 20px 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: var(--bg-cream);
+padding: 20px 25px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+background: var(--bg-cream);
 }
-
 @media (max-width: 900px) {
-  .nav-links {
-    display: none !important;
-  }
-  .hamburger-btn {
-    display: flex;
-  }
-  .mobile-dropdown {
-    display: block;
-  }
-  .dropdown-wrapper {
-    display: none;
-  }
+.nav-links {
+display: none !important;
 }
-
+.hamburger-btn {
+display: flex;
+}
+.mobile-dropdown {
+display: block;
+}
+.dropdown-wrapper {
+display: none;
+}
+}
 .btn {
 display: inline-block;
 padding: 14px 35px;
@@ -756,20 +734,14 @@ width: 20px;
 color: var(--accent-gold);
 font-size: 1rem;
 }
-.nav-arrow {
-color: white;
-font-size: 2rem;
-cursor: pointer;
-padding: 0 10px;
-}
 /* DASHBOARD WITH BACKGROUND IMAGE */
 .modern-main-content {
-background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%),
+background: linear-gradient(135deg, rgba(240, 240, 233, 0.85) 0%, rgba(227, 222, 233, 0.85) 100%),
 url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
 background-size: cover;
 background-position: center;
 background-attachment: fixed;
-min-height: calc(100vh - 180px);
+min-height: calc(135vh - 210px);
 padding: 40px;
 position: relative;
 }
@@ -1547,7 +1519,7 @@ scrollbar-width: none;
 <div class="modern-nav-bar">
 <ul class="nav-tabs">
 <li class="nav-tab" onclick="showAdminPageFromGrid('dashboard', this)">Dashboard</li>
-<li class="nav-tab has-dropdown" onclick="toggleDropdown('self-services-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('my-profile', this); toggleDropdown('self-services-dropdown', this)">
 Self Services <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="self-services-dropdown">
 <a onclick="showAdminPageFromGrid('my-profile', this)"><i class="fas fa-user"></i> My Profile</a>
@@ -1557,7 +1529,7 @@ Self Services <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('messages', this)"><i class="fas fa-envelope"></i> Messages</a>
 </div>
 </li>
-<li class="nav-tab has-dropdown" onclick="toggleDropdown('me-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('my-bookings', this); toggleDropdown('me-dropdown', this)">
 Me <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="me-dropdown">
 <a onclick="showAdminPageFromGrid('my-bookings', this)"><i class="fas fa-ticket-alt"></i> My Bookings</a>
@@ -1566,7 +1538,7 @@ Me <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('my-expenses', this)"><i class="fas fa-receipt"></i> My Expenses</a>
 </div>
 </li>
-<li class="nav-tab has-dropdown" onclick="toggleDropdown('team-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('staff', this); toggleDropdown('team-dropdown', this)">
 My Team <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="team-dropdown">
 <a onclick="showAdminPageFromGrid('staff', this)"><i class="fas fa-users"></i> Team Members</a>
@@ -1575,7 +1547,7 @@ My Team <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('attendance', this)"><i class="fas fa-clock"></i> Attendance</a>
 </div>
 </li>
-<li class="nav-tab has-dropdown" onclick="toggleDropdown('clients-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('groups', this); toggleDropdown('clients-dropdown', this)">
 My Client Groups <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="clients-dropdown">
 <a onclick="showAdminPageFromGrid('groups', this)"><i class="fas fa-users-cog"></i> All Groups</a>
@@ -1584,7 +1556,7 @@ My Client Groups <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('users', this)"><i class="fas fa-user-friends"></i> All Clients</a>
 </div>
 </li>
-<li class="nav-tab has-dropdown" onclick="toggleDropdown('sales-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('bookings', this); toggleDropdown('sales-dropdown', this)">
 Sales <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="sales-dropdown">
 <a onclick="showAdminPageFromGrid('bookings', this)"><i class="fas fa-ticket-alt"></i> All Bookings</a>
@@ -1594,7 +1566,7 @@ Sales <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('inquiries', this)"><i class="fas fa-envelope"></i> Inquiries</a>
 </div>
 </li>
-<li class="nav-tab has-dropdown" onclick="toggleDropdown('supply-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('vendors', this); toggleDropdown('supply-dropdown', this)">
 Supply Chain Execution <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="supply-dropdown">
 <a onclick="showAdminPageFromGrid('vendors', this)"><i class="fas fa-truck"></i> Vendors</a>
@@ -1603,7 +1575,7 @@ Supply Chain Execution <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('tracking', this)"><i class="fas fa-map-marker-alt"></i> Tracking</a>
 </div>
 </li>
-<li class="nav-tab has-dropdown" onclick="toggleDropdown('procurement-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('expenses', this); toggleDropdown('procurement-dropdown', this)">
 Procurement <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="procurement-dropdown">
 <a onclick="showAdminPageFromGrid('expenses', this)"><i class="fas fa-money-bill-wave"></i> Expenses</a>
@@ -1612,7 +1584,7 @@ Procurement <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('payments', this)"><i class="fas fa-credit-card"></i> Payments</a>
 </div>
 </li>
-<li class="nav-tab has-dropdown" onclick="toggleDropdown('tools-dropdown', this)">
+<li class="nav-tab has-dropdown" onclick="showAdminPageFromGrid('documents', this); toggleDropdown('tools-dropdown', this)">
 Tools <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="tools-dropdown">
 <a onclick="showAdminPageFromGrid('documents', this)"><i class="fas fa-folder"></i> All Documents</a>
@@ -1623,7 +1595,6 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </div>
 </li>
 </ul>
-<div class="nav-arrow">›</div>
 </div>
 <!-- Main Content Area - App Grid -->
 <div class="modern-main-content" id="dashboardHome">
@@ -1933,7 +1904,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </div>
 <div id="promotions-list" class="staff-grid"></div>
 </div>
-<!-- Documents Page (NO FILTERS) -->
+<!-- Documents Page -->
 <div id="full-page-documents" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
 <h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-folder"></i> Document Management</h3>
@@ -2360,6 +2331,43 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </form>
 </div>
 </div>
+<!-- Edit Profile Modal -->
+<div id="editProfileModal" class="modal">
+<div class="modal-content" style="max-width: 600px;">
+<span class="close-modal" onclick="closeModal('editProfileModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Edit Profile</h2>
+<form onsubmit="saveMyProfile(event)">
+<div class="form-group">
+<label><i class="fas fa-user" style="margin-right: 8px; color: var(--accent-gold);"></i>Full Name</label>
+<input type="text" id="editProfileName" required>
+</div>
+<div class="form-group">
+<label><i class="fas fa-envelope" style="margin-right: 8px; color: var(--accent-gold);"></i>Email Address</label>
+<input type="email" id="editProfileEmail" required>
+</div>
+<div class="form-group">
+<label><i class="fas fa-phone" style="margin-right: 8px; color: var(--accent-gold);"></i>Phone Number</label>
+<input type="tel" id="editProfilePhone" required>
+</div>
+<div class="form-group">
+<label><i class="fas fa-lock" style="margin-right: 8px; color: var(--accent-gold);"></i>New Password (Leave blank to keep current)</label>
+<input type="password" id="editProfilePassword" placeholder="Min 6 characters" minlength="6">
+</div>
+<div class="form-group">
+<label><i class="fas fa-camera" style="margin-right: 8px; color: var(--accent-gold);"></i>Profile Picture</label>
+<div class="file-upload-area">
+<input type="file" id="editProfilePhotoInput" accept="image/*" style="display: none;" onchange="handleEditProfilePhotoUpload(this)">
+<button type="button" class="btn-upload" onclick="document.getElementById('editProfilePhotoInput').click()"><i class="fas fa-upload"></i> Upload Photo</button>
+</div>
+<div id="editProfilePhotoPreview" style="margin-top: 10px; text-align: center;"></div>
+<input type="hidden" id="editProfilePhotoUrl">
+</div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">
+<i class="fas fa-save"></i> Save Changes
+</button>
+</form>
+</div>
+</div>
 <!-- Document Upload Modal -->
 <div id="documentUploadModal" class="modal">
 <div class="modal-content" style="max-width: 600px;">
@@ -2711,53 +2719,48 @@ Nadeem Hadi Travel
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
-
 <!-- Click-to-Open Services Dropdown (Desktop) -->
 <div class="dropdown-wrapper" id="servicesDropdown">
-  <button class="dropdown-toggle" onclick="toggleClickDropdown('servicesDropdownMenu', this)">
-    <i class="fas fa-concierge-bell"></i> Our Services
-    <i class="fas fa-chevron-down chevron-icon"></i>
-  </button>
-  <div class="dropdown-menu" id="servicesDropdownMenu">
-    <a onclick="showSection('packages')"><i class="fas fa-kaaba"></i> Umrah Packages</a>
-    <a onclick="openSearchModal()"><i class="fas fa-plane"></i> Flight Booking</a>
-    <a onclick="openSearchModal()"><i class="fas fa-passport"></i> Visa Assistance</a>
-    <a onclick="openSearchModal()"><i class="fas fa-hotel"></i> Hotel Reservation</a>
-    <a onclick="openSearchModal()"><i class="fas fa-umbrella-beach"></i> Holiday Tours</a>
-    <div class="dropdown-divider"></div>
-    <a href="https://wa.me/923424397177" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-    <a href="tel:+923424397177"><i class="fas fa-phone"></i> Call: 0342-4397177</a>
-  </div>
+<button class="dropdown-toggle" onclick="toggleClickDropdown('servicesDropdownMenu', this)">
+<i class="fas fa-concierge-bell"></i> Our Services
+<i class="fas fa-chevron-down chevron-icon"></i>
+</button>
+<div class="dropdown-menu" id="servicesDropdownMenu">
+<a onclick="showSection('packages')"><i class="fas fa-kaaba"></i> Umrah Packages</a>
+<a onclick="openSearchModal()"><i class="fas fa-plane"></i> Flight Booking</a>
+<a onclick="openSearchModal()"><i class="fas fa-passport"></i> Visa Assistance</a>
+<a onclick="openSearchModal()"><i class="fas fa-hotel"></i> Hotel Reservation</a>
+<a onclick="openSearchModal()"><i class="fas fa-umbrella-beach"></i> Holiday Tours</a>
+<div class="dropdown-divider"></div>
+<a href="https://wa.me/923424397177" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+<a href="tel:+923424397177"><i class="fas fa-phone"></i> Call: 0342-4397177</a>
 </div>
-
+</div>
 <!-- Mobile Hamburger Button -->
 <button class="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Menu">
-  <i class="fas fa-bars" id="hamburgerIcon"></i>
+<i class="fas fa-bars" id="hamburgerIcon"></i>
 </button>
-
 <div class="user-info" id="userInfo" style="display: none;">
 <span class="user-name" id="userNameDisplay"></span>
 <button class="logout-btn" onclick="logout()">Logout</button>
 </div>
 </div>
 </header>
-
 <!-- Mobile Dropdown Menu -->
 <div class="mobile-dropdown" id="mobileDropdown">
-  <a onclick="showSection('hero'); closeMobileMenu()"><i class="fas fa-home"></i> Home</a>
-  <a onclick="showSection('packages'); closeMobileMenu()"><i class="fas fa-kaaba"></i> Umrah Packages</a>
-  <a onclick="openDashboard(); closeMobileMenu()"><i class="fas fa-ticket-alt"></i> My Bookings</a>
-  <a onclick="openSearchModal(); closeMobileMenu()"><i class="fas fa-plane"></i> Flight Booking</a>
-  <a onclick="openSearchModal(); closeMobileMenu()"><i class="fas fa-passport"></i> Visa Assistance</a>
-  <a onclick="openSearchModal(); closeMobileMenu()"><i class="fas fa-hotel"></i> Hotel Reservation</a>
-  <a href="#contact" onclick="closeMobileMenu()"><i class="fas fa-envelope"></i> Contact Us</a>
-  <a onclick="openRegisterModal(); closeMobileMenu()"><i class="fas fa-user-plus"></i> Register</a>
-  <div class="mobile-cta">
-    <a href="https://wa.me/923424397177" target="_blank" style="background:#25D366;color:white;border-radius:8px;justify-content:center;"><i class="fab fa-whatsapp" style="color:white;"></i> WhatsApp Us</a>
-    <a href="tel:+923424397177" style="background:var(--accent-gold);color:var(--primary-green);border-radius:8px;justify-content:center;"><i class="fas fa-phone" style="color:var(--primary-green);"></i> Call Now</a>
-  </div>
+<a onclick="showSection('hero'); closeMobileMenu()"><i class="fas fa-home"></i> Home</a>
+<a onclick="showSection('packages'); closeMobileMenu()"><i class="fas fa-kaaba"></i> Umrah Packages</a>
+<a onclick="openDashboard(); closeMobileMenu()"><i class="fas fa-ticket-alt"></i> My Bookings</a>
+<a onclick="openSearchModal(); closeMobileMenu()"><i class="fas fa-plane"></i> Flight Booking</a>
+<a onclick="openSearchModal(); closeMobileMenu()"><i class="fas fa-passport"></i> Visa Assistance</a>
+<a onclick="openSearchModal(); closeMobileMenu()"><i class="fas fa-hotel"></i> Hotel Reservation</a>
+<a href="#contact" onclick="closeMobileMenu()"><i class="fas fa-envelope"></i> Contact Us</a>
+<a onclick="openRegisterModal(); closeMobileMenu()"><i class="fas fa-user-plus"></i> Register</a>
+<div class="mobile-cta">
+<a href="https://wa.me/923424397177" target="_blank" style="background:#25D366;color:white;border-radius:8px;justify-content:center;"><i class="fab fa-whatsapp" style="color:white;"></i> WhatsApp Us</a>
+<a href="tel:+923424397177" style="background:var(--accent-gold);color:var(--primary-green);border-radius:8px;justify-content:center;"><i class="fas fa-phone" style="color:var(--primary-green);"></i> Call Now</a>
 </div>
-
+</div>
 <section id="hero" class="hero">
 <div class="hero-content">
 <h1>Nadeem Hadi Travel & Tours</h1>
@@ -3113,66 +3116,53 @@ support: { name: 'Support Staff', permissions: ['view_dashboard','view_bookings'
 window.PERMISSION_LABELS = {
 'view_dashboard':'View Dashboard','manage_bookings':'Manage Bookings','edit_bookings':'Edit Bookings','delete_bookings':'Delete Bookings','view_bookings':'View Bookings Only','manage_packages':'Manage Packages','edit_packages':'Edit Packages','delete_packages':'Delete Packages','view_packages':'View Packages Only','manage_users':'Manage Users','view_users':'View Users Only','delete_users':'Delete Users','view_user_details':'View User Details','upload_visa':'Upload Visa Copies','manage_staff':'Manage Staff','edit_staff':'Edit Staff','delete_staff':'Delete Staff','manage_permissions':'Manage Permissions','view_activity_log':'View Activity Log','manage_inquiries':'Manage Inquiries','delete_inquiries':'Delete Inquiries','view_financial_reports':'View Financial Reports','export_data':'Export Data','edit_settings':'Edit Settings','system_configuration':'System Configuration','manage_expenses':'Manage Expenses','manage_documents':'Manage Documents'
 };
-
 // ============ CLICK-TO-OPEN DROPDOWN FUNCTIONS ============
 window.toggleClickDropdown = function(menuId, toggleBtn) {
-  event.stopPropagation();
-  const menu = document.getElementById(menuId);
-  const allMenus = document.querySelectorAll('.dropdown-menu');
-  const allToggles = document.querySelectorAll('.dropdown-toggle');
-
-  // Close other dropdowns
-  allMenus.forEach(m => {
-    if (m.id !== menuId) m.classList.remove('show');
-  });
-  allToggles.forEach(t => {
-    if (t !== toggleBtn) t.classList.remove('active');
-  });
-
-  // Toggle current
-  menu.classList.toggle('show');
-  toggleBtn.classList.toggle('active');
+event.stopPropagation();
+const menu = document.getElementById(menuId);
+const allMenus = document.querySelectorAll('.dropdown-menu');
+const allToggles = document.querySelectorAll('.dropdown-toggle');
+allMenus.forEach(m => {
+if (m.id !== menuId) m.classList.remove('show');
+});
+allToggles.forEach(t => {
+if (t !== toggleBtn) t.classList.remove('active');
+});
+menu.classList.toggle('show');
+toggleBtn.classList.toggle('active');
 }
-
 window.toggleMobileMenu = function() {
-  const dropdown = document.getElementById('mobileDropdown');
-  const icon = document.getElementById('hamburgerIcon');
-  dropdown.classList.toggle('show');
-  if (dropdown.classList.contains('show')) {
-    icon.className = 'fas fa-times';
-  } else {
-    icon.className = 'fas fa-bars';
-  }
+const dropdown = document.getElementById('mobileDropdown');
+const icon = document.getElementById('hamburgerIcon');
+dropdown.classList.toggle('show');
+if (dropdown.classList.contains('show')) {
+icon.className = 'fas fa-times';
+} else {
+icon.className = 'fas fa-bars';
 }
-
+}
 window.closeMobileMenu = function() {
-  const dropdown = document.getElementById('mobileDropdown');
-  const icon = document.getElementById('hamburgerIcon');
-  dropdown.classList.remove('show');
-  icon.className = 'fas fa-bars';
+const dropdown = document.getElementById('mobileDropdown');
+const icon = document.getElementById('hamburgerIcon');
+dropdown.classList.remove('show');
+icon.className = 'fas fa-bars';
 }
-
-// Close desktop dropdowns when clicking outside
 document.addEventListener('click', function(e) {
-  if (!e.target.closest('.dropdown-wrapper')) {
-    document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
-    document.querySelectorAll('.dropdown-toggle').forEach(t => t.classList.remove('active'));
-  }
-  // Close mobile menu when clicking outside
-  if (!e.target.closest('.mobile-dropdown') && !e.target.closest('.hamburger-btn')) {
-    closeMobileMenu();
-  }
+if (!e.target.closest('.dropdown-wrapper')) {
+document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
+document.querySelectorAll('.dropdown-toggle').forEach(t => t.classList.remove('active'));
+}
+if (!e.target.closest('.mobile-dropdown') && !e.target.closest('.hamburger-btn')) {
+closeMobileMenu();
+}
 });
-
-// Close dropdowns on ESC key
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
-    document.querySelectorAll('.dropdown-toggle').forEach(t => t.classList.remove('active'));
-    closeMobileMenu();
-  }
+if (e.key === 'Escape') {
+document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
+document.querySelectorAll('.dropdown-toggle').forEach(t => t.classList.remove('active'));
+closeMobileMenu();
+}
 });
-
 function setupRealtimeListeners() {
 onSnapshot(collection(db, "bookings"), (snapshot) => {
 window.bookings = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -3308,7 +3298,6 @@ localStorage.removeItem('currentStaffUser');
 }
 const urlParams = new URLSearchParams(window.location.search);
 if(urlParams.get('view') === 'admin') setTimeout(() => { window.openStaffLogin(); }, 100);
-// Keyboard shortcut: Ctrl+Shift+A to open staff login
 document.addEventListener('keydown', function(e) {
 if (e.ctrlKey && e.shiftKey && e.key === 'A') {
 e.preventDefault();
@@ -3332,27 +3321,23 @@ document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
 window.onclick = function(event) {
 if (event.target.classList.contains('modal')) event.target.style.display = 'none';
 }
-// Close dropdowns when clicking outside
 document.addEventListener('click', function(e) {
 if (!e.target.closest('.nav-tab.has-dropdown')) {
 document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('show'));
 document.querySelectorAll('.nav-tab.has-dropdown').forEach(t => t.classList.remove('open'));
 }
 });
-// IMPROVED DROPDOWN FUNCTION
 window.toggleDropdown = function(dropdownId, element) {
 event.stopPropagation();
 const dropdown = document.getElementById(dropdownId);
 const allDropdowns = document.querySelectorAll('.nav-dropdown');
 const allTabs = document.querySelectorAll('.nav-tab.has-dropdown');
-// Close all other dropdowns
 allDropdowns.forEach(d => {
 if (d.id !== dropdownId) d.classList.remove('show');
 });
 allTabs.forEach(t => {
 if (t !== element) t.classList.remove('open');
 });
-// Toggle current dropdown
 dropdown.classList.toggle('show');
 element.classList.toggle('open');
 }
@@ -3590,8 +3575,13 @@ document.querySelectorAll('.admin-page').forEach(el => el.style.display = 'none'
 const pageEl = document.getElementById(`full-page-${pageName}`);
 if(pageEl) pageEl.style.display = 'block';
 document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-if(element && element.classList.contains('nav-tab')) {
+if(element) {
+let tab = element.closest('.nav-tab');
+if(tab) {
+tab.classList.add('active');
+} else if(element.classList.contains('nav-tab')) {
 element.classList.add('active');
+}
 }
 const titles = {
 dashboard:'Dashboard Overview',bookings:'Manage Bookings',inquiries:'Customer Inquiries',
@@ -3814,7 +3804,7 @@ document.getElementById('staffCNIC').value = '';
 document.getElementById('staffAddress').value = '';
 document.getElementById('staffSalary').value = '';
 document.getElementById('staffJoiningDate').value = '';
-querySelectorAll('.role-option').forEach(o => o.classList.remove('selected'));
+document.querySelectorAll('.role-option').forEach(o => o.classList.remove('selected'));
 document.getElementById('staffRole').value = '';
 }
 document.getElementById('staffModal').style.display = 'block';
@@ -3949,7 +3939,6 @@ window.activityLog.forEach(l => batch.push(deleteDoc(doc(db, "activityLog", l.id
 await Promise.all(batch);
 showToast("Activity log cleared.");
 }
-// Helper function to add borders to Excel cells
 function addBordersToSheet(ws) {
 const range = XLSX.utils.decode_range(ws['!ref']);
 for (let R = range.s.r; R <= range.e.r; R++) {
@@ -3969,7 +3958,6 @@ font: { bold: R === range.s.r, sz: 11 }
 };
 }
 }
-// Set column widths
 if (!ws['!cols']) ws['!cols'] = [];
 for (let C = range.s.c; C <= range.e.c; C++) {
 ws['!cols'][C] = { wch: 18 };
@@ -4961,8 +4949,7 @@ await logActivity('edit', 'Updated system settings');
 showToast("Settings saved successfully!");
 } catch (err) { showToast("Error: " + err.message); }
 }
-// ============ NEW FUNCTIONS FOR ENHANCED FEATURES ============
-// Documents Management
+// ============ DOCUMENTS MANAGEMENT ============
 window.loadDocuments = function() {
 renderDocuments();
 }
@@ -5059,14 +5046,15 @@ loadDocuments();
 showToast("Error: " + err.message);
 }
 }
+// ✅ FIXED: Removed extra parenthesis
 window.deleteDocument = async function(id) {
 if (!confirm("Delete this document?")) return;
-await deleteDoc(doc(db, "documents", id)); // <--- FIXED
+await deleteDoc(doc(db, "documents", id));
 await logActivity('delete', `Deleted document`);
 showToast("Document deleted.");
 loadDocuments();
 }
-// My Profile
+// ============ MY PROFILE ============
 window.loadMyProfile = function() {
 if (!window.currentStaffUser) return;
 const s = window.currentStaffUser;
@@ -5084,10 +5072,77 @@ document.getElementById('profileJoined').value = s.createdAt ? new Date(s.create
 document.getElementById('profileLastLogin').value = s.lastLogin ? new Date(s.lastLogin.toDate ? s.lastLogin.toDate() : s.lastLogin).toLocaleString() : 'Never';
 document.getElementById('profileStatus').value = s.status || 'Active';
 }
+// ✅ NEW: Working Edit Profile function
 window.editMyProfile = function() {
-showToast("Profile editing coming soon");
+if (!window.currentStaffUser) return;
+const s = window.currentStaffUser;
+document.getElementById('editProfileName').value = s.name || '';
+document.getElementById('editProfileEmail').value = s.email || '';
+document.getElementById('editProfilePhone').value = s.phone || '';
+document.getElementById('editProfilePassword').value = '';
+document.getElementById('editProfilePhotoUrl').value = s.photoUrl || '';
+if (s.photoUrl) {
+document.getElementById('editProfilePhotoPreview').innerHTML = `<img src="${s.photoUrl}" style="max-width: 150px; border-radius: 10px; border: 2px solid var(--accent-gold);">`;
+} else {
+document.getElementById('editProfilePhotoPreview').innerHTML = '';
 }
-// Tasks
+document.getElementById('editProfileModal').style.display = 'block';
+}
+window.handleEditProfilePhotoUpload = async function(input) {
+const file = input.files[0];
+if (!file) return;
+if (file.size > 2 * 1024 * 1024) {
+showToast("File too large (Max 2MB)");
+return;
+}
+showToast("Uploading photo...");
+try {
+const fileName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+const storageRef = ref(storage, `staff_photos/${fileName}`);
+await uploadBytes(storageRef, file);
+const url = await getDownloadURL(storageRef);
+document.getElementById('editProfilePhotoUrl').value = url;
+document.getElementById('editProfilePhotoPreview').innerHTML = `<img src="${url}" style="max-width: 150px; border-radius: 10px; border: 2px solid var(--accent-gold);">`;
+showToast("Photo uploaded!");
+} catch (err) {
+console.error(err);
+showToast("Upload failed: " + err.message);
+}
+}
+window.saveMyProfile = async function(e) {
+e.preventDefault();
+const id = window.currentStaffUser.id;
+const data = {
+name: document.getElementById('editProfileName').value,
+email: document.getElementById('editProfileEmail').value.toLowerCase(),
+phone: document.getElementById('editProfilePhone').value,
+photoUrl: document.getElementById('editProfilePhotoUrl').value
+};
+const pwd = document.getElementById('editProfilePassword').value;
+if (pwd) {
+if (pwd.length < 6) {
+showToast("Password must be at least 6 characters");
+return;
+}
+data.password = pwd;
+}
+try {
+await updateDoc(doc(db, "staff", id), data);
+window.currentStaffUser = { ...window.currentStaffUser, ...data };
+localStorage.setItem('currentStaffUser', JSON.stringify(window.currentStaffUser));
+await logActivity('edit', `Updated profile for ${data.name}`);
+showToast("Profile updated successfully!");
+closeModal('editProfileModal');
+loadMyProfile();
+updateStaffGreetingAvatar();
+document.getElementById('currentStaffName').textContent = data.name;
+document.getElementById('staffDisplayName').textContent = data.name.toUpperCase();
+} catch (err) {
+console.error(err);
+showToast("Error: " + err.message);
+}
+}
+// ============ TASKS ============
 window.openTaskModal = function() {
 document.getElementById('task-title').value = '';
 document.getElementById('task-description').value = '';
@@ -5167,7 +5222,7 @@ if (!confirm("Delete this task?")) return;
 await deleteDoc(doc(db, "tasks", id));
 showToast("Task deleted");
 }
-// Calendar
+// ============ CALENDAR ============
 window.renderCalendar = function() {
 const date = window.calendarDate;
 const year = date.getFullYear();
@@ -5199,7 +5254,7 @@ window.changeMonth = function(delta) {
 window.calendarDate.setMonth(window.calendarDate.getMonth() + delta);
 renderCalendar();
 }
-// Notifications
+// ============ NOTIFICATIONS ============
 window.loadNotifications = function() {
 const list = document.getElementById('notificationsList');
 const recentBookings = window.bookings.slice(-10).reverse();
@@ -5217,7 +5272,7 @@ html += `
 });
 list.innerHTML = html || '<p style="text-align:center; color:#999; padding:40px;">No notifications</p>';
 }
-// My Bookings (for staff)
+// ============ MY BOOKINGS (STAFF) ============
 window.loadMyBookings = function() {
 const tbody = document.getElementById('my-bookings-body');
 const myBookings = window.bookings.filter(b => b.createdBy === window.currentStaffUser?.name);
@@ -5235,7 +5290,7 @@ tbody.innerHTML = myBookings.map(b => `
 </tr>
 `).join('') || '<tr><td colspan="6" style="text-align:center;">No bookings found</td></tr>';
 }
-// My Performance
+// ============ MY PERFORMANCE ============
 window.loadMyPerformance = function() {
 const myBookings = window.bookings.filter(b => b.createdBy === window.currentStaffUser?.name);
 const confirmed = myBookings.filter(b => b.status === 'confirmed');
@@ -5253,7 +5308,7 @@ chart.innerHTML = months.map(m => `
 </div>
 `).join('');
 }
-// Leaves
+// ============ LEAVES ============
 window.openLeaveModal = function() {
 document.getElementById('leave-from').value = '';
 document.getElementById('leave-to').value = '';
@@ -5272,7 +5327,7 @@ window.loadLeaves = function() {
 const tbody = document.getElementById('leaves-table-body');
 if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:#999;">No leave requests</td></tr>';
 }
-// My Expenses
+// ============ MY EXPENSES ============
 window.loadMyExpenses = function() {
 const myExpenses = window.expenses.filter(e => e.addedBy === window.currentStaffUser?.name);
 const total = myExpenses.reduce((sum, e) => sum + e.amount, 0);
@@ -5280,7 +5335,7 @@ document.getElementById('my-exp-total').textContent = 'PKR ' + total.toLocaleStr
 document.getElementById('my-exp-approved').textContent = 'PKR 0';
 document.getElementById('my-exp-pending').textContent = 'PKR ' + total.toLocaleString();
 }
-// Team Performance
+// ============ TEAM PERFORMANCE ============
 window.loadTeamPerformance = function() {
 const tbody = document.getElementById('team-performance-body');
 tbody.innerHTML = window.staffMembers.map(s => {
@@ -5297,7 +5352,7 @@ return `
 `;
 }).join('') || '<tr><td colspan="5" style="text-align:center;">No staff data</td></tr>';
 }
-// Attendance
+// ============ ATTENDANCE ============
 window.loadAttendance = function() {
 document.getElementById('att-present').textContent = window.staffMembers.length;
 document.getElementById('att-absent').textContent = 0;
@@ -5313,7 +5368,7 @@ tbody.innerHTML = window.staffMembers.map(s => `
 </tr>
 `).join('') || '<tr><td colspan="5" style="text-align:center;">No attendance data</td></tr>';
 }
-// Active/Upcoming Groups
+// ============ ACTIVE/UPCOMING GROUPS ============
 window.loadActiveGroups = function() {
 const list = document.getElementById('active-groups-list');
 const active = window.umrahGroups.filter(g => new Date(g.departure) <= new Date() && new Date(g.return) >= new Date());
@@ -5336,7 +5391,7 @@ list.innerHTML = upcoming.map(g => `
 </div>
 `).join('') || '<p style="text-align:center; color:#999; padding:40px;">No upcoming groups</p>';
 }
-// Sales Pages
+// ============ SALES PAGES ============
 window.loadPendingSales = function() {
 const tbody = document.getElementById('pending-sales-body');
 const pending = window.bookings.filter(b => b.status === 'pending');
@@ -5378,7 +5433,7 @@ document.getElementById('sales-revenue').textContent = 'PKR ' + revenue.toLocale
 document.getElementById('sales-avg').textContent = 'PKR ' + Math.round(avg).toLocaleString();
 document.getElementById('sales-conversion').textContent = conversion + '%';
 }
-// Templates
+// ============ TEMPLATES ============
 window.loadTemplates = function() {
 const list = document.getElementById('templates-list');
 const templates = window.documents.filter(d => d.category === 'template');
@@ -5393,7 +5448,7 @@ list.innerHTML = templates.map(d => `
 </div>
 `).join('') || '<p style="text-align:center; color:#999; padding:40px;">No templates uploaded yet</p>';
 }
-console.log("✅ All systems operational!");
+console.log("✅ All systems operational - Syntax error fixed!");
 </script>
 </body>
 </html>
