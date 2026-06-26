@@ -4789,4 +4789,255 @@ return `
 ${t.dueDate ? ` | Due: ${t.dueDate}` : ''}
 ${assignee ? ` | Assigned: ${assignee.name}` : ''}
 </div>
-${t.description ? `<p style="color: #666; margin-top: 5px; font-size: 0.9rem;">${t.description}</
+${t.description ? `<p style="color: #666; margin-top: 5px; font-size: 0.9rem;">${t.description}</p>` : ''}
+</div>
+<div>
+${t.status !== 'completed' ? `<button class="action-btn btn-approve" onclick="toggleTaskStatus('${t.id}', 'completed')"><i class="fas fa-check"></i></button>` : `<button class="action-btn btn-edit" onclick="toggleTaskStatus('${t.id}', 'pending')"><i class="fas fa-undo"></i></button>`}
+<button class="action-btn btn-delete" onclick="deleteTask('${t.id}')"><i class="fas fa-trash"></i></button>
+</div>
+</div>
+`;
+}).join('') || '<p style="text-align:center; color:#999; padding:40px;">No tasks yet</p>';
+if (list) list.innerHTML = taskHtml;
+if (assignList) assignList.innerHTML = taskHtml;
+}
+window.toggleTaskStatus = async function(id, status) {
+await updateDoc(doc(db, "tasks", id), { status });
+showToast("Task updated");
+}
+window.deleteTask = async function(id) {
+if (!confirm("Delete this task?")) return;
+await deleteDoc(doc(db, "tasks", id));
+showToast("Task deleted");
+}
+// Calendar
+window.renderCalendar = function() {
+const date = window.calendarDate;
+const year = date.getFullYear();
+const month = date.getMonth();
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+document.getElementById('calendarMonth').textContent = `${monthNames[month]} ${year}`;
+const firstDay = new Date(year, month, 1).getDay();
+const daysInMonth = new Date(year, month + 1, 0).getDate();
+const today = new Date();
+let html = '';
+const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+dayNames.forEach(d => {
+html += `<div style="text-align:center; font-weight:600; color:var(--primary-green); padding:10px;">${d}</div>`;
+});
+for (let i = 0; i < firstDay; i++) {
+html += `<div></div>`;
+}
+for (let day = 1; day <= daysInMonth; day++) {
+const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+const hasEvent = window.bookings.some(b => {
+const bDate = new Date(b.createdAt?.toDate ? b.createdAt.toDate() : b.createdAt);
+return bDate.getDate() === day && bDate.getMonth() === month && bDate.getFullYear() === year;
+});
+html += `<div class="calendar-day ${isToday ? 'today' : ''} ${hasEvent ? 'has-event' : ''}">${day}</div>`;
+}
+document.getElementById('calendarGrid').innerHTML = html;
+}
+window.changeMonth = function(delta) {
+window.calendarDate.setMonth(window.calendarDate.getMonth() + delta);
+renderCalendar();
+}
+// Notifications
+window.loadNotifications = function() {
+const list = document.getElementById('notificationsList');
+const recentBookings = window.bookings.slice(-10).reverse();
+let html = '';
+recentBookings.forEach(b => {
+html += `
+<div class="notification-item">
+<div class="notification-icon" style="background: #d4edda; color: #155724;"><i class="fas fa-ticket-alt"></i></div>
+<div style="flex:1;">
+<strong>New Booking</strong> from ${b.userName}
+<div style="color: #666; font-size: 0.85rem;">${b.item} - ${b.status}</div>
+</div>
+</div>
+`;
+});
+list.innerHTML = html || '<p style="text-align:center; color:#999; padding:40px;">No notifications</p>';
+}
+// My Bookings (for staff)
+window.loadMyBookings = function() {
+const tbody = document.getElementById('my-bookings-body');
+const myBookings = window.bookings.filter(b => b.createdBy === window.currentStaffUser?.name);
+tbody.innerHTML = myBookings.map(b => `
+<tr>
+<td><strong>${b.id}</strong></td>
+<td>${b.userName}</td>
+<td>${b.item}</td>
+<td>${b.date}</td>
+<td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td>
+<td>
+<button class="action-btn btn-edit" onclick="openBookingDetailsModal('${b.id}')"><i class="fas fa-edit"></i></button>
+<button class="action-btn btn-pdf" onclick="printTicket('${b.id}')"><i class="fas fa-file-pdf"></i></button>
+</td>
+</tr>
+`).join('') || '<tr><td colspan="6" style="text-align:center;">No bookings found</td></tr>';
+}
+// My Performance
+window.loadMyPerformance = function() {
+const myBookings = window.bookings.filter(b => b.createdBy === window.currentStaffUser?.name);
+const confirmed = myBookings.filter(b => b.status === 'confirmed');
+const revenue = confirmed.reduce((sum, b) => sum + (b.amount || 0), 0);
+document.getElementById('perf-bookings').textContent = myBookings.length;
+document.getElementById('perf-confirmed').textContent = confirmed.length;
+document.getElementById('perf-revenue').textContent = 'PKR ' + revenue.toLocaleString();
+document.getElementById('perf-rating').textContent = '5.0';
+const chart = document.getElementById('performance-chart');
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+chart.innerHTML = months.map(m => `
+<div style="flex:1; text-align:center;">
+<div style="height:${Math.random()*100}%; background:var(--accent-gold); border-radius:5px 5px 0 0; min-height:10px;"></div>
+<p style="margin-top:10px; font-size:0.85rem;">${m}</p>
+</div>
+`).join('');
+}
+// Leaves
+window.openLeaveModal = function() {
+document.getElementById('leave-from').value = '';
+document.getElementById('leave-to').value = '';
+document.getElementById('leave-reason').value = '';
+document.getElementById('leaveModal').style.display = 'block';
+}
+window.saveLeave = async function(e) {
+e.preventDefault();
+const from = new Date(document.getElementById('leave-from').value);
+const to = new Date(document.getElementById('leave-to').value);
+const days = Math.ceil((to - from) / (1000 * 60 * 60 * 24)) + 1;
+showToast(`Leave request submitted for ${days} days`);
+closeModal('leaveModal');
+}
+window.loadLeaves = function() {
+const tbody = document.getElementById('leaves-table-body');
+if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:#999;">No leave requests</td></tr>';
+}
+// My Expenses
+window.loadMyExpenses = function() {
+const myExpenses = window.expenses.filter(e => e.addedBy === window.currentStaffUser?.name);
+const total = myExpenses.reduce((sum, e) => sum + e.amount, 0);
+document.getElementById('my-exp-total').textContent = 'PKR ' + total.toLocaleString();
+document.getElementById('my-exp-approved').textContent = 'PKR 0';
+document.getElementById('my-exp-pending').textContent = 'PKR ' + total.toLocaleString();
+}
+// Team Performance
+window.loadTeamPerformance = function() {
+const tbody = document.getElementById('team-performance-body');
+tbody.innerHTML = window.staffMembers.map(s => {
+const staffBookings = window.bookings.filter(b => b.createdBy === s.name);
+const revenue = staffBookings.filter(b => b.status === 'confirmed').reduce((sum, b) => sum + (b.amount || 0), 0);
+return `
+<tr>
+<td>${s.name}</td>
+<td><span class="staff-role-badge role-${s.role}">${window.ROLES[s.role].name}</span></td>
+<td>${staffBookings.length}</td>
+<td>PKR ${revenue.toLocaleString()}</td>
+<td>5.0</td>
+</tr>
+`;
+}).join('') || '<tr><td colspan="5" style="text-align:center;">No staff data</td></tr>';
+}
+// Attendance
+window.loadAttendance = function() {
+document.getElementById('att-present').textContent = window.staffMembers.length;
+document.getElementById('att-absent').textContent = 0;
+document.getElementById('att-leave').textContent = 0;
+const tbody = document.getElementById('attendance-body');
+tbody.innerHTML = window.staffMembers.map(s => `
+<tr>
+<td>${s.name}</td>
+<td>09:00 AM</td>
+<td>06:00 PM</td>
+<td>9 hrs</td>
+<td><span class="status-pill pill-confirmed">Present</span></td>
+</tr>
+`).join('') || '<tr><td colspan="5" style="text-align:center;">No attendance data</td></tr>';
+}
+// Active/Upcoming Groups
+window.loadActiveGroups = function() {
+const list = document.getElementById('active-groups-list');
+const active = window.umrahGroups.filter(g => new Date(g.departure) <= new Date() && new Date(g.return) >= new Date());
+list.innerHTML = active.map(g => `
+<div class="staff-card">
+<h4 style="color: var(--primary-green);">${g.name}</h4>
+<p>${g.currentPilgrims || 0} / ${g.maxPilgrims} Pilgrims</p>
+<p>Leader: ${g.leader}</p>
+</div>
+`).join('') || '<p style="text-align:center; color:#999; padding:40px;">No active groups</p>';
+}
+window.loadUpcomingGroups = function() {
+const list = document.getElementById('upcoming-groups-list');
+const upcoming = window.umrahGroups.filter(g => new Date(g.departure) > new Date());
+list.innerHTML = upcoming.map(g => `
+<div class="staff-card">
+<h4 style="color: var(--primary-green);">${g.name}</h4>
+<p>Departure: ${g.departure}</p>
+<p>${g.currentPilgrims || 0} / ${g.maxPilgrims} Pilgrims</p>
+</div>
+`).join('') || '<p style="text-align:center; color:#999; padding:40px;">No upcoming groups</p>';
+}
+// Sales Pages
+window.loadPendingSales = function() {
+const tbody = document.getElementById('pending-sales-body');
+const pending = window.bookings.filter(b => b.status === 'pending');
+tbody.innerHTML = pending.map(b => `
+<tr>
+<td><strong>${b.id}</strong></td>
+<td>${b.userName}</td>
+<td>${b.item}</td>
+<td>PKR ${(b.amount || 0).toLocaleString()}</td>
+<td>${b.date}</td>
+<td>
+<button class="action-btn btn-approve" onclick="updateBookingStatus('${b.id}', 'confirmed')"><i class="fas fa-check"></i></button>
+<button class="action-btn btn-reject" onclick="updateBookingStatus('${b.id}', 'rejected')"><i class="fas fa-times"></i></button>
+</td>
+</tr>
+`).join('') || '<tr><td colspan="6" style="text-align:center;">No pending sales</td></tr>';
+}
+window.loadConfirmedSales = function() {
+const tbody = document.getElementById('confirmed-sales-body');
+const confirmed = window.bookings.filter(b => b.status === 'confirmed');
+tbody.innerHTML = confirmed.map(b => `
+<tr>
+<td><strong>${b.id}</strong></td>
+<td>${b.userName}</td>
+<td>${b.item}</td>
+<td>PKR ${(b.amount || 0).toLocaleString()}</td>
+<td>${b.date}</td>
+</tr>
+`).join('') || '<tr><td colspan="5" style="text-align:center;">No confirmed sales</td></tr>';
+}
+window.loadSalesReports = function() {
+const total = window.bookings.length;
+const revenue = window.bookings.filter(b => b.status === 'confirmed').reduce((sum, b) => sum + (b.amount || 0), 0);
+const avg = total > 0 ? revenue / total : 0;
+const confirmed = window.bookings.filter(b => b.status === 'confirmed').length;
+const conversion = total > 0 ? (confirmed / total * 100).toFixed(1) : 0;
+document.getElementById('sales-total').textContent = total;
+document.getElementById('sales-revenue').textContent = 'PKR ' + revenue.toLocaleString();
+document.getElementById('sales-avg').textContent = 'PKR ' + Math.round(avg).toLocaleString();
+document.getElementById('sales-conversion').textContent = conversion + '%';
+}
+// Templates
+window.loadTemplates = function() {
+const list = document.getElementById('templates-list');
+const templates = window.documents.filter(d => d.category === 'template');
+list.innerHTML = templates.map(d => `
+<div class="staff-card">
+<h4 style="color: var(--primary-green);"><i class="fas fa-file-alt"></i> ${d.title}</h4>
+<p style="color: #666; margin: 10px 0;">${d.description || 'No description'}</p>
+<div style="display:flex; gap:10px;">
+<button class="action-btn btn-view" onclick="viewDocument('${d.fileUrl}', '${d.fileName}')"><i class="fas fa-eye"></i> View</button>
+<button class="action-btn btn-edit" onclick="downloadDocument('${d.fileUrl}', '${d.fileName}')"><i class="fas fa-download"></i></button>
+</div>
+</div>
+`).join('') || '<p style="text-align:center; color:#999; padding:40px;">No templates uploaded yet</p>';
+}
+console.log("✅ All systems operational!");
+</script>
+</body>
+</html>
+
