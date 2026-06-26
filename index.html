@@ -42,7 +42,7 @@ gtag('config', 'G-3XLE0T3EWY');
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
 <style>
 :root {
 --primary-green: #0A4D3C;
@@ -420,22 +420,48 @@ flex-direction: column;
 overflow-y: auto;
 }
 .modern-header {
-background: linear-gradient(135deg, var(--modern-blue) 0%, var(--modern-blue-light) 100%);
+background: linear-gradient(135deg, #0f4c75 0%, #1b262c 100%);
 padding: 25px 40px;
 color: white;
 box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+display: flex;
+align-items: center;
+justify-content: space-between;
 }
 .greeting-text {
 font-size: 2.2rem;
 font-weight: 300;
 margin: 0;
+display: flex;
+align-items: center;
+gap: 15px;
 }
 .greeting-text strong {
 font-weight: 700;
 color: var(--accent-gold);
 }
+.staff-greeting-avatar {
+width: 60px;
+height: 60px;
+border-radius: 50%;
+background: var(--accent-gold);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.8rem;
+color: var(--primary-green);
+font-weight: 700;
+overflow: hidden;
+border: 3px solid var(--accent-gold);
+box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.staff-greeting-avatar img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
 .modern-nav-bar {
-background: rgba(30, 60, 114, 0.95);
+background: rgba(15, 76, 117, 0.95);
 padding: 0 40px;
 border-bottom: 2px solid rgba(255,255,255,0.1);
 position: sticky;
@@ -485,7 +511,7 @@ display: none;
 position: absolute;
 top: 100%;
 left: 0;
-background: rgba(30, 60, 114, 0.98);
+background: rgba(15, 76, 117, 0.98);
 min-width: 240px;
 box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 border-radius: 0 0 8px 8px;
@@ -527,11 +553,7 @@ cursor: pointer;
 padding: 0 10px;
 }
 .modern-main-content {
-background: linear-gradient(rgba(30, 60, 114, 0.88), rgba(42, 82, 152, 0.88)),
-url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-background-size: cover;
-background-position: center;
-background-attachment: fixed;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 min-height: calc(125vh - 180px);
 padding: 40px;
 }
@@ -1228,6 +1250,7 @@ font-size: 1.5rem;
 .booking-type-selector { grid-template-columns: 1fr; }
 .ticket-body { grid-template-columns: 1fr; }
 .nav-dropdown { min-width: 200px; }
+.staff-greeting-avatar { width: 45px; height: 45px; font-size: 1.3rem; }
 }
 @media (max-width: 480px) {
 .search-grid { grid-template-columns: 1fr; }
@@ -1264,11 +1287,15 @@ font-weight: 600;
 <div id="admin-fullscreen">
 <!-- Greeting Header -->
 <div class="modern-header">
-<h1 class="greeting-text">Good <span id="greetingTime">afternoon</span>, <strong id="staffDisplayName">STAFF NAME</strong></h1>
+<h1 class="greeting-text">
+<div class="staff-greeting-avatar" id="staffGreetingAvatar">A</div>
+<span>Good <span id="greetingTime">afternoon</span>, <strong id="staffDisplayName">STAFF NAME</strong></span>
+</h1>
 </div>
 <!-- Top Navigation Bar with Dropdowns -->
 <div class="modern-nav-bar">
 <ul class="nav-tabs">
+<li class="nav-tab" onclick="showAdminPageFromGrid('dashboard', this)">Dashboard</li>
 <li class="nav-tab has-dropdown" onclick="toggleDropdown('self-services-dropdown', this)">
 Self Services <i class="fas fa-chevron-down chevron"></i>
 <div class="nav-dropdown" id="self-services-dropdown">
@@ -1344,7 +1371,6 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <a onclick="showAdminPageFromGrid('promotions', this)"><i class="fas fa-gift"></i> Promotions</a>
 </div>
 </li>
-<li class="nav-tab" onclick="showAdminPageFromGrid('dashboard', this)">Dashboard</li>
 </ul>
 <div class="nav-arrow">›</div>
 </div>
@@ -1656,7 +1682,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </div>
 <div id="promotions-list" class="staff-grid"></div>
 </div>
-<!-- Documents Page (NEW) -->
+<!-- Documents Page (NO FILTERS) -->
 <div id="full-page-documents" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
 <h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-folder"></i> Document Management</h3>
@@ -1670,12 +1696,6 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <div class="stat-card" style="border-left-color: #17a2b8;"><h4>Images</h4><h2 id="doc-images">0</h2></div>
 <div class="stat-card" style="border-left-color: #28a745;"><h4>This Month</h4><h2 id="doc-month">0</h2></div>
 </div>
-<div style="margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-<button class="btn" style="background: var(--primary-green); color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="filterDocuments('all')">All</button>
-<button class="btn" style="background: #dc3545; color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="filterDocuments('pdf')">PDF</button>
-<button class="btn" style="background: #17a2b8; color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="filterDocuments('image')">Images</button>
-<button class="btn" style="background: #ffc107; color: #333; padding: 8px 15px; font-size: 0.9rem;" onclick="filterDocuments('other')">Other</button>
-</div>
 <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
 <table class="data-table">
 <thead><tr><th>Name</th><th>Category</th><th>Size</th><th>Uploaded By</th><th>Date</th><th>Actions</th></tr></thead>
@@ -1683,7 +1703,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </table>
 </div>
 </div>
-<!-- My Profile Page (NEW) -->
+<!-- My Profile Page -->
 <div id="full-page-my-profile" class="admin-page" style="display: none;">
 <div class="profile-card">
 <div class="profile-header">
@@ -1703,7 +1723,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <button class="btn" style="background: var(--primary-green); color: white;" onclick="editMyProfile()"><i class="fas fa-edit"></i> Edit Profile</button>
 </div>
 </div>
-<!-- My Tasks Page (NEW) -->
+<!-- My Tasks Page -->
 <div id="full-page-my-tasks" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
 <h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-tasks"></i> My Tasks</h3>
@@ -1716,7 +1736,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </div>
 <div id="tasksList"></div>
 </div>
-<!-- Calendar Page (NEW) -->
+<!-- Calendar Page -->
 <div id="full-page-calendar" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-calendar"></i> Calendar</h3>
 <div style="background: white; padding: 20px; border-radius: 10px;">
@@ -1728,19 +1748,19 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <div class="calendar-grid" id="calendarGrid"></div>
 </div>
 </div>
-<!-- Notifications Page (NEW) -->
+<!-- Notifications Page -->
 <div id="full-page-notifications" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-bell"></i> Notifications</h3>
 <div id="notificationsList"></div>
 </div>
-<!-- Messages Page (NEW) -->
+<!-- Messages Page -->
 <div id="full-page-messages" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-envelope"></i> Messages</h3>
 <div id="messagesList" style="background: white; padding: 20px; border-radius: 10px;">
 <p style="color: #666; text-align: center; padding: 40px;">No messages yet</p>
 </div>
 </div>
-<!-- My Bookings Page (NEW) -->
+<!-- My Bookings Page -->
 <div id="full-page-my-bookings" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-ticket-alt"></i> My Bookings</h3>
 <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
@@ -1750,7 +1770,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </table>
 </div>
 </div>
-<!-- My Performance Page (NEW) -->
+<!-- My Performance Page -->
 <div id="full-page-my-performance" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-chart-line"></i> My Performance</h3>
 <div class="stats-row">
@@ -1764,7 +1784,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <div id="performance-chart" style="display: flex; align-items: flex-end; height: 200px; gap: 15px; padding: 20px 0;"></div>
 </div>
 </div>
-<!-- My Leaves Page (NEW) -->
+<!-- My Leaves Page -->
 <div id="full-page-my-leaves" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
 <h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-calendar-times"></i> Leave Requests</h3>
@@ -1777,7 +1797,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </table>
 </div>
 </div>
-<!-- My Expenses Page (NEW) -->
+<!-- My Expenses Page -->
 <div id="full-page-my-expenses" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-receipt"></i> My Expenses</h3>
 <div class="stats-row">
@@ -1786,7 +1806,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <div class="stat-card" style="border-left-color: #ffc107;"><h4>Pending</h4><h2 id="my-exp-pending">PKR 0</h2></div>
 </div>
 </div>
-<!-- Team Performance Page (NEW) -->
+<!-- Team Performance Page -->
 <div id="full-page-team-performance" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-chart-bar"></i> Team Performance</h3>
 <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
@@ -1796,7 +1816,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </table>
 </div>
 </div>
-<!-- Assign Tasks Page (NEW) -->
+<!-- Assign Tasks Page -->
 <div id="full-page-assign-tasks" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
 <h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-tasks"></i> Assign Tasks</h3>
@@ -1804,7 +1824,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </div>
 <div id="assignTasksList"></div>
 </div>
-<!-- Attendance Page (NEW) -->
+<!-- Attendance Page -->
 <div id="full-page-attendance" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-clock"></i> Attendance</h3>
 <div class="stats-row">
@@ -1819,17 +1839,17 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </table>
 </div>
 </div>
-<!-- Active Groups Page (NEW) -->
+<!-- Active Groups Page -->
 <div id="full-page-active-groups" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-user-check"></i> Active Groups</h3>
 <div id="active-groups-list" class="staff-grid"></div>
 </div>
-<!-- Upcoming Groups Page (NEW) -->
+<!-- Upcoming Groups Page -->
 <div id="full-page-upcoming-groups" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-calendar-plus"></i> Upcoming Groups</h3>
 <div id="upcoming-groups-list" class="staff-grid"></div>
 </div>
-<!-- Pending Sales Page (NEW) -->
+<!-- Pending Sales Page -->
 <div id="full-page-pending-sales" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-hourglass-half"></i> Pending Sales</h3>
 <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
@@ -1839,7 +1859,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </table>
 </div>
 </div>
-<!-- Confirmed Sales Page (NEW) -->
+<!-- Confirmed Sales Page -->
 <div id="full-page-confirmed-sales" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-check-circle"></i> Confirmed Sales</h3>
 <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
@@ -1849,7 +1869,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </table>
 </div>
 </div>
-<!-- Sales Reports Page (NEW) -->
+<!-- Sales Reports Page -->
 <div id="full-page-sales-reports" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-chart-pie"></i> Sales Reports</h3>
 <div class="stats-row">
@@ -1859,7 +1879,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <div class="stat-card" style="border-left-color: #17a2b8;"><h4>Conversion</h4><h2 id="sales-conversion">0%</h2></div>
 </div>
 </div>
-<!-- Vendors Page (NEW) -->
+<!-- Vendors Page -->
 <div id="full-page-vendors" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
 <h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-truck"></i> Vendors</h3>
@@ -1867,7 +1887,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </div>
 <div id="vendors-list" class="staff-grid"></div>
 </div>
-<!-- Suppliers Page (NEW) -->
+<!-- Suppliers Page -->
 <div id="full-page-suppliers" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
 <h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-handshake"></i> Suppliers</h3>
@@ -1875,21 +1895,21 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </div>
 <div id="suppliers-list" class="staff-grid"></div>
 </div>
-<!-- Logistics Page (NEW) -->
+<!-- Logistics Page -->
 <div id="full-page-logistics" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-shipping-fast"></i> Logistics</h3>
 <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
 <p style="text-align: center; padding: 40px; color: #666;">Logistics management module - Coming soon</p>
 </div>
 </div>
-<!-- Tracking Page (NEW) -->
+<!-- Tracking Page -->
 <div id="full-page-tracking" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-map-marker-alt"></i> Tracking</h3>
 <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
 <p style="text-align: center; padding: 40px; color: #666;">Shipment tracking module - Coming soon</p>
 </div>
 </div>
-<!-- Purchase Orders Page (NEW) -->
+<!-- Purchase Orders Page -->
 <div id="full-page-purchase-orders" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
 <h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-file-invoice"></i> Purchase Orders</h3>
@@ -1899,21 +1919,21 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <p style="text-align: center; padding: 40px; color: #666;">Purchase orders module - Coming soon</p>
 </div>
 </div>
-<!-- Invoices Page (NEW) -->
+<!-- Invoices Page -->
 <div id="full-page-invoices" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-file-invoice-dollar"></i> Invoices</h3>
 <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
 <p style="text-align: center; padding: 40px; color: #666;">Invoice management module - Coming soon</p>
 </div>
 </div>
-<!-- Payments Page (NEW) -->
+<!-- Payments Page -->
 <div id="full-page-payments" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-credit-card"></i> Payments</h3>
 <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
 <p style="text-align: center; padding: 40px; color: #666;">Payment tracking module - Coming soon</p>
 </div>
 </div>
-<!-- Templates Page (NEW) -->
+<!-- Templates Page -->
 <div id="full-page-templates" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
 <h3 style="color: var(--primary-green); margin: 0;"><i class="fas fa-file-alt"></i> Templates</h3>
@@ -1921,7 +1941,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </div>
 <div id="templates-list" class="staff-grid"></div>
 </div>
-<!-- Reports Page (NEW) -->
+<!-- Reports Page -->
 <div id="full-page-reports" class="admin-page" style="display: none;">
 <h3 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-file-excel"></i> Reports</h3>
 <div class="staff-grid">
@@ -2088,7 +2108,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </form>
 </div>
 </div>
-<!-- Document Upload Modal (NEW) -->
+<!-- Document Upload Modal -->
 <div id="documentUploadModal" class="modal">
 <div class="modal-content" style="max-width: 600px;">
 <span class="close-modal" onclick="closeModal('documentUploadModal')">&times;</span>
@@ -2120,7 +2140,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </form>
 </div>
 </div>
-<!-- Task Modal (NEW) -->
+<!-- Task Modal -->
 <div id="taskModal" class="modal">
 <div class="modal-content" style="max-width: 500px;">
 <span class="close-modal" onclick="closeModal('taskModal')">&times;</span>
@@ -2143,7 +2163,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </form>
 </div>
 </div>
-<!-- Leave Modal (NEW) -->
+<!-- Leave Modal -->
 <div id="leaveModal" class="modal">
 <div class="modal-content" style="max-width: 500px;">
 <span class="close-modal" onclick="closeModal('leaveModal')">&times;</span>
@@ -2827,6 +2847,7 @@ window.staffMembers = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 if(window.isAdminLoggedIn) {
 window.loadStaffList();
 window.loadDashboardStats();
+updateStaffGreetingAvatar();
 }
 });
 onSnapshot(collection(db, "packages"), (snapshot) => {
@@ -2900,6 +2921,17 @@ greeting = 'evening';
 const el = document.getElementById('greetingTime');
 if(el) el.textContent = greeting;
 }
+window.updateStaffGreetingAvatar = function() {
+if (!window.currentStaffUser) return;
+const avatar = document.getElementById('staffGreetingAvatar');
+if (avatar) {
+if (window.currentStaffUser.photoUrl) {
+avatar.innerHTML = `<img src="${window.currentStaffUser.photoUrl}" alt="${window.currentStaffUser.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>${window.currentStaffUser.name.charAt(0).toUpperCase()}</span>'">`;
+} else {
+avatar.innerHTML = `<span>${window.currentStaffUser.name.charAt(0).toUpperCase()}</span>`;
+}
+}
+}
 window.addEventListener('DOMContentLoaded', async () => {
 document.getElementById('current-year').textContent = new Date().getFullYear();
 await initializeDefaultAdmin();
@@ -2915,6 +2947,7 @@ window.currentStaffUser = JSON.parse(savedStaff);
 window.isAdminLoggedIn = true;
 showAdminDashboard();
 updateUIBasedOnPermissions();
+updateStaffGreetingAvatar();
 } catch (e) {
 localStorage.removeItem('currentStaffUser');
 }
@@ -3258,6 +3291,7 @@ document.querySelectorAll('header, .hero, .madinah-banner, .section, footer, .fl
 document.getElementById('admin-fullscreen').style.display = 'flex';
 window.updateGreeting();
 window.updateUIBasedOnPermissions();
+window.updateStaffGreetingAvatar();
 window.loadFullAdminData();
 window.loadDashboardStats();
 }
@@ -3485,6 +3519,7 @@ await logActivity('create', `Added new staff ${data.name}`);
 showToast("Staff saved successfully!");
 closeModal('staffModal');
 window.loadStaffList();
+updateStaffGreetingAvatar();
 } catch(err) {
 console.error("Save error:", err);
 showToast("Error: " + err.message);
@@ -3557,31 +3592,61 @@ window.activityLog.forEach(l => batch.push(deleteDoc(doc(db, "activityLog", l.id
 await Promise.all(batch);
 showToast("Activity log cleared.");
 }
+// Helper function to add borders to Excel cells
+function addBordersToSheet(ws) {
+const range = XLSX.utils.decode_range(ws['!ref']);
+for (let R = range.s.r; R <= range.e.r; R++) {
+for (let C = range.s.c; C <= range.e.c; C++) {
+const cellAddress = XLSX.utils.encode_cell({r: R, c: C});
+if (!ws[cellAddress]) continue;
+if (!ws[cellAddress].s) ws[cellAddress].s = {};
+ws[cellAddress].s = {
+border: {
+top: { style: 'thin', color: { rgb: '000000' } },
+bottom: { style: 'thin', color: { rgb: '000000' } },
+left: { style: 'thin', color: { rgb: '000000' } },
+right: { style: 'thin', color: { rgb: '000000' } }
+},
+alignment: { horizontal: 'center', vertical: 'center' },
+font: { bold: R === range.s.r, sz: 11 }
+};
+}
+}
+// Set column widths
+if (!ws['!cols']) ws['!cols'] = [];
+for (let C = range.s.c; C <= range.e.c; C++) {
+ws['!cols'][C] = { wch: 18 };
+}
+}
 window.exportToExcel = function() {
-showToast("Generating comprehensive report...");
+showToast("Generating comprehensive report with borders...");
 const wb = XLSX.utils.book_new();
 const bookingsData = window.bookings.map(b => ({
 RefID: b.id, Customer: b.userName, Phone: b.phone || '', Email: b.email || '',
 Gender: b.gender || '', Service: b.item, Amount: b.amount || 0, Date: b.date, Status: b.status, Notes: b.notes || '', Attachments: (b.attachments || []).length
 }));
 const wsBookings = XLSX.utils.json_to_sheet(bookingsData);
+addBordersToSheet(wsBookings);
 XLSX.utils.book_append_sheet(wb, wsBookings, "Bookings");
 const expensesData = window.expenses.map(e => ({
 Date: e.date, Category: e.category, Description: e.description, Amount: e.amount, AddedBy: e.addedBy, ReceiptURL: e.receiptUrl || ''
 }));
 const wsExpenses = XLSX.utils.json_to_sheet(expensesData);
+addBordersToSheet(wsExpenses);
 XLSX.utils.book_append_sheet(wb, wsExpenses, "Expenses");
 const usersData = window.users.map(u => ({
 Name: u.name, Email: u.email, Phone: u.phone, RewardPoints: u.rewardPoints || 0,
 RegisteredDate: u.registeredAt ? new Date(u.registeredAt.toDate ? u.registeredAt.toDate() : u.registeredAt).toLocaleDateString() : ''
 }));
 const wsUsers = XLSX.utils.json_to_sheet(usersData);
+addBordersToSheet(wsUsers);
 XLSX.utils.book_append_sheet(wb, wsUsers, "Users");
 const inquiriesData = window.inquiries.map(i => ({
 Name: i.name, Phone: i.phone, Email: i.email || '', Message: i.message,
 Date: i.createdAt ? new Date(i.createdAt.toDate ? i.createdAt.toDate() : i.createdAt).toLocaleDateString() : ''
 }));
 const wsInquiries = XLSX.utils.json_to_sheet(inquiriesData);
+addBordersToSheet(wsInquiries);
 XLSX.utils.book_append_sheet(wb, wsInquiries, "Inquiries");
 const totalRevenue = window.bookings.filter(b => b.status === 'confirmed').reduce((sum, b) => sum + (b.amount || 0), 0);
 const totalExpenses = window.expenses.reduce((sum, e) => sum + e.amount, 0);
@@ -3593,22 +3658,25 @@ Metric: 'Total Revenue', Value: totalRevenue, Status: 'Confirmed Bookings'
 { Metric: 'Pending Bookings', Value: window.bookings.filter(b => b.status === 'pending').length, Status: 'Pending' },
 { Metric: 'Confirmed Bookings', Value: window.bookings.filter(b => b.status === 'confirmed').length, Status: 'Confirmed' }];
 const wsFinancial = XLSX.utils.json_to_sheet(financialData);
+addBordersToSheet(wsFinancial);
 XLSX.utils.book_append_sheet(wb, wsFinancial, "Financial Summary");
 const staffData = window.staffMembers.map(s => ({
 Name: s.name, Email: s.email, Phone: s.phone, Role: s.role, Status: s.status, CNIC: s.cnic || '', Salary: s.salary || '',
 LastLogin: s.lastLogin ? new Date(s.lastLogin.toDate ? s.lastLogin.toDate() : s.lastLogin).toLocaleDateString() : 'Never'
 }));
 const wsStaff = XLSX.utils.json_to_sheet(staffData);
+addBordersToSheet(wsStaff);
 XLSX.utils.book_append_sheet(wb, wsStaff, "Staff");
 const documentsData = window.documents.map(d => ({
 Title: d.title, Category: d.category, FileName: d.fileName, Size: d.fileSize, UploadedBy: d.uploadedBy,
 Date: d.uploadedAt ? new Date(d.uploadedAt).toLocaleDateString() : ''
 }));
 const wsDocuments = XLSX.utils.json_to_sheet(documentsData);
+addBordersToSheet(wsDocuments);
 XLSX.utils.book_append_sheet(wb, wsDocuments, "Documents");
 const dateStr = new Date().toISOString().split('T')[0];
 XLSX.writeFile(wb, `NadeemHadi_Complete_Report_${dateStr}.xlsx`);
-showToast("Complete report exported with 7 sheets!");
+showToast("Complete report exported with 7 sheets (with borders)!");
 }
 window.renderCustomPackages = function() {
 const grid = document.getElementById('packagesGrid');
@@ -3966,6 +4034,7 @@ closeModal('staffLoginModal');
 window.isAdminLoggedIn = true;
 showAdminDashboard();
 updateUIBasedOnPermissions();
+updateStaffGreetingAvatar();
 showToast(`Welcome, ${staff.name}!`);
 } else {
 showToast('Invalid credentials!');
@@ -4216,11 +4285,12 @@ Date: b.createdAt ? new Date(b.createdAt.toDate ? b.createdAt.toDate() : b.creat
 Customer: b.userName, Service: b.item, Amount: b.amount || 0, Status: b.status
 }));
 const ws = XLSX.utils.json_to_sheet(data);
+addBordersToSheet(ws);
 const wb = XLSX.utils.book_new();
 XLSX.utils.book_append_sheet(wb, ws, "Financial Report");
 const dateStr = new Date().toISOString().split('T')[0];
 XLSX.writeFile(wb, `Financial_Report_${dateStr}.xlsx`);
-showToast("Financial report exported!");
+showToast("Financial report exported with borders!");
 }
 window.visaApplications = [];
 window.loadVisaTracker = async function() {
@@ -4541,13 +4611,6 @@ renderDocuments();
 }
 window.renderDocuments = function() {
 let filteredDocs = window.documents;
-if (window.currentDocFilter === 'pdf') {
-filteredDocs = window.documents.filter(d => d.fileName && /\.pdf$/i.test(d.fileName));
-} else if (window.currentDocFilter === 'image') {
-filteredDocs = window.documents.filter(d => d.fileName && /\.(jpg|jpeg|png|gif)$/i.test(d.fileName));
-} else if (window.currentDocFilter === 'other') {
-filteredDocs = window.documents.filter(d => d.fileName && !/\.(pdf|jpg|jpeg|png|gif)$/i.test(d.fileName));
-}
 document.getElementById('doc-total').textContent = window.documents.length;
 document.getElementById('doc-pdf').textContent = window.documents.filter(d => d.fileName && /\.pdf$/i.test(d.fileName)).length;
 document.getElementById('doc-images').textContent = window.documents.filter(d => d.fileName && /\.(jpg|jpeg|png|gif)$/i.test(d.fileName)).length;
@@ -4580,10 +4643,6 @@ return `
 `;
 }).join('') || '<tr><td colspan="6" style="text-align:center;">No documents found</td></tr>';
 }
-}
-window.filterDocuments = function(filter) {
-window.currentDocFilter = filter;
-renderDocuments();
 }
 window.openDocumentUploadModal = function(category) {
 document.getElementById('doc-title').value = '';
@@ -4787,7 +4846,6 @@ renderCalendar();
 window.loadNotifications = function() {
 const list = document.getElementById('notificationsList');
 const recentBookings = window.bookings.slice(-10).reverse();
-const recentActivities = window.activityLog.slice(-10).reverse();
 let html = '';
 recentBookings.forEach(b => {
 html += `
