@@ -399,6 +399,7 @@ transition: 0.2s;
 .btn-delete { background: #e2e3e5; color: #383d41; }
 .btn-pdf { background: #dc3545; color: white; }
 .btn-edit { background: #17a2b8; color: white; }
+.btn-view { background: #6f42c1; color: white; }
 .action-btn:hover { opacity: 0.8; }
 .status-pill {
 padding: 5px 12px;
@@ -793,10 +794,38 @@ font-size: 0.7rem;
 text-align: center;
 border-radius: 5px;
 }
+
+/* DOCUMENT VIEWER */
+.document-viewer {
+background: white;
+border-radius: 10px;
+padding: 20px;
+margin-top: 15px;
+border: 2px solid var(--accent-gold);
+}
+.document-viewer img {
+max-width: 100%;
+max-height: 500px;
+border-radius: 8px;
+box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+}
+.document-viewer iframe {
+width: 100%;
+height: 500px;
+border: 1px solid #ddd;
+border-radius: 8px;
+}
+.document-actions {
+display: flex;
+gap: 10px;
+margin-top: 15px;
+justify-content: center;
+}
+
 @media print {
 @page {
 size: A4 portrait;
-margin: 10mm;
+margin: 15mm;
 }
 html, body {
 width: 210mm;
@@ -804,6 +833,7 @@ height: 297mm;
 margin: 0;
 padding: 0;
 overflow: hidden;
+background: white !important;
 }
 body * {
 visibility: hidden;
@@ -818,7 +848,7 @@ top: 0;
 width: 100%;
 height: 100%;
 background: white !important;
-overflow: hidden !important;
+overflow: visible !important;
 display: block !important;
 }
 .modal-content {
@@ -827,22 +857,21 @@ margin: 0 !important;
 padding: 0 !important;
 max-width: 100% !important;
 width: 100% !important;
-height: 100% !important;
+height: auto !important;
 border: none !important;
-overflow: hidden !important;
+overflow: visible !important;
 }
 .no-print, .close-modal {
 display: none !important;
 }
 .professional-ticket {
-width: 190mm !important;
-max-height: 277mm !important;
+width: 180mm !important;
 margin: 0 auto !important;
-padding: 15mm !important;
+padding: 10mm !important;
 box-sizing: border-box !important;
-border: 3px double #0A4D3C !important;
+border: 2px solid #0A4D3C !important;
 display: block !important;
-overflow: hidden !important;
+overflow: visible !important;
 page-break-after: always !important;
 page-break-inside: avoid !important;
 }
@@ -936,7 +965,7 @@ font-weight: 600;
 <span id="currentStaffInfo" style="color: #666;">Welcome, <strong id="currentStaffName">Admin</strong></span>
 <span id="currentStaffRole" class="staff-role-badge role-admin">Administrator</span>
 <button class="btn" style="background: #25D366; color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="exportToExcel()">
-<i class="fas fa-file-excel"></i> Export Excel
+<i class="fas fa-file-excel"></i> Export All Reports
 </button>
 <button class="btn" style="background: var(--accent-gold); color: var(--primary-green); padding: 8px 15px; font-size: 0.9rem;" onclick="openNewBookingModal()">
 <i class="fas fa-plus"></i> New Booking
@@ -1528,7 +1557,7 @@ font-weight: 600;
 </div>
 </div>
 
-<!-- ============ USER-FACING WEBSITE (CLEAN & SHORT) ============ -->
+<!-- ============ USER-FACING WEBSITE ============ -->
 <header>
 <div class="container nav-container">
 <div class="logo">
@@ -1626,7 +1655,7 @@ Nadeem Hadi Travel
 
 <div id="toast" class="toast"></div>
 
-<!-- User Modals (No Forgot Password) -->
+<!-- User Modals -->
 <div id="registerModal" class="modal">
 <div class="modal-content">
 <span class="close-modal" onclick="closeModal('registerModal')">&times;</span>
@@ -1701,6 +1730,57 @@ Nadeem Hadi Travel
 </div>
 
 <div id="referralModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('referralModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 10px;">Referral Program</h2><p>Invite friends and earn rewards!</p><div class="referral-box"><p>Your Referral Code:</p><div class="referral-code" id="referralCode">NADEEM2026</div><p>Share this code with friends</p></div><button class="btn" style="width: 100%; margin-top: 15px; background: var(--primary-green); color: white;" onclick="copyReferralCode()"><i class="fas fa-copy"></i> Copy Code</button></div></div>
+
+<div id="searchModal" class="modal">
+<div class="modal-content" style="max-width: 800px;">
+<span class="close-modal" onclick="closeModal('searchModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Advanced Search</h2>
+<div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 30px;">
+<div class="search-grid">
+<div class="form-group">
+<label><i class="fas fa-map-marker-alt" style="color: var(--accent-gold); margin-right: 5px;"></i>Destination</label>
+<select id="searchDestination" style="font-size: 1rem;">
+<option value="">🌍 Select Destination</option>
+<option value="makkah">🕋 Makkah</option>
+<option value="madinah">🕌 Madinah</option>
+<option value="jeddah">🏙️ Jeddah</option>
+<option value="dubai">🏗️ Dubai</option>
+<option value="istanbul">🕌 Istanbul</option>
+<option value="baku">🏛️ Baku</option>
+<option value="bangkok">🏯 Bangkok</option>
+<option value="london">🇬🇧 London</option>
+<option value="kuala-lumpur">🏙️ Kuala Lumpur</option>
+<option value="lahore">🌳 Lahore</option>
+<option value="islamabad">🏞️ Islamabad</option>
+<option value="karachi">🌊 Karachi</option>
+<option value="new-york">🗽 New York</option>
+<option value="toronto">🍁 Toronto</option>
+<option value="paris">🗼 Paris</option>
+<option value="muscat">🕌 Muscat</option>
+<option value="doha">🏙️ Doha</option>
+<option value="manama">🏛️ Manama</option>
+<option value="cairo">🏛️ Cairo</option>
+<option value="abu-dhabi">🏗️ Abu Dhabi</option>
+<option value="kuwait">🏙️ Kuwait</option>
+<option value="jordan">🏜️ Jordan</option>
+<option value="malaysia">🌴 Malaysia</option>
+<option value="singapore">🏙️ Singapore</option>
+<option value="thailand">🏖️ Thailand</option>
+</select>
+</div>
+<div class="form-group">
+<label><i class="fas fa-plane" style="color: var(--accent-gold); margin-right: 5px;"></i>Travel Type</label>
+<select id="searchType">
+<option value="">Select Type</option>
+<option value="umrah">🕋 Umrah</option>
+<option value="flight">✈️ Flight</option>
+</select>
+</div>
+</div>
+<button class="btn" style="width: 100%; background: var(--primary-green); color: white;" onclick="performSearch()"><i class="fas fa-search"></i> Search</button>
+</div>
+</div>
+</div>
 
 <div id="eticketsModal" class="modal">
 <div class="modal-content" style="max-width: 900px;">
@@ -1793,8 +1873,21 @@ Nadeem Hadi Travel
 <div class="file-upload-area">
 <input type="file" id="visaFileInput" multiple accept=".pdf,.jpg,.jpeg,.png" style="display: none;" onchange="handleVisaUpload(this)">
 <button class="btn-upload" onclick="document.getElementById('visaFileInput').click()"><i class="fas fa-paperclip"></i> Attach Visa Copy</button>
+<p style="margin-top: 10px; color: #666; font-size: 0.9rem;">Supported formats: PDF, JPG, PNG (Max 5MB each)</p>
 </div>
 <div id="uploadedVisaFiles" class="uploaded-files" style="margin-top: 12px;"></div>
+</div>
+</div>
+</div>
+
+<div id="documentViewerModal" class="modal">
+<div class="modal-content" style="max-width: 900px;">
+<span class="close-modal" onclick="closeModal('documentViewerModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Document Viewer</h2>
+<div id="documentViewerContent"></div>
+<div class="document-actions">
+<button class="btn" style="background: var(--primary-green); color: white;" onclick="downloadCurrentDocument()"><i class="fas fa-download"></i> Download</button>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="window.open(document.getElementById('documentViewerContent').dataset.url, '_blank')"><i class="fas fa-external-link-alt"></i> Open in New Tab</button>
 </div>
 </div>
 </div>
@@ -1842,6 +1935,7 @@ window.isAdminLoggedIn = false;
 window.selectedPayment = null;
 window.currentTicketBooking = null;
 window.currentViewingUser = null;
+window.currentDocumentUrl = null;
 
 window.ROLES = {
 admin: { name: 'Administrator', permissions: ['view_dashboard','manage_bookings','edit_bookings','delete_bookings','manage_packages','edit_packages','delete_packages','manage_users','delete_users','view_user_details','upload_visa','manage_staff','edit_staff','delete_staff','manage_permissions','view_activity_log','manage_inquiries','delete_inquiries','view_financial_reports','export_data','edit_settings','system_configuration','manage_expenses'] },
@@ -1858,20 +1952,32 @@ window.PERMISSION_LABELS = {
 function setupRealtimeListeners() {
 onSnapshot(collection(db, "bookings"), (snapshot) => {
 window.bookings = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-if(window.isAdminLoggedIn) window.loadFullAdminData();
+if(window.isAdminLoggedIn) {
+window.loadFullAdminData();
+window.loadDashboardStats();
+}
 if(window.currentUser) window.loadDashboard();
 });
 onSnapshot(collection(db, "users"), (snapshot) => {
 window.users = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-if(window.isAdminLoggedIn) window.loadFullAdminData();
+if(window.isAdminLoggedIn) {
+window.loadFullAdminData();
+window.loadDashboardStats();
+}
 });
 onSnapshot(collection(db, "inquiries"), (snapshot) => {
 window.inquiries = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-if(window.isAdminLoggedIn) window.loadFullAdminData();
+if(window.isAdminLoggedIn) {
+window.loadFullAdminData();
+window.loadDashboardStats();
+}
 });
 onSnapshot(collection(db, "staff"), (snapshot) => {
 window.staffMembers = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-if(window.isAdminLoggedIn) window.loadStaffList();
+if(window.isAdminLoggedIn) {
+window.loadStaffList();
+window.loadDashboardStats();
+}
 });
 onSnapshot(collection(db, "packages"), (snapshot) => {
 window.customPackages = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -1880,7 +1986,10 @@ if(window.isAdminLoggedIn) window.loadFullAdminData();
 });
 onSnapshot(collection(db, "activityLog"), (snapshot) => {
 window.activityLog = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-if(window.isAdminLoggedIn) window.loadActivityLog();
+if(window.isAdminLoggedIn) {
+window.loadActivityLog();
+window.loadRecentActivity();
+}
 });
 onSnapshot(collection(db, "expenses"), (snapshot) => {
 window.expenses = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -2094,6 +2203,15 @@ const code = document.getElementById('referralCode').textContent;
 navigator.clipboard.writeText(code).then(() => showToast("Referral code copied!"));
 }
 
+window.openSearchModal = function() { document.getElementById('searchModal').style.display = 'block'; }
+
+window.performSearch = function() {
+const dest = document.getElementById('searchDestination').value;
+const type = document.getElementById('searchType').value;
+showToast(`Searching for ${type} to ${dest}...`);
+closeModal('searchModal');
+}
+
 window.openETicketsModal = function() {
 document.getElementById('eticketsModal').style.display = 'block';
 const b = window.currentTicketBooking || window.bookings[0] || {};
@@ -2172,6 +2290,7 @@ window.showAdminDashboard = function() {
 document.querySelectorAll('header, .hero, .madinah-banner, .section, footer, .floating-wa').forEach(el => { el.style.display = 'none'; });
 document.getElementById('admin-fullscreen').style.display = 'flex';
 window.loadFullAdminData();
+window.loadDashboardStats();
 }
 
 window.exitAdminView = function() {
@@ -2233,6 +2352,10 @@ promotions:'Promotions',analytics:'Analytics',settings:'System Settings'
 document.getElementById('admin-page-title').textContent = titles[pageName] || 'Dashboard';
 
 window.loadFullAdminData();
+if (pageName === 'dashboard') {
+window.loadDashboardStats();
+window.loadRecentActivity();
+}
 if (pageName === 'staff') window.loadStaffList();
 if (pageName === 'permissions') window.loadPermissionsMatrix();
 if (pageName === 'activity-log') window.loadActivityLog();
@@ -2244,8 +2367,7 @@ if (pageName === 'promotions') window.loadPromotions();
 if (pageName === 'analytics') window.loadAnalytics();
 }
 
-window.loadFullAdminData = function() {
-if(!document.getElementById('fs-total-bookings')) return;
+window.loadDashboardStats = function() {
 const total = window.bookings.length;
 const pending = window.bookings.filter(b => b.status === 'pending').length;
 const confirmed = window.bookings.filter(b => b.status === 'confirmed').length;
@@ -2258,9 +2380,40 @@ document.getElementById('fs-inquiries').textContent = window.inquiries.length;
 document.getElementById('fs-users').textContent = window.users.length;
 
 const maxVal = Math.max(pending, confirmed, rejected, 1);
-document.getElementById('booking-status-chart').innerHTML = `<div style="flex: 1; text-align: center;"><div style="height: ${(pending/maxVal)*100}%; background: #ffc107; border-radius: 5px 5px 0 0; min-height: 10px;"></div><p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Pending<br>${pending}</p></div><div style="flex: 1; text-align: center;"><div style="height: ${(confirmed/maxVal)*100}%; background: #28a745; border-radius: 5px 5px 0 0; min-height: 10px;"></div><p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Confirmed<br>${confirmed}</p></div><div style="flex: 1; text-align: center;"><div style="height: ${(rejected/maxVal)*100}%; background: #dc3545; border-radius: 5px 5px 0 0; min-height: 10px;"></div><p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Rejected<br>${rejected}</p></div>`;
+document.getElementById('booking-status-chart').innerHTML = `
+<div style="flex: 1; text-align: center;">
+<div style="height: ${(pending/maxVal)*100}%; background: #ffc107; border-radius: 5px 5px 0 0; min-height: 10px;"></div>
+<p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Pending<br>${pending}</p>
+</div>
+<div style="flex: 1; text-align: center;">
+<div style="height: ${(confirmed/maxVal)*100}%; background: #28a745; border-radius: 5px 5px 0 0; min-height: 10px;"></div>
+<p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Confirmed<br>${confirmed}</p>
+</div>
+<div style="flex: 1; text-align: center;">
+<div style="height: ${(rejected/maxVal)*100}%; background: #dc3545; border-radius: 5px 5px 0 0; min-height: 10px;"></div>
+<p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Rejected<br>${rejected}</p>
+</div>
+`;
 
-document.getElementById('fs-recent-bookings').innerHTML = window.bookings.slice(-5).reverse().map(b => `<tr><td><strong>${b.id}</strong></td><td>${b.userName}</td><td>${b.item}</td><td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td></tr>`).join('') || '<tr><td colspan="4" style="text-align:center;">No recent bookings</td></tr>';
+document.getElementById('fs-recent-bookings').innerHTML = window.bookings.slice(-5).reverse().map(b => 
+`<tr><td><strong>${b.id}</strong></td><td>${b.userName}</td><td>${b.item}</td><td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td></tr>`
+).join('') || '<tr><td colspan="4" style="text-align:center;">No recent bookings</td></tr>';
+}
+
+window.loadRecentActivity = function() {
+const recentDiv = document.getElementById('recent-activity');
+if(!recentDiv) return;
+recentDiv.innerHTML = window.activityLog.slice(-5).reverse().map(log => `
+<div style="padding: 8px 0; border-bottom: 1px solid #eee; font-size: 0.85rem;">
+<strong>${log.staffName}</strong>: ${log.message}
+<div style="color: #999; font-size: 0.75rem;">${log.timestamp ? new Date(log.timestamp.toDate()).toLocaleString() : 'Just now'}</div>
+</div>
+`).join('') || '<p style="color: #999; text-align: center; padding: 20px;">No recent activity</p>';
+}
+
+window.loadFullAdminData = function() {
+if(!document.getElementById('fs-total-bookings')) return;
+window.loadDashboardStats();
 
 const canEditBookings = hasPermission('edit_bookings');
 const canDeleteBookings = hasPermission('delete_bookings');
@@ -2268,8 +2421,14 @@ const canManageBookings = hasPermission('manage_bookings');
 
 document.getElementById('fs-all-bookings').innerHTML = [...window.bookings].reverse().map(b => {
 let actions = '';
-if (canManageBookings && b.status === 'pending') { actions += `<button class="action-btn btn-approve" onclick="updateBookingStatus('${b.id}', 'confirmed')"><i class="fas fa-check"></i></button>`; actions += `<button class="action-btn btn-reject" onclick="updateBookingStatus('${b.id}', 'rejected')"><i class="fas fa-times"></i></button>`; }
-if (canEditBookings) { actions += `<button class="action-btn btn-edit" onclick="openBookingDetailsModal('${b.id}')" title="Add/Edit Details"><i class="fas fa-file-signature"></i></button>`; actions += `<button class="action-btn" style="background: #ffc107; color: #333;" onclick="openTicketEditModal('${b.id}')" title="Edit Ticket"><i class="fas fa-edit"></i></button>`; }
+if (canManageBookings && b.status === 'pending') { 
+actions += `<button class="action-btn btn-approve" onclick="updateBookingStatus('${b.id}', 'confirmed')"><i class="fas fa-check"></i></button>`; 
+actions += `<button class="action-btn btn-reject" onclick="updateBookingStatus('${b.id}', 'rejected')"><i class="fas fa-times"></i></button>`; 
+}
+if (canEditBookings) { 
+actions += `<button class="action-btn btn-edit" onclick="openBookingDetailsModal('${b.id}')" title="Add/Edit Details"><i class="fas fa-file-signature"></i></button>`; 
+actions += `<button class="action-btn" style="background: #ffc107; color: #333;" onclick="openTicketEditModal('${b.id}')" title="Edit Ticket"><i class="fas fa-edit"></i></button>`; 
+}
 actions += `<button class="action-btn btn-pdf" onclick="printTicket('${b.id}')" title="Print/PDF Ticket"><i class="fas fa-file-pdf"></i></button>`;
 if (canDeleteBookings) actions += `<button class="action-btn btn-delete" onclick="deleteBooking('${b.id}')"><i class="fas fa-trash"></i></button>`;
 
@@ -2277,17 +2436,23 @@ return `<tr><td><strong>${b.id}</strong></td><td>${b.userName}</td><td>${b.gende
 }).join('') || '<tr><td colspan="7" style="text-align:center;">No bookings found</td></tr>';
 
 const canDeleteInquiries = hasPermission('delete_inquiries');
-document.getElementById('fs-all-inquiries').innerHTML = window.inquiries.map((inq) => `<tr><td>${inq.name}</td><td><a href="tel:${inq.phone}" style="color:var(--primary-green)">${inq.phone}</a></td><td style="max-width: 300px;">${inq.message}</td><td><a href="https://wa.me/92${inq.phone.replace(/^0/, '')}" target="_blank" class="action-btn btn-approve"><i class="fab fa-whatsapp"></i></a>${canDeleteInquiries ? `<button class="action-btn btn-delete" onclick="deleteInquiry('${inq.id}')"><i class="fas fa-trash"></i></button>` : ''}</td></tr>`).join('') || '<tr><td colspan="4" style="text-align:center;">No inquiries</td></tr>';
+document.getElementById('fs-all-inquiries').innerHTML = window.inquiries.map((inq) => 
+`<tr><td>${inq.name}</td><td><a href="tel:${inq.phone}" style="color:var(--primary-green)">${inq.phone}</a></td><td style="max-width: 300px;">${inq.message}</td><td><a href="https://wa.me/92${inq.phone.replace(/^0/, '')}" target="_blank" class="action-btn btn-approve"><i class="fab fa-whatsapp"></i></a>${canDeleteInquiries ? `<button class="action-btn btn-delete" onclick="deleteInquiry('${inq.id}')"><i class="fas fa-trash"></i></button>` : ''}</td></tr>`
+).join('') || '<tr><td colspan="4" style="text-align:center;">No inquiries</td></tr>';
 
 const canDeleteUsers = hasPermission('delete_users');
 const canViewUserDetails = hasPermission('view_user_details');
-document.getElementById('fs-all-users').innerHTML = window.users.map((u) => `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.phone}</td><td>${u.rewardPoints || 0}</td><td>${u.registeredAt ? new Date(u.registeredAt.toDate ? u.registeredAt.toDate() : u.registeredAt).toLocaleDateString() : ''}</td><td>${canViewUserDetails ? `<button class="action-btn btn-edit" onclick="openUserDetailModal('${u.id}')" title="View Details"><i class="fas fa-eye"></i></button>` : ''}${canDeleteUsers ? `<button class="action-btn btn-delete" onclick="deleteUser('${u.id}')"><i class="fas fa-trash"></i></button>` : ''}</td></tr>`).join('') || '<tr><td colspan="6" style="text-align:center;">No registered users</td></tr>';
+document.getElementById('fs-all-users').innerHTML = window.users.map((u) => 
+`<tr><td>${u.name}</td><td>${u.email}</td><td>${u.phone}</td><td>${u.rewardPoints || 0}</td><td>${u.registeredAt ? new Date(u.registeredAt.toDate ? u.registeredAt.toDate() : u.registeredAt).toLocaleDateString() : ''}</td><td>${canViewUserDetails ? `<button class="action-btn btn-edit" onclick="openUserDetailModal('${u.id}')" title="View Details"><i class="fas fa-eye"></i></button>` : ''}${canDeleteUsers ? `<button class="action-btn btn-delete" onclick="deleteUser('${u.id}')"><i class="fas fa-trash"></i></button>` : ''}</td></tr>`
+).join('') || '<tr><td colspan="6" style="text-align:center;">No registered users</td></tr>';
 
 const canEditPackages = hasPermission('edit_packages');
 const canDeletePackages = hasPermission('delete_packages');
 const pkgList = document.getElementById('fs-packages-list');
 if(pkgList) {
-pkgList.innerHTML = window.customPackages.map(pkg => `<div class="dashboard-card" style="text-align: left; padding: 20px;"><h3 style="color: var(--accent-gold); margin-bottom: 10px;">${pkg.titleEn}</h3><p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">${pkg.priceEn}</p><p><strong>Mecca:</strong> ${pkg.meccaHotelEn}</p><p><strong>Medina:</strong> ${pkg.medinaHotelEn}</p><p><strong>Duration:</strong> ${pkg.totalDays} Days</p>${pkg.departureDate ? `<p><strong>Departure:</strong> ${pkg.departureDate}</p>` : ''}${pkg.returnDate ? `<p><strong>Return:</strong> ${pkg.returnDate}</p>` : ''}<div style="margin-top: 15px; display: flex; gap: 10px;">${canEditPackages ? `<button class="action-btn btn-approve" onclick="openPackageEditor('${pkg.id}')"><i class="fas fa-edit"></i> Edit</button>` : ''}${canDeletePackages ? `<button class="action-btn btn-delete" onclick="deletePackage('${pkg.id}')"><i class="fas fa-trash"></i> Delete</button>` : ''}</div></div>`).join('');
+pkgList.innerHTML = window.customPackages.map(pkg => 
+`<div class="dashboard-card" style="text-align: left; padding: 20px;"><h3 style="color: var(--accent-gold); margin-bottom: 10px;">${pkg.titleEn}</h3><p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">${pkg.priceEn}</p><p><strong>Mecca:</strong> ${pkg.meccaHotelEn}</p><p><strong>Medina:</strong> ${pkg.medinaHotelEn}</p><p><strong>Duration:</strong> ${pkg.totalDays} Days</p>${pkg.departureDate ? `<p><strong>Departure:</strong> ${pkg.departureDate}</p>` : ''}${pkg.returnDate ? `<p><strong>Return:</strong> ${pkg.returnDate}</p>` : ''}<div style="margin-top: 15px; display: flex; gap: 10px;">${canEditPackages ? `<button class="action-btn btn-approve" onclick="openPackageEditor('${pkg.id}')"><i class="fas fa-edit"></i> Edit</button>` : ''}${canDeletePackages ? `<button class="action-btn btn-delete" onclick="deletePackage('${pkg.id}')"><i class="fas fa-trash"></i> Delete</button>` : ''}</div></div>`
+).join('');
 }
 }
 
@@ -2303,7 +2468,7 @@ list.innerHTML = window.staffMembers.map(s => `
 <div class="staff-card">
 <div class="staff-card-header">
 <div style="display:flex; align-items:center; gap:15px;">
-<div class="staff-avatar">${s.photoUrl ? `<img src="${s.photoUrl}" alt="${s.name}">` : s.name.charAt(0)}</div>
+<div class="staff-avatar">${s.photoUrl ? `<img src="${s.photoUrl}" alt="${s.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>${s.name.charAt(0)}</span>'">` : s.name.charAt(0)}</div>
 <div><h4 style="margin:0;">${s.name}</h4><p style="margin:0; color:#666; font-size:0.9rem;">${s.email}</p></div>
 </div>
 <span class="staff-role-badge role-${s.role}">${window.ROLES[s.role].name}</span>
@@ -2332,7 +2497,7 @@ document.getElementById('staffPhone').value = s.phone;
 document.getElementById('staffPassword').value = '';
 document.getElementById('staffPhotoUrl').value = s.photoUrl || '';
 if(s.photoUrl) {
-document.getElementById('staffPhotoPreview').innerHTML = `<img src="${s.photoUrl}" style="max-width: 150px; border-radius: 10px; border: 2px solid var(--accent-gold);">`;
+document.getElementById('staffPhotoPreview').innerHTML = `<img src="${s.photoUrl}" style="max-width: 150px; border-radius: 10px; border: 2px solid var(--accent-gold);" onerror="this.style.display='none'">`;
 }
 selectRole(s.role, document.querySelector(`.role-option[onclick*="${s.role}"]`));
 }
@@ -2356,13 +2521,15 @@ return;
 }
 showToast("Uploading photo...");
 try {
-const storageRef = ref(storage, `staff_photos/${Date.now()}_${file.name}`);
+const fileName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+const storageRef = ref(storage, `staff_photos/${fileName}`);
 await uploadBytes(storageRef, file);
 const url = await getDownloadURL(storageRef);
 document.getElementById('staffPhotoUrl').value = url;
-document.getElementById('staffPhotoPreview').innerHTML = `<img src="${url}" style="max-width: 150px; border-radius: 10px; border: 2px solid var(--accent-gold);">`;
+document.getElementById('staffPhotoPreview').innerHTML = `<img src="${url}" style="max-width: 150px; border-radius: 10px; border: 2px solid var(--accent-gold);" onerror="this.style.display='none'">`;
 showToast("Photo uploaded!");
 } catch(err) {
+console.error("Upload error:", err);
 showToast("Upload failed: " + err.message);
 }
 }
@@ -2400,7 +2567,11 @@ await logActivity('create', `Added new staff ${data.name}`);
 }
 showToast("Staff saved successfully!");
 closeModal('staffModal');
-} catch(err) { showToast("Error: " + err.message); }
+window.loadStaffList();
+} catch(err) { 
+console.error("Save error:", err);
+showToast("Error: " + err.message); 
+}
 }
 
 window.deleteStaff = async function(id) {
@@ -2409,6 +2580,7 @@ const s = window.staffMembers.find(m => m.id === id);
 await deleteDoc(doc(db, "staff", id));
 await logActivity('delete', `Deleted staff ${s.name}`);
 showToast("Staff deleted.");
+window.loadStaffList();
 }
 
 window.loadPermissionsMatrix = async function() {
@@ -2476,12 +2648,107 @@ showToast("Activity log cleared.");
 }
 
 window.exportToExcel = function() {
-const data = window.bookings.map(b => ({ RefID: b.id, Customer: b.userName, Gender: b.gender || '', Item: b.item, Date: b.date, Status: b.status }));
-const ws = XLSX.utils.json_to_sheet(data);
+showToast("Generating comprehensive report...");
+
 const wb = XLSX.utils.book_new();
-XLSX.utils.book_append_sheet(wb, ws, "Bookings");
-XLSX.writeFile(wb, "Bookings.xlsx");
-showToast("Excel exported!");
+
+// Sheet 1: Bookings
+const bookingsData = window.bookings.map(b => ({
+RefID: b.id,
+Customer: b.userName,
+Phone: b.phone || '',
+Email: b.email || '',
+Gender: b.gender || '',
+Service: b.item,
+Amount: b.amount || 0,
+Date: b.date,
+Status: b.status,
+Notes: b.notes || ''
+}));
+const wsBookings = XLSX.utils.json_to_sheet(bookingsData);
+XLSX.utils.book_append_sheet(wb, wsBookings, "Bookings");
+
+// Sheet 2: Expenses
+const expensesData = window.expenses.map(e => ({
+Date: e.date,
+Category: e.category,
+Description: e.description,
+Amount: e.amount,
+AddedBy: e.addedBy,
+ReceiptURL: e.receiptUrl || ''
+}));
+const wsExpenses = XLSX.utils.json_to_sheet(expensesData);
+XLSX.utils.book_append_sheet(wb, wsExpenses, "Expenses");
+
+// Sheet 3: Users
+const usersData = window.users.map(u => ({
+Name: u.name,
+Email: u.email,
+Phone: u.phone,
+RewardPoints: u.rewardPoints || 0,
+RegisteredDate: u.registeredAt ? new Date(u.registeredAt.toDate ? u.registeredAt.toDate() : u.registeredAt).toLocaleDateString() : ''
+}));
+const wsUsers = XLSX.utils.json_to_sheet(usersData);
+XLSX.utils.book_append_sheet(wb, wsUsers, "Users");
+
+// Sheet 4: Inquiries
+const inquiriesData = window.inquiries.map(i => ({
+Name: i.name,
+Phone: i.phone,
+Email: i.email || '',
+Message: i.message,
+Date: i.createdAt ? new Date(i.createdAt.toDate ? i.createdAt.toDate() : i.createdAt).toLocaleDateString() : ''
+}));
+const wsInquiries = XLSX.utils.json_to_sheet(inquiriesData);
+XLSX.utils.book_append_sheet(wb, wsInquiries, "Inquiries");
+
+// Sheet 5: Financial Summary
+const totalRevenue = window.bookings.filter(b => b.status === 'confirmed').reduce((sum, b) => sum + (b.amount || 0), 0);
+const totalExpenses = window.expenses.reduce((sum, e) => sum + e.amount, 0);
+const financialData = [{
+Metric: 'Total Revenue',
+Value: totalRevenue,
+Status: 'Confirmed Bookings'
+}, {
+Metric: 'Total Expenses',
+Value: totalExpenses,
+Status: 'All Expenses'
+}, {
+Metric: 'Net Profit',
+Value: totalRevenue - totalExpenses,
+Status: 'Revenue - Expenses'
+}, {
+Metric: 'Total Bookings',
+Value: window.bookings.length,
+Status: 'All'
+}, {
+Metric: 'Pending Bookings',
+Value: window.bookings.filter(b => b.status === 'pending').length,
+Status: 'Pending'
+}, {
+Metric: 'Confirmed Bookings',
+Value: window.bookings.filter(b => b.status === 'confirmed').length,
+Status: 'Confirmed'
+}];
+const wsFinancial = XLSX.utils.json_to_sheet(financialData);
+XLSX.utils.book_append_sheet(wb, wsFinancial, "Financial Summary");
+
+// Sheet 6: Staff
+const staffData = window.staffMembers.map(s => ({
+Name: s.name,
+Email: s.email,
+Phone: s.phone,
+Role: s.role,
+Status: s.status,
+LastLogin: s.lastLogin ? new Date(s.lastLogin.toDate ? s.lastLogin.toDate() : s.lastLogin).toLocaleDateString() : 'Never'
+}));
+const wsStaff = XLSX.utils.json_to_sheet(staffData);
+XLSX.utils.book_append_sheet(wb, wsStaff, "Staff");
+
+// Generate filename with date
+const dateStr = new Date().toISOString().split('T')[0];
+XLSX.writeFile(wb, `NadeemHadi_Complete_Report_${dateStr}.xlsx`);
+showToast("Complete report exported with 6 sheets!");
 }
 
 window.renderCustomPackages = function() {
@@ -2661,10 +2928,72 @@ document.getElementById('userDetailContent').innerHTML = `
 <p><strong>Phone:</strong> ${u.phone}</p>
 <p><strong>Reward Points:</strong> ${u.rewardPoints || 0}</p>
 `;
-document.getElementById('uploadedVisaFiles').innerHTML = (u.visaFiles || []).map((f) => `
-<div class="file-item"><span>${f.name}</span><a href="${f.url}" target="_blank" class="action-btn btn-edit">View</a></div>
-`).join('') || '<p>No visa files uploaded.</p>';
+window.renderUploadedFiles(u.visaFiles || []);
 document.getElementById('userDetailModal').style.display = 'block';
+}
+
+window.renderUploadedFiles = function(files) {
+const container = document.getElementById('uploadedVisaFiles');
+if(!files || files.length === 0) {
+container.innerHTML = '<p style="color: #999;">No documents uploaded.</p>';
+return;
+}
+container.innerHTML = files.map((f, index) => {
+const isImage = /\.(jpg|jpeg|png|gif)$/i.test(f.name);
+const isPDF = /\.pdf$/i.test(f.name);
+const icon = isImage ? 'fa-image' : isPDF ? 'fa-file-pdf' : 'fa-file';
+return `
+<div class="file-item">
+<span><i class="fas ${icon}" style="margin-right: 8px; color: var(--primary-green);"></i>${f.name}</span>
+<div>
+<button class="action-btn btn-view" onclick="viewDocument('${f.url}', '${f.name}')" title="View Document">
+<i class="fas fa-eye"></i> View
+</button>
+<button class="action-btn btn-edit" onclick="downloadDocument('${f.url}', '${f.name}')" title="Download">
+<i class="fas fa-download"></i>
+</button>
+</div>
+</div>
+`;
+}).join('');
+}
+
+window.viewDocument = function(url, name) {
+window.currentDocumentUrl = url;
+const viewer = document.getElementById('documentViewerContent');
+viewer.dataset.url = url;
+
+const isImage = /\.(jpg|jpeg|png|gif)$/i.test(name);
+const isPDF = /\.pdf$/i.test(name);
+
+if(isImage) {
+viewer.innerHTML = `<div class="document-viewer"><img src="${url}" alt="${name}" style="max-width: 100%;"></div>`;
+} else if(isPDF) {
+viewer.innerHTML = `<div class="document-viewer"><iframe src="${url}" style="width: 100%; height: 500px; border: 1px solid #ddd; border-radius: 8px;"></iframe></div>`;
+} else {
+viewer.innerHTML = `<div class="document-viewer"><p style="text-align: center; padding: 40px;"><i class="fas fa-file" style="font-size: 4rem; color: var(--primary-green); margin-bottom: 15px;"></i><br>Preview not available for this file type.<br><br><a href="${url}" target="_blank" class="btn" style="background: var(--primary-green); color: white;"><i class="fas fa-download"></i> Download to View</a></p></div>`;
+}
+
+document.getElementById('documentViewerModal').style.display = 'block';
+}
+
+window.downloadDocument = function(url, name) {
+const link = document.createElement('a');
+link.href = url;
+link.download = name;
+link.target = '_blank';
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
+showToast("Downloading " + name);
+}
+
+window.downloadCurrentDocument = function() {
+if(window.currentDocumentUrl) {
+const url = window.currentDocumentUrl;
+const name = url.split('/').pop().split('?')[0] || 'document';
+window.downloadDocument(url, name);
+}
 }
 
 window.handleVisaUpload = async function(input) {
@@ -2678,7 +3007,8 @@ if (f.size > 5 * 1024 * 1024) {
 showToast(`File ${f.name} is too large (Max 5MB).`);
 continue;
 }
-const storageRef = ref(storage, `visa_files/${window.currentViewingUser.id}/${Date.now()}_${f.name}`);
+const fileName = `${Date.now()}_${f.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+const storageRef = ref(storage, `visa_files/${window.currentViewingUser.id}/${fileName}`);
 await uploadBytes(storageRef, f);
 const url = await getDownloadURL(storageRef);
 newFiles.push({ name: f.name, url: url, uploadedAt: new Date().toISOString() });
@@ -2686,7 +3016,8 @@ newFiles.push({ name: f.name, url: url, uploadedAt: new Date().toISOString() });
 await updateDoc(doc(db, "users", window.currentViewingUser.id), { visaFiles: newFiles });
 await logActivity('edit', `Uploaded visa for ${window.currentViewingUser.name}`);
 showToast("Files uploaded successfully!");
-openUserDetailModal(window.currentViewingUser.id);
+window.renderUploadedFiles(newFiles);
+window.currentViewingUser.visaFiles = newFiles;
 } catch (err) {
 console.error(err);
 showToast("Upload failed: " + err.message);
@@ -2866,14 +3197,20 @@ modal.style.display = 'block';
 window.handleReceiptUpload = async function(input) {
 const file = input.files[0];
 if(!file) return;
+if(file.size > 5 * 1024 * 1024) {
+showToast("File too large (Max 5MB)");
+return;
+}
 showToast("Uploading receipt...");
 try {
-const storageRef = ref(storage, `expense_receipts/${Date.now()}_${file.name}`);
+const fileName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+const storageRef = ref(storage, `expense_receipts/${fileName}`);
 await uploadBytes(storageRef, file);
 const url = await getDownloadURL(storageRef);
 document.getElementById('exp-receipt-url').value = url;
 showToast("Receipt uploaded!");
 } catch(err) {
+console.error("Upload error:", err);
 showToast("Upload failed: " + err.message);
 }
 }
@@ -2927,7 +3264,7 @@ const d = new Date(e.date);
 return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
 }).reduce((sum, e) => sum + e.amount, 0);
 const categories = new Set(window.expenses.map(e => e.category)).size;
-const totalRevenue = window.bookings.filter(b => b.status === 'confirmed').reduce((sum, b) => sum + (b.amount || 350000), 0);
+const totalRevenue = window.bookings.filter(b => b.status === 'confirmed').reduce((sum, b) => sum + (b.amount || 0), 0);
 const profit = totalRevenue - totalExpenses;
 
 document.getElementById('exp-total').textContent = 'PKR ' + totalExpenses.toLocaleString();
@@ -2945,7 +3282,7 @@ tbody.innerHTML = window.expenses.slice().reverse().map(e => `
 <td>PKR ${e.amount.toLocaleString()}</td>
 <td>${e.addedBy}</td>
 <td>
-${e.receiptUrl ? `<a href="${e.receiptUrl}" target="_blank" class="action-btn btn-edit" title="View Receipt"><i class="fas fa-eye"></i></a>` : ''}
+${e.receiptUrl ? `<button class="action-btn btn-view" onclick="viewDocument('${e.receiptUrl}', 'receipt_${e.id}')" title="View Receipt"><i class="fas fa-eye"></i></button>` : ''}
 <button class="action-btn btn-edit" onclick="openExpenseModal('${e.id}')" title="Edit Expense"><i class="fas fa-edit"></i></button>
 <button class="action-btn btn-delete" onclick="deleteExpense('${e.id}')" title="Delete Expense"><i class="fas fa-trash"></i></button>
 </td>
@@ -2965,8 +3302,8 @@ else if (period === 'month') startDate.setMonth(now.getMonth() - 1);
 else if (period === 'year') startDate.setFullYear(now.getFullYear() - 1);
 else startDate = new Date(0);
 
-const totalRevenue = window.bookings.filter(b => b.status === 'confirmed').reduce((sum, b) => sum + (b.amount || 350000), 0);
-const pendingPayments = window.bookings.filter(b => b.status === 'pending').reduce((sum, b) => sum + (b.amount || 350000), 0);
+const totalRevenue = window.bookings.filter(b => b.status === 'confirmed').reduce((sum, b) => sum + (b.amount || 0), 0);
+const pendingPayments = window.bookings.filter(b => b.status === 'pending').reduce((sum, b) => sum + (b.amount || 0), 0);
 
 const finTotalRev = document.getElementById('fin-total-revenue');
 if(finTotalRev) finTotalRev.textContent = 'PKR ' + totalRevenue.toLocaleString();
@@ -2984,7 +3321,7 @@ tbody.innerHTML = window.bookings.slice(-10).reverse().map(b => `
 <td>${b.createdAt ? new Date(b.createdAt.toDate ? b.createdAt.toDate() : b.createdAt).toLocaleDateString() : 'N/A'}</td>
 <td>${b.userName}</td>
 <td>${b.item}</td>
-<td>PKR ${(b.amount || 350000).toLocaleString()}</td>
+<td>PKR ${(b.amount || 0).toLocaleString()}</td>
 <td>Bank Transfer</td>
 <td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td>
 </tr>
@@ -2997,13 +3334,14 @@ const data = window.bookings.map(b => ({
 Date: b.createdAt ? new Date(b.createdAt.toDate ? b.createdAt.toDate() : b.createdAt).toLocaleDateString() : '',
 Customer: b.userName,
 Service: b.item,
-Amount: b.amount || 350000,
+Amount: b.amount || 0,
 Status: b.status
 }));
 const ws = XLSX.utils.json_to_sheet(data);
 const wb = XLSX.utils.book_new();
 XLSX.utils.book_append_sheet(wb, ws, "Financial Report");
-XLSX.writeFile(wb, "Financial_Report.xlsx");
+const dateStr = new Date().toISOString().split('T')[0];
+XLSX.writeFile(wb, `Financial_Report_${dateStr}.xlsx`);
 showToast("Financial report exported!");
 }
 
@@ -3363,7 +3701,7 @@ showToast("Error: " + err.message);
 }
 }
 
-console.log("✅ Multi-Device Sync Ready!");
+console.log("✅ All systems operational!");
 </script>
 </body>
 </html>
