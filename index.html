@@ -5061,7 +5061,7 @@ showToast("Error: " + err.message);
 }
 window.deleteDocument = async function(id) {
 if (!confirm("Delete this document?")) return;
-await deleteDoc(doc(db, "documents"), id));
+await deleteDoc(doc(db, "documents", id)); // <--- FIXED
 await logActivity('delete', `Deleted document`);
 showToast("Document deleted.");
 loadDocuments();
