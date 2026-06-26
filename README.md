@@ -1,971 +1,3782 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ========== SEO META TAGS ========== -->
-    <title>Nadeem Hadi Travel & Tours | Best Umrah Packages, Flights & Visa Services</title>
-    <meta name="description" content="Nadeem Hadi Travel & Tours - Search and book cheap flights, Umrah packages, hotel reservations, visa assistance, and holiday tours. Call 0342-4397177.">
-    <meta name="keywords" content="Nadeem Hadi Travel, flight search, cheap flights Pakistan, Umrah packages, air ticketing, visa assistance, hotel reservation, holiday tours, travel agency Sargodha">
-    <meta name="author" content="Nadeem Hadi Travel & Tours">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Google Verification -->
-    <meta name="google-site-verification" content="HXkc3ycXBLPzDIhqsWxO33X47cscfb0n15kjCYCnz1k" />
-    
-    <!-- Schema.org Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "TravelAgency",
-      "name": "Nadeem Hadi Travel & Tours",
-      "description": "Trusted travel agency offering Umrah packages, flight booking, visa assistance, and holiday tours.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Near Ibn-e-Sina Hospital, Qainchi Morr",
-        "addressLocality": "Sargodha",
-        "addressRegion": "Punjab",
-        "addressCountry": "PK"
-      },
-      "telephone": ["+92-342-4397177", "+92-316-4815975", "+92-302-6901114"],
-      "openingHours": "Mo-Sa 09:00-20:00",
-      "serviceType": ["Umrah Packages", "Flight Booking", "Visa Assistance", "Hotel Reservation", "Holiday Tours"]
-    }
-    </script>
-    
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3XLE0T3EWY"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-3XLE0T3EWY');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Umrah Packages & Travel Agency in Sargodha | Nadeem Hadi Travel& Visa Services</title>
+<meta name="description" content="Nadeem Hadi Travel & Tours - Search and book cheap flights, Umrah packages, hotel reservations, visa assistance, and holiday tours. Call 0342-4397177.">
+<meta name="keywords" content="Nadeem Hadi Travel, flight search, cheap flights Pakistan, Umrah packages, air ticketing, visa assistance, hotel reservation, holiday tours, travel agency Sargodha">
+<meta name="author" content="Nadeem Hadi Travel & Tours">
+<meta name="robots" content="index, follow">
+<meta name="google-site-verification" content="HXkc3ycXBLPzDIhqsWxO33X47cscfb0n15kjCYCnz1k" />
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="shortcut icon" href="logo.png" type="image/png">
+<link rel="apple-touch-icon" href="logo.png">
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "TravelAgency",
+"name": "Nadeem Hadi Travel & Tours",
+"logo": "https://yourwebsite.com/logo.png",
+"image": "https://yourwebsite.com/logo.png",
+"description": "Trusted travel agency offering Umrah packages, flight booking, visa assistance, and holiday tours.",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Near Ibn-e-Sina Hospital, Qainchi Morr",
+"addressLocality": "Sargodha",
+"addressRegion": "Punjab",
+"addressCountry": "PK"
+},
+"telephone": ["+92-342-4397177", "+92-316-4815975", "+92-302-6901114"],
+"openingHours": "Mo-Sa 09:00-20:00",
+"serviceType": ["Umrah Packages", "Flight Booking", "Visa Assistance", "Hotel Reservation", "Holiday Tours"]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+:root {
+--primary-green: #0A4D3C;
+--dark-green: #052b21;
+--accent-gold: #D4AF37;
+--light-gold: #F4E5C2;
+--bg-cream: #FAF6F1;
+--text-dark: #1A2E2A;
+--white: #FFFFFF;
+--modern-blue: #1e3c72;
+--modern-blue-light: #2a5298;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+font-family: 'Poppins', sans-serif;
+background-color: var(--bg-cream);
+color: var(--text-dark);
+line-height: 1.6;
+font-size: 16px;
+}
+h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+header {
+background-color: var(--primary-green);
+color: var(--white);
+padding: 15px 0;
+position: sticky;
+top: 0;
+z-index: 1000;
+box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+.logo { font-size: 1.8rem; font-weight: 700; color: var(--accent-gold); display: flex; align-items: center; gap: 10px; }
+.logo i { font-size: 1.5rem; }
+.nav-links { display: flex; gap: 25px; flex-wrap: wrap; align-items: center; }
+.nav-links a { color: var(--white); font-size: 1.1rem; font-weight: 500; transition: 0.3s; padding: 5px 0; border-bottom: 2px solid transparent; cursor: pointer; }
+.nav-links a:hover { color: var(--accent-gold); border-bottom: 2px solid var(--accent-gold); }
+.btn {
+display: inline-block;
+padding: 14px 35px;
+border-radius: 50px;
+font-size: 1.1rem;
+font-weight: 600;
+transition: 0.3s;
+cursor: pointer;
+border: none;
+font-family: inherit;
+}
+.btn-whatsapp { background: #25D366; color: white; }
+.btn-call { background: var(--accent-gold); color: var(--primary-green); }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+.hero {
+min-height: 80vh;
+background: linear-gradient(rgba(0,0,0,0.65), rgba(10,77,60,0.75)),
+url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+background-size: cover;
+background-position: center;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+color: var(--white);
+padding: 60px 20px;
+}
+.hero-content { max-width: 900px; }
+.hero h1 { font-size: 3.2rem; color: var(--accent-gold); margin-bottom: 12px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+.hero h2 { font-size: 2.2rem; color: var(--white); margin-bottom: 15px; }
+.hero p { font-size: 1.2rem; margin-bottom: 25px; color: #eee; }
+.btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.madinah-banner {
+height: 40vh;
+background: linear-gradient(rgba(10,77,60,0.6), rgba(10,77,60,0.6)),
+url('https://images.unsplash.com/photo-1564769625905-50e93615e769?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+background-size: cover;
+background-position: center;
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--white);
+text-align: center;
+}
+.madinah-banner h2 {
+font-size: 2.2rem;
+color: var(--accent-gold);
+text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+background: rgba(0,0,0,0.3);
+padding: 15px 30px;
+border-radius: 15px;
+border: 2px solid var(--accent-gold);
+}
+.section { padding: 50px 0; text-align: center; }
+.section-title { color: var(--primary-green); margin-bottom: 30px; font-size: 2.2rem; position: relative; display: inline-block; }
+.section-title::after { content: ''; display: block; width: 80px; height: 4px; background: var(--accent-gold); margin: 12px auto 0; border-radius: 2px; }
+.packages { background-color: #f0f4f2; }
+.packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.package-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.3s; display: flex; flex-direction: column; border: 1px solid #eee; }
+.package-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+.package-header { background: var(--primary-green); color: var(--white); padding: 25px; text-align: center; }
+.package-header h3 { font-size: 1.6rem; margin-bottom: 10px; color: var(--accent-gold); }
+.package-price { font-size: 1.8rem; font-weight: 700; }
+.package-body { padding: 25px; text-align: left; flex: 1; }
+.package-body ul { margin-bottom: 20px; }
+.package-body li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; }
+.package-body li i { color: var(--primary-green); font-size: 1.2rem; }
+.package-footer { padding: 0 25px 25px; text-align: center; }
+.package-footer .btn { width: 100%; background: var(--primary-green); color: var(--white); }
+.package-footer .btn:hover { background: var(--accent-gold); color: var(--primary-green); }
+.contact { background: linear-gradient(135deg, var(--primary-green), var(--dark-green)); color: var(--white); }
+.contact .section-title { color: var(--white); }
+.contact .section-title::after { background: var(--accent-gold); }
+.contact-container { display: flex; gap: 50px; flex-wrap: wrap; }
+.contact-info { flex: 1; min-width: 300px; }
+.contact-item { display: flex; align-items: center; margin-bottom: 20px; gap: 20px; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.3); transition: 0.3s; }
+.contact-item:hover { background: rgba(255,255,255,0.15); border: 1px solid var(--accent-gold); }
+.contact-item i { font-size: 1.5rem; color: var(--accent-gold); width: 35px; text-align: center; }
+.contact-item h4 { margin-bottom: 5px; color: var(--accent-gold); font-size: 1.2rem; }
+.contact-item p, .contact-item a { font-size: 1rem; color: #eee; display: block; }
+.contact-item a:hover { color: var(--accent-gold); }
+.contact-form { flex: 1; min-width: 300px; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: none; border-radius: 8px; font-size: 1rem; font-family: inherit; background: rgba(255,255,255,0.9); color: var(--text-dark); text-align: left; }
+.contact-form textarea { height: 120px; resize: none; }
+.contact-form button { background: var(--accent-gold); color: var(--primary-green); width: 100%; padding: 12px; font-size: 1.1rem; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; font-family: inherit; transition: 0.3s; }
+.contact-form button:hover { background: #b8962e; transform: translateY(-2px); }
+footer { background-color: #031a14; color: #aaa; text-align: center; padding: 30px 20px; }
+footer h3 { color: var(--accent-gold); margin-bottom: 12px; font-size: 1.5rem; }
+footer p { margin: 6px 0; font-size: 1rem; }
+footer .social-links { margin-top: 15px; display: flex; justify-content: center; gap: 20px; }
+footer .social-links a { color: #aaa; font-size: 1.5rem; transition: 0.3s; }
+footer .social-links a:hover { color: var(--accent-gold); }
+.floating-wa { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5); z-index: 1000; transition: 0.3s; animation: pulse 2s infinite; }
+.floating-wa:hover { transform: scale(1.1); }
+@keyframes pulse {
+0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+.modal {
+display: none;
+position: fixed;
+z-index: 10000;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0,0,0,0.7);
+overflow-y: auto;
+}
+.modal-content {
+background-color: var(--white);
+margin: 5% auto;
+padding: 35px;
+border-radius: 15px;
+width: 90%;
+max-width: 600px;
+position: relative;
+animation: modalSlide 0.3s;
+}
+@keyframes modalSlide {
+from { transform: translateY(-50px); opacity: 0; }
+to { transform: translateY(0); opacity: 1; }
+}
+.close-modal {
+position: absolute;
+right: 20px;
+top: 20px;
+font-size: 2rem;
+cursor: pointer;
+color: var(--text-dark);
+width: 40px;
+height: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+transition: 0.3s;
+}
+.close-modal:hover { background: #f0f0f0; color: var(--primary-green); }
+.form-group { margin-bottom: 18px; text-align: left; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--primary-green); }
+.form-group input, .form-group select, .form-group textarea {
+width: 100%;
+padding: 12px;
+border: 2px solid #e0e0e0;
+border-radius: 8px;
+font-size: 1rem;
+font-family: inherit;
+transition: 0.3s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+outline: none;
+border-color: var(--accent-gold);
+}
+.dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+.dashboard-card {
+background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+color: var(--white);
+padding: 25px;
+border-radius: 15px;
+text-align: center;
+border: 2px solid var(--accent-gold);
+transition: 0.3s;
+}
+.dashboard-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.dashboard-card i { font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 10px; }
+.dashboard-card h3 { font-size: 1.8rem; margin-bottom: 8px; }
+.dashboard-card p { font-size: 1rem; opacity: 0.9; }
+.booking-list { margin-top: 25px; text-align: left; }
+.booking-item {
+background: var(--white);
+padding: 18px;
+border-radius: 10px;
+margin-bottom: 12px;
+border-left: 4px solid var(--accent-gold);
+box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.booking-item h4 { color: var(--primary-green); margin-bottom: 8px; }
+.booking-item p { margin: 5px 0; color: #555; }
+.status-badge {
+display: inline-block;
+padding: 4px 12px;
+border-radius: 20px;
+font-size: 0.85rem;
+font-weight: 600;
+margin-top: 8px;
+}
+.status-confirmed { background: #d4edda; color: #155724; }
+.status-pending { background: #fff3cd; color: #856404; }
+.status-completed { background: #d1ecf1; color: #0c5460; }
+.toast {
+position: fixed;
+bottom: 30px;
+left: 50%;
+transform: translateX(-50%) translateY(100px);
+background: var(--primary-green);
+color: var(--white);
+padding: 12px 25px;
+border-radius: 50px;
+box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+z-index: 30000;
+opacity: 0;
+transition: all 0.3s;
+}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+.search-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 15px;
+margin-bottom: 15px;
+}
+.payment-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 15px 0; }
+.payment-option {
+border: 2px solid #e0e0e0;
+padding: 15px;
+border-radius: 10px;
+text-align: center;
+cursor: pointer;
+transition: 0.3s;
+}
+.payment-option:hover, .payment-option.selected {
+border-color: var(--accent-gold);
+background: var(--light-gold);
+}
+.payment-option i { font-size: 2rem; color: var(--primary-green); margin-bottom: 8px; display: block; }
+#paymentMethodInfo {
+background: #f8f9fa;
+padding: 15px;
+border-radius: 10px;
+margin-bottom: 15px;
+text-align: left;
+border: 1px solid #e0e0e0;
+}
+#paymentMethodInfo h4 {
+color: var(--primary-green);
+margin-bottom: 8px;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.referral-box {
+background: linear-gradient(135deg, var(--accent-gold), #b8962e);
+color: var(--white);
+padding: 25px;
+border-radius: 15px;
+text-align: center;
+margin: 15px 0;
+}
+.referral-code {
+font-size: 1.8rem;
+font-weight: 700;
+background: rgba(255,255,255,0.2);
+padding: 12px 25px;
+border-radius: 10px;
+display: inline-block;
+margin: 12px 0;
+letter-spacing: 3px;
+}
+/* ADMIN STYLES */
+.stats-row {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 20px;
+margin-bottom: 30px;
+}
+.stat-card {
+background: white;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+border-left: 5px solid var(--primary-green);
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.stat-info h4 { color: #666; font-size: 0.9rem; margin-bottom: 5px; }
+.stat-info h2 { color: var(--primary-green); font-size: 1.8rem; }
+.data-table-container {
+background: white;
+border-radius: 10px;
+overflow-x: auto;
+box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.data-table {
+width: 100%;
+border-collapse: collapse;
+min-width: 800px;
+}
+.data-table th {
+background: var(--primary-green);
+color: white;
+padding: 15px;
+text-align: left;
+font-weight: 600;
+}
+.data-table td {
+padding: 15px;
+border-bottom: 1px solid #eee;
+color: #555;
+}
+.data-table tr:hover { background: #f9f9f9; }
+.action-btn {
+padding: 5px 10px;
+border-radius: 5px;
+border: none;
+cursor: pointer;
+font-size: 0.8rem;
+margin-right: 5px;
+transition: 0.2s;
+}
+.btn-approve { background: #d4edda; color: #155724; }
+.btn-reject { background: #f8d7da; color: #721c24; }
+.btn-delete { background: #e2e3e5; color: #383d41; }
+.btn-pdf { background: #dc3545; color: white; }
+.btn-edit { background: #17a2b8; color: white; }
+.btn-view { background: #6f42c1; color: white; }
+.action-btn:hover { opacity: 0.8; }
+.status-pill {
+padding: 5px 12px;
+border-radius: 20px;
+font-size: 0.85rem;
+font-weight: 600;
+}
+.pill-pending { background: #fff3cd; color: #856404; }
+.pill-confirmed { background: #d4edda; color: #155724; }
+.pill-rejected { background: #f8d7da; color: #721c24; }
 
-    <style>
-        :root {
-            --primary-green: #0A4D3C;
-            --dark-green: #052b21;
-            --accent-gold: #D4AF37;
-            --light-gold: #F4E5C2;
-            --bg-cream: #FAF6F1;
-            --text-dark: #1A2E2A;
-            --white: #FFFFFF;
-        }
+/* ============ MODERN STAFF PORTAL DASHBOARD ============ */
+#admin-fullscreen {
+display: none;
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+background: #f4f7f6;
+z-index: 9999;
+flex-direction: column;
+overflow-y: auto;
+}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+.modern-header {
+background: linear-gradient(135deg, var(--modern-blue) 0%, var(--modern-blue-light) 100%);
+padding: 25px 40px;
+color: white;
+}
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-cream);
-            color: var(--text-dark);
-            line-height: 1.6;
-            font-size: 16px;
-        }
+.greeting-text {
+font-size: 2.2rem;
+font-weight: 300;
+margin: 0;
+}
 
-        h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.modern-nav-bar {
+background: rgba(30, 60, 114, 0.95);
+padding: 0 40px;
+border-bottom: 2px solid rgba(255,255,255,0.1);
+position: sticky;
+top: 0;
+z-index: 100;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
 
-        /* HEADER */
-        header {
-            background-color: var(--primary-green);
-            color: var(--white);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        .logo { font-size: 1.8rem; font-weight: 700; color: var(--accent-gold); display: flex; align-items: center; gap: 10px; }
-        .logo i { font-size: 1.5rem; }
-        .nav-links { display: flex; gap: 25px; flex-wrap: wrap; }
-        .nav-links a { color: var(--white); font-size: 1.1rem; font-weight: 500; transition: 0.3s; padding: 5px 0; border-bottom: 2px solid transparent; }
-        .nav-links a:hover { color: var(--accent-gold); border-bottom: 2px solid var(--accent-gold); }
+.nav-tabs {
+display: flex;
+list-style: none;
+margin: 0;
+padding: 0;
+gap: 5px;
+overflow-x: auto;
+}
 
-        /* BUTTONS */
-        .btn {
-            display: inline-block;
-            padding: 14px 35px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: 0.3s;
-            cursor: pointer;
-            border: none;
-            font-family: inherit;
-        }
-        .btn-whatsapp { background: #25D366; color: white; }
-        .btn-call { background: var(--accent-gold); color: var(--primary-green); }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+.nav-tab {
+padding: 15px 20px;
+color: rgba(255,255,255,0.7);
+cursor: pointer;
+transition: all 0.3s;
+border-bottom: 3px solid transparent;
+white-space: nowrap;
+font-size: 0.95rem;
+}
 
-        /* HERO */
-        .hero {
-            min-height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(10,77,60,0.75)), 
-                        url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            padding: 80px 20px;
-        }
-        .hero-content { max-width: 900px; }
-        .hero h1 { font-size: 3.5rem; color: var(--accent-gold); margin-bottom: 15px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        .hero h2 { font-size: 2.5rem; color: var(--white); margin-bottom: 20px; }
-        .hero p { font-size: 1.3rem; margin-bottom: 30px; color: #eee; }
-        .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.nav-tab:hover {
+color: white;
+background: rgba(255,255,255,0.1);
+}
 
-        /* FLIGHT SEARCH SECTION */
-        .flight-search-section {
-            background: linear-gradient(135deg, #f0f4f2 0%, #ffffff 100%);
-            padding: 80px 20px;
-            position: relative;
-        }
+.nav-tab.active {
+color: white;
+border-bottom-color: white;
+}
 
-        .flight-search-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-green), var(--accent-gold), var(--primary-green));
-        }
+.nav-arrow {
+color: white;
+font-size: 2rem;
+cursor: pointer;
+padding: 0 10px;
+}
 
-        .flight-search-box {
-            background: var(--white);
-            max-width: 1100px;
-            margin: 30px auto 0;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            border: 2px solid var(--light-gold);
-        }
+.modern-main-content {
+background: linear-gradient(rgba(30, 60, 114, 0.88), rgba(42, 82, 152, 0.88)),
+url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+min-height: calc(100vh - 150px);
+padding: 40px;
+}
 
-        .flight-tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+.apps-section {
+max-width: 1400px;
+margin: 0 auto;
+}
 
-        .flight-tab {
-            padding: 12px 25px;
-            background: #f0f0f0;
-            border: 2px solid transparent;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #666;
-            transition: 0.3s;
-            font-family: inherit;
-            font-size: 1rem;
-        }
+.apps-title {
+color: white;
+font-size: 1.2rem;
+font-weight: 600;
+margin-bottom: 30px;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
 
-        .flight-tab.active {
-            background: var(--primary-green);
-            color: var(--white);
-            border-color: var(--accent-gold);
-        }
+.apps-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+gap: 30px;
+padding: 20px 0;
+}
 
-        .flight-tab:hover {
-            background: var(--primary-green);
-            color: var(--white);
-        }
+.app-item {
+display: flex;
+flex-direction: column;
+align-items: center;
+cursor: pointer;
+transition: transform 0.3s;
+}
 
-        .flight-search-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
+.app-item:hover {
+transform: translateY(-5px);
+}
 
-        .form-group {
-            position: relative;
-        }
+.app-icon {
+width: 80px;
+height: 80px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 2rem;
+color: white;
+margin-bottom: 12px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+transition: all 0.3s;
+}
 
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--primary-green);
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
+.app-icon:hover {
+transform: scale(1.1);
+box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
 
-        .form-group i.field-icon {
-            position: absolute;
-            right: 15px;
-            top: 40px;
-            color: var(--accent-gold);
-            font-size: 1.1rem;
-            pointer-events: none;
-        }
+.app-icon.orange { background: #f97316; }
+.app-icon.teal { background: #14b8a6; }
+.app-icon.red { background: #ef4444; }
+.app-icon.pink { background: #ec4899; }
+.app-icon.blue { background: #3b82f6; }
+.app-icon.purple { background: #a855f7; }
+.app-icon.green { background: #22c55e; }
+.app-icon.white { 
+background: white;
+color: var(--modern-blue);
+}
 
-        .flight-search-form input,
-        .flight-search-form select {
-            width: 100%;
-            padding: 15px 45px 15px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 15px;
-            font-family: inherit;
-            background: #fafafa;
-            transition: 0.3s;
-        }
+.app-label {
+color: white;
+text-align: center;
+font-size: 0.85rem;
+line-height: 1.3;
+font-weight: 500;
+}
 
-        .flight-search-form input:focus,
-        .flight-search-form select:focus {
-            outline: none;
-            border-color: var(--accent-gold);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
-        }
+.app-icon-plus {
+width: 80px;
+height: 80px;
+border-radius: 50%;
+border: 3px dashed rgba(255,255,255,0.5);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 3rem;
+color: white;
+cursor: pointer;
+transition: all 0.3s;
+}
 
-        .search-btn {
-            grid-column: 1 / -1;
-            padding: 16px 30px;
-            background: linear-gradient(135deg, var(--accent-gold), #b8962e);
-            color: var(--primary-green);
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: inherit;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
+.app-icon-plus:hover {
+border-color: white;
+background: rgba(255,255,255,0.1);
+}
 
-        .search-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
-        }
+/* Admin Pages Container (shown when navigating from app grid) */
+.admin-pages-container {
+display: none;
+background: #f4f7f6;
+min-height: 100vh;
+}
 
-        .flight-info-bar {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
-            padding: 20px;
-            background: var(--light-gold);
-            border-radius: 12px;
-        }
+.admin-topbar {
+background: white;
+padding: 15px 30px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+position: sticky;
+top: 0;
+z-index: 100;
+flex-wrap: wrap;
+gap: 10px;
+}
 
-        .flight-info-item {
-            text-align: center;
-            color: var(--primary-green);
-            font-size: 0.95rem;
-        }
+.admin-topbar h2 { color: var(--primary-green); font-size: 1.5rem; margin: 0; }
 
-        .flight-info-item i {
-            font-size: 1.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 5px;
-            display: block;
-        }
+.admin-full-content {
+padding: 30px;
+flex: 1;
+}
 
-        .flight-info-item strong {
-            display: block;
-            font-size: 1.1rem;
-            margin-top: 3px;
-        }
+.admin-full-content .stats-row {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 20px;
+margin-bottom: 30px;
+}
 
-        /* Popular Routes */
-        .popular-routes {
-            margin-top: 40px;
-            text-align: center;
-        }
+.admin-full-content .stat-card {
+background: white;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+border-left: 5px solid var(--primary-green);
+}
 
-        .popular-routes h3 {
-            color: var(--primary-green);
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
+.admin-full-content .stat-card h4 { color: #666; font-size: 0.9rem; margin-bottom: 5px; }
+.admin-full-content .stat-card h2 { color: var(--primary-green); font-size: 2rem; margin: 0; }
 
-        .routes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+.file-upload-area {
+border: 2px dashed #ccc;
+padding: 15px;
+text-align: center;
+border-radius: 8px;
+margin-bottom: 12px;
+background: #f8f9fa;
+}
+.btn-upload {
+background: var(--primary-green);
+color: white;
+padding: 8px 18px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-size: 0.95rem;
+transition: 0.3s;
+}
+.btn-upload:hover {
+background: var(--dark-green);
+}
+.uploaded-files .file-item {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 8px;
+background: #f5f5f5;
+margin-bottom: 6px;
+border-radius: 4px;
+}
+.staff-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+gap: 18px;
+margin-top: 15px;
+}
+.staff-card {
+background: white;
+border-radius: 10px;
+padding: 18px;
+box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+border-left: 4px solid var(--primary-green);
+transition: 0.3s;
+}
+.staff-card:hover {
+transform: translateY(-3px);
+box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+}
+.staff-card-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 12px;
+flex-wrap: wrap;
+gap: 10px;
+}
+.staff-avatar {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+background: var(--accent-gold);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.5rem;
+color: var(--primary-green);
+font-weight: 700;
+overflow: hidden;
+}
+.staff-avatar img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.staff-role-badge {
+padding: 5px 12px;
+border-radius: 15px;
+font-size: 0.8rem;
+font-weight: 600;
+}
+.role-admin { background: #dc3545; color: white; }
+.role-manager { background: #ffc107; color: #333; }
+.role-agent { background: #17a2b8; color: white; }
+.role-accountant { background: #28a745; color: white; }
+.role-support { background: #6c757d; color: white; }
+.permissions-matrix {
+margin-top: 15px;
+background: white;
+border-radius: 10px;
+padding: 15px;
+box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+overflow-x: auto;
+}
+.permissions-table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 12px;
+min-width: 700px;
+}
+.permissions-table th {
+background: var(--primary-green);
+color: white;
+padding: 12px;
+text-align: center;
+font-weight: 600;
+}
+.permissions-table td {
+padding: 12px;
+text-align: center;
+border-bottom: 1px solid #eee;
+}
+.permissions-table tr:hover {
+background: #f9f9f9;
+}
+.permission-checkbox {
+width: 20px;
+height: 20px;
+cursor: pointer;
+}
+.role-selector {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+gap: 12px;
+margin: 15px 0;
+}
+.role-option {
+border: 2px solid #ddd;
+padding: 12px;
+border-radius: 10px;
+cursor: pointer;
+transition: 0.3s;
+text-align: center;
+}
+.role-option:hover, .role-option.selected {
+border-color: var(--accent-gold);
+background: var(--light-gold);
+}
+.role-option h4 {
+color: var(--primary-green);
+margin-bottom: 6px;
+font-size: 0.95rem;
+}
+.role-option p {
+font-size: 0.8rem;
+color: #666;
+}
+.activity-log {
+background: white;
+border-radius: 10px;
+padding: 15px;
+margin-top: 15px;
+box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+max-height: 600px;
+overflow-y: auto;
+}
+.log-item {
+padding: 10px 0;
+border-bottom: 1px solid #eee;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 10px;
+}
+.log-item:last-child {
+border-bottom: none;
+}
+.log-action {
+display: flex;
+align-items: center;
+gap: 10px;
+flex: 1;
+}
+.log-icon {
+width: 35px;
+height: 35px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1rem;
+flex-shrink: 0;
+}
+.log-login { background: #d4edda; color: #155724; }
+.log-edit { background: #fff3cd; color: #856404; }
+.log-delete { background: #f8d7da; color: #721c24; }
+.log-create { background: #d1ecf1; color: #0c5460; }
+.staff-info-bar {
+display: flex;
+align-items: center;
+gap: 10px;
+flex-wrap: wrap;
+}
+.booking-type-selector {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+gap: 12px;
+margin: 15px 0;
+}
+.booking-type-option {
+border: 2px solid #ddd;
+padding: 15px;
+border-radius: 10px;
+cursor: pointer;
+transition: 0.3s;
+text-align: center;
+}
+.booking-type-option:hover, .booking-type-option.selected {
+border-color: var(--accent-gold);
+background: var(--light-gold);
+}
+.booking-type-option i {
+font-size: 1.8rem;
+color: var(--primary-green);
+margin-bottom: 8px;
+display: block;
+}
+.booking-type-option h4 {
+color: var(--primary-green);
+margin-bottom: 4px;
+font-size: 0.95rem;
+}
+.booking-type-option p {
+font-size: 0.75rem;
+color: #666;
+}
+.professional-ticket {
+background: white;
+border: 2px solid var(--primary-green);
+border-radius: 15px;
+padding: 25px;
+max-width: 600px;
+margin: 15px auto;
+font-family: 'Poppins', sans-serif;
+}
+.ticket-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 2px solid var(--accent-gold);
+padding-bottom: 12px;
+margin-bottom: 15px;
+}
+.ticket-header h2 {
+color: var(--primary-green);
+margin: 0;
+font-size: 1.3rem;
+}
+.ticket-header .logo-area {
+font-size: 1.5rem;
+color: var(--accent-gold);
+}
+.ticket-body {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+margin-bottom: 15px;
+}
+.ticket-field {
+margin-bottom: 8px;
+}
+.ticket-field label {
+font-size: 0.7rem;
+color: #666;
+text-transform: uppercase;
+letter-spacing: 1px;
+display: block;
+margin-bottom: 2px;
+}
+.ticket-field .value {
+font-size: 1rem;
+font-weight: 600;
+color: var(--text-dark);
+}
+.ticket-footer {
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-top: 2px dashed #ccc;
+padding-top: 12px;
+margin-top: 15px;
+}
+.ticket-barcode {
+font-family: 'Courier New', monospace;
+font-size: 1.3rem;
+letter-spacing: 3px;
+color: var(--primary-green);
+}
+.ticket-qr {
+width: 70px;
+height: 70px;
+background: var(--primary-green);
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-size: 0.7rem;
+text-align: center;
+border-radius: 5px;
+}
+.document-viewer {
+background: white;
+border-radius: 10px;
+padding: 20px;
+margin-top: 15px;
+border: 2px solid var(--accent-gold);
+}
+.document-viewer img {
+max-width: 100%;
+max-height: 500px;
+border-radius: 8px;
+box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+}
+.document-viewer iframe {
+width: 100%;
+height: 500px;
+border: 1px solid #ddd;
+border-radius: 8px;
+}
+.document-actions {
+display: flex;
+gap: 10px;
+margin-top: 15px;
+justify-content: center;
+}
 
-        .route-card {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            border: 2px solid #f0f0f0;
-            cursor: pointer;
-            transition: 0.3s;
-            text-align: center;
-        }
+/* Back button for admin pages */
+.back-to-dashboard {
+background: var(--primary-green);
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-size: 0.95rem;
+margin-bottom: 20px;
+display: inline-flex;
+align-items: center;
+gap: 8px;
+transition: 0.3s;
+}
+.back-to-dashboard:hover {
+background: var(--dark-green);
+transform: translateX(-3px);
+}
 
-        .route-card:hover {
-            border-color: var(--accent-gold);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .route-card .route-icon {
-            font-size: 1.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 8px;
-        }
-
-        .route-card .route-name {
-            font-weight: 600;
-            color: var(--primary-green);
-            font-size: 0.95rem;
-        }
-
-        .route-card .route-price {
-            font-size: 0.85rem;
-            color: #888;
-            margin-top: 3px;
-        }
-
-        /* MADINAH BANNER */
-        .madinah-banner {
-            height: 60vh;
-            background: linear-gradient(rgba(10,77,60,0.6), rgba(10,77,60,0.6)), 
-                        url('https://images.unsplash.com/photo-1564769625905-50e93615e769?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-align: center;
-        }
-        .madinah-banner h2 {
-            font-size: 3rem;
-            color: var(--accent-gold);
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
-            background: rgba(0,0,0,0.3);
-            padding: 20px 40px;
-            border-radius: 15px;
-            border: 2px solid var(--accent-gold);
-        }
-
-        /* SECTIONS */
-        .section { padding: 80px 0; text-align: center; }
-        .section-title { color: var(--primary-green); margin-bottom: 50px; font-size: 2.5rem; position: relative; display: inline-block; }
-        .section-title::after { content: ''; display: block; width: 80px; height: 4px; background: var(--accent-gold); margin: 15px auto 0; border-radius: 2px; }
-
-        /* FEATURES */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .feature-box { background: linear-gradient(135deg, var(--primary-green), var(--dark-green)); color: var(--white); padding: 30px; border-radius: 15px; display: flex; align-items: center; gap: 20px; text-align: left; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 2px solid var(--accent-gold); transition: 0.3s; }
-        .feature-box:hover { transform: translateY(-5px); }
-        .feature-text { flex: 1; font-size: 1.2rem; line-height: 1.8; }
-        .feature-icon { width: 70px; height: 70px; background: var(--accent-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary-green); flex-shrink: 0; }
-
-        /* SERVICES */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .service-card { background: var(--white); padding: 40px 25px; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s; border-bottom: 4px solid transparent; }
-        .service-card:hover { transform: translateY(-10px); border-bottom: 4px solid var(--accent-gold); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .service-card i { font-size: 3rem; color: var(--accent-gold); margin-bottom: 20px; }
-        .service-card h3 { color: var(--primary-green); margin-bottom: 15px; font-size: 1.5rem; }
-        .service-card p { color: #555; font-size: 1.05rem; }
-
-        /* PACKAGES */
-        .packages { background-color: #f0f4f2; }
-        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .package-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.3s; display: flex; flex-direction: column; border: 1px solid #eee; }
-        .package-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-        .package-card.featured { border: 2px solid var(--accent-gold); position: relative; }
-        .featured-badge { position: absolute; top: 15px; right: 15px; background: var(--accent-gold); color: var(--primary-green); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; z-index: 10; }
-        .package-header { background: var(--primary-green); color: var(--white); padding: 25px; text-align: center; }
-        .package-header h3 { font-size: 1.6rem; margin-bottom: 10px; color: var(--accent-gold); }
-        .package-price { font-size: 1.8rem; font-weight: 700; }
-        .package-body { padding: 25px; text-align: left; flex: 1; }
-        .package-body ul { margin-bottom: 20px; }
-        .package-body li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; }
-        .package-body li i { color: var(--primary-green); font-size: 1.2rem; }
-        .departure-info { background: var(--light-gold); padding: 15px; border-radius: 10px; margin-bottom: 20px; font-size: 1.1rem; color: var(--dark-green); font-weight: 600; text-align: center; }
-        .package-footer { padding: 0 25px 25px; text-align: center; }
-        .package-footer .btn { width: 100%; background: var(--primary-green); color: var(--white); }
-        .package-footer .btn:hover { background: var(--accent-gold); color: var(--primary-green); }
-
-        /* ABOUT */
-        .about-content { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; text-align: left; }
-        .about-text { flex: 1; min-width: 300px; }
-        .about-text h2 { color: var(--primary-green); margin-bottom: 20px; font-size: 2.5rem; }
-        .about-text p { margin-bottom: 20px; font-size: 1.1rem; color: #444; }
-        .about-image { flex: 1; min-width: 300px; height: 450px; background: url('https://images.unsplash.com/photo-1565552645632-d725f8bfc19a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); border: 5px solid var(--white); }
-
-        /* CONTACT */
-        .contact { background: linear-gradient(135deg, var(--primary-green), var(--dark-green)); color: var(--white); }
-        .contact .section-title { color: var(--white); }
-        .contact .section-title::after { background: var(--accent-gold); }
-        .contact-container { display: flex; gap: 50px; flex-wrap: wrap; }
-        .contact-info { flex: 1; min-width: 300px; }
-        .contact-item { display: flex; align-items: center; margin-bottom: 25px; gap: 20px; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.3); transition: 0.3s; }
-        .contact-item:hover { background: rgba(255,255,255,0.15); border: 1px solid var(--accent-gold); }
-        .contact-item i { font-size: 1.8rem; color: var(--accent-gold); width: 40px; text-align: center; }
-        .contact-item h4 { margin-bottom: 5px; color: var(--accent-gold); font-size: 1.3rem; }
-        .contact-item p, .contact-item a { font-size: 1.05rem; color: #eee; display: block; }
-        .contact-item a:hover { color: var(--accent-gold); }
-        .contact-form { flex: 1; min-width: 300px; }
-        .contact-form input, .contact-form textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: none; border-radius: 8px; font-size: 1.05rem; font-family: inherit; background: rgba(255,255,255,0.9); color: var(--text-dark); text-align: left; }
-        .contact-form textarea { height: 150px; resize: none; }
-        .contact-form button { background: var(--accent-gold); color: var(--primary-green); width: 100%; padding: 15px; font-size: 1.2rem; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; font-family: inherit; transition: 0.3s; }
-        .contact-form button:hover { background: #b8962e; transform: translateY(-2px); }
-
-        /* FOOTER */
-        footer { background-color: #031a14; color: #aaa; text-align: center; padding: 40px 20px; }
-        footer h3 { color: var(--accent-gold); margin-bottom: 15px; font-size: 1.8rem; }
-        footer p { margin: 8px 0; font-size: 1.05rem; }
-        footer .social-links { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
-        footer .social-links a { color: #aaa; font-size: 1.5rem; transition: 0.3s; }
-        footer .social-links a:hover { color: var(--accent-gold); }
-
-        /* FLOATING WHATSAPP */
-        .floating-wa { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5); z-index: 1000; transition: 0.3s; animation: pulse 2s infinite; }
-        .floating-wa:hover { transform: scale(1.1); }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero h2 { font-size: 1.8rem; }
-            .hero p { font-size: 1.1rem; }
-            .madinah-banner h2 { font-size: 2rem; padding: 15px 20px; }
-            .section-title { font-size: 2rem; }
-            .about-content { flex-direction: column; }
-            .about-image { width: 100%; height: 300px; }
-            .feature-box { flex-direction: column; text-align: center; }
-            .nav-links { gap: 15px; font-size: 1rem; }
-            .logo { font-size: 1.4rem; }
-            .flight-search-box { padding: 25px 20px; }
-            .flight-search-form { grid-template-columns: 1fr; }
-            .flight-tab { padding: 10px 18px; font-size: 0.9rem; }
-        }
-    </style>
+@media print {
+@page {
+size: A4 portrait;
+margin: 15mm;
+}
+html, body {
+width: 210mm;
+height: 297mm;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background: white !important;
+}
+body * {
+visibility: hidden;
+}
+#eticketsModal, #eticketsModal * {
+visibility: visible;
+}
+#eticketsModal {
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background: white !important;
+overflow: visible !important;
+display: block !important;
+}
+.modal-content {
+box-shadow: none !important;
+margin: 0 !important;
+padding: 0 !important;
+max-width: 100% !important;
+width: 100% !important;
+height: auto !important;
+border: none !important;
+overflow: visible !important;
+}
+.no-print, .close-modal {
+display: none !important;
+}
+.professional-ticket {
+width: 180mm !important;
+margin: 0 auto !important;
+padding: 10mm !important;
+box-sizing: border-box !important;
+border: 2px solid #0A4D3C !important;
+display: block !important;
+overflow: visible !important;
+page-break-after: always !important;
+page-break-inside: avoid !important;
+}
+.professional-ticket * {
+page-break-inside: avoid !important;
+}
+* {
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+color-adjust: exact !important;
+}
+}
+.print-only-footer {
+display: none;
+}
+@media (max-width: 768px) {
+.hero h1 { font-size: 2.2rem; }
+.hero h2 { font-size: 1.6rem; }
+.hero p { font-size: 1rem; }
+.madinah-banner h2 { font-size: 1.5rem; padding: 12px 18px; }
+.section-title { font-size: 1.7rem; }
+.nav-links { gap: 12px; font-size: 0.95rem; }
+.logo { font-size: 1.3rem; }
+.modal-content { margin: 10% auto; padding: 20px; }
+.greeting-text { font-size: 1.5rem; }
+.modern-header { padding: 20px; }
+.modern-nav-bar { padding: 0 15px; }
+.nav-tab { padding: 12px 15px; font-size: 0.85rem; }
+.modern-main-content { padding: 20px; }
+.apps-grid {
+grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+gap: 20px;
+}
+.app-icon, .app-icon-plus {
+width: 60px;
+height: 60px;
+font-size: 1.5rem;
+}
+.app-label { font-size: 0.75rem; }
+.role-selector { grid-template-columns: 1fr; }
+.booking-type-selector { grid-template-columns: 1fr; }
+.ticket-body { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+.search-grid { grid-template-columns: 1fr; }
+}
+.user-info { display: flex; align-items: center; gap: 15px; }
+.user-name { font-weight: 600; color: var(--accent-gold); }
+.logout-btn {
+background: rgba(255,255,255,0.2);
+color: var(--white);
+padding: 8px 20px;
+border-radius: 20px;
+cursor: pointer;
+transition: 0.3s;
+border: none;
+font-family: inherit;
+}
+.logout-btn:hover { background: rgba(255,255,255,0.3); }
+.expense-category {
+display: inline-block;
+padding: 4px 10px;
+border-radius: 12px;
+font-size: 0.75rem;
+font-weight: 600;
+}
+.cat-transport { background: #e3f2fd; color: #1976d2; }
+.cat-office { background: #f3e5f5; color: #7b1fa2; }
+.cat-marketing { background: #fff3e0; color: #f57c00; }
+.cat-salary { background: #e8f5e9; color: #388e3c; }
+.cat-other { background: #eceff1; color: #546e7a; }
+</style>
 </head>
 <body>
+<!-- ============ MODERN STAFF PORTAL ============ -->
+<div id="admin-fullscreen">
+<!-- Greeting Header -->
+<div class="modern-header">
+<h1 class="greeting-text">Good <span id="greetingTime">afternoon</span>, <span id="staffDisplayName">STAFF NAME</span></h1>
+</div>
 
-    <!-- HEADER -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-kaaba" aria-hidden="true"></i>
-                Nadeem Hadi Travel
-            </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#flights">Flights</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#packages">Packages</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<!-- Top Navigation Bar -->
+<div class="modern-nav-bar">
+<ul class="nav-tabs">
+<li class="nav-tab active" onclick="showDashboardHome(this)">Self Services</li>
+<li class="nav-tab" onclick="showAdminPageFromGrid('bookings', this)">Me</li>
+<li class="nav-tab" onclick="showAdminPageFromGrid('staff', this)">My Team</li>
+<li class="nav-tab" onclick="showAdminPageFromGrid('users', this)">My Client Groups</li>
+<li class="nav-tab" onclick="showAdminPageFromGrid('bookings', this)">Sales</li>
+<li class="nav-tab" onclick="showAdminPageFromGrid('financial', this)">Supply Chain Execution</li>
+<li class="nav-tab" onclick="showAdminPageFromGrid('expenses', this)">Procurement</li>
+<li class="nav-tab" onclick="showAdminPageFromGrid('settings', this)">Tools</li>
+<li class="nav-tab" onclick="showAdminPageFromGrid('dashboard', this)">Dashboard</li>
+</ul>
+<div class="nav-arrow">›</div>
+</div>
 
-    <!-- HERO SECTION -->
-    <section id="hero" class="hero">
-        <div class="hero-content">
-            <h1>Nadeem Hadi Travel & Tours</h1>
-            <h2>Experience the Blessing of Umrah</h2>
-            <p>Nearest hotels, group departures, airport transfers, and excellent facilities for a blessed journey</p>
-            <div class="btn-group">
-                <a href="https://wa.me/923424397177" class="btn btn-whatsapp">
-                    <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Us
-                </a>
-                <a href="tel:+923424397177" class="btn btn-call">
-                    <i class="fas fa-phone-alt" aria-hidden="true"></i> Call Now
-                </a>
-            </div>
-        </div>
-    </section>
+<!-- Main Content Area - App Grid -->
+<div class="modern-main-content" id="dashboardHome">
+<div class="apps-section">
+<h2 class="apps-title">APPS</h2>
+<div class="apps-grid">
+<!-- Row 1 -->
+<div class="app-item" onclick="showAdminPageFromGrid('dashboard', this)">
+<div class="app-icon orange"><i class="fas fa-tachometer-alt"></i></div>
+<div class="app-label">Dashboard<br>Overview</div>
+</div>
 
-    <!-- FLIGHT SEARCH SECTION -->
-    <section id="flights" class="flight-search-section">
-        <div class="container">
-            <h2 class="section-title">Search & Book Flights</h2>
-            <p style="color: #666; max-width: 700px; margin: 0 auto 20px; font-size: 1.1rem;">
-                Find the best flight deals worldwide. Compare prices from hundreds of airlines instantly.
-            </p>
+<div class="app-item" onclick="showAdminPageFromGrid('bookings', this)">
+<div class="app-icon teal"><i class="fas fa-ticket-alt"></i></div>
+<div class="app-label">Manage<br>Bookings</div>
+</div>
 
-            <div class="flight-search-box">
-                <!-- Trip Type Tabs -->
-                <div class="flight-tabs">
-                    <button type="button" class="flight-tab active" data-type="return">
-                        <i class="fas fa-exchange-alt" aria-hidden="true"></i> Round Trip
-                    </button>
-                    <button type="button" class="flight-tab" data-type="oneway">
-                        <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> One Way
-                    </button>
-                    <button type="button" class="flight-tab" data-type="multi">
-                        <i class="fas fa-route" aria-hidden="true"></i> Multi-City
-                    </button>
-                </div>
+<div class="app-item" onclick="showAdminPageFromGrid('inquiries', this)">
+<div class="app-icon orange"><i class="fas fa-envelope"></i></div>
+<div class="app-label">Customer<br>Inquiries</div>
+</div>
 
-                <!-- Flight Search Form -->
-                <form id="flightSearchForm" class="flight-search-form" target="_blank">
-                    <div class="form-group">
-                        <label for="origin">From</label>
-                        <input list="airports" type="text" id="origin" name="origin" placeholder="City or Airport" required>
-                        <i class="fas fa-plane-departure field-icon" aria-hidden="true"></i>
-                    </div>
+<div class="app-item" onclick="showAdminPageFromGrid('users', this)">
+<div class="app-icon red"><i class="fas fa-users"></i></div>
+<div class="app-label">Registered<br>Users</div>
+</div>
 
-                    <div class="form-group">
-                        <label for="destination">To</label>
-                        <input list="airports" type="text" id="destination" name="destination" placeholder="City or Airport" required>
-                        <i class="fas fa-plane-arrival field-icon" aria-hidden="true"></i>
-                    </div>
+<div class="app-item" onclick="showAdminPageFromGrid('packages', this)">
+<div class="app-icon pink"><i class="fas fa-box"></i></div>
+<div class="app-label">Edit<br>Packages</div>
+</div>
 
-                    <div class="form-group" id="departDateGroup">
-                        <label for="departureDate">Departure Date</label>
-                        <input type="date" id="departureDate" name="departureDate" required>
-                        <i class="fas fa-calendar-alt field-icon" aria-hidden="true"></i>
-                    </div>
+<div class="app-item" onclick="showAdminPageFromGrid('staff', this)" id="appStaff">
+<div class="app-icon pink"><i class="fas fa-user-tie"></i></div>
+<div class="app-label">Staff<br>Management</div>
+</div>
 
-                    <div class="form-group" id="returnDateGroup">
-                        <label for="returnDate">Return Date</label>
-                        <input type="date" id="returnDate" name="returnDate">
-                        <i class="fas fa-calendar-check field-icon" aria-hidden="true"></i>
-                    </div>
+<div class="app-item" onclick="showAdminPageFromGrid('permissions', this)" id="appPermissions">
+<div class="app-icon blue"><i class="fas fa-key"></i></div>
+<div class="app-label">Role<br>Permissions</div>
+</div>
 
-                    <div class="form-group">
-                        <label for="passengers">Passengers</label>
-                        <select id="passengers" name="passengers">
-                            <option value="1">1 Adult</option>
-                            <option value="2">2 Adults</option>
-                            <option value="3">3 Adults</option>
-                            <option value="4">4 Adults</option>
-                            <option value="5">5+ Adults</option>
-                        </select>
-                        <i class="fas fa-user field-icon" aria-hidden="true"></i>
-                    </div>
+<!-- Row 2 -->
+<div class="app-item" onclick="showAdminPageFromGrid('activity-log', this)" id="appActivity">
+<div class="app-icon blue"><i class="fas fa-history"></i></div>
+<div class="app-label">Activity<br>Log</div>
+</div>
 
-                    <div class="form-group">
-                        <label for="cabinClass">Class</label>
-                        <select id="cabinClass" name="cabinClass">
-                            <option value="economy">Economy</option>
-                            <option value="premium">Premium Economy</option>
-                            <option value="business">Business</option>
-                            <option value="first">First Class</option>
-                        </select>
-                        <i class="fas fa-chair field-icon" aria-hidden="true"></i>
-                    </div>
+<div class="app-item" onclick="showAdminPageFromGrid('financial', this)" id="appFinancial">
+<div class="app-icon purple"><i class="fas fa-chart-line"></i></div>
+<div class="app-label">Financial<br>Reports</div>
+</div>
 
-                    <button type="submit" class="search-btn">
-                        <i class="fas fa-search" aria-hidden="true"></i> Search Available Flights
-                    </button>
-                </form>
+<div class="app-item" onclick="showAdminPageFromGrid('expenses', this)" id="appExpenses">
+<div class="app-icon green"><i class="fas fa-money-bill-wave"></i></div>
+<div class="app-label">Expenses<br>Management</div>
+</div>
 
-                <!-- Airports Datalist -->
-                <datalist id="airports">
-                    <option value="Lahore (LHE)">
-                    <option value="Karachi (KHI)">
-                    <option value="Islamabad (ISB)">
-                    <option value="Sialkot (SKT)">
-                    <option value="Multan (MUX)">
-                    <option value="Peshawar (PEW)">
-                    <option value="Quetta (UET)">
-                    <option value="Faisalabad (LYP)">
-                    <option value="Jeddah (JED)">
-                    <option value="Madinah (MED)">
-                    <option value="Riyadh (RUH)">
-                    <option value="Dammam (DMM)">
-                    <option value="Dubai (DXB)">
-                    <option value="Abu Dhabi (AUH)">
-                    <option value="Sharjah (SHJ)">
-                    <option value="Doha (DOH)">
-                    <option value="Muscat (MCT)">
-                    <option value="Bahrain (BAH)">
-                    <option value="Kuwait (KWI)">
-                    <option value="Istanbul (IST)">
-                    <option value="London (LHR)">
-                    <option value="Manchester (MAN)">
-                    <option value="Paris (CDG)">
-                    <option value="Frankfurt (FRA)">
-                    <option value="Amsterdam (AMS)">
-                    <option value="New York (JFK)">
-                    <option value="Toronto (YYZ)">
-                    <option value="Singapore (SIN)">
-                    <option value="Bangkok (BKK)">
-                    <option value="Kuala Lumpur (KUL)">
-                    <option value="Tokyo (NRT)">
-                    <option value="Beijing (PEK)">
-                    <option value="Delhi (DEL)">
-                    <option value="Mumbai (BOM)">
-                    <option value="Dhaka (DAC)">
-                    <option value="Cairo (CAI)">
-                    <option value="Johannesburg (JNB)">
-                </datalist>
+<div class="app-item" onclick="showAdminPageFromGrid('visa-tracker', this)" id="appVisa">
+<div class="app-icon orange"><i class="fas fa-passport"></i></div>
+<div class="app-label">Visa<br>Tracker</div>
+</div>
 
-                <!-- Info Bar -->
-                <div class="flight-info-bar">
-                    <div class="flight-info-item">
-                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                        Secure Booking
-                        <strong>100% Safe</strong>
-                    </div>
-                    <div class="flight-info-item">
-                        <i class="fas fa-tags" aria-hidden="true"></i>
-                        Best Prices
-                        <strong>Guaranteed</strong>
-                    </div>
-                    <div class="flight-info-item">
-                        <i class="fas fa-headset" aria-hidden="true"></i>
-                        24/7 Support
-                        <strong>Always Available</strong>
-                    </div>
-                    <div class="flight-info-item">
-                        <i class="fas fa-plane" aria-hidden="true"></i>
-                        500+ Airlines
-                        <strong>Worldwide</strong>
-                    </div>
-                </div>
+<div class="app-item" onclick="showAdminPageFromGrid('groups', this)" id="appGroups">
+<div class="app-icon teal"><i class="fas fa-users-cog"></i></div>
+<div class="app-label">Group<br>Management</div>
+</div>
 
-                <!-- Popular Routes -->
-                <div class="popular-routes">
-                    <h3><i class="fas fa-fire" style="color: #ff6b35;" aria-hidden="true"></i> Popular Routes from Pakistan</h3>
-                    <div class="routes-grid">
-                        <div class="route-card" data-from="Lahore" data-to="Jeddah">
-                            <div class="route-icon"><i class="fas fa-kaaba" aria-hidden="true"></i></div>
-                            <div class="route-name">Lahore → Jeddah</div>
-                            <div class="route-price">For Umrah</div>
-                        </div>
-                        <div class="route-card" data-from="Islamabad" data-to="Madinah">
-                            <div class="route-icon"><i class="fas fa-mosque" aria-hidden="true"></i></div>
-                            <div class="route-name">Islamabad → Madinah</div>
-                            <div class="route-price">For Umrah</div>
-                        </div>
-                        <div class="route-card" data-from="Karachi" data-to="Dubai">
-                            <div class="route-icon"><i class="fas fa-city" aria-hidden="true"></i></div>
-                            <div class="route-name">Karachi → Dubai</div>
-                            <div class="route-price">Most Popular</div>
-                        </div>
-                        <div class="route-card" data-from="Lahore" data-to="Istanbul">
-                            <div class="route-icon"><i class="fas fa-landmark" aria-hidden="true"></i></div>
-                            <div class="route-name">Lahore → Istanbul</div>
-                            <div class="route-price">Holiday Special</div>
-                        </div>
-                        <div class="route-card" data-from="Islamabad" data-to="London">
-                            <div class="route-icon"><i class="fas fa-globe-europe" aria-hidden="true"></i></div>
-                            <div class="route-name">Islamabad → London</div>
-                            <div class="route-price">Europe Route</div>
-                        </div>
-                        <div class="route-card" data-from="Sialkot" data-to="Dubai">
-                            <div class="route-icon"><i class="fas fa-plane" aria-hidden="true"></i></div>
-                            <div class="route-name">Sialkot → Dubai</div>
-                            <div class="route-price">Direct Flights</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="app-item" onclick="showAdminPageFromGrid('promotions', this)" id="appPromotions">
+<div class="app-icon green"><i class="fas fa-gift"></i></div>
+<div class="app-label">Promotions</div>
+</div>
 
-    <!-- MADINAH BANNER -->
-    <section class="madinah-banner">
-        <h2>A Peaceful and Blessed Journey to Makkah and Madinah</h2>
-    </section>
+<div class="app-item" onclick="showAdminPageFromGrid('analytics', this)" id="appAnalytics">
+<div class="app-icon blue"><i class="fas fa-chart-pie"></i></div>
+<div class="app-label">Analytics</div>
+</div>
 
-    <!-- FEATURES SECTION -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Our Special Facilities</h2>
-            <div class="features-grid">
-                <div class="feature-box">
-                    <div class="feature-text">Nearest Hotels<br>with Experienced Group Leader</div>
-                    <div class="feature-icon"><i class="fas fa-hotel" aria-hidden="true"></i></div>
-                </div>
-                <div class="feature-box">
-                    <div class="feature-text">Departure from Lahore Airport and<br>Return also to Lahore Airport</div>
-                    <div class="feature-icon"><i class="fas fa-plane-departure" aria-hidden="true"></i></div>
-                </div>
-                <div class="feature-box">
-                    <div class="feature-text">Complete Ziyarat Arrangements<br>and Comfortable Transportation</div>
-                    <div class="feature-icon"><i class="fas fa-bus-alt" aria-hidden="true"></i></div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Row 3 -->
+<div class="app-item" onclick="showAdminPageFromGrid('settings', this)" id="appSettings">
+<div class="app-icon white"><i class="fas fa-cog"></i></div>
+<div class="app-label">System<br>Settings</div>
+</div>
 
-    <!-- SERVICES SECTION -->
-    <section id="services" class="section" style="background: #f0f4f2;">
-        <div class="container">
-            <h2 class="section-title">Our Travel Services</h2>
-            <div class="services-grid">
-                <div class="service-card"><i class="fas fa-kaaba" aria-hidden="true"></i><h3>Umrah Packages</h3><p>Economy, VIP and Group Umrah packages with premium accommodations and guided support.</p></div>
-                <div class="service-card"><i class="fas fa-search-location" aria-hidden="true"></i><h3>Flight Search</h3><p>Search and compare domestic and international flights at the best available fares.</p></div>
-                <div class="service-card"><i class="fas fa-plane-departure" aria-hidden="true"></i><h3>Air Ticketing</h3><p>Affordable airline tickets with trusted international and regional carriers.</p></div>
-                <div class="service-card"><i class="fas fa-passport" aria-hidden="true"></i><h3>Visa Assistance</h3><p>Professional visa consultation, documentation support and application guidance.</p></div>
-                <div class="service-card"><i class="fas fa-hotel" aria-hidden="true"></i><h3>Hotel Booking</h3><p>Luxury and budget hotel reservations worldwide with excellent customer support.</p></div>
-                <div class="service-card"><i class="fas fa-globe" aria-hidden="true"></i><h3>Holiday Tours</h3><p>Customized family, honeymoon, leisure and international tour packages.</p></div>
-                <div class="service-card"><i class="fas fa-shuttle-van" aria-hidden="true"></i><h3>Airport Transfers</h3><p>Reliable airport pickup and drop-off services for a smooth journey.</p></div>
-                <div class="service-card"><i class="fas fa-map-marked-alt" aria-hidden="true"></i><h3>Travel Consultation</h3><p>Expert travel planning, itinerary management and destination guidance.</p></div>
-            </div>
-        </div>
-    </section>
+<div class="app-item" onclick="openNewBookingModal()">
+<div class="app-icon blue"><i class="fas fa-plus-circle"></i></div>
+<div class="app-label">New<br>Booking</div>
+</div>
 
-    <!-- PACKAGES SECTION -->
-    <section id="packages" class="section packages">
-        <div class="container">
-            <h2 class="section-title">Our Umrah Packages</h2>
-            <div class="packages-grid">
-                <div class="package-card featured">
-                    <div class="featured-badge">Special Group Departure</div>
-                    <div class="package-header"><h3>Complete Umrah Package</h3><div class="package-price">Contact for Price</div></div>
-                    <div class="package-body">
-                        <div class="departure-info"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Departure: July 8</div>
-                        <ul>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Return Air Ticket</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Umrah Visa Processing</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 5-Star Hotel Accommodation</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Ziyarat Tours</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Experienced Group Leader</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Airport Transfers</li>
-                        </ul>
-                    </div>
-                    <div class="package-footer"><a href="https://wa.me/923424397177" class="btn">Book Now</a></div>
-                </div>
-                <div class="package-card">
-                    <div class="package-header"><h3>Economy Package</h3><div class="package-price">Best Rates</div></div>
-                    <div class="package-body">
-                        <ul>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Umrah Visa</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Hotel Booking</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Airport Transfers</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Basic Facilities</li>
-                        </ul>
-                    </div>
-                    <div class="package-footer"><a href="#contact" class="btn">Contact for Details</a></div>
-                </div>
-                <div class="package-card">
-                    <div class="package-header"><h3>VIP Package</h3><div class="package-price">Premium Service</div></div>
-                    <div class="package-body">
-                        <ul>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Hotels Right Next to Haram</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Private Transportation</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Special Business Class Tickets</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> VIP Guide</li>
-                        </ul>
-                    </div>
-                    <div class="package-footer"><a href="#contact" class="btn">Contact for Details</a></div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="app-item" onclick="exportToExcel()">
+<div class="app-icon green"><i class="fas fa-file-excel"></i></div>
+<div class="app-label">Export<br>Reports</div>
+</div>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="section">
-        <div class="container about-content">
-            <div class="about-text">
-                <h2>About Nadeem Hadi Travel</h2>
-                <p>At Nadeem Hadi Travel & Tours, we believe that travel is not just about moving from one place to another—it's about creating memories, finding spiritual peace, and experiencing the world.</p>
-                <p>Whether you are going for Umrah or planning a family vacation, we are here to make every step of your journey easy, comfortable, and memorable. Our experienced team provides 24/7 support so you never have to face any worries.</p>
-                <a href="#contact" class="btn btn-call" style="margin-top: 20px;">
-                    <i class="fas fa-headset" aria-hidden="true"></i> Contact Us
-                </a>
-            </div>
-            <div class="about-image" aria-hidden="true"></div>
-        </div>
-    </section>
+<div class="app-item" onclick="exitAdminView()">
+<div class="app-icon red"><i class="fas fa-sign-out-alt"></i></div>
+<div class="app-label">Exit to<br>Website</div>
+</div>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="section contact">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <p style="color: #ccc; margin-bottom: 40px; font-size: 1.1rem;">Contact us today for your Umrah or tour plan. We are here to guide you.</p>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-user-tie" aria-hidden="true"></i>
-                        <div><h2>Haji Nadeem Abass</h2><a href="tel:03424397177">0342-4397177</a><a href="tel:03164815975">0316-4815975</a></div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-user-tie" aria-hidden="true"></i>
-                        <div><h3>Muhammad Imtiaz</h3><a href="tel:03026901114">0302-6901114</a></div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <div><h4>Office Address</h4><p>Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha</p></div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                        <div><h4>WhatsApp</h4><a href="https://wa.me/923424397177">Message us at 0342-4397177</a></div>
-                    </div>
-                </div>
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! We will contact you soon.');">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="tel" placeholder="Phone Number" required>
-                    <input type="email" placeholder="Email Address">
-                    <textarea placeholder="Your message or travel details..." required></textarea>
-                    <button type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
+<!-- Add More Button -->
+<div class="app-item" onclick="showToast('More apps coming soon!')">
+<div class="app-icon-plus">+</div>
+</div>
+</div>
+</div>
+</div>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <h3>Nadeem Hadi Travel & Tours</h3>
-            <p>Your Trusted Partner for Blessed and Pleasant Journeys</p>
-            <p>📞 0342-4397177 | 0316-4815975 | 0302-6901114</p>
-            <p>📍 Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha, Pakistan</p>
-            <div class="social-links">
-                <a href="https://wa.me/923424397177" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-                <a href="tel:+923424397177" aria-label="Call us"><i class="fas fa-phone-alt" aria-hidden="true"></i></a>
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-            </div>
-            <p style="margin-top: 30px; font-size: 0.9rem; color: #666;">&copy; <span id="current-year">2026</span> Nadeem Hadi Travel & Tours. All Rights Reserved.</p>
-        </div>
-    </footer>
+<!-- Admin Pages Container (hidden by default, shown when navigating) -->
+<div class="admin-pages-container" id="adminPagesContainer">
+<div class="admin-topbar">
+<h2 id="admin-page-title">Dashboard Overview</h2>
+<div class="staff-info-bar">
+<span id="currentStaffInfo" style="color: #666;">Welcome, <strong id="currentStaffName">Admin</strong></span>
+<span id="currentStaffRole" class="staff-role-badge role-admin">Administrator</span>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green); padding: 8px 15px; font-size: 0.9rem;" onclick="showDashboardHome()">
+<i class="fas fa-th"></i> Back to Apps
+</button>
+</div>
+</div>
+<div class="admin-full-content">
+<div id="full-page-dashboard" class="admin-page" style="display: none;">
+<div class="stats-row">
+<div class="stat-card"><h4>Total Bookings</h4><h2 id="fs-total-bookings">0</h2></div>
+<div class="stat-card" style="border-left-color: #ffc107;"><h4>Pending Approval</h4><h2 id="fs-pending-bookings">0</h2></div>
+<div class="stat-card" style="border-left-color: #28a745;"><h4>Confirmed Bookings</h4><h2 id="fs-revenue">0</h2></div>
+<div class="stat-card" style="border-left-color: #dc3545;"><h4>Inquiries</h4><h2 id="fs-inquiries">0</h2></div>
+<div class="stat-card" style="border-left-color: #17a2b8;"><h4>Registered Users</h4><h2 id="fs-users">0</h2></div>
+</div>
+<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 30px;">
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<h3 style="color: var(--primary-green); margin-bottom: 15px;">Booking Status Overview</h3>
+<div id="booking-status-chart" style="display: flex; align-items: flex-end; height: 150px; gap: 15px; padding: 20px 0;"></div>
+</div>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<h3 style="color: var(--primary-green); margin-bottom: 15px;">Recent Activity</h3>
+<div id="recent-activity" style="max-height: 150px; overflow-y: auto;"></div>
+</div>
+</div>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<h3 style="color: var(--primary-green); margin-bottom: 15px;">Recent Bookings</h3>
+<table class="data-table">
+<thead><tr><th>Ref ID</th><th>Customer</th><th>Package</th><th>Status</th></tr></thead>
+<tbody id="fs-recent-bookings"></tbody>
+</table>
+</div>
+</div>
+<div id="full-page-bookings" class="admin-page" style="display: none;">
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<h3 style="color: var(--primary-green); margin-bottom: 15px;">All Bookings</h3>
+<table class="data-table">
+<thead><tr><th>Ref ID</th><th>Customer</th><th>Gender</th><th>Service</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+<tbody id="fs-all-bookings"></tbody>
+</table>
+</div>
+</div>
+<div id="full-page-inquiries" class="admin-page" style="display: none;">
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<h3 style="color: var(--primary-green); margin-bottom: 15px;">Customer Inquiries</h3>
+<table class="data-table">
+<thead><tr><th>Name</th><th>Phone</th><th>Message</th><th>Action</th></tr></thead>
+<tbody id="fs-all-inquiries"></tbody>
+</table>
+</div>
+</div>
+<div id="full-page-users" class="admin-page" style="display: none;">
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<h3 style="color: var(--primary-green); margin-bottom: 15px;">Registered Users</h3>
+<table class="data-table">
+<thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Reward Points</th><th>Joined Date</th><th>Actions</th></tr></thead>
+<tbody id="fs-all-users"></tbody>
+</table>
+</div>
+</div>
+<div id="full-page-packages" class="admin-page" style="display: none;">
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green); margin-bottom: 20px;" onclick="openPackageEditor()">
+<i class="fas fa-plus"></i> Add New Package
+</button>
+<div id="fs-packages-list" class="dashboard-grid"></div>
+</div>
+<div id="full-page-staff" class="admin-page" style="display: none;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+<h3 style="color: var(--primary-green); margin: 0;">Staff Management</h3>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="openAddStaffModal()">
+<i class="fas fa-plus"></i> Add New Staff
+</button>
+</div>
+<div class="stats-row">
+<div class="stat-card"><h4>Total Staff</h4><h2 id="total-staff">0</h2></div>
+<div class="stat-card" style="border-left-color: #dc3545;"><h4>Administrators</h4><h2 id="admin-count">0</h2></div>
+<div class="stat-card" style="border-left-color: #ffc107;"><h4>Managers</h4><h2 id="manager-count">0</h2></div>
+<div class="stat-card" style="border-left-color: #17a2b8;"><h4>Agents</h4><h2 id="agent-count">0</h2></div>
+</div>
+<div id="staffList" class="staff-grid"></div>
+</div>
+<div id="full-page-permissions" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;">Role Permissions Matrix</h3>
+<p style="color: #666; margin-bottom: 20px;">Configure what each role can access and modify in the system.</p>
+<div class="permissions-matrix">
+<table class="permissions-table">
+<thead>
+<tr>
+<th style="text-align: left;">Permission</th>
+<th>Admin</th>
+<th>Manager</th>
+<th>Agent</th>
+<th>Accountant</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody id="permissionsTableBody"></tbody>
+</table>
+</div>
+<button class="btn" style="background: var(--primary-green); color: white; margin-top: 20px;" onclick="savePermissions()">
+<i class="fas fa-save"></i> Save Permissions
+</button>
+</div>
+<div id="full-page-activity-log" class="admin-page" style="display: none;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+<h3 style="color: var(--primary-green); margin: 0;">Staff Activity Log</h3>
+<button class="btn" style="background: #dc3545; color: white;" onclick="clearActivityLog()">
+<i class="fas fa-trash"></i> Clear Log
+</button>
+</div>
+<div class="activity-log">
+<div id="activityLogList"></div>
+</div>
+</div>
+<div id="full-page-financial" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;">💰 Financial Reports</h3>
+<div style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+<label style="font-weight: 600;">Filter by Period:</label>
+<select id="financialPeriod" onchange="loadFinancialReports()" style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
+<option value="all">All Time</option>
+<option value="today">Today</option>
+<option value="week">This Week</option>
+<option value="month">This Month</option>
+<option value="year">This Year</option>
+</select>
+<button class="btn" style="background: #25D366; color: white; padding: 8px 15px; font-size: 0.9rem;" onclick="exportFinancialReport()">
+<i class="fas fa-file-excel"></i> Export Report
+</button>
+</div>
+<div class="stats-row">
+<div class="stat-card" style="border-left-color: #28a745;"><h4>Total Revenue</h4><h2 id="fin-total-revenue">PKR 0</h2></div>
+<div class="stat-card" style="border-left-color: #ffc107;"><h4>Pending Payments</h4><h2 id="fin-pending-payments">PKR 0</h2></div>
+<div class="stat-card" style="border-left-color: #17a2b8;"><h4>Completed</h4><h2 id="fin-completed">0</h2></div>
+<div class="stat-card" style="border-left-color: #dc3545;"><h4>Refunds</h4><h2 id="fin-refunds">PKR 0</h2></div>
+</div>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<h3 style="color: var(--primary-green); margin-bottom: 15px;">Payment History</h3>
+<table class="data-table">
+<thead><tr><th>Date</th><th>Customer</th><th>Service</th><th>Amount</th><th>Method</th><th>Status</th></tr></thead>
+<tbody id="financial-table-body"></tbody>
+</table>
+</div>
+</div>
+<div id="full-page-expenses" class="admin-page" style="display: none;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+<h3 style="color: var(--primary-green); margin: 0;">💸 Expenses Management</h3>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="openExpenseModal()">
+<i class="fas fa-plus"></i> Add Expense
+</button>
+</div>
+<div class="stats-row">
+<div class="stat-card" style="border-left-color: #dc3545;"><h4>Total Expenses</h4><h2 id="exp-total">PKR 0</h2></div>
+<div class="stat-card" style="border-left-color: #ffc107;"><h4>This Month</h4><h2 id="exp-month">PKR 0</h2></div>
+<div class="stat-card" style="border-left-color: #17a2b8;"><h4>Categories</h4><h2 id="exp-categories">0</h2></div>
+<div class="stat-card" style="border-left-color: #28a745;"><h4>Net Profit</h4><h2 id="exp-profit">PKR 0</h2></div>
+</div>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<h3 style="color: var(--primary-green); margin-bottom: 15px;">Expense Records</h3>
+<table class="data-table">
+<thead><tr><th>Date</th><th>Category</th><th>Description</th><th>Amount</th><th>Added By</th><th>Actions</th></tr></thead>
+<tbody id="expenses-table-body"></tbody>
+</table>
+</div>
+</div>
+<div id="full-page-visa-tracker" class="admin-page" style="display: none;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<h3 style="color: var(--primary-green); margin: 0;">📋 Visa Tracker</h3>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="openNewVisaApplication()"><i class="fas fa-plus"></i> New Application</button>
+</div>
+<div class="stats-row">
+<div class="stat-card" style="border-left-color: #ffc107;"><h4>Pending</h4><h2 id="visa-pending">0</h2></div>
+<div class="stat-card" style="border-left-color: #17a2b8;"><h4>Processing</h4><h2 id="visa-processing">0</h2></div>
+<div class="stat-card" style="border-left-color: #28a745;"><h4>Approved</h4><h2 id="visa-approved">0</h2></div>
+<div class="stat-card" style="border-left-color: #dc3545;"><h4>Rejected</h4><h2 id="visa-rejected">0</h2></div>
+</div>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<table class="data-table">
+<thead><tr><th>Applicant</th><th>Passport</th><th>Type</th><th>Applied Date</th><th>Status</th><th>Actions</th></tr></thead>
+<tbody id="visa-tracker-body"></tbody>
+</table>
+</div>
+</div>
+<div id="full-page-groups" class="admin-page" style="display: none;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<h3 style="color: var(--primary-green); margin: 0;">👥 Group Management</h3>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="openNewGroupModal()"><i class="fas fa-plus"></i> Create Group</button>
+</div>
+<div class="stats-row">
+<div class="stat-card"><h4>Active Groups</h4><h2 id="groups-active">0</h2></div>
+<div class="stat-card" style="border-left-color: #28a745;"><h4>Total Pilgrims</h4><h2 id="groups-pilgrims">0</h2></div>
+<div class="stat-card" style="border-left-color: #ffc107;"><h4>Upcoming</h4><h2 id="groups-upcoming">0</h2></div>
+<div class="stat-card" style="border-left-color: #17a2b8;"><h4>Group Leaders</h4><h2 id="groups-leaders">0</h2></div>
+</div>
+<div id="groups-list" class="staff-grid"></div>
+</div>
+<div id="full-page-promotions" class="admin-page" style="display: none;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<h3 style="color: var(--primary-green); margin: 0;">🎁 Promotions</h3>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="openNewPromotionModal()"><i class="fas fa-plus"></i> Create Promo</button>
+</div>
+<div id="promotions-list" class="staff-grid"></div>
+</div>
+<div id="full-page-analytics" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;"> Analytics</h3>
+<div class="stats-row">
+<div class="stat-card"><h4>Customers</h4><h2 id="ana-customers">0</h2></div>
+<div class="stat-card" style="border-left-color: #28a745;"><h4>Conversion</h4><h2 id="ana-conversion">0%</h2></div>
+<div class="stat-card" style="border-left-color: #ffc107;"><h4>Avg. Value</h4><h2 id="ana-avg-value">PKR 0</h2></div>
+<div class="stat-card" style="border-left-color: #17a2b8;"><h4>Repeat Customers</h4><h2 id="ana-repeat">0</h2></div>
+</div>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+<h3 style="color: var(--primary-green); margin-bottom: 15px;">Top Services</h3>
+<div id="analytics-top-services"></div>
+</div>
+<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
+<h3 style="color: var(--primary-green); margin-bottom: 15px;">Monthly Bookings Trend</h3>
+<div id="analytics-monthly-chart" style="display: flex; align-items: flex-end; height: 150px; gap: 15px; padding: 20px 0;"></div>
+</div>
+</div>
+<div id="full-page-settings" class="admin-page" style="display: none;">
+<h3 style="color: var(--primary-green); margin-bottom: 20px;">⚙️ System Settings</h3>
+<div style="background: white; padding: 30px; border-radius: 10px;">
+<form onsubmit="saveSystemSettings(event)">
+<div class="search-grid">
+<div class="form-group"><label>Company Name</label><input type="text" id="set-company-name" value="Nadeem Hadi Travel"></div>
+<div class="form-group"><label>Phone</label><input type="text" id="set-phone" value="0342-4397177"></div>
+<div class="form-group"><label>Email</label><input type="email" id="set-email" value="nadeemhaditravel@gmail.com"></div>
+<div class="form-group"><label>Address</label><input type="text" id="set-address" value="Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha"></div>
+<div class="form-group"><label>Currency</label><input type="text" id="set-currency" value="PKR"></div>
+<div class="form-group"><label>Tax Rate (%)</label><input type="number" id="set-tax" value="0"></div>
+<div class="form-group"><label>Auto Confirm Bookings</label>
+<select id="set-auto-confirm">
+<option value="false">No (Manual Approval)</option>
+<option value="true">Yes (Auto Confirm)</option>
+</select>
+</div>
+<div class="form-group"><label>Reward Rate (Points per PKR)</label><input type="number" id="set-reward-rate" value="1" step="0.1"></div>
+</div>
+<button type="submit" class="btn" style="background: var(--primary-green); color: white;"><i class="fas fa-save"></i> Save Settings</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-    <!-- FLOATING WHATSAPP BUTTON -->
-    <a href="https://wa.me/923424397177" class="floating-wa" target="_blank" title="Contact us on WhatsApp" aria-label="WhatsApp us">
-        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-    </a>
+<!-- Admin Modals -->
+<div id="staffLoginModal" class="modal">
+<div class="modal-content" style="max-width: 450px;">
+<span class="close-modal" onclick="closeModal('staffLoginModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px; text-align: center;">Staff Portal Login</h2>
+<form onsubmit="handleStaffLogin(event)">
+<div class="form-group">
+<label><i class="fas fa-user" style="margin-right: 8px; color: var(--accent-gold);"></i>Email or Username</label>
+<input type="text" id="staffLoginEmail" required placeholder="Enter email or username" autocomplete="username">
+</div>
+<div class="form-group">
+<label><i class="fas fa-lock" style="margin-right: 8px; color: var(--accent-gold);"></i>Password</label>
+<input type="password" id="staffLoginPassword" required placeholder="Enter password" autocomplete="current-password">
+</div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">
+<i class="fas fa-sign-in-alt"></i> Login
+</button>
+</form>
+</div>
+</div>
+<div id="staffModal" class="modal">
+<div class="modal-content" style="max-width: 700px;">
+<span class="close-modal" onclick="closeModal('staffModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;" id="staffModalTitle">Add New Staff Member</h2>
+<form onsubmit="saveStaff(event)">
+<input type="hidden" id="staffEditId">
+<div class="form-group">
+<label><i class="fas fa-user" style="margin-right: 8px; color: var(--accent-gold);"></i>Full Name</label>
+<input type="text" id="staffName" required placeholder="Enter full name">
+</div>
+<div class="form-group">
+<label><i class="fas fa-envelope" style="margin-right: 8px; color: var(--accent-gold);"></i>Email Address</label>
+<input type="email" id="staffEmail" required placeholder="staff@example.com">
+</div>
+<div class="form-group">
+<label><i class="fas fa-phone" style="margin-right: 8px; color: var(--accent-gold);"></i>Phone Number</label>
+<input type="tel" id="staffPhone" required placeholder="03XX-XXXXXXX">
+</div>
+<div class="form-group">
+<label><i class="fas fa-camera" style="margin-right: 8px; color: var(--accent-gold);"></i>Profile Picture</label>
+<div class="file-upload-area">
+<input type="file" id="staffPhotoInput" accept="image/*" style="display: none;" onchange="handleStaffPhotoUpload(this)">
+<button type="button" class="btn-upload" onclick="document.getElementById('staffPhotoInput').click()"><i class="fas fa-upload"></i> Upload Photo</button>
+<p style="margin-top: 10px; color: #666; font-size: 0.9rem;">JPG, PNG (Max 2MB)</p>
+</div>
+<div id="staffPhotoPreview" style="margin-top: 10px; text-align: center;"></div>
+<input type="hidden" id="staffPhotoUrl">
+</div>
+<div class="form-group">
+<label><i class="fas fa-lock" style="margin-right: 8px; color: var(--accent-gold);"></i>Password</label>
+<input type="password" id="staffPassword" placeholder="Min 6 characters" minlength="6">
+<small style="color: #999;">Leave blank to keep current password when editing</small>
+</div>
+<div class="form-group">
+<label><i class="fas fa-user-tag" style="margin-right: 8px; color: var(--accent-gold);"></i>Assign Role</label>
+<div class="role-selector">
+<div class="role-option" onclick="selectRole('admin', this)">
+<h4><i class="fas fa-user-shield"></i> Administrator</h4>
+<p>Full system access</p>
+</div>
+<div class="role-option" onclick="selectRole('manager', this)">
+<h4><i class="fas fa-user-tie"></i> Manager</h4>
+<p>Manage bookings & packages</p>
+</div>
+<div class="role-option" onclick="selectRole('agent', this)">
+<h4><i class="fas fa-headset"></i> Travel Agent</h4>
+<p>Handle bookings & inquiries</p>
+</div>
+<div class="role-option" onclick="selectRole('accountant', this)">
+<h4><i class="fas fa-calculator"></i> Accountant</h4>
+<p>View financial data</p>
+</div>
+<div class="role-option" onclick="selectRole('support', this)">
+<h4><i class="fas fa-life-ring"></i> Support Staff</h4>
+<p>Customer support only</p>
+</div>
+</div>
+<input type="hidden" id="staffRole">
+</div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">
+<i class="fas fa-save"></i> Save Staff Member
+</button>
+</form>
+</div>
+</div>
+<div id="newBookingModal" class="modal">
+<div class="modal-content" style="max-width: 800px;">
+<span class="close-modal" onclick="closeModal('newBookingModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Create New Booking</h2>
+<p style="margin-bottom: 20px; color: #666;">Select booking type:</p>
+<div class="booking-type-selector">
+<div class="booking-type-option" onclick="selectBookingType('flight', this)">
+<i class="fas fa-plane"></i>
+<h4>Flight Ticket</h4>
+<p>Domestic & International</p>
+</div>
+<div class="booking-type-option" onclick="selectBookingType('visa', this)">
+<i class="fas fa-passport"></i>
+<h4>Visa</h4>
+<p>Umrah, Tourist, Business</p>
+</div>
+<div class="booking-type-option" onclick="selectBookingType('umrah', this)">
+<i class="fas fa-kaaba"></i>
+<h4>Umrah Package</h4>
+<p>Complete Umrah service</p>
+</div>
+<div class="booking-type-option" onclick="selectBookingType('hotel', this)">
+<i class="fas fa-hotel"></i>
+<h4>Hotel Booking</h4>
+<p>Worldwide hotels</p>
+</div>
+<div class="booking-type-option" onclick="selectBookingType('holiday', this)">
+<i class="fas fa-umbrella-beach"></i>
+<h4>Holiday Tour</h4>
+<p>Family & leisure tours</p>
+</div>
+</div>
+<input type="hidden" id="newBookingType">
+<form onsubmit="saveNewBooking(event)" id="newBookingForm" style="display: none;">
+<div class="search-grid">
+<div class="form-group"><label>Customer Name</label><input type="text" id="nb-name" required></div>
+<div class="form-group"><label>Phone</label><input type="tel" id="nb-phone" required></div>
+<div class="form-group"><label>Email</label><input type="email" id="nb-email"></div>
+<div class="form-group"><label>Gender</label>
+<select id="nb-gender" required>
+<option value="">Select Gender</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+<option value="Other">Other</option>
+</select>
+</div>
+</div>
+<div id="flightFields" style="display: none;">
+<div class="search-grid">
+<div class="form-group"><label>From</label><input type="text" id="nb-from" placeholder="Departure City"></div>
+<div class="form-group"><label>To</label><input type="text" id="nb-to" placeholder="Arrival City"></div>
+<div class="form-group"><label>Departure Date</label><input type="date" id="nb-departure"></div>
+<div class="form-group"><label>Return Date</label><input type="date" id="nb-return"></div>
+<div class="form-group"><label>Airline</label><input type="text" id="nb-airline"></div>
+<div class="form-group"><label>Class</label>
+<select id="nb-class">
+<option value="Economy">Economy</option>
+<option value="Business">Business</option>
+<option value="First">First Class</option>
+</select>
+</div>
+</div>
+</div>
+<div id="visaFields" style="display: none;">
+<div class="search-grid">
+<div class="form-group"><label>Visa Type</label>
+<select id="nb-visa-type">
+<option value="Umrah">Umrah Visa</option>
+<option value="Tourist">Tourist Visa</option>
+<option value="Business">Business Visa</option>
+<option value="Work">Work Visa</option>
+<option value="Family">Family Visit</option>
+</select>
+</div>
+<div class="form-group"><label>Country</label><input type="text" id="nb-country" value="Saudi Arabia"></div>
+<div class="form-group"><label>Passport Number</label><input type="text" id="nb-passport"></div>
+<div class="form-group"><label>Processing Time</label>
+<select id="nb-processing">
+<option value="Normal">Normal (7-14 days)</option>
+<option value="Urgent">Urgent (3-5 days)</option>
+<option value="Express">Express (24-48 hours)</option>
+</select>
+</div>
+</div>
+</div>
+<div id="umrahFields" style="display: none;">
+<div class="search-grid">
+<div class="form-group"><label>Package Type</label>
+<select id="nb-package-type">
+<option value="Economy">Economy</option>
+<option value="Standard">Standard</option>
+<option value="VIP">VIP</option>
+<option value="Premium">Premium</option>
+</select>
+</div>
+<div class="form-group"><label>Departure Date</label><input type="date" id="nb-umrah-departure"></div>
+<div class="form-group"><label>Duration (Days)</label><input type="number" id="nb-duration" value="15"></div>
+<div class="form-group"><label>Number of People</label><input type="number" id="nb-people" value="1"></div>
+</div>
+</div>
+<div id="hotelFields" style="display: none;">
+<div class="search-grid">
+<div class="form-group"><label>City</label><input type="text" id="nb-hotel-city"></div>
+<div class="form-group"><label>Hotel Name</label><input type="text" id="nb-hotel-name"></div>
+<div class="form-group"><label>Check-in</label><input type="date" id="nb-checkin"></div>
+<div class="form-group"><label>Check-out</label><input type="date" id="nb-checkout"></div>
+<div class="form-group"><label>Room Type</label>
+<select id="nb-room-type">
+<option value="Single">Single</option>
+<option value="Double">Double</option>
+<option value="Suite">Suite</option>
+<option value="Family">Family</option>
+</select>
+</div>
+<div class="form-group"><label>Guests</label><input type="number" id="nb-guests" value="1"></div>
+</div>
+</div>
+<div id="holidayFields" style="display: none;">
+<div class="search-grid">
+<div class="form-group"><label>Destination</label><input type="text" id="nb-destination"></div>
+<div class="form-group"><label>Tour Type</label>
+<select id="nb-tour-type">
+<option value="Family">Family Tour</option>
+<option value="Honeymoon">Honeymoon</option>
+<option value="Group">Group Tour</option>
+<option value="Custom">Custom</option>
+</select>
+</div>
+<div class="form-group"><label>Start Date</label><input type="date" id="nb-tour-start"></div>
+<div class="form-group"><label>End Date</label><input type="date" id="nb-tour-end"></div>
+<div class="form-group"><label>Travelers</label><input type="number" id="nb-travelers" value="1"></div>
+</div>
+</div>
+<div class="form-group"><label>Total Amount (PKR)</label><input type="number" id="nb-amount" required></div>
+<div class="form-group"><label>Notes</label><textarea id="nb-notes" rows="3"></textarea></div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">
+<i class="fas fa-save"></i> Create Booking
+</button>
+</form>
+</div>
+</div>
+<div id="expenseModal" class="modal">
+<div class="modal-content" style="max-width: 600px;">
+<span class="close-modal" onclick="closeModal('expenseModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;" id="expenseModalTitle">Add Expense</h2>
+<form onsubmit="saveExpense(event)">
+<input type="hidden" id="expEditId">
+<div class="form-group"><label>Category</label>
+<select id="exp-category" required>
+<option value="transport">Transport</option>
+<option value="office">Office Supplies</option>
+<option value="marketing">Marketing</option>
+<option value="salary">Salary</option>
+<option value="utilities">Utilities</option>
+<option value="rent">Rent</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="form-group"><label>Description</label><input type="text" id="exp-description" required></div>
+<div class="form-group"><label>Amount (PKR)</label><input type="number" id="exp-amount" required></div>
+<div class="form-group"><label>Date</label><input type="date" id="exp-date" required></div>
+<div class="form-group"><label>Receipt/Invoice</label>
+<div class="file-upload-area">
+<input type="file" id="exp-receipt" accept="image/*,.pdf" style="display: none;" onchange="handleReceiptUpload(this)">
+<button type="button" class="btn-upload" onclick="document.getElementById('exp-receipt').click()"><i class="fas fa-upload"></i> Upload Receipt</button>
+</div>
+<input type="hidden" id="exp-receipt-url">
+</div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">
+<i class="fas fa-save"></i> Save Expense
+</button>
+</form>
+</div>
+</div>
+<div id="visaApplicationModal" class="modal">
+<div class="modal-content" style="max-width: 600px;">
+<span class="close-modal" onclick="closeModal('visaApplicationModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">New Visa Application</h2>
+<form onsubmit="saveVisaApplication(event)">
+<input type="hidden" id="visaEditId">
+<div class="form-group"><label>Applicant Name</label><input type="text" id="visa-applicant" required></div>
+<div class="form-group"><label>Gender</label>
+<select id="visa-gender" required>
+<option value="">Select Gender</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+<option value="Other">Other</option>
+</select>
+</div>
+<div class="form-group"><label>Passport Number</label><input type="text" id="visa-passport" required></div>
+<div class="form-group"><label>Visa Type</label>
+<select id="visa-type" required>
+<option value="umrah">Umrah Visa</option>
+<option value="tourist">Tourist Visa</option>
+<option value="business">Business Visa</option>
+<option value="work">Work Visa</option>
+<option value="family">Family Visit Visa</option>
+</select>
+</div>
+<div class="form-group"><label>Destination Country</label><input type="text" id="visa-country" value="Saudi Arabia" required></div>
+<div class="form-group"><label>Status</label>
+<select id="visa-status">
+<option value="pending">Pending</option>
+<option value="processing">In Process</option>
+<option value="approved">Approved</option>
+<option value="rejected">Rejected</option>
+</select>
+</div>
+<div class="form-group"><label>Notes</label><textarea id="visa-notes" rows="3"></textarea></div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Save Application</button>
+</form>
+</div>
+</div>
+<div id="groupModal" class="modal">
+<div class="modal-content" style="max-width: 700px;">
+<span class="close-modal" onclick="closeModal('groupModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Create Umrah Group</h2>
+<form onsubmit="saveGroup(event)">
+<input type="hidden" id="groupEditId">
+<div class="form-group"><label>Group Name</label><input type="text" id="group-name" placeholder="e.g., Ramadan Group 2026" required></div>
+<div class="search-grid">
+<div class="form-group"><label>Departure Date</label><input type="date" id="group-departure" required></div>
+<div class="form-group"><label>Return Date</label><input type="date" id="group-return" required></div>
+<div class="form-group"><label>Group Leader</label><input type="text" id="group-leader" required></div>
+<div class="form-group"><label>Max Pilgrims</label><input type="number" id="group-max" value="45" required></div>
+</div>
+<div class="form-group"><label>Package</label>
+<select id="group-package"></select>
+</div>
+<div class="form-group"><label>Notes</label><textarea id="group-notes" rows="3"></textarea></div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Save Group</button>
+</form>
+</div>
+</div>
+<div id="promotionModal" class="modal">
+<div class="modal-content" style="max-width: 600px;">
+<span class="close-modal" onclick="closeModal('promotionModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Create Promotion</h2>
+<form onsubmit="savePromotion(event)">
+<input type="hidden" id="promoEditId">
+<div class="form-group"><label>Promotion Title</label><input type="text" id="promo-title" required></div>
+<div class="form-group"><label>Description</label><textarea id="promo-desc" rows="3" required></textarea></div>
+<div class="search-grid">
+<div class="form-group"><label>Discount Type</label>
+<select id="promo-type">
+<option value="percentage">Percentage (%)</option>
+<option value="fixed">Fixed Amount (PKR)</option>
+</select>
+</div>
+<div class="form-group"><label>Discount Value</label><input type="number" id="promo-value" required></div>
+<div class="form-group"><label>Start Date</label><input type="date" id="promo-start" required></div>
+<div class="form-group"><label>End Date</label><input type="date" id="promo-end" required></div>
+</div>
+<div class="form-group"><label>Promo Code</label><input type="text" id="promo-code" placeholder="e.g., UMRAH20" required></div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Save Promotion</button>
+</form>
+</div>
+</div>
+<!-- ============ USER-FACING WEBSITE ============ -->
+<header>
+<div class="container nav-container">
+<div class="logo">
+<i class="fas fa-kaaba" aria-hidden="true"></i>
+Nadeem Hadi Travel
+</div>
+<nav>
+<ul class="nav-links">
+<li><a onclick="showSection('hero')">Home</a></li>
+<li><a onclick="showSection('packages')">Packages</a></li>
+<li><a onclick="openDashboard()">My Bookings</a></li>
+<li id="authLinks"><a onclick="openRegisterModal()">Register</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a onclick="openStaffLogin()" style="color: var(--accent-gold); font-weight: 600;"><i class="fas fa-user-shield"></i> Staff</a></li>
+</ul>
+</nav>
+<div class="user-info" id="userInfo" style="display: none;">
+<span class="user-name" id="userNameDisplay"></span>
+<button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+</div>
+</header>
+<section id="hero" class="hero">
+<div class="hero-content">
+<h1>Nadeem Hadi Travel & Tours</h1>
+<h2>Experience the Blessing of Umrah</h2>
+<p>Nearest hotels, group departures, airport transfers, and excellent facilities for a blessed journey</p>
+<div class="btn-group">
+<a href="https://wa.me/923424397177" class="btn btn-whatsapp">
+<i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Us
+</a>
+<a href="tel:+923424397177" class="btn btn-call">
+<i class="fas fa-phone-alt" aria-hidden="true"></i> Call Now
+</a>
+</div>
+</div>
+</section>
+<section class="madinah-banner">
+<h2>A Peaceful and Blessed Journey to Makkah and Madinah</h2>
+</section>
+<section id="packages" class="section packages">
+<div class="container">
+<h2 class="section-title" id="packagesSectionTitle">Our Umrah Packages</h2>
+<div class="packages-grid" id="packagesGrid"></div>
+</div>
+</section>
+<section id="contact" class="section contact">
+<div class="container">
+<h2 class="section-title">Contact Us</h2>
+<p style="color: #ccc; margin-bottom: 30px; font-size: 1.05rem;">Contact us today for your Umrah or tour plan. We are here to guide you.</p>
+<div class="contact-container">
+<div class="contact-info">
+<div class="contact-item"><i class="fas fa-user-tie" aria-hidden="true"></i><div><h2>Haji Nadeem Abass</h2><a href="tel:03424397177">0342-4397177</a><a href="tel:03164815975">0316-4815975</a></div></div>
+<div class="contact-item"><i class="fas fa-user-tie" aria-hidden="true"></i><div><h3>Muhammad Imtiaz</h3><a href="tel:03026901114">0302-6901114</a></div></div>
+<div class="contact-item"><i class="fas fa-envelope" aria-hidden="true"></i><div><h4>Email Us</h4><a href="mailto:nadeemhaditravel@gmail.com">nadeemhaditravel@gmail.com</a></div></div>
+<div class="contact-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><div><h4>Office Address</h4><p>Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha</p></div></div>
+<div style="margin-top: 20px; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+<iframe src="https://maps.google.com/maps?q=3P64%2B74X+Sargodha,+Pakistan&z=15&output=embed" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+<form id="contact-form" class="contact-form">
+<input type="text" id="contactName" name="name" placeholder="Your Name" required>
+<input type="tel" id="contactPhone" name="phone" placeholder="Phone Number" required>
+<input type="email" id="contactEmail" name="email" placeholder="Email Address">
+<textarea id="contactMessage" name="message" placeholder="Your message or travel details..." required></textarea>
+<button type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message</button>
+</form>
+</div>
+</div>
+</section>
+<footer>
+<div class="container">
+<h3>Nadeem Hadi Travel & Tours</h3>
+<p>Your Trusted Partner for Blessed and Pleasant Journeys</p>
+<p>📞 0342-4397177 | 0316-4815975 | 0302-6901114</p>
+<p>📧 nadeemhaditravel@gmail.com</p>
+<p>📍 Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha, Pakistan</p>
+<div class="social-links">
+<a href="https://wa.me/923424397177" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+<a href="tel:+923424397177" aria-label="Call us"><i class="fas fa-phone-alt" aria-hidden="true"></i></a>
+<a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+</div>
+<p style="margin-top: 20px; font-size: 0.9rem; color: #666;">&copy; <span id="current-year">2026</span> Nadeem Hadi Travel & Tours. All Rights Reserved.</p>
+</div>
+</footer>
+<a href="https://wa.me/923424397177" class="floating-wa" target="_blank" title="Contact us on WhatsApp" aria-label="WhatsApp us">
+<i class="fab fa-whatsapp" aria-hidden="true"></i>
+</a>
+<div id="toast" class="toast"></div>
+<!-- User Modals -->
+<div id="registerModal" class="modal">
+<div class="modal-content">
+<span class="close-modal" onclick="closeModal('registerModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 10px; text-align: center;">Join Nadeem Hadi Travel</h2>
+<p style="text-align: center; color: #666; margin-bottom: 20px;">Create an account to book packages and earn rewards!</p>
+<form onsubmit="handleRegister(event)">
+<div class="form-group"><label><i class="fas fa-user" style="margin-right: 8px; color: var(--accent-gold);"></i>Full Name</label><input type="text" id="regName" placeholder="Enter your full name" required></div>
+<div class="form-group"><label><i class="fas fa-envelope" style="margin-right: 8px; color: var(--accent-gold);"></i>Email Address</label><input type="email" id="regEmail" placeholder="example@email.com" required autocomplete="username"></div>
+<div class="form-group"><label><i class="fas fa-phone" style="margin-right: 8px; color: var(--accent-gold);"></i>Phone Number</label><input type="tel" id="regPhone" placeholder="03XX-XXXXXXX" required></div>
+<div class="form-group"><label><i class="fas fa-lock" style="margin-right: 8px; color: var(--accent-gold);"></i>Password</label><input type="password" id="regPassword" placeholder="Min 6 characters" minlength="6" required autocomplete="new-password"></div>
+<div class="form-group"><label><i class="fas fa-lock" style="margin-right: 8px; color: var(--accent-gold);"></i>Confirm Password</label><input type="password" id="regConfirmPassword" placeholder="Re-enter password" minlength="6" required autocomplete="new-password"></div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white; margin-top: 10px;"><i class="fas fa-user-plus"></i> Create Account</button>
+</form>
+<p style="margin-top: 15px; text-align: center; color: #666;">Already have an account? <a href="#" onclick="closeModal('registerModal'); openLoginModal();" style="color: var(--accent-gold); font-weight: 600;">Login here</a></p>
+</div>
+</div>
+<div id="loginModal" class="modal">
+<div class="modal-content">
+<span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Login</h2>
+<form onsubmit="handleLogin(event)">
+<div class="form-group"><label>Email or Phone</label><input type="text" id="loginEmail" required autocomplete="username"></div>
+<div class="form-group"><label>Password</label><input type="password" id="loginPassword" required autocomplete="current-password"></div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Login</button>
+</form>
+</div>
+</div>
+<div id="serviceDetailsModal" class="modal">
+<div class="modal-content">
+<span class="close-modal" onclick="closeModal('serviceDetailsModal')">&times;</span>
+<h2 id="serviceDetailsTitle" style="color: var(--primary-green); margin-bottom: 20px;">Service Details</h2>
+<div id="serviceDetailsContent" style="margin-bottom: 20px;"></div>
+<button class="btn" style="width: 100%; background: var(--accent-gold); color: var(--primary-green);" onclick="confirmAddService()"><i class="fas fa-check-circle"></i> Confirm & Add to Booking</button>
+</div>
+</div>
+<div id="dashboardModal" class="modal">
+<div class="modal-content" style="max-width: 900px;">
+<span class="close-modal" onclick="closeModal('dashboardModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 10px;">My Dashboard</h2>
+<p>Welcome, <span id="dashboardUserName"></span>!</p>
+<div class="dashboard-grid">
+<div class="dashboard-card"><i class="fas fa-ticket-alt"></i><h3 id="totalBookings">0</h3><p>Total Bookings</p></div>
+<div class="dashboard-card"><i class="fas fa-check-circle"></i><h3 id="confirmedBookings">0</h3><p>Confirmed</p></div>
+<div class="dashboard-card"><i class="fas fa-clock"></i><h3 id="pendingBookings">0</h3><p>Pending</p></div>
+<div class="dashboard-card"><i class="fas fa-gift"></i><h3 id="rewardPoints">0</h3><p>Reward Points</p></div>
+</div>
+<div class="booking-list" id="bookingList"><h3 style="color: var(--primary-green); margin: 25px 0 15px;">Your Bookings</h3></div>
+</div>
+</div>
+<div id="paymentModal" class="modal">
+<div class="modal-content">
+<span class="close-modal" onclick="closeModal('paymentModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Payment Options</h2>
+<p style="margin-bottom: 15px;">Choose your preferred payment method:</p>
+<div class="payment-options">
+<div class="payment-option" onclick="selectPayment(this, 'Credit Card')"><i class="fas fa-credit-card"></i><div>Credit Card</div></div>
+<div class="payment-option" onclick="selectPayment(this, 'Bank Transfer')"><i class="fas fa-university"></i><div>Bank Transfer</div></div>
+<div class="payment-option" onclick="selectPayment(this, 'JazzCash')"><i class="fas fa-mobile-alt"></i><div>JazzCash</div></div>
+<div class="payment-option" onclick="selectPayment(this, 'EasyPaisa')"><i class="fas fa-wallet"></i><div>EasyPaisa</div></div>
+<div class="payment-option" onclick="selectPayment(this, 'Cash on Delivery')"><i class="fas fa-money-bill-wave"></i><div>Cash</div></div>
+</div>
+<div id="paymentDetails" style="margin-top: 15px; display: none;">
+<div class="form-group"><label>Selected: <span id="selectedPaymentMethod" style="color: var(--accent-gold); font-weight: 700;"></span></label></div>
+<div id="paymentMethodInfo" style="display: none;"></div>
+<button class="btn" style="width: 100%; background: var(--accent-gold); color: var(--primary-green);" onclick="processPayment()">Proceed to Payment</button>
+</div>
+</div>
+</div>
+<div id="referralModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('referralModal')">&times;</span><h2 style="color: var(--primary-green); margin-bottom: 10px;">Referral Program</h2><p>Invite friends and earn rewards!</p><div class="referral-box"><p>Your Referral Code:</p><div class="referral-code" id="referralCode">NADEEM2026</div><p>Share this code with friends</p></div><button class="btn" style="width: 100%; margin-top: 15px; background: var(--primary-green); color: white;" onclick="copyReferralCode()"><i class="fas fa-copy"></i> Copy Code</button></div></div>
+<div id="searchModal" class="modal">
+<div class="modal-content" style="max-width: 800px;">
+<span class="close-modal" onclick="closeModal('searchModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Advanced Search</h2>
+<div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 30px;">
+<div class="search-grid">
+<div class="form-group">
+<label><i class="fas fa-map-marker-alt" style="color: var(--accent-gold); margin-right: 5px;"></i>Destination</label>
+<select id="searchDestination" style="font-size: 1rem;">
+<option value="">🌍 Select Destination</option>
+<option value="makkah">🕋 Makkah</option>
+<option value="madinah">🕌 Madinah</option>
+<option value="jeddah">🏙️ Jeddah</option>
+<option value="dubai">️ Dubai</option>
+<option value="istanbul">🕌 Istanbul</option>
+<option value="baku">🏛️ Baku</option>
+<option value="bangkok">🏯 Bangkok</option>
+<option value="london">🇬 London</option>
+<option value="kuala-lumpur">🏙️ Kuala Lumpur</option>
+<option value="lahore">🌳 Lahore</option>
+<option value="islamabad">🏞️ Islamabad</option>
+<option value="karachi">🌊 Karachi</option>
+<option value="new-york">🗽 New York</option>
+<option value="toronto">🍁 Toronto</option>
+<option value="paris">🗼 Paris</option>
+<option value="muscat">🕌 Muscat</option>
+<option value="doha">🏙️ Doha</option>
+<option value="manama">🏛️ Manama</option>
+<option value="cairo">🏛️ Cairo</option>
+<option value="abu-dhabi">️ Abu Dhabi</option>
+<option value="kuwait">🏙️ Kuwait</option>
+<option value="jordan">🏜️ Jordan</option>
+<option value="malaysia">🌴 Malaysia</option>
+<option value="singapore">️ Singapore</option>
+<option value="thailand">🏖️ Thailand</option>
+</select>
+</div>
+<div class="form-group">
+<label><i class="fas fa-plane" style="color: var(--accent-gold); margin-right: 5px;"></i>Travel Type</label>
+<select id="searchType">
+<option value="">Select Type</option>
+<option value="umrah"> Umrah</option>
+<option value="flight">✈️ Flight</option>
+</select>
+</div>
+</div>
+<button class="btn" style="width: 100%; background: var(--primary-green); color: white;" onclick="performSearch()"><i class="fas fa-search"></i> Search</button>
+</div>
+</div>
+</div>
+<div id="eticketsModal" class="modal">
+<div class="modal-content" style="max-width: 900px;">
+<span class="close-modal no-print" onclick="closeModal('eticketsModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;" class="no-print">E-Tickets & Documents</h2>
+<div id="ticketsList"></div>
+<div class="no-print" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+<button class="btn" style="background: var(--primary-green); color: white;" onclick="window.print()"><i class="fas fa-print"></i> Print Ticket</button>
+<button class="btn" style="background: #dc3545; color: white;" onclick="saveAsPDF()"><i class="fas fa-file-pdf"></i> Save as PDF</button>
+</div>
+</div>
+</div>
+<div id="packageEditorModal" class="modal">
+<div class="modal-content" style="max-width: 800px;">
+<span class="close-modal" onclick="closeModal('packageEditorModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Edit Package Details</h2>
+<form onsubmit="savePackage(event)">
+<input type="hidden" id="pkgEditId">
+<div class="form-group"><label>Package Title</label><input type="text" id="pkgTitleEn" required></div>
+<div class="form-group"><label>Price / Offer Details</label><input type="text" id="pkgPriceEn" placeholder="e.g., PKR 150,000" required></div>
+<h4 style="color: var(--primary-green); margin: 15px 0 10px;">Hotel Details</h4>
+<div class="search-grid">
+<div class="form-group"><label>Mecca Hotel & Distance</label><input type="text" id="pkgMeccaHotelEn" placeholder="e.g., 500m from Masjid Haram"></div>
+<div class="form-group"><label>Medina Hotel & Distance</label><input type="text" id="pkgMedinaHotelEn" placeholder="e.g., 500m from Masjid Nabawi"></div>
+</div>
+<h4 style="color: var(--primary-green); margin: 15px 0 10px;">Duration</h4>
+<div class="search-grid">
+<div class="form-group"><label>Total Days</label><input type="number" id="pkgTotalDays" min="1" required></div>
+<div class="form-group"><label>Days in Mecca</label><input type="number" id="pkgMeccaDays" min="0" required></div>
+<div class="form-group"><label>Days in Medina</label><input type="number" id="pkgMedinaDays" min="0" required></div>
+</div>
+<h4 style="color: var(--primary-green); margin: 15px 0 10px;">Departure Dates</h4>
+<div class="search-grid">
+<div class="form-group"><label>Departure Date</label><input type="date" id="pkgDepartureDate"></div>
+<div class="form-group"><label>Return Date</label><input type="date" id="pkgReturnDate"></div>
+</div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Save Package</button>
+</form>
+</div>
+</div>
+<div id="bookingDetailsModal" class="modal">
+<div class="modal-content" style="max-width: 600px;">
+<span class="close-modal" onclick="closeModal('bookingDetailsModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Add / Edit Booking Details</h2>
+<p style="margin-bottom: 15px; color: #666;">Ref ID: <strong id="detailsRefId"></strong></p>
+<form onsubmit="saveBookingDetails(event)">
+<input type="hidden" id="detailsBookingId">
+<div class="form-group"><label><i class="fas fa-ticket-alt" style="margin-right: 8px; color: var(--accent-gold);"></i>PNR / Ticket Number</label><input type="text" id="detailsPnr" placeholder="e.g., 5X8Y9Z"></div>
+<div class="form-group"><label><i class="fas fa-plane" style="margin-right: 8px; color: var(--accent-gold);"></i>Flight Number / Airline</label><input type="text" id="detailsFlight" placeholder="e.g., PK-751 / Saudia"></div>
+<div class="form-group"><label><i class="fas fa-hotel" style="margin-right: 8px; color: var(--accent-gold);"></i>Mecca Hotel Name</label><input type="text" id="detailsMeccaHotel"></div>
+<div class="form-group"><label><i class="fas fa-hotel" style="margin-right: 8px; color: var(--accent-gold);"></i>Medina Hotel Name</label><input type="text" id="detailsMedinaHotel"></div>
+<div class="form-group"><label><i class="fas fa-passport" style="margin-right: 8px; color: var(--accent-gold);"></i>Visa Number</label><input type="text" id="detailsVisa"></div>
+<div class="form-group"><label><i class="fas fa-sticky-note" style="margin-right: 8px; color: var(--accent-gold);"></i>Admin Notes</label><textarea id="detailsNotes"></textarea></div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;"><i class="fas fa-save"></i> Save Details</button>
+</form>
+</div>
+</div>
+<div id="ticketEditModal" class="modal">
+<div class="modal-content" style="max-width: 600px;">
+<span class="close-modal" onclick="closeModal('ticketEditModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Edit Ticket Details</h2>
+<p style="margin-bottom: 15px; color: #666;">Ref ID: <strong id="editTicketRefId"></strong></p>
+<form onsubmit="saveTicketEdit(event)">
+<input type="hidden" id="editTicketId">
+<div class="form-group"><label><i class="fas fa-user" style="margin-right: 8px; color: var(--accent-gold);"></i>Passenger Name</label><input type="text" id="editPassengerName" required></div>
+<div class="form-group"><label><i class="fas fa-calendar" style="margin-right: 8px; color: var(--accent-gold);"></i>Travel Date</label><input type="date" id="editTravelDate" required></div>
+<div class="form-group"><label><i class="fas fa-info-circle" style="margin-right: 8px; color: var(--accent-gold);"></i>Status</label>
+<select id="editStatus" required>
+<option value="pending">Pending</option>
+<option value="confirmed">Confirmed</option>
+<option value="cancelled">Cancelled</option>
+</select>
+</div>
+<div class="form-group"><label><i class="fas fa-comment" style="margin-right: 8px; color: var(--accent-gold);"></i>Notes</label><textarea id="editNotes" rows="3"></textarea></div>
+<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;"><i class="fas fa-save"></i> Save Changes</button>
+</form>
+</div>
+</div>
+<div id="userDetailModal" class="modal">
+<div class="modal-content" style="max-width: 700px;">
+<span class="close-modal" onclick="closeModal('userDetailModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">User Details</h2>
+<div id="userDetailContent"></div>
+<div style="margin-top: 25px; padding-top: 15px; border-top: 2px solid var(--accent-gold);">
+<h3 style="color: var(--primary-green); margin-bottom: 12px;"><i class="fas fa-passport"></i> Umrah Visa Copies</h3>
+<div class="file-upload-area">
+<input type="file" id="visaFileInput" multiple accept=".pdf,.jpg,.jpeg,.png" style="display: none;" onchange="handleVisaUpload(this)">
+<button class="btn-upload" onclick="document.getElementById('visaFileInput').click()"><i class="fas fa-paperclip"></i> Attach Visa Copy</button>
+<p style="margin-top: 10px; color: #666; font-size: 0.9rem;">Supported formats: PDF, JPG, PNG (Max 5MB each)</p>
+</div>
+<div id="uploadedVisaFiles" class="uploaded-files" style="margin-top: 12px;"></div>
+</div>
+</div>
+</div>
+<div id="documentViewerModal" class="modal">
+<div class="modal-content" style="max-width: 900px;">
+<span class="close-modal" onclick="closeModal('documentViewerModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;">Document Viewer</h2>
+<div id="documentViewerContent"></div>
+<div class="document-actions">
+<button class="btn" style="background: var(--primary-green); color: white;" onclick="downloadCurrentDocument()"><i class="fas fa-download"></i> Download</button>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="window.open(document.getElementById('documentViewerContent').dataset.url, '_blank')"><i class="fas fa-external-link-alt"></i> Open in New Tab</button>
+</div>
+</div>
+</div>
+<div class="print-only-footer">
+<h4 style="color: var(--primary-green);">Nadeem Hadi Travel & Tours</h4>
+<p><strong>Your Trusted Partner for Blessed and Pleasant Journeys</strong></p>
+<p> 0342-4397177 | 0316-4815975 | 0302-6901114</p>
+<p>📍 Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha, Pakistan</p>
+</div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import {
+getFirestore, collection, doc, addDoc, setDoc, updateDoc, deleteDoc,
+getDocs, getDoc, query, where, orderBy, onSnapshot, serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+const firebaseConfig = {
+apiKey: "AIzaSyDHJQ0Pc075Y_7rGy_JsyGRwqtlBFuM3u8",
+authDomain: "nadeem-hadi-travel.firebaseapp.com",
+projectId: "nadeem-hadi-travel",
+storageBucket: "nadeem-hadi-travel.firebasestorage.app",
+messagingSenderId: "413016091133",
+appId: "1:413016091133:web:098b4d6f6a54be957d9194"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
+window.bookings = [];
+window.users = [];
+window.inquiries = [];
+window.staffMembers = [];
+window.customPackages = [];
+window.activityLog = [];
+window.expenses = [];
+window.currentUser = null;
+window.currentStaffUser = null;
+window.isAdminLoggedIn = false;
+window.selectedPayment = null;
+window.currentTicketBooking = null;
+window.currentViewingUser = null;
+window.currentDocumentUrl = null;
+window.ROLES = {
+admin: { name: 'Administrator', permissions: ['view_dashboard','manage_bookings','edit_bookings','delete_bookings','manage_packages','edit_packages','delete_packages','manage_users','delete_users','view_user_details','upload_visa','manage_staff','edit_staff','delete_staff','manage_permissions','view_activity_log','manage_inquiries','delete_inquiries','view_financial_reports','export_data','edit_settings','system_configuration','manage_expenses'] },
+manager: { name: 'Manager', permissions: ['view_dashboard','manage_bookings','edit_bookings','manage_packages','edit_packages','view_users','view_user_details','upload_visa','manage_inquiries','view_financial_reports','export_data','manage_expenses'] },
+agent: { name: 'Travel Agent', permissions: ['view_dashboard','manage_bookings','edit_bookings','view_packages','view_users','view_user_details','manage_inquiries'] },
+accountant: { name: 'Accountant', permissions: ['view_dashboard','view_bookings','view_users','view_financial_reports','export_data','manage_expenses'] },
+support: { name: 'Support Staff', permissions: ['view_dashboard','view_bookings','view_users','view_user_details','manage_inquiries'] }
+};
+window.PERMISSION_LABELS = {
+'view_dashboard':'View Dashboard','manage_bookings':'Manage Bookings','edit_bookings':'Edit Bookings','delete_bookings':'Delete Bookings','view_bookings':'View Bookings Only','manage_packages':'Manage Packages','edit_packages':'Edit Packages','delete_packages':'Delete Packages','view_packages':'View Packages Only','manage_users':'Manage Users','view_users':'View Users Only','delete_users':'Delete Users','view_user_details':'View User Details','upload_visa':'Upload Visa Copies','manage_staff':'Manage Staff','edit_staff':'Edit Staff','delete_staff':'Delete Staff','manage_permissions':'Manage Permissions','view_activity_log':'View Activity Log','manage_inquiries':'Manage Inquiries','delete_inquiries':'Delete Inquiries','view_financial_reports':'View Financial Reports','export_data':'Export Data','edit_settings':'Edit Settings','system_configuration':'System Configuration','manage_expenses':'Manage Expenses'
+};
+function setupRealtimeListeners() {
+onSnapshot(collection(db, "bookings"), (snapshot) => {
+window.bookings = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+if(window.isAdminLoggedIn) {
+window.loadFullAdminData();
+window.loadDashboardStats();
+}
+if(window.currentUser) window.loadDashboard();
+});
+onSnapshot(collection(db, "users"), (snapshot) => {
+window.users = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+if(window.isAdminLoggedIn) {
+window.loadFullAdminData();
+window.loadDashboardStats();
+}
+});
+onSnapshot(collection(db, "inquiries"), (snapshot) => {
+window.inquiries = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+if(window.isAdminLoggedIn) {
+window.loadFullAdminData();
+window.loadDashboardStats();
+}
+});
+onSnapshot(collection(db, "staff"), (snapshot) => {
+window.staffMembers = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+if(window.isAdminLoggedIn) {
+window.loadStaffList();
+window.loadDashboardStats();
+}
+});
+onSnapshot(collection(db, "packages"), (snapshot) => {
+window.customPackages = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+window.renderCustomPackages();
+if(window.isAdminLoggedIn) window.loadFullAdminData();
+});
+onSnapshot(collection(db, "activityLog"), (snapshot) => {
+window.activityLog = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+if(window.isAdminLoggedIn) {
+window.loadActivityLog();
+window.loadRecentActivity();
+}
+});
+onSnapshot(collection(db, "expenses"), (snapshot) => {
+window.expenses = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+if(window.isAdminLoggedIn) window.loadExpenses();
+});
+}
+async function initializeDefaultAdmin() {
+const staffQuery = query(collection(db, "staff"), where("email", "==", "admin@nadeemhadi.com"));
+const snapshot = await getDocs(staffQuery);
+if(snapshot.empty) {
+await addDoc(collection(db, "staff"), {
+name: 'System Administrator', email: 'admin@nadeemhadi.com', phone: '0342-4397177',
+password: 'admin123', role: 'admin', status: 'active', createdAt: serverTimestamp(), lastLogin: null
+});
+}
+}
+async function initializeDefaultPackages() {
+const packagesSnapshot = await getDocs(collection(db, "packages"));
+if(packagesSnapshot.empty) {
+await addDoc(collection(db, "packages"), {
+titleEn: 'Umrah Package - Economy', priceEn: 'PKR 325,000',
+meccaHotelEn: '3-Star, 500m from Haram',
+medinaHotelEn: '3-Star, 500m from Nabawi',
+totalDays: 30, meccaDays: 15, medinaDays: 15, departureDate: '', returnDate: ''
+});
+await addDoc(collection(db, "packages"), {
+titleEn: 'Umrah Package - VIP', priceEn: 'PKR 550,000',
+meccaHotelEn: '5-Star, 50m from Haram',
+medinaHotelEn: '5-Star, 50m from Nabawi',
+totalDays: 21, meccaDays: 10, medinaDays: 11, departureDate: '', returnDate: ''
+});
+}
+}
+async function loadRolesFromFirestore() {
+try {
+const docSnap = await getDoc(doc(db, "system_settings", "roles"));
+if (docSnap.exists()) {
+window.ROLES = docSnap.data().roles;
+}
+} catch (e) { console.log("Using default roles."); }
+}
 
-    <!-- FLIGHT SEARCH JAVASCRIPT -->
-    <script>
-        // Set current year
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+// Update greeting based on time of day
+window.updateGreeting = function() {
+const hour = new Date().getHours();
+let greeting = 'morning';
+if (hour >= 12 && hour < 17) {
+greeting = 'afternoon';
+} else if (hour >= 17) {
+greeting = 'evening';
+}
+const el = document.getElementById('greetingTime');
+if(el) el.textContent = greeting;
+}
 
-        // Set default dates
-        const today = new Date();
-        const departureDefault = new Date(today);
-        departureDefault.setDate(today.getDate() + 7);
-        const returnDefault = new Date(today);
-        returnDefault.setDate(today.getDate() + 14);
+window.addEventListener('DOMContentLoaded', async () => {
+document.getElementById('current-year').textContent = new Date().getFullYear();
+await initializeDefaultAdmin();
+await initializeDefaultPackages();
+await loadRolesFromFirestore();
+setupRealtimeListeners();
+window.checkAuth();
+window.renderCustomPackages();
 
-        document.getElementById('departureDate').valueAsDate = departureDefault;
-        document.getElementById('returnDate').valueAsDate = returnDefault;
-        document.getElementById('departureDate').min = today.toISOString().split('T')[0];
-        document.getElementById('returnDate').min = today.toISOString().split('T')[0];
+// === FIX: Restore Staff Session on Refresh ===
+const savedStaff = localStorage.getItem('currentStaffUser');
+if (savedStaff) {
+try {
+window.currentStaffUser = JSON.parse(savedStaff);
+window.isAdminLoggedIn = true;
+showAdminDashboard();
+updateUIBasedOnPermissions();
+} catch (e) {
+localStorage.removeItem('currentStaffUser');
+}
+}
+// ============================================
 
-        // Trip Type Tabs
-        let tripType = 'return';
-        document.querySelectorAll('.flight-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                document.querySelectorAll('.flight-tab').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                tripType = this.dataset.type;
+const urlParams = new URLSearchParams(window.location.search);
+if(urlParams.get('view') === 'admin') setTimeout(() => { window.openStaffLogin(); }, 100);
+});
+window.showToast = function(message) {
+const toast = document.getElementById('toast');
+toast.textContent = message;
+toast.classList.add('show');
+setTimeout(() => { toast.classList.remove('show'); }, 3000);
+}
+window.closeModal = function(modalId) {
+const modal = document.getElementById(modalId);
+if (modal) modal.style.display = 'none';
+}
+window.showSection = function(sectionId) {
+document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+}
+window.onclick = function(event) {
+if (event.target.classList.contains('modal')) event.target.style.display = 'none';
+}
+window.hasPermission = function(permission) {
+if (!window.currentStaffUser) return false;
+const role = window.ROLES[window.currentStaffUser.role];
+return role && role.permissions.includes(permission);
+}
+window.logActivity = async function(type, message) {
+await addDoc(collection(db, "activityLog"), {
+type, message, timestamp: serverTimestamp(),
+staffName: window.currentStaffUser ? window.currentStaffUser.name : 'System'
+});
+}
+window.openRegisterModal = function() { document.getElementById('registerModal').style.display = 'block'; }
+window.openLoginModal = function() { document.getElementById('loginModal').style.display = 'block'; }
+window.handleRegister = async function(e) {
+e.preventDefault();
+const name = document.getElementById('regName').value;
+const email = document.getElementById('regEmail').value.trim().toLowerCase();
+const phone = document.getElementById('regPhone').value;
+const password = document.getElementById('regPassword').value;
+const confirm = document.getElementById('regConfirmPassword').value;
+if(password !== confirm) { showToast("Passwords do not match!"); return; }
+try {
+const q = query(collection(db, "users"), where("email", "==", email));
+const snap = await getDocs(q);
+if(!snap.empty) { showToast("Email already registered!"); return; }
+await addDoc(collection(db, "users"), { name, email, phone, password, rewardPoints: 0, registeredAt: serverTimestamp() });
+showToast("Registration successful! Please login.");
+closeModal('registerModal');
+openLoginModal();
+} catch(err) {
+console.error(err);
+showToast("Error: " + err.message);
+}
+}
+window.handleLogin = async function(e) {
+e.preventDefault();
+const identifier = document.getElementById('loginEmail').value.trim();
+const password = document.getElementById('loginPassword').value;
+let user = null;
+const isPhone = /^[0+]/.test(identifier);
+try {
+if (isPhone) {
+const q = query(collection(db, "users"), where("phone", "==", identifier));
+const snap = await getDocs(q);
+snap.forEach(doc => { if(doc.data().password === password) user = { id: doc.id, ...doc.data() }; });
+} else {
+const q = query(collection(db, "users"), where("email", "==", identifier.toLowerCase()));
+const snap = await getDocs(q);
+snap.forEach(doc => { if(doc.data().password === password) user = { id: doc.id, ...doc.data() }; });
+}
+} catch (err) {
+console.error("Login error:", err);
+showToast("Database error.");
+return;
+}
+if(user) {
+window.currentUser = user;
+localStorage.setItem('currentUser', JSON.stringify(user));
+closeModal('loginModal');
+checkAuth();
+showToast("Welcome, " + user.name + "!");
+} else { showToast("Invalid email/phone or password!"); }
+}
+window.checkAuth = function() {
+const saved = localStorage.getItem('currentUser');
+if(saved) {
+window.currentUser = JSON.parse(saved);
+document.getElementById('userInfo').style.display = 'flex';
+document.getElementById('userNameDisplay').textContent = window.currentUser.name;
+document.getElementById('authLinks').style.display = 'none';
+} else {
+document.getElementById('userInfo').style.display = 'none';
+document.getElementById('authLinks').style.display = 'flex';
+}
+}
+window.logout = function() {
+window.currentUser = null;
+localStorage.removeItem('currentUser');
+checkAuth();
+showToast("Logged out successfully.");
+}
+window.openDashboard = function() {
+if(!window.currentUser) { openLoginModal(); return; }
+document.getElementById('dashboardModal').style.display = 'block';
+loadDashboard();
+}
+window.loadDashboard = function() {
+if(!window.currentUser) return;
+document.getElementById('dashboardUserName').textContent = window.currentUser.name;
+const userBookings = window.bookings.filter(b => b.userId === window.currentUser.id);
+document.getElementById('totalBookings').textContent = userBookings.length;
+document.getElementById('confirmedBookings').textContent = userBookings.filter(b => b.status === 'confirmed').length;
+document.getElementById('pendingBookings').textContent = userBookings.filter(b => b.status === 'pending').length;
+document.getElementById('rewardPoints').textContent = window.currentUser.rewardPoints || 0;
+const list = document.getElementById('bookingList');
+list.innerHTML = '<h3 style="color: var(--primary-green); margin: 25px 0 15px;">Your Bookings</h3>';
+if(userBookings.length === 0) list.innerHTML += '<p>No bookings found.</p>';
+else {
+userBookings.forEach(b => {
+list.innerHTML += `<div class="booking-item"><h4>${b.item} <span class="status-badge status-${b.status}">${b.status}</span></h4><p><strong>Date:</strong> ${b.date || 'TBD'}</p><p><strong>Ref ID:</strong> ${b.id}</p></div>`;
+});
+}
+}
+window.openPaymentModal = function() { document.getElementById('paymentModal').style.display = 'block'; }
+window.selectPayment = function(el, method) {
+document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+el.classList.add('selected');
+window.selectedPayment = method;
+document.getElementById('selectedPaymentMethod').textContent = method;
+document.getElementById('paymentDetails').style.display = 'block';
+const info = document.getElementById('paymentMethodInfo');
+info.style.display = 'block';
+info.innerHTML = `<h4><i class="fas fa-info-circle"></i> ${method} Details</h4><p>Instructions for ${method} will appear here.</p>`;
+}
+window.processPayment = function() {
+if(!window.selectedPayment) { showToast("Please select a payment method."); return; }
+showToast("Payment processing...");
+setTimeout(() => { closeModal('paymentModal'); showToast("Payment successful!"); }, 1500);
+}
+window.openReferralModal = function() { document.getElementById('referralModal').style.display = 'block'; }
+window.copyReferralCode = function() {
+const code = document.getElementById('referralCode').textContent;
+navigator.clipboard.writeText(code).then(() => showToast("Referral code copied!"));
+}
+window.openSearchModal = function() { document.getElementById('searchModal').style.display = 'block'; }
+window.performSearch = function() {
+const dest = document.getElementById('searchDestination').value;
+const type = document.getElementById('searchType').value;
+showToast(`Searching for ${type} to ${dest}...`);
+closeModal('searchModal');
+}
+window.openETicketsModal = function() {
+document.getElementById('eticketsModal').style.display = 'block';
+const b = window.currentTicketBooking || window.bookings[0] || {};
+const refId = b.id || 'NHT-2026-001';
+const passengerName = b.userName || window.currentUser?.name || 'Guest Passenger';
+const flightNum = b.flight || b.pnr || 'PK-751';
+const from = b.from || 'Lahore (LHE)';
+const to = b.to || 'Jeddah (JED)';
+const date = b.date || b.travelDate || new Date().toLocaleDateString();
+const time = b.time || '08:45';
+const gate = b.gate || 'B12';
+const seat = b.seat || '15A';
+const classType = b.class || 'Economy';
+document.getElementById('ticketsList').innerHTML = `
+<div class="professional-ticket">
+<div class="ticket-header">
+<div class="logo-area"><i class="fas fa-kaaba"></i></div>
+<div>
+<h2>NADEEM HADI TRAVEL</h2>
+<p style="font-size: 0.8rem; color: #666;">Boarding Pass / E-Ticket</p>
+</div>
+<div style="text-align: right;">
+<p style="font-size: 0.75rem; color: #666;">Ref ID</p>
+<p style="font-weight: 700; color: var(--primary-green);">${refId}</p>
+</div>
+</div>
+<div class="ticket-body">
+<div>
+<div class="ticket-field"><label>PASSENGER NAME</label><div class="value">${passengerName}</div></div>
+<div class="ticket-field"><label>FLIGHT NUMBER</label><div class="value">${flightNum}</div></div>
+<div class="ticket-field"><label>FROM</label><div class="value">${from}</div></div>
+<div class="ticket-field"><label>TO</label><div class="value">${to}</div></div>
+</div>
+<div>
+<div class="ticket-field"><label>DATE</label><div class="value">${date}</div></div>
+<div class="ticket-field"><label>TIME</label><div class="value">${time}</div></div>
+<div class="ticket-field"><label>GATE</label><div class="value">${gate}</div></div>
+<div class="ticket-field"><label>SEAT</label><div class="value">${seat}</div></div>
+<div class="ticket-field"><label>CLASS</label><div class="value">${classType}</div></div>
+</div>
+</div>
+<div class="ticket-footer">
+<div class="ticket-barcode">||| ${refId} |||</div>
+<div class="ticket-qr">
+<i class="fas fa-qrcode" style="font-size: 2rem;"></i>
+<p style="margin-top: 5px;">SCAN</p>
+</div>
+</div>
+<div style="margin-top: 15px; padding-top: 12px; border-top: 1px solid #eee; font-size: 0.75rem; color: #666; text-align: center;">
+<p><strong>Nadeem Hadi Travel & Tours</strong> | Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha</p>
+<p> 0342-4397177 | 0316-4815975 | 0302-6901114</p>
+</div>
+</div>
+`;
+}
+window.printTicket = function(id) {
+const b = window.bookings.find(bk => bk.id === id);
+window.currentTicketBooking = b;
+window.openETicketsModal();
+setTimeout(() => window.print(), 500);
+}
+window.saveAsPDF = function() { window.openETicketsModal(); setTimeout(() => window.print(), 500); }
+window.openServiceDetails = function(title, type) {
+document.getElementById('serviceDetailsTitle').textContent = title;
+document.getElementById('serviceDetailsContent').innerHTML = `<p>Details for ${title} (${type}). Contact us for booking and more information.</p>`;
+document.getElementById('serviceDetailsModal').style.display = 'block';
+}
+window.confirmAddService = function() { showToast("Service added to your inquiry!"); closeModal('serviceDetailsModal'); }
 
-                const returnDateGroup = document.getElementById('returnDateGroup');
-                const returnDateInput = document.getElementById('returnDate');
+// ============ MODERN DASHBOARD FUNCTIONS ============
+window.showDashboardHome = function(element) {
+document.getElementById('dashboardHome').style.display = 'block';
+document.getElementById('adminPagesContainer').style.display = 'none';
+document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+if(element) element.classList.add('active');
+}
 
-                if (tripType === 'oneway') {
-                    returnDateGroup.style.display = 'none';
-                    returnDateInput.required = false;
-                } else {
-                    returnDateGroup.style.display = 'block';
-                    returnDateInput.required = (tripType === 'return');
-                }
-            });
-        });
+window.showAdminPageFromGrid = function(pageName, element) {
+const pagePermissions = {
+'dashboard':'view_dashboard','bookings':'view_bookings','inquiries':'manage_inquiries',
+'users':'view_users','packages':'view_packages','staff':'manage_staff',
+'permissions':'manage_permissions','activity-log':'view_activity_log',
+'financial':'view_financial_reports','expenses':'manage_expenses',
+'visa-tracker':'upload_visa','groups':'manage_bookings','promotions':'edit_settings',
+'analytics':'view_financial_reports','settings':'system_configuration'
+};
+const requiredPermission = pagePermissions[pageName];
+if (requiredPermission && !hasPermission(requiredPermission)) {
+showToast(`You do not have permission to access ${pageName}`);
+return;
+}
+// Hide dashboard home, show admin pages container
+document.getElementById('dashboardHome').style.display = 'none';
+document.getElementById('adminPagesContainer').style.display = 'block';
+// Hide all pages, show selected
+document.querySelectorAll('.admin-page').forEach(el => el.style.display = 'none');
+const pageEl = document.getElementById(`full-page-${pageName}`);
+if(pageEl) pageEl.style.display = 'block';
+// Update nav tabs
+document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+if(element && element.classList.contains('nav-tab')) {
+element.classList.add('active');
+}
+const titles = {
+dashboard:'Dashboard Overview',bookings:'Manage Bookings',inquiries:'Customer Inquiries',
+packages:'Edit Packages',users:'Registered Users',staff:'Staff Management',
+permissions:'Role Permissions','activity-log':'Activity Log',
+financial:'Financial Reports',expenses:'Expenses Management',
+'visa-tracker':'Visa Tracker',groups:'Group Management',
+promotions:'Promotions',analytics:'Analytics',settings:'System Settings'
+};
+document.getElementById('admin-page-title').textContent = titles[pageName] || 'Dashboard';
+window.loadFullAdminData();
+if (pageName === 'dashboard') {
+window.loadDashboardStats();
+window.loadRecentActivity();
+}
+if (pageName === 'staff') window.loadStaffList();
+if (pageName === 'permissions') window.loadPermissionsMatrix();
+if (pageName === 'activity-log') window.loadActivityLog();
+if (pageName === 'financial') window.loadFinancialReports();
+if (pageName === 'expenses') window.loadExpenses();
+if (pageName === 'visa-tracker') window.loadVisaTracker();
+if (pageName === 'groups') window.loadGroups();
+if (pageName === 'promotions') window.loadPromotions();
+if (pageName === 'analytics') window.loadAnalytics();
+}
 
-        // City to IATA mapping (fixed duplicate key)
-        const cityToIATA = {
-            'lahore': 'LHE', 'karachi': 'KHI', 'islamabad': 'ISB', 'sialkot': 'SKT',
-            'multan': 'MUX', 'peshawar': 'PEW', 'quetta': 'UET', 'faisalabad': 'LYP',
-            'jeddah': 'JED', 'madinah': 'MED', 'riyadh': 'RUH', 'dammam': 'DMM',
-            'dubai': 'DXB', 'abu dhabi': 'AUH', 'sharjah': 'SHJ', 'doha': 'DOH',
-            'muscat': 'MCT', 'bahrain': 'BAH', 'kuwait': 'KWI',
-            'istanbul': 'IST', 'london': 'LON', 'manchester': 'MAN',
-            'paris': 'PAR', 'frankfurt': 'FRA', 'amsterdam': 'AMS',
-            'new york': 'NYC', 'toronto': 'YTO', 'singapore': 'SIN',
-            'bangkok': 'BKK', 'kuala lumpur': 'KUL', 'tokyo': 'TYO',
-            'beijing': 'BJS', 'delhi': 'DEL', 'mumbai': 'BOM', 'dhaka': 'DAC',
-            'cairo': 'CAI', 'johannesburg': 'JNB'
-        };
+window.showAdminDashboard = function() {
+document.querySelectorAll('header, .hero, .madinah-banner, .section, footer, .floating-wa').forEach(el => { el.style.display = 'none'; });
+document.getElementById('admin-fullscreen').style.display = 'flex';
+window.updateGreeting();
+window.updateUIBasedOnPermissions();
+window.loadFullAdminData();
+window.loadDashboardStats();
+}
 
-        function getIATACode(input) {
-            if (!input) return '';
-            const match = input.match(/\(([A-Z]{3})\)/);
-            if (match) return match[1];
-            const cityName = input.toLowerCase().trim();
-            for (const [city, code] of Object.entries(cityToIATA)) {
-                if (cityName.includes(city)) return code;
-            }
-            if (/^[A-Z]{3}$/i.test(cityName)) return cityName.toUpperCase();
-            return input.substring(0, 3).toUpperCase();
-        }
+window.exitAdminView = function() {
+window.isAdminLoggedIn = false; window.currentStaffUser = null;
+localStorage.removeItem('currentStaffUser');
+window.history.pushState({}, document.title, window.location.pathname);
+window.location.reload();
+}
 
-        // Form submission
-        document.getElementById('flightSearchForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+window.updateUIBasedOnPermissions = function() {
+if (!window.currentStaffUser) return;
+document.getElementById('currentStaffName').textContent = window.currentStaffUser.name;
+document.getElementById('staffDisplayName').textContent = window.currentStaffUser.name.toUpperCase();
+const roleBadge = document.getElementById('currentStaffRole');
+roleBadge.textContent = window.ROLES[window.currentStaffUser.role].name;
+roleBadge.className = `staff-role-badge role-${window.currentStaffUser.role}`;
+// Show/hide app icons based on permissions
+document.getElementById('appStaff').style.display = hasPermission('manage_staff') ? 'flex' : 'none';
+document.getElementById('appPermissions').style.display = hasPermission('manage_permissions') ? 'flex' : 'none';
+document.getElementById('appActivity').style.display = hasPermission('view_activity_log') ? 'flex' : 'none';
+document.getElementById('appFinancial').style.display = hasPermission('view_financial_reports') ? 'flex' : 'none';
+document.getElementById('appExpenses').style.display = hasPermission('manage_expenses') ? 'flex' : 'none';
+document.getElementById('appVisa').style.display = hasPermission('upload_visa') ? 'flex' : 'none';
+document.getElementById('appGroups').style.display = hasPermission('manage_bookings') ? 'flex' : 'none';
+document.getElementById('appPromotions').style.display = hasPermission('edit_settings') ? 'flex' : 'none';
+document.getElementById('appAnalytics').style.display = hasPermission('view_financial_reports') ? 'flex' : 'none';
+document.getElementById('appSettings').style.display = hasPermission('system_configuration') ? 'flex' : 'none';
+}
 
-            const origin = getIATACode(document.getElementById('origin').value);
-            const destination = getIATACode(document.getElementById('destination').value);
-            const departureDate = document.getElementById('departureDate').value;
-            const returnDate = document.getElementById('returnDate').value;
-            const passengers = document.getElementById('passengers').value;
-            const cabinClass = document.getElementById('cabinClass').value;
-
-            if (!origin || !destination || !departureDate) {
-                alert('Please fill in all required fields');
-                return;
-            }
-
-            let searchUrl = `https://www.kiwi.com/en/search/results/${origin.toLowerCase()}/${destination.toLowerCase()}/${departureDate}`;
-            if (tripType === 'return' && returnDate) {
-                searchUrl += `/${returnDate}`;
-            }
-
-            const params = new URLSearchParams();
-            params.append('sortBy', 'price');
-            params.append('adults', passengers);
-            if (cabinClass === 'business') params.append('bookingToken', 'business');
-            if (tripType === 'oneway') params.append('travelType', 'oneway');
-
-            searchUrl += '?' + params.toString();
-            window.open(searchUrl, '_blank');
-
-            setTimeout(() => {
-                const confirmBooking = confirm('Flight search opened in new tab!\n\nWould you also like to contact us on WhatsApp for special group rates and assistance?');
-                if (confirmBooking) {
-                    const message = `Hello! I'm interested in booking a flight from ${origin} to ${destination} on ${departureDate}. Please share the best available rates.`;
-                    window.open(`https://wa.me/923424397177?text=${encodeURIComponent(message)}`, '_blank');
-                }
-            }, 1000);
-        });
-
-        // Popular routes click
-        document.querySelectorAll('.route-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const from = this.dataset.from;
-                const to = this.dataset.to;
-                document.getElementById('origin').value = from;
-                document.getElementById('destination').value = to;
-                document.getElementById('flights').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                const form = document.querySelector('.flight-search-box');
-                form.style.boxShadow = '0 0 0 4px #D4AF37';
-                setTimeout(() => {
-                    form.style.boxShadow = '0 15px 40px rgba(0,0,0,0.1)';
-                }, 1500);
-            });
-        });
-
-        // Update return date min
-        document.getElementById('departureDate').addEventListener('change', function() {
-            const minReturn = this.value;
-            document.getElementById('returnDate').min = minReturn;
-            const currentReturn = document.getElementById('returnDate').value;
-            if (currentReturn && currentReturn < minReturn) {
-                document.getElementById('returnDate').value = minReturn;
-            }
-        });
-    </script>
-
+window.loadDashboardStats = function() {
+const total = window.bookings.length;
+const pending = window.bookings.filter(b => b.status === 'pending').length;
+const confirmed = window.bookings.filter(b => b.status === 'confirmed').length;
+const rejected = window.bookings.filter(b => b.status === 'rejected').length;
+document.getElementById('fs-total-bookings').textContent = total;
+document.getElementById('fs-pending-bookings').textContent = pending;
+document.getElementById('fs-revenue').textContent = confirmed;
+document.getElementById('fs-inquiries').textContent = window.inquiries.length;
+document.getElementById('fs-users').textContent = window.users.length;
+const maxVal = Math.max(pending, confirmed, rejected, 1);
+document.getElementById('booking-status-chart').innerHTML = `
+<div style="flex: 1; text-align: center;">
+<div style="height: ${(pending/maxVal)*100}%; background: #ffc107; border-radius: 5px 5px 0 0; min-height: 10px;"></div>
+<p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Pending<br>${pending}</p>
+</div>
+<div style="flex: 1; text-align: center;">
+<div style="height: ${(confirmed/maxVal)*100}%; background: #28a745; border-radius: 5px 5px 0 0; min-height: 10px;"></div>
+<p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Confirmed<br>${confirmed}</p>
+</div>
+<div style="flex: 1; text-align: center;">
+<div style="height: ${(rejected/maxVal)*100}%; background: #dc3545; border-radius: 5px 5px 0 0; min-height: 10px;"></div>
+<p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Rejected<br>${rejected}</p>
+</div>
+`;
+document.getElementById('fs-recent-bookings').innerHTML = window.bookings.slice(-5).reverse().map(b =>
+`<tr><td><strong>${b.id}</strong></td><td>${b.userName}</td><td>${b.item}</td><td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td></tr>`
+).join('') || '<tr><td colspan="4" style="text-align:center;">No recent bookings</td></tr>';
+}
+window.loadRecentActivity = function() {
+const recentDiv = document.getElementById('recent-activity');
+if(!recentDiv) return;
+recentDiv.innerHTML = window.activityLog.slice(-5).reverse().map(log => `
+<div style="padding: 8px 0; border-bottom: 1px solid #eee; font-size: 0.85rem;">
+<strong>${log.staffName}</strong>: ${log.message}
+<div style="color: #999; font-size: 0.75rem;">${log.timestamp ? new Date(log.timestamp.toDate()).toLocaleString() : 'Just now'}</div>
+</div>
+`).join('') || '<p style="color: #999; text-align: center; padding: 20px;">No recent activity</p>';
+}
+window.loadFullAdminData = function() {
+if(!document.getElementById('fs-total-bookings')) return;
+window.loadDashboardStats();
+const canEditBookings = hasPermission('edit_bookings');
+const canDeleteBookings = hasPermission('delete_bookings');
+const canManageBookings = hasPermission('manage_bookings');
+document.getElementById('fs-all-bookings').innerHTML = [...window.bookings].reverse().map(b => {
+let actions = '';
+if (canManageBookings && b.status === 'pending') {
+actions += `<button class="action-btn btn-approve" onclick="updateBookingStatus('${b.id}', 'confirmed')"><i class="fas fa-check"></i></button>`;
+actions += `<button class="action-btn btn-reject" onclick="updateBookingStatus('${b.id}', 'rejected')"><i class="fas fa-times"></i></button>`;
+}
+if (canEditBookings) {
+actions += `<button class="action-btn btn-edit" onclick="openBookingDetailsModal('${b.id}')" title="Add/Edit Details"><i class="fas fa-file-signature"></i></button>`;
+actions += `<button class="action-btn" style="background: #ffc107; color: #333;" onclick="openTicketEditModal('${b.id}')" title="Edit Ticket"><i class="fas fa-edit"></i></button>`;
+}
+actions += `<button class="action-btn btn-pdf" onclick="printTicket('${b.id}')" title="Print/PDF Ticket"><i class="fas fa-file-pdf"></i></button>`;
+if (canDeleteBookings) actions += `<button class="action-btn btn-delete" onclick="deleteBooking('${b.id}')"><i class="fas fa-trash"></i></button>`;
+return `<tr><td><strong>${b.id}</strong></td><td>${b.userName}</td><td>${b.gender || '-'}</td><td>${b.item}</td><td>${b.date}</td><td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td><td>${actions}</td></tr>`;
+}).join('') || '<tr><td colspan="7" style="text-align:center;">No bookings found</td></tr>';
+const canDeleteInquiries = hasPermission('delete_inquiries');
+document.getElementById('fs-all-inquiries').innerHTML = window.inquiries.map((inq) =>
+`<tr><td>${inq.name}</td><td><a href="tel:${inq.phone}" style="color:var(--primary-green)">${inq.phone}</a></td><td style="max-width: 300px;">${inq.message}</td><td><a href="https://wa.me/92${inq.phone.replace(/^0/, '')}" target="_blank" class="action-btn btn-approve"><i class="fab fa-whatsapp"></i></a>${canDeleteInquiries ? `<button class="action-btn btn-delete" onclick="deleteInquiry('${inq.id}')"><i class="fas fa-trash"></i></button>` : ''}</td></tr>`
+).join('') || '<tr><td colspan="4" style="text-align:center;">No inquiries</td></tr>';
+const canDeleteUsers = hasPermission('delete_users');
+const canViewUserDetails = hasPermission('view_user_details');
+document.getElementById('fs-all-users').innerHTML = window.users.map((u) =>
+`<tr><td>${u.name}</td><td>${u.email}</td><td>${u.phone}</td><td>${u.rewardPoints || 0}</td><td>${u.registeredAt ? new Date(u.registeredAt.toDate ? u.registeredAt.toDate() : u.registeredAt).toLocaleDateString() : ''}</td><td>${canViewUserDetails ? `<button class="action-btn btn-edit" onclick="openUserDetailModal('${u.id}')" title="View Details"><i class="fas fa-eye"></i></button>` : ''}${canDeleteUsers ? `<button class="action-btn btn-delete" onclick="deleteUser('${u.id}')"><i class="fas fa-trash"></i></button>` : ''}</td></tr>`
+).join('') || '<tr><td colspan="6" style="text-align:center;">No registered users</td></tr>';
+const canEditPackages = hasPermission('edit_packages');
+const canDeletePackages = hasPermission('delete_packages');
+const pkgList = document.getElementById('fs-packages-list');
+if(pkgList) {
+pkgList.innerHTML = window.customPackages.map(pkg =>
+`<div class="dashboard-card" style="text-align: left; padding: 20px;"><h3 style="color: var(--accent-gold); margin-bottom: 10px;">${pkg.titleEn}</h3><p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">${pkg.priceEn}</p><p><strong>Mecca:</strong> ${pkg.meccaHotelEn}</p><p><strong>Medina:</strong> ${pkg.medinaHotelEn}</p><p><strong>Duration:</strong> ${pkg.totalDays} Days</p>${pkg.departureDate ? `<p><strong>Departure:</strong> ${pkg.departureDate}</p>` : ''}${pkg.returnDate ? `<p><strong>Return:</strong> ${pkg.returnDate}</p>` : ''}<div style="margin-top: 15px; display: flex; gap: 10px;">${canEditPackages ? `<button class="action-btn btn-approve" onclick="openPackageEditor('${pkg.id}')"><i class="fas fa-edit"></i> Edit</button>` : ''}${canDeletePackages ? `<button class="action-btn btn-delete" onclick="deletePackage('${pkg.id}')"><i class="fas fa-trash"></i> Delete</button>` : ''}</div></div>`
+).join('');
+}
+}
+window.loadStaffList = function() {
+const list = document.getElementById('staffList');
+if(!list) return;
+document.getElementById('total-staff').textContent = window.staffMembers.length;
+document.getElementById('admin-count').textContent = window.staffMembers.filter(s => s.role === 'admin').length;
+document.getElementById('manager-count').textContent = window.staffMembers.filter(s => s.role === 'manager').length;
+document.getElementById('agent-count').textContent = window.staffMembers.filter(s => s.role === 'agent').length;
+list.innerHTML = window.staffMembers.map(s => `
+<div class="staff-card">
+<div class="staff-card-header">
+<div style="display:flex; align-items:center; gap:15px;">
+<div class="staff-avatar">${s.photoUrl ? `<img src="${s.photoUrl}" alt="${s.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>${s.name.charAt(0)}</span>'">` : s.name.charAt(0)}</div>
+<div><h4 style="margin:0;">${s.name}</h4><p style="margin:0; color:#666; font-size:0.9rem;">${s.email}</p></div>
+</div>
+<span class="staff-role-badge role-${s.role}">${window.ROLES[s.role].name}</span>
+</div>
+<p><i class="fas fa-phone"></i> ${s.phone}</p>
+<div style="margin-top:15px; display:flex; gap:10px;">
+<button class="action-btn btn-edit" onclick="openAddStaffModal('${s.id}')"><i class="fas fa-edit"></i> Edit</button>
+${hasPermission('delete_staff') ? `<button class="action-btn btn-delete" onclick="deleteStaff('${s.id}')"><i class="fas fa-trash"></i> Delete</button>` : ''}
+</div>
+</div>
+`).join('');
+}
+window.openAddStaffModal = function(id) {
+document.getElementById('staffModalTitle').textContent = id ? 'Edit Staff Member' : 'Add New Staff Member';
+document.getElementById('staffEditId').value = id || '';
+document.getElementById('staffPhotoPreview').innerHTML = '';
+document.getElementById('staffPhotoUrl').value = '';
+if(id) {
+const s = window.staffMembers.find(m => m.id === id);
+if(s) {
+document.getElementById('staffName').value = s.name;
+document.getElementById('staffEmail').value = s.email;
+document.getElementById('staffPhone').value = s.phone;
+document.getElementById('staffPassword').value = '';
+document.getElementById('staffPhotoUrl').value = s.photoUrl || '';
+if(s.photoUrl) {
+document.getElementById('staffPhotoPreview').innerHTML = `<img src="${s.photoUrl}" style="max-width: 150px; border-radius: 10px; border: 2px solid var(--accent-gold);" onerror="this.style.display='none'">`;
+}
+selectRole(s.role, document.querySelector(`.role-option[onclick*="${s.role}"]`));
+}
+} else {
+document.getElementById('staffName').value = '';
+document.getElementById('staffEmail').value = '';
+document.getElementById('staffPhone').value = '';
+document.getElementById('staffPassword').value = '';
+document.querySelectorAll('.role-option').forEach(o => o.classList.remove('selected'));
+document.getElementById('staffRole').value = '';
+}
+document.getElementById('staffModal').style.display = 'block';
+}
+window.handleStaffPhotoUpload = async function(input) {
+const file = input.files[0];
+if(!file) return;
+if(file.size > 2 * 1024 * 1024) {
+showToast("File too large (Max 2MB)");
+return;
+}
+showToast("Uploading photo...");
+try {
+const fileName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+const storageRef = ref(storage, `staff_photos/${fileName}`);
+await uploadBytes(storageRef, file);
+const url = await getDownloadURL(storageRef);
+document.getElementById('staffPhotoUrl').value = url;
+document.getElementById('staffPhotoPreview').innerHTML = `<img src="${url}" style="max-width: 150px; border-radius: 10px; border: 2px solid var(--accent-gold);" onerror="this.style.display='none'">`;
+showToast("Photo uploaded!");
+} catch(err) {
+console.error("Upload error:", err);
+showToast("Upload failed: " + err.message);
+}
+}
+window.selectRole = function(role, el) {
+document.querySelectorAll('.role-option').forEach(o => o.classList.remove('selected'));
+el.classList.add('selected');
+document.getElementById('staffRole').value = role;
+}
+window.saveStaff = async function(e) {
+e.preventDefault();
+const id = document.getElementById('staffEditId').value;
+const data = {
+name: document.getElementById('staffName').value,
+email: document.getElementById('staffEmail').value.toLowerCase(),
+phone: document.getElementById('staffPhone').value,
+role: document.getElementById('staffRole').value,
+status: 'active',
+photoUrl: document.getElementById('staffPhotoUrl').value
+};
+const pwd = document.getElementById('staffPassword').value;
+if(pwd) data.password = pwd;
+try {
+if(id) {
+await updateDoc(doc(db, "staff", id), data);
+await logActivity('edit', `Updated staff ${data.name}`);
+} else {
+if(!pwd) { showToast("Password is required for new staff."); return; }
+data.password = pwd;
+data.createdAt = serverTimestamp();
+await addDoc(collection(db, "staff"), data);
+await logActivity('create', `Added new staff ${data.name}`);
+}
+showToast("Staff saved successfully!");
+closeModal('staffModal');
+window.loadStaffList();
+} catch(err) {
+console.error("Save error:", err);
+showToast("Error: " + err.message);
+}
+}
+window.deleteStaff = async function(id) {
+if(!confirm("Are you sure?")) return;
+const s = window.staffMembers.find(m => m.id === id);
+await deleteDoc(doc(db, "staff", id));
+await logActivity('delete', `Deleted staff ${s.name}`);
+showToast("Staff deleted.");
+window.loadStaffList();
+}
+window.loadPermissionsMatrix = async function() {
+const tbody = document.getElementById('permissionsTableBody');
+if(!tbody) return;
+try {
+const docSnap = await getDoc(doc(db, "system_settings", "roles"));
+if (docSnap.exists()) {
+window.ROLES = docSnap.data().roles;
+}
+} catch (e) {
+console.error("Error loading roles", e);
+}
+const perms = Object.keys(window.PERMISSION_LABELS);
+tbody.innerHTML = perms.map(p => {
+let row = `<tr><td style="text-align:left;">${window.PERMISSION_LABELS[p]}</td>`;
+['admin', 'manager', 'agent', 'accountant', 'support'].forEach(r => {
+const checked = window.ROLES[r] && window.ROLES[r].permissions.includes(p) ? 'checked' : '';
+row += `<td><input type="checkbox" class="permission-checkbox" data-role="${r}" data-perm="${p}" ${checked}></td>`;
+});
+return row + `</tr>`;
+}).join('');
+}
+window.savePermissions = async function() {
+document.querySelectorAll('.permission-checkbox').forEach(cb => {
+const role = cb.dataset.role;
+const perm = cb.dataset.perm;
+if(cb.checked) {
+if(!window.ROLES[role].permissions.includes(perm)) window.ROLES[role].permissions.push(perm);
+} else {
+window.ROLES[role].permissions = window.ROLES[role].permissions.filter(p => p !== perm);
+}
+});
+try {
+await setDoc(doc(db, "system_settings", "roles"), { roles: window.ROLES });
+showToast("Permissions saved to database!");
+await logActivity('edit', `Updated system permissions`);
+} catch (e) {
+showToast("Error saving permissions: " + e.message);
+}
+}
+window.loadActivityLog = function() {
+const list = document.getElementById('activityLogList');
+if(!list) return;
+list.innerHTML = window.activityLog.slice().reverse().map(log => `
+<div class="log-item">
+<div class="log-action">
+<div class="log-icon log-${log.type}"><i class="fas fa-${log.type === 'login' ? 'sign-in-alt' : log.type === 'edit' ? 'edit' : log.type === 'delete' ? 'trash' : 'plus'}"></i></div>
+<div><strong>${log.staffName}</strong> <span style="color:#666;">${log.message}</span></div>
+</div>
+<div style="font-size:0.8rem; color:#999;">${log.timestamp ? new Date(log.timestamp.toDate()).toLocaleString() : 'Just now'}</div>
+</div>
+`).join('') || '<p>No activity yet.</p>';
+}
+window.clearActivityLog = async function() {
+if(!confirm("Clear all logs?")) return;
+const batch = [];
+window.activityLog.forEach(l => batch.push(deleteDoc(doc(db, "activityLog", l.id))));
+await Promise.all(batch);
+showToast("Activity log cleared.");
+}
+window.exportToExcel = function() {
+showToast("Generating comprehensive report...");
+const wb = XLSX.utils.book_new();
+const bookingsData = window.bookings.map(b => ({
+RefID: b.id, Customer: b.userName, Phone: b.phone || '', Email: b.email || '',
+Gender: b.gender || '', Service: b.item, Amount: b.amount || 0, Date: b.date, Status: b.status, Notes: b.notes || ''
+}));
+const wsBookings = XLSX.utils.json_to_sheet(bookingsData);
+XLSX.utils.book_append_sheet(wb, wsBookings, "Bookings");
+const expensesData = window.expenses.map(e => ({
+Date: e.date, Category: e.category, Description: e.description, Amount: e.amount, AddedBy: e.addedBy, ReceiptURL: e.receiptUrl || ''
+}));
+const wsExpenses = XLSX.utils.json_to_sheet(expensesData);
+XLSX.utils.book_append_sheet(wb, wsExpenses, "Expenses");
+const usersData = window.users.map(u => ({
+Name: u.name, Email: u.email, Phone: u.phone, RewardPoints: u.rewardPoints || 0,
+RegisteredDate: u.registeredAt ? new Date(u.registeredAt.toDate ? u.registeredAt.toDate() : u.registeredAt).toLocaleDateString() : ''
+}));
+const wsUsers = XLSX.utils.json_to_sheet(usersData);
+XLSX.utils.book_append_sheet(wb, wsUsers, "Users");
+const inquiriesData = window.inquiries.map(i => ({
+Name: i.name, Phone: i.phone, Email: i.email || '', Message: i.message,
+Date: i.createdAt ? new Date(i.createdAt.toDate ? i.createdAt.toDate() : i.createdAt).toLocaleDateString() : ''
+}));
+const wsInquiries = XLSX.utils.json_to_sheet(inquiriesData);
+XLSX.utils.book_append_sheet(wb, wsInquiries, "Inquiries");
+const totalRevenue = window.bookings.filter(b => b.status === 'confirmed').reduce((sum, b) => sum + (b.amount || 0), 0);
+const totalExpenses = window.expenses.reduce((sum, e) => sum + e.amount, 0);
+const financialData = [{
+Metric: 'Total Revenue', Value: totalRevenue, Status: 'Confirmed Bookings'
+}, { Metric: 'Total Expenses', Value: totalExpenses, Status: 'All Expenses' },
+{ Metric: 'Net Profit', Value: totalRevenue - totalExpenses, Status: 'Revenue - Expenses' },
+{ Metric: 'Total Bookings', Value: window.bookings.length, Status: 'All' },
+{ Metric: 'Pending Bookings', Value: window.bookings.filter(b => b.status === 'pending').length, Status: 'Pending' },
+{ Metric: 'Confirmed Bookings', Value: window.bookings.filter(b => b.status === 'confirmed').length, Status: 'Confirmed' }];
+const wsFinancial = XLSX.utils.json_to_sheet(financialData);
+XLSX.utils.book_append_sheet(wb, wsFinancial, "Financial Summary");
+const staffData = window.staffMembers.map(s => ({
+Name: s.name, Email: s.email, Phone: s.phone, Role: s.role, Status: s.status,
+LastLogin: s.lastLogin ? new Date(s.lastLogin.toDate ? s.lastLogin.toDate() : s.lastLogin).toLocaleDateString() : 'Never'
+}));
+const wsStaff = XLSX.utils.json_to_sheet(staffData);
+XLSX.utils.book_append_sheet(wb, wsStaff, "Staff");
+const dateStr = new Date().toISOString().split('T')[0];
+XLSX.writeFile(wb, `NadeemHadi_Complete_Report_${dateStr}.xlsx`);
+showToast("Complete report exported with 6 sheets!");
+}
+window.renderCustomPackages = function() {
+const grid = document.getElementById('packagesGrid');
+if(!grid) return;
+grid.innerHTML = window.customPackages.map(pkg => `
+<div class="package-card">
+<div class="package-header">
+<h3>${pkg.titleEn}</h3>
+<div class="package-price">${pkg.priceEn}</div>
+</div>
+<div class="package-body">
+<ul>
+<li><i class="fas fa-hotel"></i> ${pkg.meccaHotelEn}</li>
+<li><i class="fas fa-hotel"></i> ${pkg.medinaHotelEn}</li>
+<li><i class="fas fa-calendar-alt"></i> ${pkg.totalDays} Days (${pkg.meccaDays}M / ${pkg.medinaDays}D)</li>
+</ul>
+</div>
+<div class="package-footer">
+<button class="btn" onclick="bookPackage('${pkg.id}')">Book Now</button>
+</div>
+</div>
+`).join('');
+}
+window.bookPackage = function(id) {
+if(!window.currentUser) { openLoginModal(); return; }
+const pkg = window.customPackages.find(p => p.id === id);
+addDoc(collection(db, "bookings"), {
+userId: window.currentUser.id, userName: window.currentUser.name, item: pkg.titleEn,
+date: new Date().toLocaleDateString(), status: "pending", createdAt: serverTimestamp()
+}).then(() => showToast("Package booked! Pending approval."));
+}
+window.openPackageEditor = function(id) {
+document.getElementById('pkgEditId').value = id || '';
+if(id) {
+const p = window.customPackages.find(pkg => pkg.id === id);
+if(p) {
+document.getElementById('pkgTitleEn').value = p.titleEn;
+document.getElementById('pkgPriceEn').value = p.priceEn;
+document.getElementById('pkgMeccaHotelEn').value = p.meccaHotelEn;
+document.getElementById('pkgMedinaHotelEn').value = p.medinaHotelEn;
+document.getElementById('pkgTotalDays').value = p.totalDays;
+document.getElementById('pkgMeccaDays').value = p.meccaDays;
+document.getElementById('pkgMedinaDays').value = p.medinaDays;
+document.getElementById('pkgDepartureDate').value = p.departureDate || '';
+document.getElementById('pkgReturnDate').value = p.returnDate || '';
+}
+} else {
+document.querySelectorAll('#packageEditorModal input, #packageEditorModal textarea').forEach(i => i.value = '');
+}
+document.getElementById('packageEditorModal').style.display = 'block';
+}
+window.savePackage = async function(e) {
+e.preventDefault();
+const id = document.getElementById('pkgEditId').value;
+const data = {
+titleEn: document.getElementById('pkgTitleEn').value,
+priceEn: document.getElementById('pkgPriceEn').value,
+meccaHotelEn: document.getElementById('pkgMeccaHotelEn').value,
+medinaHotelEn: document.getElementById('pkgMedinaHotelEn').value,
+totalDays: parseInt(document.getElementById('pkgTotalDays').value),
+meccaDays: parseInt(document.getElementById('pkgMeccaDays').value),
+medinaDays: parseInt(document.getElementById('pkgMedinaDays').value),
+departureDate: document.getElementById('pkgDepartureDate').value,
+returnDate: document.getElementById('pkgReturnDate').value
+};
+try {
+if(id) {
+await updateDoc(doc(db, "packages", id), data);
+await logActivity('edit', `Updated package ${data.titleEn}`);
+} else {
+await addDoc(collection(db, "packages"), data);
+await logActivity('create', `Added package ${data.titleEn}`);
+}
+showToast("Package saved!");
+closeModal('packageEditorModal');
+} catch(err) { showToast("Error: " + err.message); }
+}
+window.deletePackage = async function(id) {
+if(!confirm("Delete this package?")) return;
+const p = window.customPackages.find(pkg => pkg.id === id);
+await deleteDoc(doc(db, "packages", id));
+await logActivity('delete', `Deleted package ${p.titleEn}`);
+showToast("Package deleted.");
+}
+window.updateBookingStatus = async function(id, status) {
+await updateDoc(doc(db, "bookings", id), { status });
+await logActivity('edit', `Updated booking ${id} to ${status}`);
+showToast("Booking status updated.");
+}
+window.deleteBooking = async function(id) {
+if(!confirm("Delete booking?")) return;
+await deleteDoc(doc(db, "bookings", id));
+await logActivity('delete', `Deleted booking ${id}`);
+showToast("Booking deleted.");
+}
+window.openBookingDetailsModal = function(id) {
+const b = window.bookings.find(bk => bk.id === id);
+document.getElementById('detailsBookingId').value = id;
+document.getElementById('detailsRefId').textContent = id;
+document.getElementById('detailsPnr').value = b.pnr || '';
+document.getElementById('detailsFlight').value = b.flight || '';
+document.getElementById('detailsMeccaHotel').value = b.meccaHotel || '';
+document.getElementById('detailsMedinaHotel').value = b.medinaHotel || '';
+document.getElementById('detailsVisa').value = b.visa || '';
+document.getElementById('detailsNotes').value = b.notes || '';
+document.getElementById('bookingDetailsModal').style.display = 'block';
+}
+window.saveBookingDetails = async function(e) {
+e.preventDefault();
+const id = document.getElementById('detailsBookingId').value;
+const data = {
+pnr: document.getElementById('detailsPnr').value, flight: document.getElementById('detailsFlight').value,
+meccaHotel: document.getElementById('detailsMeccaHotel').value, medinaHotel: document.getElementById('detailsMedinaHotel').value,
+visa: document.getElementById('detailsVisa').value, notes: document.getElementById('detailsNotes').value
+};
+await updateDoc(doc(db, "bookings", id), data);
+await logActivity('edit', `Updated details for booking ${id}`);
+showToast("Details saved!");
+closeModal('bookingDetailsModal');
+}
+window.openTicketEditModal = function(id) {
+const b = window.bookings.find(bk => bk.id === id);
+document.getElementById('editTicketId').value = id;
+document.getElementById('editTicketRefId').textContent = id;
+document.getElementById('editPassengerName').value = b.userName || '';
+document.getElementById('editTravelDate').value = b.travelDate || '';
+document.getElementById('editStatus').value = b.status || 'pending';
+document.getElementById('editNotes').value = b.ticketNotes || '';
+document.getElementById('ticketEditModal').style.display = 'block';
+}
+window.saveTicketEdit = async function(e) {
+e.preventDefault();
+const id = document.getElementById('editTicketId').value;
+const data = {
+userName: document.getElementById('editPassengerName').value,
+travelDate: document.getElementById('editTravelDate').value,
+status: document.getElementById('editStatus').value,
+ticketNotes: document.getElementById('editNotes').value
+};
+await updateDoc(doc(db, "bookings", id), data);
+await logActivity('edit', `Edited ticket ${id}`);
+showToast("Ticket updated!");
+closeModal('ticketEditModal');
+}
+window.deleteInquiry = async function(id) {
+if(!confirm("Delete inquiry?")) return;
+await deleteDoc(doc(db, "inquiries", id));
+await logActivity('delete', `Deleted inquiry ${id}`);
+showToast("Inquiry deleted.");
+}
+window.deleteUser = async function(id) {
+if(!confirm("Delete user?")) return;
+await deleteDoc(doc(db, "users", id));
+await logActivity('delete', `Deleted user ${id}`);
+showToast("User deleted.");
+}
+window.openUserDetailModal = function(id) {
+const u = window.users.find(usr => usr.id === id);
+window.currentViewingUser = u;
+document.getElementById('userDetailContent').innerHTML = `
+<p><strong>Name:</strong> ${u.name}</p>
+<p><strong>Email:</strong> ${u.email}</p>
+<p><strong>Phone:</strong> ${u.phone}</p>
+<p><strong>Reward Points:</strong> ${u.rewardPoints || 0}</p>
+`;
+window.renderUploadedFiles(u.visaFiles || []);
+document.getElementById('userDetailModal').style.display = 'block';
+}
+window.renderUploadedFiles = function(files) {
+const container = document.getElementById('uploadedVisaFiles');
+if(!files || files.length === 0) {
+container.innerHTML = '<p style="color: #999;">No documents uploaded.</p>';
+return;
+}
+container.innerHTML = files.map((f, index) => {
+const isImage = /\.(jpg|jpeg|png|gif)$/i.test(f.name);
+const isPDF = /\.pdf$/i.test(f.name);
+const icon = isImage ? 'fa-image' : isPDF ? 'fa-file-pdf' : 'fa-file';
+return `
+<div class="file-item">
+<span><i class="fas ${icon}" style="margin-right: 8px; color: var(--primary-green);"></i>${f.name}</span>
+<div>
+<button class="action-btn btn-view" onclick="viewDocument('${f.url}', '${f.name}')" title="View Document">
+<i class="fas fa-eye"></i> View
+</button>
+<button class="action-btn btn-edit" onclick="downloadDocument('${f.url}', '${f.name}')" title="Download">
+<i class="fas fa-download"></i>
+</button>
+</div>
+</div>
+`;
+}).join('');
+}
+window.viewDocument = function(url, name) {
+window.currentDocumentUrl = url;
+const viewer = document.getElementById('documentViewerContent');
+viewer.dataset.url = url;
+const isImage = /\.(jpg|jpeg|png|gif)$/i.test(name);
+const isPDF = /\.pdf$/i.test(name);
+if(isImage) {
+viewer.innerHTML = `<div class="document-viewer"><img src="${url}" alt="${name}" style="max-width: 100%;"></div>`;
+} else if(isPDF) {
+viewer.innerHTML = `<div class="document-viewer"><iframe src="${url}" style="width: 100%; height: 500px; border: 1px solid #ddd; border-radius: 8px;"></iframe></div>`;
+} else {
+viewer.innerHTML = `<div class="document-viewer"><p style="text-align: center; padding: 40px;"><i class="fas fa-file" style="font-size: 4rem; color: var(--primary-green); margin-bottom: 15px;"></i><br>Preview not available for this file type.<br><br><a href="${url}" target="_blank" class="btn" style="background: var(--primary-green); color: white;"><i class="fas fa-download"></i> Download to View</a></p></div>`;
+}
+document.getElementById('documentViewerModal').style.display = 'block';
+}
+window.downloadDocument = function(url, name) {
+const link = document.createElement('a');
+link.href = url;
+link.download = name;
+link.target = '_blank';
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
+showToast("Downloading " + name);
+}
+window.downloadCurrentDocument = function() {
+if(window.currentDocumentUrl) {
+const url = window.currentDocumentUrl;
+const name = url.split('/').pop().split('?')[0] || 'document';
+window.downloadDocument(url, name);
+}
+}
+window.handleVisaUpload = async function(input) {
+const files = input.files;
+if(!files.length || !window.currentViewingUser) return;
+showToast("Uploading files...");
+const newFiles = window.currentViewingUser.visaFiles || [];
+try {
+for(let f of files) {
+if (f.size > 5 * 1024 * 1024) {
+showToast(`File ${f.name} is too large (Max 5MB).`);
+continue;
+}
+const fileName = `${Date.now()}_${f.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+const storageRef = ref(storage, `visa_files/${window.currentViewingUser.id}/${fileName}`);
+await uploadBytes(storageRef, f);
+const url = await getDownloadURL(storageRef);
+newFiles.push({ name: f.name, url: url, uploadedAt: new Date().toISOString() });
+}
+await updateDoc(doc(db, "users", window.currentViewingUser.id), { visaFiles: newFiles });
+await logActivity('edit', `Uploaded visa for ${window.currentViewingUser.name}`);
+showToast("Files uploaded successfully!");
+window.renderUploadedFiles(newFiles);
+window.currentViewingUser.visaFiles = newFiles;
+} catch (err) {
+console.error(err);
+showToast("Upload failed: " + err.message);
+}
+}
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+e.preventDefault();
+const data = {
+name: document.getElementById('contactName').value,
+phone: document.getElementById('contactPhone').value,
+email: document.getElementById('contactEmail').value,
+message: document.getElementById('contactMessage').value,
+createdAt: serverTimestamp()
+};
+await addDoc(collection(db, "inquiries"), data);
+showToast("Message sent! We will contact you soon.");
+this.reset();
+});
+window.openStaffLogin = function() {
+const modal = document.getElementById('staffLoginModal');
+if (modal) modal.style.display = 'block';
+}
+window.handleStaffLogin = async function(e) {
+e.preventDefault();
+const emailInput = document.getElementById('staffLoginEmail').value.trim().toLowerCase();
+const password = document.getElementById('staffLoginPassword').value;
+const staffQuery = query(collection(db, "staff"), where("email", "==", emailInput));
+const snapshot = await getDocs(staffQuery);
+let staff = null;
+snapshot.forEach(doc => {
+const data = doc.data();
+if(data.password === password) staff = { id: doc.id, ...data };
+});
+if(staff) {
+window.currentStaffUser = staff;
+localStorage.setItem('currentStaffUser', JSON.stringify(staff));
+await updateDoc(doc(db, "staff", staff.id), { lastLogin: serverTimestamp() });
+await logActivity('login', `${staff.name} logged in`);
+closeModal('staffLoginModal');
+window.isAdminLoggedIn = true;
+showAdminDashboard();
+updateUIBasedOnPermissions();
+showToast(`Welcome, ${staff.name}!`);
+} else {
+showToast('Invalid credentials!');
+}
+}
+window.openNewBookingModal = function() {
+document.getElementById('newBookingModal').style.display = 'block';
+document.getElementById('newBookingForm').style.display = 'none';
+document.querySelectorAll('.booking-type-option').forEach(o => o.classList.remove('selected'));
+document.getElementById('newBookingType').value = '';
+}
+window.selectBookingType = function(type, el) {
+document.querySelectorAll('.booking-type-option').forEach(o => o.classList.remove('selected'));
+el.classList.add('selected');
+document.getElementById('newBookingType').value = type;
+document.getElementById('newBookingForm').style.display = 'block';
+document.getElementById('flightFields').style.display = type === 'flight' ? 'block' : 'none';
+document.getElementById('visaFields').style.display = type === 'visa' ? 'block' : 'none';
+document.getElementById('umrahFields').style.display = type === 'umrah' ? 'block' : 'none';
+document.getElementById('hotelFields').style.display = type === 'hotel' ? 'block' : 'none';
+document.getElementById('holidayFields').style.display = type === 'holiday' ? 'block' : 'none';
+}
+window.saveNewBooking = async function(e) {
+e.preventDefault();
+const type = document.getElementById('newBookingType').value;
+const name = document.getElementById('nb-name').value;
+const phone = document.getElementById('nb-phone').value;
+const email = document.getElementById('nb-email').value;
+const gender = document.getElementById('nb-gender').value;
+const amount = document.getElementById('nb-amount').value;
+const notes = document.getElementById('nb-notes').value;
+let item = type;
+let details = {};
+if(type === 'flight') {
+item = `Flight: ${document.getElementById('nb-from').value} → ${document.getElementById('nb-to').value}`;
+details = {
+from: document.getElementById('nb-from').value,
+to: document.getElementById('nb-to').value,
+departure: document.getElementById('nb-departure').value,
+return: document.getElementById('nb-return').value,
+airline: document.getElementById('nb-airline').value,
+class: document.getElementById('nb-class').value
+};
+} else if(type === 'visa') {
+item = `${document.getElementById('nb-visa-type').value} Visa - ${document.getElementById('nb-country').value}`;
+details = {
+visaType: document.getElementById('nb-visa-type').value,
+country: document.getElementById('nb-country').value,
+passport: document.getElementById('nb-passport').value,
+processing: document.getElementById('nb-processing').value
+};
+} else if(type === 'umrah') {
+item = `Umrah ${document.getElementById('nb-package-type').value} Package`;
+details = {
+packageType: document.getElementById('nb-package-type').value,
+departure: document.getElementById('nb-umrah-departure').value,
+duration: document.getElementById('nb-duration').value,
+people: document.getElementById('nb-people').value
+};
+} else if(type === 'hotel') {
+item = `Hotel: ${document.getElementById('nb-hotel-name').value} - ${document.getElementById('nb-hotel-city').value}`;
+details = {
+city: document.getElementById('nb-hotel-city').value,
+hotelName: document.getElementById('nb-hotel-name').value,
+checkin: document.getElementById('nb-checkin').value,
+checkout: document.getElementById('nb-checkout').value,
+roomType: document.getElementById('nb-room-type').value,
+guests: document.getElementById('nb-guests').value
+};
+} else if(type === 'holiday') {
+item = `Holiday Tour: ${document.getElementById('nb-destination').value}`;
+details = {
+destination: document.getElementById('nb-destination').value,
+tourType: document.getElementById('nb-tour-type').value,
+start: document.getElementById('nb-tour-start').value,
+end: document.getElementById('nb-tour-end').value,
+travelers: document.getElementById('nb-travelers').value
+};
+}
+const data = {
+userName: name, phone, email, gender, item, amount: parseFloat(amount), notes,
+bookingType: type, details, date: new Date().toLocaleDateString(),
+status: 'pending', createdAt: serverTimestamp(),
+createdBy: window.currentStaffUser ? window.currentStaffUser.name : 'System'
+};
+try {
+await addDoc(collection(db, "bookings"), data);
+await logActivity('create', `New ${type} booking for ${name}`);
+showToast("Booking created successfully!");
+closeModal('newBookingModal');
+document.getElementById('newBookingForm').reset();
+} catch(err) {
+showToast("Error: " + err.message);
+}
+}
+window.openExpenseModal = function(id) {
+const modal = document.getElementById('expenseModal');
+const title = document.getElementById('expenseModalTitle');
+document.getElementById('expEditId').value = '';
+document.getElementById('exp-category').value = 'transport';
+document.getElementById('exp-description').value = '';
+document.getElementById('exp-amount').value = '';
+document.getElementById('exp-receipt-url').value = '';
+document.getElementById('exp-date').value = new Date().toISOString().split('T')[0];
+if (id) {
+const exp = window.expenses.find(e => e.id === id);
+if (exp) {
+title.textContent = 'Edit Expense';
+document.getElementById('expEditId').value = id;
+document.getElementById('exp-category').value = exp.category;
+document.getElementById('exp-description').value = exp.description;
+document.getElementById('exp-amount').value = exp.amount;
+document.getElementById('exp-date').value = exp.date;
+document.getElementById('exp-receipt-url').value = exp.receiptUrl || '';
+}
+} else {
+title.textContent = 'Add Expense';
+}
+modal.style.display = 'block';
+}
+window.handleReceiptUpload = async function(input) {
+const file = input.files[0];
+if(!file) return;
+if(file.size > 5 * 1024 * 1024) {
+showToast("File too large (Max 5MB)");
+return;
+}
+showToast("Uploading receipt...");
+try {
+const fileName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+const storageRef = ref(storage, `expense_receipts/${fileName}`);
+await uploadBytes(storageRef, file);
+const url = await getDownloadURL(storageRef);
+document.getElementById('exp-receipt-url').value = url;
+showToast("Receipt uploaded!");
+} catch(err) {
+console.error("Upload error:", err);
+showToast("Upload failed: " + err.message);
+}
+}
+window.saveExpense = async function(e) {
+e.preventDefault();
+const id = document.getElementById('expEditId').value;
+const data = {
+category: document.getElementById('exp-category').value,
+description: document.getElementById('exp-description').value,
+amount: parseFloat(document.getElementById('exp-amount').value),
+date: document.getElementById('exp-date').value,
+receiptUrl: document.getElementById('exp-receipt-url').value,
+addedBy: window.currentStaffUser ? window.currentStaffUser.name : 'System',
+updatedAt: serverTimestamp()
+};
+try {
+if (id) {
+await updateDoc(doc(db, "expenses", id), data);
+await logActivity('edit', `Updated expense: ${data.description}`);
+showToast("Expense updated successfully!");
+} else {
+data.createdAt = serverTimestamp();
+await addDoc(collection(db, "expenses"), data);
+await logActivity('create', `Added expense: ${data.description}`);
+showToast("Expense saved successfully!");
+}
+closeModal('expenseModal');
+document.getElementById('expEditId').value = '';
+document.getElementById('exp-description').value = '';
+document.getElementById('exp-amount').value = '';
+document.getElementById('exp-receipt-url').value = '';
+} catch(err) {
+showToast("Error: " + err.message);
+}
+}
+window.deleteExpense = async function(id) {
+if(!confirm("Delete this expense?")) return;
+await deleteDoc(doc(db, "expenses", id));
+await logActivity('delete', `Deleted expense`);
+showToast("Expense deleted.");
+}
+window.loadExpenses = function() {
+const totalExpenses = window.expenses.reduce((sum, e) => sum + e.amount, 0);
+const now = new Date();
+const thisMonth = window.expenses.filter(e => {
+const d = new Date(e.date);
+return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+}).reduce((sum, e) => sum + e.amount, 0);
+const categories = new Set(window.expenses.map(e => e.category)).size;
+const totalRevenue = window.bookings.filter(b => b.status === 'confirmed').reduce((sum, b) => sum + (b.amount || 0), 0);
+const profit = totalRevenue - totalExpenses;
+document.getElementById('exp-total').textContent = 'PKR ' + totalExpenses.toLocaleString();
+document.getElementById('exp-month').textContent = 'PKR ' + thisMonth.toLocaleString();
+document.getElementById('exp-categories').textContent = categories;
+document.getElementById('exp-profit').textContent = 'PKR ' + profit.toLocaleString();
+const tbody = document.getElementById('expenses-table-body');
+if(tbody) {
+tbody.innerHTML = window.expenses.slice().reverse().map(e => `
+<tr>
+<td>${e.date}</td>
+<td><span class="expense-category cat-${e.category}">${e.category}</span></td>
+<td>${e.description}</td>
+<td>PKR ${e.amount.toLocaleString()}</td>
+<td>${e.addedBy}</td>
+<td>
+${e.receiptUrl ? `<button class="action-btn btn-view" onclick="viewDocument('${e.receiptUrl}', 'receipt_${e.id}')" title="View Receipt"><i class="fas fa-eye"></i></button>` : ''}
+<button class="action-btn btn-edit" onclick="openExpenseModal('${e.id}')" title="Edit Expense"><i class="fas fa-edit"></i></button>
+<button class="action-btn btn-delete" onclick="deleteExpense('${e.id}')" title="Delete Expense"><i class="fas fa-trash"></i></button>
+</td>
+</tr>
+`).join('') || '<tr><td colspan="6" style="text-align:center;">No expenses recorded</td></tr>';
+}
+}
+window.loadFinancialReports = async function() {
+const periodEl = document.getElementById('financialPeriod');
+const period = periodEl ? periodEl.value : 'all';
+const now = new Date();
+let startDate = new Date();
+if (period === 'today') startDate.setHours(0,0,0,0);
+else if (period === 'week') startDate.setDate(now.getDate() - 7);
+else if (period === 'month') startDate.setMonth(now.getMonth() - 1);
+else if (period === 'year') startDate.setFullYear(now.getFullYear() - 1);
+else startDate = new Date(0);
+const totalRevenue = window.bookings.filter(b => b.status === 'confirmed').reduce((sum, b) => sum + (b.amount || 0), 0);
+const pendingPayments = window.bookings.filter(b => b.status === 'pending').reduce((sum, b) => sum + (b.amount || 0), 0);
+const finTotalRev = document.getElementById('fin-total-revenue');
+if(finTotalRev) finTotalRev.textContent = 'PKR ' + totalRevenue.toLocaleString();
+const finPending = document.getElementById('fin-pending-payments');
+if(finPending) finPending.textContent = 'PKR ' + pendingPayments.toLocaleString();
+const finCompleted = document.getElementById('fin-completed');
+if(finCompleted) finCompleted.textContent = window.bookings.filter(b => b.status === 'confirmed').length;
+const finRefunds = document.getElementById('fin-refunds');
+if(finRefunds) finRefunds.textContent = 'PKR 0';
+const tbody = document.getElementById('financial-table-body');
+if(tbody) {
+tbody.innerHTML = window.bookings.slice(-10).reverse().map(b => `
+<tr>
+<td>${b.createdAt ? new Date(b.createdAt.toDate ? b.createdAt.toDate() : b.createdAt).toLocaleDateString() : 'N/A'}</td>
+<td>${b.userName}</td>
+<td>${b.item}</td>
+<td>PKR ${(b.amount || 0).toLocaleString()}</td>
+<td>Bank Transfer</td>
+<td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td>
+</tr>
+`).join('') || '<tr><td colspan="6" style="text-align:center;">No transactions</td></tr>';
+}
+}
+window.exportFinancialReport = function() {
+const data = window.bookings.map(b => ({
+Date: b.createdAt ? new Date(b.createdAt.toDate ? b.createdAt.toDate() : b.createdAt).toLocaleDateString() : '',
+Customer: b.userName, Service: b.item, Amount: b.amount || 0, Status: b.status
+}));
+const ws = XLSX.utils.json_to_sheet(data);
+const wb = XLSX.utils.book_new();
+XLSX.utils.book_append_sheet(wb, ws, "Financial Report");
+const dateStr = new Date().toISOString().split('T')[0];
+XLSX.writeFile(wb, `Financial_Report_${dateStr}.xlsx`);
+showToast("Financial report exported!");
+}
+window.visaApplications = [];
+window.loadVisaTracker = async function() {
+try {
+const snapshot = await getDocs(collection(db, "visaApplications"));
+window.visaApplications = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+} catch (e) { window.visaApplications = []; }
+const vPending = document.getElementById('visa-pending');
+if(vPending) vPending.textContent = window.visaApplications.filter(v => v.status === 'pending').length;
+const vProcessing = document.getElementById('visa-processing');
+if(vProcessing) vProcessing.textContent = window.visaApplications.filter(v => v.status === 'processing').length;
+const vApproved = document.getElementById('visa-approved');
+if(vApproved) vApproved.textContent = window.visaApplications.filter(v => v.status === 'approved').length;
+const vRejected = document.getElementById('visa-rejected');
+if(vRejected) vRejected.textContent = window.visaApplications.filter(v => v.status === 'rejected').length;
+const tbody = document.getElementById('visa-tracker-body');
+if(tbody) {
+tbody.innerHTML = window.visaApplications.map(v => `
+<tr>
+<td>${v.applicant}</td>
+<td>${v.passport}</td>
+<td>${v.type}</td>
+<td>${v.appliedDate}</td>
+<td><span class="status-pill pill-${v.status === 'approved' ? 'confirmed' : v.status === 'rejected' ? 'rejected' : 'pending'}">${v.status.toUpperCase()}</span></td>
+<td>
+<button class="action-btn btn-edit" onclick="editVisaApplication('${v.id}')"><i class="fas fa-edit"></i></button>
+<button class="action-btn btn-delete" onclick="deleteVisaApplication('${v.id}')"><i class="fas fa-trash"></i></button>
+</td>
+</tr>
+`).join('') || '<tr><td colspan="6" style="text-align:center;">No visa applications</td></tr>';
+}
+}
+window.openNewVisaApplication = function() {
+document.getElementById('visaEditId').value = '';
+document.getElementById('visa-applicant').value = '';
+document.getElementById('visa-gender').value = '';
+document.getElementById('visa-passport').value = '';
+document.getElementById('visa-type').value = 'umrah';
+document.getElementById('visa-country').value = 'Saudi Arabia';
+document.getElementById('visa-status').value = 'pending';
+document.getElementById('visa-notes').value = '';
+document.getElementById('visaApplicationModal').style.display = 'block';
+}
+window.editVisaApplication = function(id) {
+const v = window.visaApplications.find(va => va.id === id);
+if (!v) return;
+document.getElementById('visaEditId').value = id;
+document.getElementById('visa-applicant').value = v.applicant;
+document.getElementById('visa-gender').value = v.gender || '';
+document.getElementById('visa-passport').value = v.passport;
+document.getElementById('visa-type').value = v.type;
+document.getElementById('visa-country').value = v.country;
+document.getElementById('visa-status').value = v.status;
+document.getElementById('visa-notes').value = v.notes || '';
+document.getElementById('visaApplicationModal').style.display = 'block';
+}
+window.saveVisaApplication = async function(e) {
+e.preventDefault();
+const id = document.getElementById('visaEditId').value;
+const data = {
+applicant: document.getElementById('visa-applicant').value,
+gender: document.getElementById('visa-gender').value,
+passport: document.getElementById('visa-passport').value,
+type: document.getElementById('visa-type').value,
+country: document.getElementById('visa-country').value,
+status: document.getElementById('visa-status').value,
+notes: document.getElementById('visa-notes').value,
+appliedDate: new Date().toLocaleDateString()
+};
+try {
+if (id) {
+await updateDoc(doc(db, "visaApplications", id), data);
+await logActivity('edit', `Updated visa application for ${data.applicant}`);
+} else {
+await addDoc(collection(db, "visaApplications"), data);
+await logActivity('create', `New visa application for ${data.applicant}`);
+}
+showToast("Visa application saved!");
+closeModal('visaApplicationModal');
+loadVisaTracker();
+} catch (err) { showToast("Error: " + err.message); }
+}
+window.deleteVisaApplication = async function(id) {
+if (!confirm("Delete this visa application?")) return;
+await deleteDoc(doc(db, "visaApplications", id));
+await logActivity('delete', `Deleted visa application`);
+showToast("Visa application deleted.");
+loadVisaTracker();
+}
+window.umrahGroups = [];
+window.loadGroups = async function() {
+try {
+const snapshot = await getDocs(collection(db, "umrahGroups"));
+window.umrahGroups = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+} catch (e) { window.umrahGroups = []; }
+const gActive = document.getElementById('groups-active');
+if(gActive) gActive.textContent = window.umrahGroups.length;
+const gPilgrims = document.getElementById('groups-pilgrims');
+if(gPilgrims) gPilgrims.textContent = window.umrahGroups.reduce((sum, g) => sum + (g.currentPilgrims || 0), 0);
+const gUpcoming = document.getElementById('groups-upcoming');
+if(gUpcoming) gUpcoming.textContent = window.umrahGroups.filter(g => new Date(g.departure) > new Date()).length;
+const gLeaders = document.getElementById('groups-leaders');
+if(gLeaders) gLeaders.textContent = new Set(window.umrahGroups.map(g => g.leader)).size;
+const list = document.getElementById('groups-list');
+if(list) {
+list.innerHTML = window.umrahGroups.map(g => `
+<div class="staff-card">
+<div class="staff-card-header">
+<div><h4 style="margin:0;">${g.name}</h4><p style="margin:0; color:#666; font-size:0.9rem;">${g.currentPilgrims || 0} / ${g.maxPilgrims} Pilgrims</p></div>
+<span class="staff-role-badge role-manager">Active</span>
+</div>
+<p><i class="fas fa-calendar"></i> Departure: ${g.departure}</p>
+<p><i class="fas fa-user-tie"></i> Leader: ${g.leader}</p>
+<div style="margin-top:15px; display:flex; gap:10px;">
+<button class="action-btn btn-edit" onclick="editGroup('${g.id}')"><i class="fas fa-edit"></i> Edit</button>
+<button class="action-btn btn-delete" onclick="deleteGroup('${g.id}')"><i class="fas fa-trash"></i> Delete</button>
+</div>
+</div>
+`).join('') || '<p style="text-align:center; color:#999; padding:40px;">No groups created yet</p>';
+}
+}
+window.openNewGroupModal = function() {
+document.getElementById('groupEditId').value = '';
+document.getElementById('group-name').value = '';
+document.getElementById('group-departure').value = '';
+document.getElementById('group-return').value = '';
+document.getElementById('group-leader').value = '';
+document.getElementById('group-max').value = 45;
+document.getElementById('group-notes').value = '';
+const pkgSelect = document.getElementById('group-package');
+if(pkgSelect) pkgSelect.innerHTML = window.customPackages.map(p => `<option value="${p.id}">${p.titleEn}</option>`).join('');
+document.getElementById('groupModal').style.display = 'block';
+}
+window.editGroup = function(id) {
+const g = window.umrahGroups.find(gr => gr.id === id);
+if (!g) return;
+document.getElementById('groupEditId').value = id;
+document.getElementById('group-name').value = g.name;
+document.getElementById('group-departure').value = g.departure;
+document.getElementById('group-return').value = g.return;
+document.getElementById('group-leader').value = g.leader;
+document.getElementById('group-max').value = g.maxPilgrims;
+document.getElementById('group-notes').value = g.notes || '';
+document.getElementById('groupModal').style.display = 'block';
+}
+window.saveGroup = async function(e) {
+e.preventDefault();
+const id = document.getElementById('groupEditId').value;
+const data = {
+name: document.getElementById('group-name').value,
+departure: document.getElementById('group-departure').value,
+return: document.getElementById('group-return').value,
+leader: document.getElementById('group-leader').value,
+maxPilgrims: parseInt(document.getElementById('group-max').value),
+currentPilgrims: 0,
+packageId: document.getElementById('group-package').value,
+notes: document.getElementById('group-notes').value
+};
+try {
+if (id) {
+await updateDoc(doc(db, "umrahGroups", id), data);
+await logActivity('edit', `Updated group ${data.name}`);
+} else {
+await addDoc(collection(db, "umrahGroups"), data);
+await logActivity('create', `Created group ${data.name}`);
+}
+showToast("Group saved!");
+closeModal('groupModal');
+loadGroups();
+} catch (err) { showToast("Error: " + err.message); }
+}
+window.deleteGroup = async function(id) {
+if (!confirm("Delete this group?")) return;
+await deleteDoc(doc(db, "umrahGroups", id));
+await logActivity('delete', `Deleted group`);
+showToast("Group deleted.");
+loadGroups();
+}
+window.promotions = [];
+window.loadPromotions = async function() {
+try {
+const snapshot = await getDocs(collection(db, "promotions"));
+window.promotions = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+} catch (e) { window.promotions = []; }
+const list = document.getElementById('promotions-list');
+if(list) {
+list.innerHTML = window.promotions.map(p => `
+<div class="staff-card" style="border-left-color: var(--accent-gold);">
+<div class="staff-card-header">
+<div><h4 style="margin:0;">${p.title}</h4><p style="margin:0; color:#666; font-size:0.9rem;">Code: <strong style="color:var(--accent-gold);">${p.code}</strong></p></div>
+<span class="staff-role-badge role-accountant">${p.type === 'percentage' ? p.value + '%' : 'PKR ' + p.value}</span>
+</div>
+<p style="font-size:0.9rem; color:#555;">${p.description}</p>
+<p style="font-size:0.85rem; color:#999;"><i class="fas fa-calendar"></i> ${p.startDate} to ${p.endDate}</p>
+<div style="margin-top:15px; display:flex; gap:10px;">
+<button class="action-btn btn-edit" onclick="editPromotion('${p.id}')"><i class="fas fa-edit"></i> Edit</button>
+<button class="action-btn btn-delete" onclick="deletePromotion('${p.id}')"><i class="fas fa-trash"></i> Delete</button>
+</div>
+</div>
+`).join('') || '<p style="text-align:center; color:#999; padding:40px;">No promotions created yet</p>';
+}
+}
+window.openNewPromotionModal = function() {
+document.getElementById('promoEditId').value = '';
+document.getElementById('promo-title').value = '';
+document.getElementById('promo-desc').value = '';
+document.getElementById('promo-type').value = 'percentage';
+document.getElementById('promo-value').value = '';
+document.getElementById('promo-start').value = '';
+document.getElementById('promo-end').value = '';
+document.getElementById('promo-code').value = '';
+document.getElementById('promotionModal').style.display = 'block';
+}
+window.editPromotion = function(id) {
+const p = window.promotions.find(pr => pr.id === id);
+if (!p) return;
+document.getElementById('promoEditId').value = id;
+document.getElementById('promo-title').value = p.title;
+document.getElementById('promo-desc').value = p.description;
+document.getElementById('promo-type').value = p.type;
+document.getElementById('promo-value').value = p.value;
+document.getElementById('promo-start').value = p.startDate;
+document.getElementById('promo-end').value = p.endDate;
+document.getElementById('promo-code').value = p.code;
+document.getElementById('promotionModal').style.display = 'block';
+}
+window.savePromotion = async function(e) {
+e.preventDefault();
+const id = document.getElementById('promoEditId').value;
+const data = {
+title: document.getElementById('promo-title').value,
+description: document.getElementById('promo-desc').value,
+type: document.getElementById('promo-type').value,
+value: parseInt(document.getElementById('promo-value').value),
+startDate: document.getElementById('promo-start').value,
+endDate: document.getElementById('promo-end').value,
+code: document.getElementById('promo-code').value.toUpperCase()
+};
+try {
+if (id) {
+await updateDoc(doc(db, "promotions", id), data);
+await logActivity('edit', `Updated promotion ${data.title}`);
+} else {
+await addDoc(collection(db, "promotions"), data);
+await logActivity('create', `Created promotion ${data.title}`);
+}
+showToast("Promotion saved!");
+closeModal('promotionModal');
+loadPromotions();
+} catch (err) { showToast("Error: " + err.message); }
+}
+window.deletePromotion = async function(id) {
+if (!confirm("Delete this promotion?")) return;
+await deleteDoc(doc(db, "promotions", id));
+await logActivity('delete', `Deleted promotion`);
+showToast("Promotion deleted.");
+loadPromotions();
+}
+window.loadAnalytics = function() {
+const anaCustomers = document.getElementById('ana-customers');
+if(anaCustomers) anaCustomers.textContent = window.users.length;
+const totalBookings = window.bookings.length;
+const confirmedBookings = window.bookings.filter(b => b.status === 'confirmed').length;
+const conversionRate = totalBookings > 0 ? ((confirmedBookings / totalBookings) * 100).toFixed(1) : 0;
+const anaConversion = document.getElementById('ana-conversion');
+if(anaConversion) anaConversion.textContent = conversionRate + '%';
+const avgValue = totalBookings > 0 ? window.bookings.reduce((sum, b) => sum + (b.amount || 0), 0) / totalBookings : 0;
+const anaAvgValue = document.getElementById('ana-avg-value');
+if(anaAvgValue) anaAvgValue.textContent = 'PKR ' + Math.round(avgValue).toLocaleString();
+const repeatCustomers = new Set(window.bookings.map(b => b.userId)).size;
+const anaRepeat = document.getElementById('ana-repeat');
+if(anaRepeat) anaRepeat.textContent = repeatCustomers;
+const serviceCount = {};
+window.bookings.forEach(b => { serviceCount[b.item] = (serviceCount[b.item] || 0) + 1; });
+const topServices = Object.entries(serviceCount).sort((a, b) => b[1] - a[1]).slice(0, 5);
+const topServicesEl = document.getElementById('analytics-top-services');
+if(topServicesEl) {
+topServicesEl.innerHTML = topServices.map(([service, count]) => `
+<div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee;">
+<span>${service}</span>
+<strong style="color:var(--primary-green);">${count} bookings</strong>
+</div>
+`).join('') || '<p style="color:#999;">No data yet</p>';
+}
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+const monthlyChartEl = document.getElementById('analytics-monthly-chart');
+if(monthlyChartEl) {
+monthlyChartEl.innerHTML = months.map(m => `
+<div style="flex:1; text-align:center;">
+<div style="height:${Math.random()*100}%; background:var(--primary-green); border-radius:5px 5px 0 0; min-height:10px;"></div>
+<p style="margin-top:10px; font-size:0.85rem;">${m}</p>
+</div>
+`).join('');
+}
+}
+window.saveSystemSettings = async function(e) {
+e.preventDefault();
+const settings = {
+companyName: document.getElementById('set-company-name').value,
+phone: document.getElementById('set-phone').value,
+email: document.getElementById('set-email').value,
+address: document.getElementById('set-address').value,
+currency: document.getElementById('set-currency').value,
+taxRate: document.getElementById('set-tax').value,
+autoConfirm: document.getElementById('set-auto-confirm').value,
+rewardRate: document.getElementById('set-reward-rate').value
+};
+try {
+await setDoc(doc(db, "system_settings", "company"), settings);
+await logActivity('edit', 'Updated system settings');
+showToast("Settings saved successfully!");
+} catch (err) { showToast("Error: " + err.message); }
+}
+console.log("✅ All systems operational!");
+</script>
 </body>
 </html>
