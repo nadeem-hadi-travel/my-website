@@ -736,7 +736,7 @@ font-size: 1rem;
 }
 /* DASHBOARD WITH BACKGROUND IMAGE */
 .modern-main-content {
-background: linear-gradient(135deg, rgba(240, 240, 233, 0.85) 0%, rgba(227, 222, 233, 0.85) 100%),
+background: linear-gradient(135deg, rgba(210, 245, 190, 0.85) 0%, rgba(175, 230, 160, 0.85) 100%),
 url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
 background-size: cover;
 background-position: center;
@@ -1660,6 +1660,10 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <div class="app-label">Documents</div>
 </div>
 <!-- Row 3 -->
+<div class="app-item" onclick="showAdminPageFromGrid('analytics', this)" id="appAnalytics">
+<div class="app-icon purple"><i class="fas fa-chart-pie"></i></div>
+<div class="app-label">Analytics</div>
+</div>
 <div class="app-item" onclick="showAdminPageFromGrid('settings', this)" id="appSettings">
 <div class="app-icon white"><i class="fas fa-cog"></i></div>
 <div class="app-label">System<br>Settings</div>
@@ -3655,6 +3659,25 @@ document.getElementById('staffDisplayName').textContent = window.currentStaffUse
 const roleBadge = document.getElementById('currentStaffRole');
 roleBadge.textContent = window.ROLES[window.currentStaffUser.role].name;
 roleBadge.className = `staff-role-badge role-${window.currentStaffUser.role}`;
+
+// Helper function to safely toggle element display
+const safeToggle = (id, show) => {
+const el = document.getElementById(id);
+if (el) el.style.display = show ? 'flex' : 'none';
+};
+
+safeToggle('appStaff', hasPermission('manage_staff'));
+safeToggle('appPermissions', hasPermission('manage_permissions'));
+safeToggle('appActivity', hasPermission('view_activity_log'));
+safeToggle('appFinancial', hasPermission('view_financial_reports'));
+safeToggle('appExpenses', hasPermission('manage_expenses'));
+safeToggle('appVisa', hasPermission('upload_visa'));
+safeToggle('appGroups', hasPermission('manage_bookings'));
+safeToggle('appPromotions', hasPermission('edit_settings'));
+safeToggle('appDocuments', hasPermission('manage_documents'));
+safeToggle('appAnalytics', hasPermission('view_financial_reports'));
+safeToggle('appSettings', hasPermission('system_configuration'));
+}
 document.getElementById('appStaff').style.display = hasPermission('manage_staff') ? 'flex' : 'none';
 document.getElementById('appPermissions').style.display = hasPermission('manage_permissions') ? 'flex' : 'none';
 document.getElementById('appActivity').style.display = hasPermission('view_activity_log') ? 'flex' : 'none';
