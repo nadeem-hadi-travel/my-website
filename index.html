@@ -3314,14 +3314,19 @@ if(window.isAdminLoggedIn) window.renderTasks();
 });
 }
 async function initializeDefaultAdmin() {
-const staffQuery = query(collection(db, "staff"), where("email", "==", "admin@nadeemhadi.com"));
-const snapshot = await getDocs(staffQuery);
-if(snapshot.empty) {
-await addDoc(collection(db, "staff"), {
-name: 'System Administrator', email: 'admin@nadeemhadi.com', phone: '0342-4397177',
-password: 'admin123', role: 'admin', status: 'active', createdAt: serverTimestamp(), lastLogin: null
+query(collection(db, "staff"), where("email", "==", "admin@nadeemhadi.com"));
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    // User login hai -> Ab staff data lo
+   const snapshot = await getDocs(staffQuery);
+    const staffData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    
+   await initializeDefaultPackages(); 
+    
+    } else {
+    showLoginPage(); 
+  }
 });
-}
 }
 async function initializeDefaultPackages() {
 const packagesSnapshot = await getDocs(collection(db, "packages"));
