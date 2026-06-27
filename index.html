@@ -54,6 +54,8 @@ gtag('config', 'G-3XLE0T3EWY');
 --white: #FFFFFF;
 --modern-blue: #1e3c72;
 --modern-blue-light: #2a5298;
+--navy-blue: #0D1B2A;
+--royal-blue: #1E3A8A;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -672,10 +674,7 @@ top: 0;
 left: 0;
 right: 0;
 bottom: 0;
-background: url('https://images.unsplash.com/photo-1564769625905-50e93615e769?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-background-size: cover;
-background-position: center;
-opacity: 0.1;
+background: rgba(13, 27, 42, 0.3);
 z-index: 0;
 }
 .apps-section {
@@ -1282,7 +1281,7 @@ align-items: center;
 justify-content: center;
 flex-shrink: 0;
 }
-/* ============ INVOICE GENERATOR STYLES ============ */
+/* ============ UPDATED INVOICE GENERATOR STYLES ============ */
 .invoice-generator-container {
 display: grid;
 grid-template-columns: 1fr 1fr;
@@ -1303,8 +1302,8 @@ padding-bottom: 10px;
 background: white;
 border: 1px solid #ddd;
 border-radius: 10px;
-padding: 40px;
-min-height: 800px;
+padding: 0;
+min-height: 1100px;
 position: relative;
 overflow: hidden;
 }
@@ -1320,98 +1319,135 @@ font-weight: 700;
 pointer-events: none;
 z-index: 0;
 }
-.invoice-letterhead {
-text-align: center;
-border-bottom: 3px solid var(--modern-blue);
-padding-bottom: 20px;
-margin-bottom: 30px;
+
+/* NEW LETTERHEAD STYLES */
+.invoice-letterhead-new {
+background: white;
+border-bottom: 3px solid var(--royal-blue);
+padding: 20px 30px;
 position: relative;
 z-index: 1;
 }
-.invoice-logo {
-width: 120px;
-height: 120px;
-margin: 0 auto 15px;
-}
-.invoice-company-name {
-font-size: 2rem;
-font-weight: 700;
-color: var(--modern-blue);
-margin: 10px 0;
-}
-.invoice-company-tagline {
-color: var(--primary-green);
-font-size: 0.9rem;
-font-weight: 500;
-}
-.invoice-contact-info {
+.letterhead-top {
 display: flex;
-justify-content: center;
-gap: 30px;
-flex-wrap: wrap;
-margin-top: 10px;
-font-size: 0.85rem;
-color: #555;
+justify-content: space-between;
+align-items: center;
+border-bottom: 2px solid #f0f0f0;
+padding-bottom: 15px;
+margin-bottom: 10px;
 }
-.invoice-contact-info span {
+.letterhead-title {
+font-size: 2.2rem;
+font-weight: 700;
+color: var(--royal-blue);
+margin: 0;
+letter-spacing: 2px;
+}
+.letterhead-subtitle {
+font-size: 1rem;
+color: var(--navy-blue);
+font-weight: 600;
+letter-spacing: 3px;
+margin-top: 5px;
+}
+.letterhead-logo {
+width: 80px;
+height: 80px;
+}
+.letterhead-contact {
+display: flex;
+gap: 20px;
+flex-wrap: wrap;
+margin-bottom: 10px;
+}
+.contact-item-new {
 display: flex;
 align-items: center;
 gap: 5px;
+font-size: 0.85rem;
+color: var(--navy-blue);
 }
-.invoice-contact-info i {
+.contact-item-new i {
 color: var(--accent-gold);
 }
-.invoice-meta-info {
-display: flex;
-justify-content: space-between;
-margin-bottom: 30px;
+.letterhead-watermark {
+text-align: center;
+padding: 40px 20px;
+position: relative;
+}
+.watermark-logo {
+width: 250px;
+height: 250px;
+opacity: 0.15;
+margin: 0 auto;
+}
+
+/* INVOICE INFO FIELDS */
+.invoice-info-fields {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 20px;
+padding: 20px 30px;
+background: #f8f9fa;
+border-bottom: 2px solid var(--accent-gold);
 position: relative;
 z-index: 1;
 }
-.invoice-meta-item {
-margin-bottom: 10px;
+.invoice-field-group {
+display: flex;
+flex-direction: column;
+gap: 8px;
 }
-.invoice-meta-label {
+.invoice-field-label {
 font-weight: 600;
-color: var(--primary-green);
+color: var(--navy-blue);
 font-size: 0.9rem;
 }
-.invoice-meta-value {
+.invoice-field-value {
 color: #333;
-font-size: 1rem;
+font-size: 0.95rem;
+padding: 5px;
+background: white;
+border-radius: 4px;
 }
-.invoice-title {
-text-align: center;
-font-size: 2rem;
-color: var(--modern-blue);
-margin: 30px 0;
-font-weight: 700;
+
+/* INVOICE TABLE */
+.invoice-table-container {
+padding: 20px 30px;
 position: relative;
 z-index: 1;
 }
-.invoice-details-table {
+.invoice-table {
 width: 100%;
 border-collapse: collapse;
-margin: 30px 0;
-position: relative;
-z-index: 1;
+margin-top: 15px;
 }
-.invoice-details-table th, .invoice-details-table td {
+.invoice-table th {
+background: var(--royal-blue);
+color: white;
+padding: 12px;
+text-align: left;
+font-weight: 600;
+border: 1px solid var(--navy-blue);
+}
+.invoice-table td {
 padding: 12px;
 border: 1px solid #ddd;
-text-align: left;
+background: white;
 }
-.invoice-details-table th {
-background: var(--modern-blue);
-color: white;
-font-weight: 600;
+.invoice-table tr:nth-child(even) td {
+background: #f8f9fa;
 }
-.invoice-details-table td {
-background: #f9f9f9;
-}
-.invoice-totals {
-margin-top: 30px;
+.text-right {
 text-align: right;
+}
+.text-center {
+text-align: center;
+}
+
+/* INVOICE TOTALS */
+.invoice-totals-section {
+padding: 20px 30px;
 position: relative;
 z-index: 1;
 }
@@ -1425,26 +1461,55 @@ background: #f5f5f5;
 border-radius: 5px;
 }
 .invoice-total-row.grand-total {
-background: var(--modern-blue);
+background: var(--royal-blue);
 color: white;
 font-size: 1.3rem;
 font-weight: 700;
 }
-.invoice-footer {
-margin-top: 50px;
-padding-top: 20px;
-border-top: 2px solid var(--accent-gold);
-text-align: center;
-font-size: 0.9rem;
-color: #666;
+
+/* SIGNATURE SECTION */
+.invoice-signature-section {
+padding: 40px 30px;
+margin-top: 40px;
 position: relative;
 z-index: 1;
 }
-.invoice-footer-address {
-margin-top: 15px;
-font-weight: 600;
-color: var(--primary-green);
+.signature-boxes {
+display: flex;
+justify-content: flex-end;
+gap: 60px;
+margin-top: 20px;
 }
+.signature-box {
+text-align: center;
+width: 200px;
+}
+.signature-line {
+border-bottom: 1px solid var(--navy-blue);
+height: 40px;
+margin-bottom: 8px;
+}
+.signature-label {
+font-weight: 600;
+color: var(--navy-blue);
+font-size: 0.9rem;
+}
+
+/* INVOICE FOOTER */
+.invoice-footer-new {
+background: var(--royal-blue);
+color: white;
+padding: 15px 30px;
+text-align: center;
+position: relative;
+z-index: 1;
+}
+.footer-address {
+font-weight: 600;
+font-size: 0.95rem;
+margin-top: 5px;
+}
+
 .invoice-actions {
 display: flex;
 gap: 15px;
@@ -1458,7 +1523,7 @@ min-width: 150px;
 @media print {
 @page {
 size: A4 portrait;
-margin: 10mm;
+margin: 0;
 }
 html, body {
 width: 210mm;
@@ -1502,8 +1567,9 @@ display: none !important;
 }
 .invoice-preview {
 border: none !important;
-padding: 20mm !important;
+padding: 0 !important;
 min-height: auto !important;
+width: 100% !important;
 }
 .invoice-preview.watermarked::before {
 display: none !important;
@@ -1611,6 +1677,8 @@ font-size: 1.5rem;
 .ticket-body { grid-template-columns: 1fr; }
 .nav-dropdown { min-width: 200px; }
 .staff-greeting-avatar { width: 45px; height: 45px; font-size: 1.3rem; }
+.invoice-info-fields { grid-template-columns: 1fr; }
+.signature-boxes { flex-direction: column; align-items: center; }
 }
 @media (max-width: 480px) {
 .search-grid { grid-template-columns: 1fr; }
@@ -2030,7 +2098,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <!-- Visa Tracker Page -->
 <div id="full-page-visa-tracker" class="admin-page" style="display: none;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-<h3 style="color: var(--primary-green); margin: 0;"> Visa Tracker</h3>
+<h3 style="color: var(--primary-green); margin: 0;">🛂 Visa Tracker</h3>
 <button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="openNewVisaApplication()"><i class="fas fa-plus"></i> New Application</button>
 </div>
 <div class="stats-row">
@@ -2394,695 +2462,6 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </div>
 </div>
 </div>
-<!-- Admin Modals -->
-<div id="staffLoginModal" class="modal">
-<div class="modal-content" style="max-width: 450px;">
-<span class="close-modal" onclick="closeModal('staffLoginModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px; text-align: center;">Staff Portal Login</h2>
-<form onsubmit="handleStaffLogin(event)">
-<div class="form-group">
-<label><i class="fas fa-user" style="margin-right: 8px; color: var(--accent-gold);"></i>Email or Username</label>
-<input type="text" id="staffLoginEmail" required placeholder="Enter email or username" autocomplete="username">
-</div>
-<div class="form-group">
-<label><i class="fas fa-lock" style="margin-right: 8px; color: var(--accent-gold);"></i>Password</label>
-<input type="password" id="staffLoginPassword" required placeholder="Enter password" autocomplete="current-password">
-</div>
-<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">
-<i class="fas fa-sign-in-alt"></i> Login
-</button>
-</form>
-</div>
-</div>
-<div id="staffModal" class="modal">
-<div class="modal-content" style="max-width: 700px;">
-<span class="close-modal" onclick="closeModal('staffModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px;" id="staffModalTitle">Add New Staff Member</h2>
-<form onsubmit="saveStaff(event)">
-<input type="hidden" id="staffEditId">
-<div class="form-group">
-<label><i class="fas fa-user" style="margin-right: 8px; color: var(--accent-gold);"></i>Full Name</label>
-<input type="text" id="staffName" required placeholder="Enter full name">
-</div>
-<div class="form-group">
-<label><i class="fas fa-envelope" style="margin-right: 8px; color: var(--accent-gold);"></i>Email Address</label>
-<input type="email" id="staffEmail" required placeholder="staff@example.com">
-</div>
-<div class="form-group">
-<label><i class="fas fa-phone" style="margin-right: 8px; color: var(--accent-gold);"></i>Phone Number</label>
-<input type="tel" id="staffPhone" required placeholder="03XX-XXXXXXX">
-</div>
-<div class="form-group">
-<label><i class="fas fa-camera" style="margin-right: 8px; color: var(--accent-gold);"></i>Profile Picture</label>
-<div class="file-upload-area">
-<input type="file" id="staffPhotoInput" accept="image/*" style="display: none;" onchange="handleStaffPhotoUpload(this)">
-<button type="button" class="btn-upload" onclick="document.getElementById('staffPhotoInput').click()"><i class="fas fa-upload"></i> Upload Photo</button>
-<p style="margin-top: 10px; color: #666; font-size: 0.9rem;">JPG, PNG (Max 2MB)</p>
-</div>
-<div id="staffPhotoPreview" style="margin-top: 10px; text-align: center;"></div>
-<input type="hidden" id="staffPhotoUrl">
-</div>
-<div class="form-group">
-<label><i class="fas fa-id-card" style="margin-right: 8px; color: var(--accent-gold);"></i>CNIC Number</label>
-<input type="text" id="staffCNIC" placeholder="XXXXX-XXXXXXX-X">
-</div>
-<div class="form-group">
-<label><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--accent-gold);"></i>Address</label>
-<input type="text" id="staffAddress" placeholder="Full address">
-</div>
-<div class="form-group">
-<label><i class="fas fa-money-bill" style="margin-right: 8px; color: var(--accent-gold);"></i>Salary (PKR)</label>
-<input type="number" id="staffSalary" placeholder="Monthly salary">
-</div>
-<div class="form-group">
-<label><i class="fas fa-calendar" style="margin-right: 8px; color: var(--accent-gold);"></i>Joining Date</label>
-<input type="date" id="staffJoiningDate">
-</div>
-<div class="form-group">
-<label><i class="fas fa-lock" style="margin-right: 8px; color: var(--accent-gold);"></i>Password</label>
-<input type="password" id="staffPassword" placeholder="Min 6 characters" minlength="6">
-<small style="color: #999;">Leave blank to keep current password when editing</small>
-</div>
-<div class="form-group">
-<label><i class="fas fa-user-tag" style="margin-right: 8px; color: var(--accent-gold);"></i>Assign Role</label>
-<div class="role-selector">
-<div class="role-option" onclick="selectRole('admin', this)">
-<h4><i class="fas fa-user-shield"></i> Administrator</h4>
-<p>Full system access</p>
-</div>
-<div class="role-option" onclick="selectRole('manager', this)">
-<h4><i class="fas fa-user-tie"></i> Manager</h4>
-<p>Manage bookings & packages</p>
-</div>
-<div class="role-option" onclick="selectRole('agent', this)">
-<h4><i class="fas fa-headset"></i> Travel Agent</h4>
-<p>Handle bookings & inquiries</p>
-</div>
-<div class="role-option" onclick="selectRole('accountant', this)">
-<h4><i class="fas fa-calculator"></i> Accountant</h4>
-<p>View financial data</p>
-</div>
-<div class="role-option" onclick="selectRole('support', this)">
-<h4><i class="fas fa-life-ring"></i> Support Staff</h4>
-<p>Customer support only</p>
-</div>
-</div>
-<input type="hidden" id="staffRole">
-</div>
-<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">
-<i class="fas fa-save"></i> Save Staff Member
-</button>
-</form>
-</div>
-</div>
-<!-- Edit Profile Modal -->
-<div id="editProfileModal" class="modal">
-<div class="modal-content" style="max-width: 600px;">
-<span class="close-modal" onclick="closeModal('editProfileModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px;">Edit Profile</h2>
-<form onsubmit="saveMyProfile(event)">
-<div class="form-group">
-<label><i class="fas fa-user" style="margin-right: 8px; color: var(--accent-gold);"></i>Full Name</label>
-<input type="text" id="editProfileName" required>
-</div>
-<div class="form-group">
-<label><i class="fas fa-envelope" style="margin-right: 8px; color: var(--accent-gold);"></i>Email Address</label>
-<input type="email" id="editProfileEmail" required>
-</div>
-<div class="form-group">
-<label><i class="fas fa-phone" style="margin-right: 8px; color: var(--accent-gold);"></i>Phone Number</label>
-<input type="tel" id="editProfilePhone" required>
-</div>
-<div class="form-group">
-<label><i class="fas fa-lock" style="margin-right: 8px; color: var(--accent-gold);"></i>New Password (Leave blank to keep current)</label>
-<input type="password" id="editProfilePassword" placeholder="Min 6 characters" minlength="6">
-</div>
-<div class="form-group">
-<label><i class="fas fa-camera" style="margin-right: 8px; color: var(--accent-gold);"></i>Profile Picture</label>
-<div class="file-upload-area">
-<input type="file" id="editProfilePhotoInput" accept="image/*" style="display: none;" onchange="handleEditProfilePhotoUpload(this)">
-<button type="button" class="btn-upload" onclick="document.getElementById('editProfilePhotoInput').click()"><i class="fas fa-upload"></i> Upload Photo</button>
-</div>
-<div id="editProfilePhotoPreview" style="margin-top: 10px; text-align: center;"></div>
-<input type="hidden" id="editProfilePhotoUrl">
-</div>
-<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">
-<i class="fas fa-save"></i> Save Changes
-</button>
-</form>
-</div>
-</div>
-<!-- Document Upload Modal -->
-<div id="documentUploadModal" class="modal">
-<div class="modal-content" style="max-width: 600px;">
-<span class="close-modal" onclick="closeModal('documentUploadModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px;">Upload Document</h2>
-<form onsubmit="saveDocument(event)">
-<div class="form-group"><label>Document Title</label><input type="text" id="doc-title" required placeholder="e.g., Visa Template"></div>
-<div class="form-group"><label>Category</label>
-<select id="doc-category" required>
-<option value="template">Template</option>
-<option value="policy">Policy Document</option>
-<option value="report">Report</option>
-<option value="contract">Contract</option>
-<option value="invoice">Invoice</option>
-<option value="other">Other</option>
-</select>
-</div>
-<div class="form-group"><label>Description</label><textarea id="doc-description" rows="3"></textarea></div>
-<div class="form-group"><label>Upload File</label>
-<div class="file-upload-area">
-<input type="file" id="doc-file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx" style="display: none;" onchange="handleDocumentFileUpload(this)">
-<button type="button" class="btn-upload" onclick="document.getElementById('doc-file').click()"><i class="fas fa-upload"></i> Select File</button>
-<p style="margin-top: 10px; color: #666; font-size: 0.9rem;">PDF, Images, Word, Excel (Max 10MB)</p>
-</div>
-<input type="hidden" id="doc-file-url">
-</div>
-<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">
-<i class="fas fa-save"></i> Upload Document
-</button>
-</form>
-</div>
-</div>
-<!-- Task Modal -->
-<div id="taskModal" class="modal">
-<div class="modal-content" style="max-width: 500px;">
-<span class="close-modal" onclick="closeModal('taskModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px;">Add Task</h2>
-<form onsubmit="saveTask(event)">
-<div class="form-group"><label>Task Title</label><input type="text" id="task-title" required></div>
-<div class="form-group"><label>Description</label><textarea id="task-description" rows="3"></textarea></div>
-<div class="form-group"><label>Assign To</label>
-<select id="task-assignee"></select>
-</div>
-<div class="form-group"><label>Due Date</label><input type="date" id="task-due"></div>
-<div class="form-group"><label>Priority</label>
-<select id="task-priority">
-<option value="low">Low</option>
-<option value="medium" selected>Medium</option>
-<option value="high">High</option>
-</select>
-</div>
-<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Save Task</button>
-</form>
-</div>
-</div>
-<!-- Leave Modal -->
-<div id="leaveModal" class="modal">
-<div class="modal-content" style="max-width: 500px;">
-<span class="close-modal" onclick="closeModal('leaveModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px;">Request Leave</h2>
-<form onsubmit="saveLeave(event)">
-<div class="form-group"><label>Leave Type</label>
-<select id="leave-type">
-<option value="sick">Sick Leave</option>
-<option value="casual">Casual Leave</option>
-<option value="annual">Annual Leave</option>
-<option value="emergency">Emergency</option>
-</select>
-</div>
-<div class="form-group"><label>From Date</label><input type="date" id="leave-from" required></div>
-<div class="form-group"><label>To Date</label><input type="date" id="leave-to" required></div>
-<div class="form-group"><label>Reason</label><textarea id="leave-reason" rows="3" required></textarea></div>
-<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Submit Request</button>
-</form>
-</div>
-</div>
-<div id="newBookingModal" class="modal">
-<div class="modal-content" style="max-width: 800px;">
-<span class="close-modal" onclick="closeModal('newBookingModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px;">Create New Booking</h2>
-<p style="margin-bottom: 20px; color: #666;">Select booking type:</p>
-<div class="booking-type-selector">
-<div class="booking-type-option" onclick="selectBookingType('flight', this)">
-<i class="fas fa-plane"></i>
-<h4>Flight Ticket</h4>
-<p>Domestic & International</p>
-</div>
-<div class="booking-type-option" onclick="selectBookingType('visa', this)">
-<i class="fas fa-passport"></i>
-<h4>Visa</h4>
-<p>Umrah, Tourist, Business</p>
-</div>
-<div class="booking-type-option" onclick="selectBookingType('umrah', this)">
-<i class="fas fa-kaaba"></i>
-<h4>Umrah Package</h4>
-<p>Complete Umrah service</p>
-</div>
-<div class="booking-type-option" onclick="selectBookingType('hotel', this)">
-<i class="fas fa-hotel"></i>
-<h4>Hotel Booking</h4>
-<p>Worldwide hotels</p>
-</div>
-<div class="booking-type-option" onclick="selectBookingType('holiday', this)">
-<i class="fas fa-umbrella-beach"></i>
-<h4>Holiday Tour</h4>
-<p>Family & leisure tours</p>
-</div>
-</div>
-<input type="hidden" id="newBookingType">
-<form onsubmit="saveNewBooking(event)" id="newBookingForm" style="display: none;">
-<div class="search-grid">
-<div class="form-group"><label>Customer Name</label><input type="text" id="nb-name" required></div>
-<div class="form-group"><label>Phone</label><input type="tel" id="nb-phone" required></div>
-<div class="form-group"><label>Email</label><input type="email" id="nb-email"></div>
-<div class="form-group"><label>Gender</label>
-<select id="nb-gender" required>
-<option value="">Select Gender</option>
-<option value="Male">Male</option>
-<option value="Female">Female</option>
-<option value="Other">Other</option>
-</select>
-</div>
-</div>
-<div id="flightFields" style="display: none;">
-<div class="search-grid">
-<div class="form-group"><label>From</label><input type="text" id="nb-from" placeholder="Departure City"></div>
-<div class="form-group"><label>To</label><input type="text" id="nb-to" placeholder="Arrival City"></div>
-<div class="form-group"><label>Departure Date</label><input type="date" id="nb-departure"></div>
-<div class="form-group"><label>Return Date</label><input type="date" id="nb-return"></div>
-<div class="form-group"><label>Airline</label><input type="text" id="nb-airline"></div>
-<div class="form-group"><label>Class</label>
-<select id="nb-class">
-<option value="Economy">Economy</option>
-<option value="Business">Business</option>
-<option value="First">First Class</option>
-</select>
-</div>
-</div>
-</div>
-<div id="visaFields" style="display: none;">
-<div class="search-grid">
-<div class="form-group"><label>Visa Type</label>
-<select id="nb-visa-type">
-<option value="Umrah">Umrah Visa</option>
-<option value="Tourist">Tourist Visa</option>
-<option value="Business">Business Visa</option>
-<option value="Work">Work Visa</option>
-<option value="Family">Family Visit</option>
-</select>
-</div>
-<div class="form-group"><label>Country</label><input type="text" id="nb-country" value="Saudi Arabia"></div>
-<div class="form-group"><label>Passport Number</label><input type="text" id="nb-passport"></div>
-<div class="form-group"><label>Processing Time</label>
-<select id="nb-processing">
-<option value="Normal">Normal (7-14 days)</option>
-<option value="Urgent">Urgent (3-5 days)</option>
-<option value="Express">Express (24-48 hours)</option>
-</select>
-</div>
-</div>
-</div>
-<div id="umrahFields" style="display: none;">
-<div class="search-grid">
-<div class="form-group"><label>Package Type</label>
-<select id="nb-package-type">
-<option value="Economy">Economy</option>
-<option value="Standard">Standard</option>
-<option value="VIP">VIP</option>
-<option value="Premium">Premium</option>
-</select>
-</div>
-<div class="form-group"><label>Departure Date</label><input type="date" id="nb-umrah-departure"></div>
-<div class="form-group"><label>Duration (Days)</label><input type="number" id="nb-duration" value="15"></div>
-<div class="form-group"><label>Number of People</label><input type="number" id="nb-people" value="1"></div>
-</div>
-</div>
-<div id="hotelFields" style="display: none;">
-<div class="search-grid">
-<div class="form-group"><label>City</label><input type="text" id="nb-hotel-city"></div>
-<div class="form-group"><label>Hotel Name</label><input type="text" id="nb-hotel-name"></div>
-<div class="form-group"><label>Check-in</label><input type="date" id="nb-checkin"></div>
-<div class="form-group"><label>Check-out</label><input type="date" id="nb-checkout"></div>
-<div class="form-group"><label>Room Type</label>
-<select id="nb-room-type">
-<option value="Single">Single</option>
-<option value="Double">Double</option>
-<option value="Suite">Suite</option>
-<option value="Family">Family</option>
-</select>
-</div>
-<div class="form-group"><label>Guests</label><input type="number" id="nb-guests" value="1"></div>
-</div>
-</div>
-<div id="holidayFields" style="display: none;">
-<div class="search-grid">
-<div class="form-group"><label>Destination</label><input type="text" id="nb-destination"></div>
-<div class="form-group"><label>Tour Type</label>
-<select id="nb-tour-type">
-<option value="Family">Family Tour</option>
-<option value="Honeymoon">Honeymoon</option>
-<option value="Group">Group Tour</option>
-<option value="Custom">Custom</option>
-</select>
-</div>
-<div class="form-group"><label>Start Date</label><input type="date" id="nb-tour-start"></div>
-<div class="form-group"><label>End Date</label><input type="date" id="nb-tour-end"></div>
-<div class="form-group"><label>Travelers</label><input type="number" id="nb-travelers" value="1"></div>
-</div>
-</div>
-<div class="form-group"><label>Total Amount (PKR)</label><input type="number" id="nb-amount" required></div>
-<div class="form-group"><label>Notes</label><textarea id="nb-notes" rows="3"></textarea></div>
-<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">
-<i class="fas fa-save"></i> Create Booking
-</button>
-</form>
-</div>
-</div>
-<div id="expenseModal" class="modal">
-<div class="modal-content" style="max-width: 600px;">
-<span class="close-modal" onclick="closeModal('expenseModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px;" id="expenseModalTitle">Add Expense</h2>
-<form onsubmit="saveExpense(event)">
-<input type="hidden" id="expEditId">
-<div class="form-group"><label>Category</label>
-<select id="exp-category" required>
-<option value="transport">Transport</option>
-<option value="office">Office Supplies</option>
-<option value="marketing">Marketing</option>
-<option value="salary">Salary</option>
-<option value="utilities">Utilities</option>
-<option value="rent">Rent</option>
-<option value="other">Other</option>
-</select>
-</div>
-<div class="form-group"><label>Description</label><input type="text" id="exp-description" required></div>
-<div class="form-group"><label>Amount (PKR)</label><input type="number" id="exp-amount" required></div>
-<div class="form-group"><label>Date</label><input type="date" id="exp-date" required></div>
-<div class="form-group"><label>Receipt/Invoice</label>
-<div class="file-upload-area">
-<input type="file" id="exp-receipt" accept="image/*,.pdf" style="display: none;" onchange="handleReceiptUpload(this)">
-<button type="button" class="btn-upload" onclick="document.getElementById('exp-receipt').click()"><i class="fas fa-upload"></i> Upload Receipt</button>
-</div>
-<input type="hidden" id="exp-receipt-url">
-</div>
-<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">
-<i class="fas fa-save"></i> Save Expense
-</button>
-</form>
-</div>
-</div>
-<div id="visaApplicationModal" class="modal">
-<div class="modal-content" style="max-width: 600px;">
-<span class="close-modal" onclick="closeModal('visaApplicationModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px;">New Visa Application</h2>
-<form onsubmit="saveVisaApplication(event)">
-<input type="hidden" id="visaEditId">
-<div class="form-group"><label>Applicant Name</label><input type="text" id="visa-applicant" required></div>
-<div class="form-group"><label>Gender</label>
-<select id="visa-gender" required>
-<option value="">Select Gender</option>
-<option value="Male">Male</option>
-<option value="Female">Female</option>
-<option value="Other">Other</option>
-</select>
-</div>
-<div class="form-group"><label>Passport Number</label><input type="text" id="visa-passport" required></div>
-<div class="form-group"><label>Visa Type</label>
-<select id="visa-type" required>
-<option value="umrah">Umrah Visa</option>
-<option value="tourist">Tourist Visa</option>
-<option value="business">Business Visa</option>
-<option value="work">Work Visa</option>
-<option value="family">Family Visit Visa</option>
-</select>
-</div>
-<div class="form-group"><label>Destination Country</label><input type="text" id="visa-country" value="Saudi Arabia" required></div>
-<div class="form-group"><label>Status</label>
-<select id="visa-status">
-<option value="pending">Pending</option>
-<option value="processing">In Process</option>
-<option value="approved">Approved</option>
-<option value="rejected">Rejected</option>
-</select>
-</div>
-<div class="form-group"><label>Notes</label><textarea id="visa-notes" rows="3"></textarea></div>
-<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Save Application</button>
-</form>
-</div>
-</div>
-<div id="groupModal" class="modal">
-<div class="modal-content" style="max-width: 700px;">
-<span class="close-modal" onclick="closeModal('groupModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px;">Create Umrah Group</h2>
-<form onsubmit="saveGroup(event)">
-<input type="hidden" id="groupEditId">
-<div class="form-group"><label>Group Name</label><input type="text" id="group-name" placeholder="e.g., Ramadan Group 2026" required></div>
-<div class="search-grid">
-<div class="form-group"><label>Departure Date</label><input type="date" id="group-departure" required></div>
-<div class="form-group"><label>Return Date</label><input type="date" id="group-return" required></div>
-<div class="form-group"><label>Group Leader</label><input type="text" id="group-leader" required></div>
-<div class="form-group"><label>Max Pilgrims</label><input type="number" id="group-max" value="45" required></div>
-</div>
-<div class="form-group"><label>Package</label>
-<select id="group-package"></select>
-</div>
-<div class="form-group"><label>Notes</label><textarea id="group-notes" rows="3"></textarea></div>
-<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Save Group</button>
-</form>
-</div>
-</div>
-<div id="promotionModal" class="modal">
-<div class="modal-content" style="max-width: 600px;">
-<span class="close-modal" onclick="closeModal('promotionModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px;">Create Promotion</h2>
-<form onsubmit="savePromotion(event)">
-<input type="hidden" id="promoEditId">
-<div class="form-group"><label>Promotion Title</label><input type="text" id="promo-title" required></div>
-<div class="form-group"><label>Description</label><textarea id="promo-desc" rows="3" required></textarea></div>
-<div class="search-grid">
-<div class="form-group"><label>Discount Type</label>
-<select id="promo-type">
-<option value="percentage">Percentage (%)</option>
-<option value="fixed">Fixed Amount (PKR)</option>
-</select>
-</div>
-<div class="form-group"><label>Discount Value</label><input type="number" id="promo-value" required></div>
-<div class="form-group"><label>Start Date</label><input type="date" id="promo-start" required></div>
-<div class="form-group"><label>End Date</label><input type="date" id="promo-end" required></div>
-</div>
-<div class="form-group"><label>Promo Code</label><input type="text" id="promo-code" placeholder="e.g., UMRAH20" required></div>
-<button type="submit" class="btn" style="width: 100%; background: var(--primary-green); color: white;">Save Promotion</button>
-</form>
-</div>
-</div>
-<!-- ============ INVOICE GENERATOR MODAL ============ -->
-<div id="invoiceGeneratorModal" class="modal">
-<div class="modal-content" style="max-width: 1400px; width: 95%;">
-<span class="close-modal" onclick="closeModal('invoiceGeneratorModal')">&times;</span>
-<h2 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-file-invoice-dollar"></i> Invoice / Delivery Note Generator</h2>
-
-<div class="invoice-generator-container">
-<!-- Form Section -->
-<div class="invoice-form-section">
-<h3><i class="fas fa-edit"></i> Document Details</h3>
-<form id="invoiceForm">
-<div class="form-group">
-<label><i class="fas fa-file-alt" style="color: var(--accent-gold); margin-right: 8px;"></i>Document Type</label>
-<div style="display: flex; gap: 15px; margin-top: 10px;">
-<label style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px 15px; border: 2px solid var(--accent-gold); border-radius: 8px; background: var(--light-gold);">
-<input type="radio" name="docType" value="Invoice" checked onchange="updateInvoicePreview()">
-<span style="font-weight: 600;">Invoice</span>
-</label>
-<label style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px 15px; border: 2px solid #ddd; border-radius: 8px;">
-<input type="radio" name="docType" value="Delivery Note" onchange="updateInvoicePreview()">
-<span style="font-weight: 600;">Delivery Note</span>
-</label>
-</div>
-</div>
-
-<div class="form-group">
-<label><i class="fas fa-calendar" style="color: var(--accent-gold); margin-right: 8px;"></i>Date</label>
-<input type="date" id="invDate" required onchange="updateInvoicePreview()">
-</div>
-
-<div class="form-group">
-<label><i class="fas fa-user" style="color: var(--accent-gold); margin-right: 8px;"></i>Customer Name</label>
-<input type="text" id="invCustomerName" placeholder="Enter customer name" required oninput="updateInvoicePreview()">
-</div>
-
-<div class="form-group">
-<label><i class="fas fa-phone" style="color: var(--accent-gold); margin-right: 8px;"></i>Phone Number</label>
-<input type="tel" id="invPhone" placeholder="03XX-XXXXXXX" oninput="updateInvoicePreview()">
-</div>
-
-<div class="form-group">
-<label><i class="fas fa-envelope" style="color: var(--accent-gold); margin-right: 8px;"></i>Email Address</label>
-<input type="email" id="invEmail" placeholder="customer@email.com" oninput="updateInvoicePreview()">
-</div>
-
-<div class="form-group">
-<label><i class="fas fa-ticket-alt" style="color: var(--accent-gold); margin-right: 8px;"></i>Service Type</label>
-<select id="invServiceType" onchange="updateInvoicePreview()">
-<option value="Umrah Package">Umrah Package</option>
-<option value="Flight Ticket">Flight Ticket</option>
-<option value="Visa Processing">Visa Processing</option>
-<option value="Hotel Booking">Hotel Booking</option>
-<option value="Holiday Tour">Holiday Tour</option>
-<option value="Other Services">Other Services</option>
-</select>
-</div>
-
-<div class="form-group">
-<label><i class="fas fa-info-circle" style="color: var(--accent-gold); margin-right: 8px;"></i>Service Details</label>
-<textarea id="invServiceDetails" rows="3" placeholder="Enter service details..." oninput="updateInvoicePreview()"></textarea>
-</div>
-
-<div class="search-grid">
-<div class="form-group">
-<label><i class="fas fa-tag" style="color: var(--accent-gold); margin-right: 8px;"></i>Subtotal (PKR)</label>
-<input type="number" id="invSubtotal" placeholder="0" oninput="calculateTotals()" required>
-</div>
-
-<div class="form-group">
-<label><i class="fas fa-percentage" style="color: var(--accent-gold); margin-right: 8px;"></i>Tax (%)</label>
-<input type="number" id="invTaxRate" placeholder="0" value="0" oninput="calculateTotals()">
-</div>
-</div>
-
-<div class="form-group">
-<label><i class="fas fa-money-bill-wave" style="color: var(--accent-gold); margin-right: 8px;"></i>Discount (PKR)</label>
-<input type="number" id="invDiscount" placeholder="0" value="0" oninput="calculateTotals()">
-</div>
-
-<div class="form-group">
-<label><i class="fas fa-sticky-note" style="color: var(--accent-gold); margin-right: 8px;"></i>Notes / Terms</label>
-<textarea id="invNotes" rows="3" placeholder="Payment terms, conditions, etc."></textarea>
-</div>
-
-<div class="form-group">
-<label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-<input type="checkbox" id="invWatermark" checked onchange="toggleWatermark()">
-<span>Add Watermark</span>
-</label>
-</div>
-</form>
-
-<div class="invoice-actions">
-<button class="btn" style="background: var(--primary-green); color: white;" onclick="printInvoice()">
-<i class="fas fa-print"></i> Print
-</button>
-<button class="btn" style="background: #dc3545; color: white;" onclick="saveInvoicePDF()">
-<i class="fas fa-file-pdf"></i> Save as PDF
-</button>
-<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="resetInvoiceForm()">
-<i class="fas fa-redo"></i> Reset
-</button>
-</div>
-</div>
-
-<!-- Preview Section -->
-<div class="invoice-preview-section">
-<h3><i class="fas fa-eye"></i> Live Preview</h3>
-<div class="invoice-preview watermarked" id="invoicePreview">
-<!-- Invoice Letterhead -->
-<div class="invoice-letterhead">
-<svg class="invoice-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-<circle cx="60" cy="60" r="50" fill="none" stroke="#1e3c72" stroke-width="2"/>
-<ellipse cx="60" cy="60" rx="50" ry="20" fill="none" stroke="#1e3c72" stroke-width="1" opacity="0.5"/>
-<ellipse cx="60" cy="60" rx="20" ry="50" fill="none" stroke="#1e3c72" stroke-width="1" opacity="0.5"/>
-<line x1="60" y1="10" x2="60" y2="110" stroke="#1e3c72" stroke-width="1" opacity="0.5"/>
-<line x1="10" y1="60" x2="110" y2="60" stroke="#1e3c72" stroke-width="1" opacity="0.5"/>
-<rect x="35" y="50" width="8" height="25" fill="#D4AF37" opacity="0.8"/>
-<rect x="55" y="40" width="10" height="35" fill="#D4AF37" opacity="0.8"/>
-<rect x="75" y="55" width="8" height="20" fill="#D4AF37" opacity="0.8"/>
-<path d="M 85 25 L 95 20 L 93 24 L 105 22 L 105 26 L 93 28 L 95 32 Z" fill="#D4AF37"/>
-<ellipse cx="60" cy="60" rx="55" ry="25" fill="none" stroke="#D4AF37" stroke-width="2" opacity="0.6" transform="rotate(-30 60 60)"/>
-</svg>
-<h1 class="invoice-company-name">NADEEM HADI</h1>
-<p class="invoice-company-tagline">TRAVELS AND TOURS</p>
-<div class="invoice-contact-info">
-<span><i class="fas fa-phone"></i> 0302-6901114</span>
-<span><i class="fas fa-phone"></i> 0342-4397177</span>
-<span><i class="fas fa-phone"></i> 0316-4815975</span>
-<span><i class="fas fa-envelope"></i> nadeemabbas38403@gmail.com</span>
-</div>
-</div>
-
-<!-- Invoice Meta Info -->
-<div class="invoice-meta-info">
-<div>
-<div class="invoice-meta-item">
-<div class="invoice-meta-label">Document Type:</div>
-<div class="invoice-meta-value" id="previewDocType">Invoice</div>
-</div>
-<div class="invoice-meta-item">
-<div class="invoice-meta-label">Invoice To:</div>
-<div class="invoice-meta-value" id="previewCustomerName">Customer Name</div>
-</div>
-<div class="invoice-meta-item">
-<div class="invoice-meta-value" id="previewPhone">Phone: -</div>
-</div>
-<div class="invoice-meta-item">
-<div class="invoice-meta-value" id="previewEmail">Email: -</div>
-</div>
-</div>
-<div style="text-align: right;">
-<div class="invoice-meta-item">
-<div class="invoice-meta-label">Date:</div>
-<div class="invoice-meta-value" id="previewDate">-</div>
-</div>
-<div class="invoice-meta-item">
-<div class="invoice-meta-label">Invoice #:</div>
-<div class="invoice-meta-value">NHT-<span id="previewInvNumber">001</span></div>
-</div>
-</div>
-</div>
-
-<!-- Invoice Title -->
-<h2 class="invoice-title" id="previewTitle">INVOICE</h2>
-
-<!-- Service Details Table -->
-<table class="invoice-details-table">
-<thead>
-<tr>
-<th>Service Type</th>
-<th>Description</th>
-<th style="text-align: right;">Amount (PKR)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td id="previewServiceType">Umrah Package</td>
-<td id="previewServiceDetails">Service details will appear here...</td>
-<td style="text-align: right;" id="previewSubtotal">0</td>
-</tr>
-</tbody>
-</table>
-
-<!-- Totals -->
-<div class="invoice-totals">
-<div class="invoice-total-row">
-<span>Subtotal:</span>
-<span id="previewSubtotalTotal">PKR 0</span>
-</div>
-<div class="invoice-total-row">
-<span>Tax (<span id="previewTaxRate">0</span>%):</span>
-<span id="previewTaxAmount">PKR 0</span>
-</div>
-<div class="invoice-total-row">
-<span>Discount:</span>
-<span id="previewDiscount">- PKR 0</span>
-</div>
-<div class="invoice-total-row grand-total">
-<span>Grand Total:</span>
-<span id="previewGrandTotal">PKR 0</span>
-</div>
-</div>
-
-<!-- Invoice Footer -->
-<div class="invoice-footer">
-<p><strong>Thank you for your business!</strong></p>
-<p>Payment is due within 7 days of invoice date.</p>
-<div class="invoice-footer-address">
-STREET # 2 NEAR IBNA SEENA HOSPITAL QANCHI MORE SARGODHA
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 <!-- ============ USER-FACING WEBSITE ============ -->
 <header>
 <div class="container nav-container">
@@ -3276,22 +2655,22 @@ Nadeem Hadi Travel
 <option value="dubai">🏗️ Dubai</option>
 <option value="istanbul">🕌 Istanbul</option>
 <option value="baku">🏛️ Baku</option>
-<option value="bangkok">🏯 Bangkok</option>
+<option value="bangkok"> Bangkok</option>
 <option value="london">🇬🇧 London</option>
 <option value="kuala-lumpur">🏙️ Kuala Lumpur</option>
-<option value="lahore">🌳 Lahore</option>
+<option value="lahore"> Lahore</option>
 <option value="islamabad">🏞️ Islamabad</option>
 <option value="karachi">🌊 Karachi</option>
 <option value="new-york"> New York</option>
 <option value="toronto">🍁 Toronto</option>
 <option value="paris"> Paris</option>
 <option value="muscat">🕌 Muscat</option>
-<option value="doha">🏙️ Doha</option>
+<option value="doha">️ Doha</option>
 <option value="manama">️ Manama</option>
 <option value="cairo">🏛️ Cairo</option>
 <option value="abu-dhabi">️ Abu Dhabi</option>
 <option value="kuwait">🏙️ Kuwait</option>
-<option value="jordan">🏜️ Jordan</option>
+<option value="jordan">️ Jordan</option>
 <option value="malaysia">🌴 Malaysia</option>
 <option value="singapore">️ Singapore</option>
 <option value="thailand">️ Thailand</option>
@@ -3302,7 +2681,7 @@ Nadeem Hadi Travel
 <select id="searchType">
 <option value="">Select Type</option>
 <option value="umrah">🕋 Umrah</option>
-<option value="flight">✈️ Flight</option>
+<option value="flight">️ Flight</option>
 </select>
 </div>
 </div>
@@ -4374,7 +3753,6 @@ Date: d.uploadedAt ? new Date(d.uploadedAt).toLocaleDateString() : ''
 const wsDocuments = XLSX.utils.json_to_sheet(documentsData);
 addBordersToSheet(wsDocuments);
 XLSX.utils.book_append_sheet(wb, wsDocuments, "Documents");
-// Add Invoices sheet with new fields
 const invoicesData = window.invoices.map(inv => ({
 'Document Type': inv.docType || 'Invoice',
 'Date': inv.date || '',
