@@ -565,15 +565,15 @@ object-fit: cover;
 }
 .modern-nav-bar {
 background: rgba(15, 76, 117, 0.95);
-padding: 12 40px;
-border-bottom: 2px solid rgba(255,255,255,0.1);
+padding: 10px 40px;
+border-bottom: 4px solid rgba(255,255,255,0.1);
 position: sticky;
 top: 0;
 z-index: 100;
 display: flex;
 align-items: center;
 justify-content: space-between;
-backdrop-filter: blur(10px);
+backdrop-filter: blur(7px);
 }
 .nav-tabs {
 display: flex;
@@ -1281,7 +1281,7 @@ align-items: center;
 justify-content: center;
 flex-shrink: 0;
 }
-/* ============ UPDATED INVOICE GENERATOR STYLES ============ */
+/* ============ INVOICE GENERATOR STYLES ============ */
 .invoice-generator-container {
 display: grid;
 grid-template-columns: 1fr 1fr;
@@ -1319,33 +1319,46 @@ font-weight: 700;
 pointer-events: none;
 z-index: 0;
 }
-
 /* NEW LETTERHEAD STYLES */
-.invoice-letterhead-new {
+.new-letterhead {
 background: white;
 border-bottom: 3px solid var(--royal-blue);
 padding: 20px 30px;
 position: relative;
 z-index: 1;
 }
-.letterhead-top {
+.letterhead-top-bar {
+display: flex;
+height: 8px;
+margin-bottom: 15px;
+}
+.letterhead-blue-bar {
+flex: 2;
+background: var(--navy-blue);
+}
+.letterhead-gold-bar {
+flex: 1;
+background: var(--accent-gold);
+}
+.letterhead-content {
 display: flex;
 justify-content: space-between;
 align-items: center;
-border-bottom: 2px solid #f0f0f0;
-padding-bottom: 15px;
 margin-bottom: 10px;
 }
-.letterhead-title {
+.letterhead-company-info {
+flex: 1;
+}
+.letterhead-company-name {
 font-size: 2.2rem;
 font-weight: 700;
-color: var(--royal-blue);
+color: var(--navy-blue);
 margin: 0;
 letter-spacing: 2px;
 }
-.letterhead-subtitle {
+.letterhead-company-tagline {
 font-size: 1rem;
-color: var(--navy-blue);
+color: var(--royal-blue);
 font-weight: 600;
 letter-spacing: 3px;
 margin-top: 5px;
@@ -1358,95 +1371,132 @@ height: 80px;
 display: flex;
 gap: 20px;
 flex-wrap: wrap;
-margin-bottom: 10px;
-}
-.contact-item-new {
-display: flex;
-align-items: center;
-gap: 5px;
+margin: 10px 0;
+padding: 10px 0;
+border-top: 1px solid #eee;
+border-bottom: 1px solid #eee;
 font-size: 0.85rem;
 color: var(--navy-blue);
 }
-.contact-item-new i {
+.letterhead-contact span {
+display: flex;
+align-items: center;
+gap: 5px;
+}
+.letterhead-contact i {
 color: var(--accent-gold);
 }
-.letterhead-watermark {
-text-align: center;
-padding: 40px 20px;
-position: relative;
-}
-.watermark-logo {
-width: 250px;
-height: 250px;
-opacity: 0.15;
-margin: 0 auto;
-}
-
-/* INVOICE INFO FIELDS */
-.invoice-info-fields {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 20px;
-padding: 20px 30px;
-background: #f8f9fa;
-border-bottom: 2px solid var(--accent-gold);
-position: relative;
-z-index: 1;
-}
-.invoice-field-group {
+.letterhead-fields {
 display: flex;
-flex-direction: column;
-gap: 8px;
+justify-content: flex-end;
+gap: 30px;
+margin-top: 10px;
 }
-.invoice-field-label {
+.letterhead-field {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.letterhead-field label {
 font-weight: 600;
 color: var(--navy-blue);
 font-size: 0.9rem;
 }
-.invoice-field-value {
-color: #333;
-font-size: 0.95rem;
-padding: 5px;
-background: white;
-border-radius: 4px;
+.letterhead-field span {
+border-bottom: 1px solid #333;
+min-width: 150px;
+display: inline-block;
+padding-bottom: 2px;
+font-size: 0.9rem;
 }
-
-/* INVOICE TABLE */
-.invoice-table-container {
+.letterhead-bottom-bar {
+display: flex;
+height: 8px;
+margin-top: 15px;
+}
+/* INVOICE META INFO */
+.invoice-meta-info {
 padding: 20px 30px;
 position: relative;
 z-index: 1;
 }
-.invoice-table {
+.invoice-meta-item {
+margin-bottom: 10px;
+}
+.invoice-meta-label {
+font-weight: 600;
+color: var(--navy-blue);
+font-size: 0.95rem;
+}
+.invoice-meta-value {
+color: #333;
+font-size: 1rem;
+}
+/* INVOICE TITLE */
+.invoice-title {
+text-align: center;
+font-size: 2rem;
+color: var(--royal-blue);
+margin: 20px 0;
+font-weight: 700;
+position: relative;
+z-index: 1;
+letter-spacing: 3px;
+}
+/* INVOICE TABLE */
+.invoice-items-container {
+padding: 0 30px 20px;
+position: relative;
+z-index: 1;
+}
+.invoice-items-table {
 width: 100%;
 border-collapse: collapse;
 margin-top: 15px;
+border: 2px solid var(--navy-blue);
 }
-.invoice-table th {
-background: var(--royal-blue);
+.invoice-items-table th {
+background: var(--navy-blue);
 color: white;
 padding: 12px;
 text-align: left;
 font-weight: 600;
 border: 1px solid var(--navy-blue);
 }
-.invoice-table td {
-padding: 12px;
+.invoice-items-table td {
+padding: 10px;
 border: 1px solid #ddd;
 background: white;
 }
-.invoice-table tr:nth-child(even) td {
+.invoice-items-table tbody tr:nth-child(even) td {
 background: #f8f9fa;
 }
-.text-right {
+.editable-cell {
+min-height: 30px;
+outline: none;
+}
+.editable-cell:focus {
+background: #fff9e6 !important;
+}
+.qty-cell, .price-cell, .amount-cell {
 text-align: right;
 }
-.text-center {
-text-align: center;
+.btn-add-row {
+margin-top: 10px;
+background: var(--accent-gold);
+color: var(--primary-green);
+padding: 8px 15px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 0.9rem;
+font-weight: 600;
 }
-
+.btn-add-row:hover {
+background: #b8962e;
+}
 /* INVOICE TOTALS */
-.invoice-totals-section {
+.invoice-totals {
 padding: 20px 30px;
 position: relative;
 z-index: 1;
@@ -1466,50 +1516,74 @@ color: white;
 font-size: 1.3rem;
 font-weight: 700;
 }
-
 /* SIGNATURE SECTION */
-.invoice-signature-section {
+.signature-section {
 padding: 40px 30px;
-margin-top: 40px;
+margin-top: 30px;
 position: relative;
 z-index: 1;
 }
-.signature-boxes {
+.signature-box {
 display: flex;
 justify-content: flex-end;
 gap: 60px;
-margin-top: 20px;
-}
-.signature-box {
-text-align: center;
-width: 200px;
+align-items: flex-end;
 }
 .signature-line {
-border-bottom: 1px solid var(--navy-blue);
-height: 40px;
-margin-bottom: 8px;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
 }
-.signature-label {
+.signature-line span {
 font-weight: 600;
 color: var(--navy-blue);
-font-size: 0.9rem;
+font-size: 0.95rem;
 }
-
+.signature-space {
+width: 200px;
+border-bottom: 2px solid #333;
+height: 60px;
+}
+.stamp-box {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+}
+.stamp-space {
+width: 120px;
+height: 120px;
+border: 2px dashed #999;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #999;
+font-size: 0.8rem;
+}
+.stamp-box span {
+font-weight: 600;
+color: var(--navy-blue);
+font-size: 0.95rem;
+}
 /* INVOICE FOOTER */
-.invoice-footer-new {
-background: var(--royal-blue);
-color: white;
-padding: 15px 30px;
+.invoice-footer {
+margin-top: 30px;
+padding: 20px 30px;
+border-top: 2px solid var(--accent-gold);
 text-align: center;
+font-size: 0.9rem;
+color: #666;
 position: relative;
 z-index: 1;
 }
-.footer-address {
+.invoice-footer-address {
+margin-top: 10px;
 font-weight: 600;
+color: var(--navy-blue);
 font-size: 0.95rem;
-margin-top: 5px;
 }
-
 .invoice-actions {
 display: flex;
 gap: 15px;
@@ -1562,17 +1636,23 @@ overflow: visible !important;
 .invoice-generator-container {
 grid-template-columns: 1fr !important;
 }
-.invoice-form-section, .invoice-actions, .close-modal {
+.invoice-form-section, .invoice-actions, .close-modal, .btn-add-row {
 display: none !important;
 }
 .invoice-preview {
 border: none !important;
-padding: 0 !important;
+padding: 15mm !important;
 min-height: auto !important;
 width: 100% !important;
 }
 .invoice-preview.watermarked::before {
 display: none !important;
+}
+.new-letterhead, .letterhead-top-bar, .letterhead-bottom-bar, .letterhead-blue-bar, .letterhead-gold-bar,
+.invoice-items-table th, .invoice-total-row.grand-total {
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+color-adjust: exact !important;
 }
 * {
 -webkit-print-color-adjust: exact !important;
@@ -1677,8 +1757,8 @@ font-size: 1.5rem;
 .ticket-body { grid-template-columns: 1fr; }
 .nav-dropdown { min-width: 200px; }
 .staff-greeting-avatar { width: 45px; height: 45px; font-size: 1.3rem; }
-.invoice-info-fields { grid-template-columns: 1fr; }
-.signature-boxes { flex-direction: column; align-items: center; }
+.letterhead-fields { flex-direction: column; align-items: flex-start; }
+.signature-box { flex-direction: column; align-items: center; }
 }
 @media (max-width: 480px) {
 .search-grid { grid-template-columns: 1fr; }
@@ -2809,6 +2889,245 @@ Nadeem Hadi Travel
 <p> 0342-4397177 | 0316-4815975 | 0302-6901114</p>
 <p>📍 Near Ibn-e-Sina Hospital, Qainchi Morr, Sargodha, Pakistan</p>
 </div>
+
+<!-- ============ INVOICE GENERATOR MODAL (FIXED - FULL FEATURED) ============ -->
+<div id="invoiceGeneratorModal" class="modal">
+<div class="modal-content" style="max-width: 1400px; width: 95%;">
+<span class="close-modal" onclick="closeModal('invoiceGeneratorModal')">&times;</span>
+<h2 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-file-invoice-dollar"></i> Invoice / Delivery Note Generator</h2>
+<div class="invoice-generator-container">
+<!-- Form Section -->
+<div class="invoice-form-section">
+<h3><i class="fas fa-edit"></i> Document Details</h3>
+<form id="invoiceForm">
+<div class="form-group">
+<label><i class="fas fa-file-alt" style="color: var(--accent-gold); margin-right: 8px;"></i>Document Type</label>
+<div style="display: flex; gap: 15px; margin-top: 10px;">
+<label style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px 15px; border: 2px solid var(--accent-gold); border-radius: 8px; background: var(--light-gold);">
+<input type="radio" name="docType" value="Invoice" checked onchange="updateInvoicePreview()">
+<span style="font-weight: 600;">Invoice</span>
+</label>
+<label style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px 15px; border: 2px solid #ddd; border-radius: 8px;">
+<input type="radio" name="docType" value="Delivery Note" onchange="updateInvoicePreview()">
+<span style="font-weight: 600;">Delivery Note</span>
+</label>
+</div>
+</div>
+<div class="form-group">
+<label><i class="fas fa-hashtag" style="color: var(--accent-gold); margin-right: 8px;"></i>Invoice No</label>
+<input type="text" id="invNumber" placeholder="e.g., NHT-2026-001" oninput="updateInvoicePreview()">
+</div>
+<div class="form-group">
+<label><i class="fas fa-calendar" style="color: var(--accent-gold); margin-right: 8px;"></i>Date</label>
+<input type="date" id="invDate" required onchange="updateInvoicePreview()">
+</div>
+<div class="form-group">
+<label><i class="fas fa-user" style="color: var(--accent-gold); margin-right: 8px;"></i>Customer Name</label>
+<input type="text" id="invCustomerName" placeholder="Enter customer name" required oninput="updateInvoicePreview()">
+</div>
+<div class="form-group">
+<label><i class="fas fa-phone" style="color: var(--accent-gold); margin-right: 8px;"></i>Contact No</label>
+<input type="tel" id="invPhone" placeholder="03XX-XXXXXXX" oninput="updateInvoicePreview()">
+</div>
+<div class="form-group">
+<label><i class="fas fa-envelope" style="color: var(--accent-gold); margin-right: 8px;"></i>Email Address</label>
+<input type="email" id="invEmail" placeholder="customer@email.com" oninput="updateInvoicePreview()">
+</div>
+<div class="form-group">
+<label><i class="fas fa-sticky-note" style="color: var(--accent-gold); margin-right: 8px;"></i>Notes / Terms</label>
+<textarea id="invNotes" rows="3" placeholder="Payment terms, conditions, etc."></textarea>
+</div>
+<div class="form-group">
+<label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+<input type="checkbox" id="invWatermark" checked onchange="toggleWatermark()">
+<span>Add Watermark</span>
+</label>
+</div>
+</form>
+<div class="invoice-actions">
+<button class="btn" style="background: var(--primary-green); color: white;" onclick="printInvoice()">
+<i class="fas fa-print"></i> Print
+</button>
+<button class="btn" style="background: #dc3545; color: white;" onclick="saveInvoicePDF()">
+<i class="fas fa-file-pdf"></i> Save as PDF
+</button>
+<button class="btn" style="background: var(--accent-gold); color: var(--primary-green);" onclick="resetInvoiceForm()">
+<i class="fas fa-redo"></i> Reset
+</button>
+</div>
+</div>
+<!-- Preview Section -->
+<div class="invoice-preview-section">
+<h3><i class="fas fa-eye"></i> Live Preview</h3>
+<div class="invoice-preview watermarked" id="invoicePreview">
+<!-- New Letterhead Header -->
+<div class="new-letterhead">
+<div class="letterhead-top-bar">
+<div class="letterhead-blue-bar"></div>
+<div class="letterhead-gold-bar"></div>
+</div>
+<div class="letterhead-content">
+<div class="letterhead-company-info">
+<h1 class="letterhead-company-name">NADEEM HADI</h1>
+<p class="letterhead-company-tagline">TRAVELS AND TOURS</p>
+</div>
+<div class="letterhead-logo">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<circle cx="50" cy="50" r="45" fill="none" stroke="#0D1B2A" stroke-width="2"/>
+<circle cx="50" cy="50" r="40" fill="none" stroke="#D4AF37" stroke-width="1"/>
+<ellipse cx="50" cy="50" rx="40" ry="15" fill="none" stroke="#0D1B2A" stroke-width="1" opacity="0.5"/>
+<ellipse cx="50" cy="50" rx="15" ry="40" fill="none" stroke="#0D1B2A" stroke-width="1" opacity="0.5"/>
+<line x1="50" y1="10" x2="50" y2="90" stroke="#0D1B2A" stroke-width="1" opacity="0.5"/>
+<line x1="10" y1="50" x2="90" y2="50" stroke="#0D1B2A" stroke-width="1" opacity="0.5"/>
+<path d="M 30 35 L 40 30 L 38 34 L 50 32 L 50 36 L 38 38 L 40 42 Z" fill="#D4AF37"/>
+<text x="50" y="75" text-anchor="middle" font-size="8" fill="#0D1B2A" font-weight="bold">HADI</text>
+<text x="50" y="85" text-anchor="middle" font-size="6" fill="#0D1B2A">TRAVELS</text>
+</svg>
+</div>
+</div>
+<div class="letterhead-contact">
+<span><i class="fas fa-phone"></i> 0302-6901114</span>
+<span><i class="fas fa-phone"></i> 0342-4397177</span>
+<span><i class="fas fa-phone"></i> 0316-4815975</span>
+<span><i class="fas fa-envelope"></i> nadeemabbas38403@gmail.com</span>
+</div>
+<div class="letterhead-fields">
+<div class="letterhead-field">
+<label>Date:</label>
+<span id="previewDate">_______________</span>
+</div>
+<div class="letterhead-field">
+<label>Name:</label>
+<span id="previewName">_______________</span>
+</div>
+</div>
+</div>
+<!-- Invoice Meta Info -->
+<div class="invoice-meta-info">
+<div>
+<div class="invoice-meta-item">
+<div class="invoice-meta-label">Document Type:</div>
+<div class="invoice-meta-value" id="previewDocType">Invoice</div>
+</div>
+<div class="invoice-meta-item">
+<div class="invoice-meta-label">Invoice No:</div>
+<div class="invoice-meta-value" id="previewInvNumber">NHT-2026-001</div>
+</div>
+<div class="invoice-meta-item">
+<div class="invoice-meta-label">Customer Name:</div>
+<div class="invoice-meta-value" id="previewCustomerName">Customer Name</div>
+</div>
+<div class="invoice-meta-item">
+<div class="invoice-meta-label">Contact No:</div>
+<div class="invoice-meta-value" id="previewPhone">-</div>
+</div>
+</div>
+</div>
+<!-- Invoice Title -->
+<h2 class="invoice-title" id="previewTitle">INVOICE</h2>
+<!-- Service Items Table -->
+<div class="invoice-items-container">
+<table class="invoice-items-table">
+<thead>
+<tr>
+<th style="width: 60px;">S. No.</th>
+<th>Description / Service</th>
+<th style="width: 80px;">Qty</th>
+<th style="width: 120px;">Unit Price</th>
+<th style="width: 120px;">Amount</th>
+</tr>
+</thead>
+<tbody id="invoiceItemsBody">
+<tr>
+<td>1</td>
+<td contenteditable="true" class="editable-cell">Service description here...</td>
+<td contenteditable="true" class="editable-cell qty-cell">1</td>
+<td contenteditable="true" class="editable-cell price-cell">0</td>
+<td class="amount-cell">0</td>
+</tr>
+<tr>
+<td>2</td>
+<td contenteditable="true" class="editable-cell"></td>
+<td contenteditable="true" class="editable-cell qty-cell"></td>
+<td contenteditable="true" class="editable-cell price-cell"></td>
+<td class="amount-cell"></td>
+</tr>
+<tr>
+<td>3</td>
+<td contenteditable="true" class="editable-cell"></td>
+<td contenteditable="true" class="editable-cell qty-cell"></td>
+<td contenteditable="true" class="editable-cell price-cell"></td>
+<td class="amount-cell"></td>
+</tr>
+<tr>
+<td>4</td>
+<td contenteditable="true" class="editable-cell"></td>
+<td contenteditable="true" class="editable-cell qty-cell"></td>
+<td contenteditable="true" class="editable-cell price-cell"></td>
+<td class="amount-cell"></td>
+</tr>
+<tr>
+<td>5</td>
+<td contenteditable="true" class="editable-cell"></td>
+<td contenteditable="true" class="editable-cell qty-cell"></td>
+<td contenteditable="true" class="editable-cell price-cell"></td>
+<td class="amount-cell"></td>
+</tr>
+</tbody>
+</table>
+<button class="btn-add-row" onclick="addInvoiceRow()"><i class="fas fa-plus"></i> Add Row</button>
+</div>
+<!-- Totals -->
+<div class="invoice-totals">
+<div class="invoice-total-row">
+<span>Subtotal:</span>
+<span id="previewSubtotalTotal">PKR 0</span>
+</div>
+<div class="invoice-total-row">
+<span>Tax (<span id="previewTaxRate">0</span>%):</span>
+<span id="previewTaxAmount">PKR 0</span>
+</div>
+<div class="invoice-total-row">
+<span>Discount:</span>
+<span id="previewDiscount">- PKR 0</span>
+</div>
+<div class="invoice-total-row grand-total">
+<span>Grand Total:</span>
+<span id="previewGrandTotal">PKR 0</span>
+</div>
+</div>
+<!-- Signature Box -->
+<div class="signature-section">
+<div class="signature-box">
+<div class="signature-line">
+<span>Authorized Signature:</span>
+<div class="signature-space"></div>
+</div>
+<div class="stamp-box">
+<div class="stamp-space"></div>
+<span>Stamp</span>
+</div>
+</div>
+</div>
+<!-- Invoice Footer -->
+<div class="invoice-footer">
+<p><strong>Thank you for your business!</strong></p>
+<p>Payment is due within 7 days of invoice date.</p>
+<div class="invoice-footer-address">
+STREET # 2 NEAR IBNA SEENA HOSPITAL QANCHI MORE SARGODHA
+</div>
+</div>
+<!-- Footer Bars -->
+<div class="letterhead-bottom-bar">
+<div class="letterhead-blue-bar"></div>
+<div class="letterhead-gold-bar"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
@@ -5201,117 +5520,85 @@ list.innerHTML = templates.map(d => `
 </div>
 `).join('') || '<p style="text-align:center; color:#999; padding:40px;">No templates uploaded yet</p>';
 }
-// ============ INVOICE GENERATOR FUNCTIONS ============
+
+// ============ INVOICE GENERATOR FUNCTIONS (FIXED) ============
 window.openInvoiceGenerator = function() {
 document.getElementById('invoiceGeneratorModal').style.display = 'block';
 const today = new Date().toISOString().split('T')[0];
 document.getElementById('invDate').value = today;
+if (!document.getElementById('invNumber').value) {
+document.getElementById('invNumber').value = 'NHT-2026-' + String(Math.floor(100 + Math.random() * 900)).padStart(3, '0');
+}
 updateInvoicePreview();
 }
 window.updateInvoicePreview = function() {
 const docType = document.querySelector('input[name="docType"]:checked')?.value || 'Invoice';
 const date = document.getElementById('invDate').value;
+const invNumber = document.getElementById('invNumber').value || 'NHT-2026-001';
 const customerName = document.getElementById('invCustomerName').value || 'Customer Name';
 const phone = document.getElementById('invPhone').value || '-';
 const email = document.getElementById('invEmail').value || '-';
-const serviceType = document.getElementById('invServiceType').value;
-const serviceDetails = document.getElementById('invServiceDetails').value || 'Service details will appear here...';
 document.getElementById('previewDocType').textContent = docType;
 document.getElementById('previewTitle').textContent = docType.toUpperCase();
-document.getElementById('previewDate').textContent = date ? new Date(date).toLocaleDateString() : '-';
+document.getElementById('previewDate').textContent = date ? new Date(date).toLocaleDateString() : '_______________';
+document.getElementById('previewName').textContent = customerName !== 'Customer Name' ? customerName : '_______________';
+document.getElementById('previewInvNumber').textContent = invNumber;
+document.getElementById('previewMetaDate').textContent = date ? new Date(date).toLocaleDateString() : '-';
 document.getElementById('previewCustomerName').textContent = customerName;
-document.getElementById('previewPhone').textContent = `Phone: ${phone}`;
-document.getElementById('previewEmail').textContent = `Email: ${email}`;
-document.getElementById('previewServiceType').textContent = serviceType;
-document.getElementById('previewServiceDetails').textContent = serviceDetails;
-if (!window.lastInvNumber) window.lastInvNumber = Math.floor(100 + Math.random() * 900);
-document.getElementById('previewInvNumber').textContent = window.lastInvNumber;
-calculateTotals();
+document.getElementById('previewPhone').textContent = phone;
+calculateInvoiceTotals();
 }
-window.calculateTotals = function() {
-const subtotal = parseFloat(document.getElementById('invSubtotal').value) || 0;
-const taxRate = parseFloat(document.getElementById('invTaxRate').value) || 0;
-const discount = parseFloat(document.getElementById('invDiscount').value) || 0;
+window.calculateInvoiceTotals = function() {
+const rows = document.querySelectorAll('#invoiceItemsBody tr');
+let subtotal = 0;
+rows.forEach(row => {
+const qty = parseFloat(row.querySelector('.qty-cell')?.textContent) || 0;
+const price = parseFloat(row.querySelector('.price-cell')?.textContent) || 0;
+const amount = qty * price;
+row.querySelector('.amount-cell').textContent = amount > 0 ? amount.toLocaleString() : '';
+subtotal += amount;
+});
+const taxRate = 0;
+const discount = 0;
 const taxAmount = (subtotal * taxRate) / 100;
 const grandTotal = subtotal + taxAmount - discount;
-document.getElementById('previewSubtotal').textContent = subtotal.toLocaleString();
 document.getElementById('previewSubtotalTotal').textContent = `PKR ${subtotal.toLocaleString()}`;
 document.getElementById('previewTaxRate').textContent = taxRate;
 document.getElementById('previewTaxAmount').textContent = `PKR ${taxAmount.toLocaleString()}`;
 document.getElementById('previewDiscount').textContent = `- PKR ${discount.toLocaleString()}`;
 document.getElementById('previewGrandTotal').textContent = `PKR ${grandTotal.toLocaleString()}`;
 }
+window.addInvoiceRow = function() {
+const tbody = document.getElementById('invoiceItemsBody');
+const rowCount = tbody.rows.length + 1;
+const newRow = tbody.insertRow();
+newRow.innerHTML = `<td>${rowCount}</td><td contenteditable="true" class="editable-cell"></td><td contenteditable="true" class="editable-cell qty-cell"></td><td contenteditable="true" class="editable-cell price-cell"></td><td class="amount-cell"></td>`;
+newRow.querySelectorAll('.qty-cell, .price-cell').forEach(cell => { cell.addEventListener('input', calculateInvoiceTotals); });
+}
+document.addEventListener('DOMContentLoaded', function() {
+document.querySelectorAll('.qty-cell, .price-cell').forEach(cell => { cell.addEventListener('input', calculateInvoiceTotals); });
+});
 window.toggleWatermark = function() {
 const preview = document.getElementById('invoicePreview');
 const addWatermark = document.getElementById('invWatermark').checked;
-if (addWatermark) {
-preview.classList.add('watermarked');
-} else {
-preview.classList.remove('watermarked');
+if (addWatermark) { preview.classList.add('watermarked'); } else { preview.classList.remove('watermarked'); }
 }
-}
-window.printInvoice = function() {
-window.print();
-}
-window.saveInvoicePDF = function() {
-window.print();
-}
+window.printInvoice = function() { window.print(); }
+window.saveInvoicePDF = function() { window.print(); }
 window.resetInvoiceForm = function() {
 document.getElementById('invoiceForm').reset();
 const today = new Date().toISOString().split('T')[0];
 document.getElementById('invDate').value = today;
-document.getElementById('invTaxRate').value = '0';
-document.getElementById('invDiscount').value = '0';
+document.getElementById('invNumber').value = 'NHT-2026-' + String(Math.floor(100 + Math.random() * 900)).padStart(3, '0');
 document.getElementById('invWatermark').checked = true;
 document.querySelector('input[name="docType"][value="Invoice"]').checked = true;
+const tbody = document.getElementById('invoiceItemsBody');
+tbody.innerHTML = `<tr><td>1</td><td contenteditable="true" class="editable-cell">Service description here...</td><td contenteditable="true" class="editable-cell qty-cell">1</td><td contenteditable="true" class="editable-cell price-cell">0</td><td class="amount-cell">0</td></tr><tr><td>2</td><td contenteditable="true" class="editable-cell"></td><td contenteditable="true" class="editable-cell qty-cell"></td><td contenteditable="true" class="editable-cell price-cell"></td><td class="amount-cell"></td></tr><tr><td>3</td><td contenteditable="true" class="editable-cell"></td><td contenteditable="true" class="editable-cell qty-cell"></td><td contenteditable="true" class="editable-cell price-cell"></td><td class="amount-cell"></td></tr><tr><td>4</td><td contenteditable="true" class="editable-cell"></td><td contenteditable="true" class="editable-cell qty-cell"></td><td contenteditable="true" class="editable-cell price-cell"></td><td class="amount-cell"></td></tr><tr><td>5</td><td contenteditable="true" class="editable-cell"></td><td contenteditable="true" class="editable-cell qty-cell"></td><td contenteditable="true" class="editable-cell price-cell"></td><td class="amount-cell"></td></tr>`;
+document.querySelectorAll('.qty-cell, .price-cell').forEach(cell => { cell.addEventListener('input', calculateInvoiceTotals); });
 updateInvoicePreview();
 showToast('Form reset successfully!');
 }
-console.log("✅ All systems operational - Invoice Generator with Delivery Note option added!");
-</script>
-  <!-- Invoice Generator Modal Start -->
-<div id="invoiceGeneratorModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999;">
-  <div class="modal-content" style="background:white; margin:5% auto; padding:20px; width:80%; max-width:600px; border-radius:8px;">
-    <div class="modal-header" style="display:flex; justify-content:space-between;">
-      <h2><i class="fas fa-file-invoice-dollar"></i> Invoice Generator</h2>
-      <span class="close-btn" onclick="closeInvoiceGenerator()" style="font-size:24px; cursor:pointer;">&times;</span>
-    </div>
-    <div class="modal-body">
-      <label>Date:</label>
-      <input id="invDate" type="date" class="form-control"> <br><br>
-      
-      <label>Customer Name:</label>
-      <input id="invCustomerName" type="text" placeholder="Customer Name" class="form-control"> <br><br>
-      
-      <label>Phone:</label>
-      <input id="invPhone" type="text" placeholder="Phone Number" class="form-control"> <br><br>
-
-      <button onclick="window.print()" class="btn btn-primary">
-        <i class="fas fa-print"></i> Print Invoice
-      </button>
-    </div>
-  </div>
-</div>
-<!-- Invoice Generator Modal End -->
-
-<script>
-window.openInvoiceGenerator = function() {
-    const modal = document.getElementById('invoiceGeneratorModal');
-    if(modal) {
-        modal.style.display = 'block';
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('invDate').value = today;
-    } else {
-        console.error("Error: #invoiceGeneratorModal nahi mila");
-    }
-}
-
-window.closeInvoiceGenerator = function() {
-    const modal = document.getElementById('invoiceGeneratorModal');
-    if(modal) {
-        modal.style.display = 'none';
-    }
-}
+console.log("✅ All systems operational - Invoice Generator with new letterhead, table, and signature box!");
 </script>
 </body>
 </html>
