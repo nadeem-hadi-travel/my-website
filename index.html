@@ -1455,129 +1455,111 @@ flex-wrap: wrap;
 flex: 1;
 min-width: 150px;
 }
+
+/* ============ UNIFIED PRINT CSS (FIXED) ============ */
 @media print {
-@page {
-size: A4 portrait;
-margin: 10mm;
+    @page {
+        size: A4 portrait;
+        margin: 10mm;
+    }
+    
+    /* Reset body and html for A4 */
+    html, body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        background: white !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    
+    /* Hide everything on the main page */
+    body * {
+        visibility: hidden !important;
+    }
+    
+    /* Show only the modals that need to be printed */
+    #invoiceGeneratorModal, #invoiceGeneratorModal *,
+    #eticketsModal, #eticketsModal * {
+        visibility: visible !important;
+    }
+    
+    /* Remove modal dark background and fix positioning */
+    .modal {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        background: white !important;
+        overflow: visible !important;
+        display: block !important;
+        z-index: 99999 !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    
+    .modal-content {
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        border: none !important;
+        overflow: visible !important;
+        background: white !important;
+    }
+    
+    /* Hide unnecessary elements like close button and form */
+    .close-modal, .no-print, .invoice-form-section, .invoice-actions {
+        display: none !important;
+    }
+    
+    /* Invoice Layout Fix for A4 */
+    .invoice-generator-container {
+        display: block !important;
+        grid-template-columns: 1fr !important;
+    }
+    .invoice-preview {
+        border: none !important;
+        padding: 0 !important;
+        min-height: auto !important;
+        box-shadow: none !important;
+    }
+    .invoice-preview.watermarked::before {
+        display: none !important;
+    }
+    
+    /* E-Ticket Layout Fix */
+    .professional-ticket {
+        width: 100% !important;
+        max-width: 160mm !important;
+        margin: 0 auto !important;
+        padding: 10mm !important;
+        box-sizing: border-box !important;
+        border: 2px solid #0A4D3C !important;
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+        background: white !important;
+    }
+    .professional-ticket * {
+        page-break-inside: avoid !important;
+    }
+    
+    /* Force colors to print */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
 }
-html, body {
-width: 210mm;
-height: 297mm;
-margin: 0;
-padding: 0;
-overflow: hidden;
-background: white !important;
-}
-body * {
-visibility: hidden;
-}
-#invoiceGeneratorModal, #invoiceGeneratorModal * {
-visibility: visible;
-}
-#invoiceGeneratorModal {
-position: absolute;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-background: white !important;
-overflow: visible !important;
-display: block !important;
-}
-.modal-content {
-box-shadow: none !important;
-margin: 0 !important;
-padding: 0 !important;
-max-width: 100% !important;
-width: 100% !important;
-height: auto !important;
-border: none !important;
-overflow: visible !important;
-}
-.invoice-generator-container {
-grid-template-columns: 1fr !important;
-}
-.invoice-form-section, .invoice-actions, .close-modal {
-display: none !important;
-}
-.invoice-preview {
-border: none !important;
-padding: 20mm !important;
-min-height: auto !important;
-}
-.invoice-preview.watermarked::before {
-display: none !important;
-}
-* {
--webkit-print-color-adjust: exact !important;
-print-color-adjust: exact !important;
-color-adjust: exact !important;
-}
-}
+
 @media (max-width: 1024px) {
 .invoice-generator-container { grid-template-columns: 1fr; }
-}
-@media print {
-@page {
-size: A4 portrait;
-margin: 10mm;
-}
-html, body {
-width: 210mm;
-height: 297mm;
-margin: 0;
-padding: 0;
-overflow: hidden;
-background: white !important;
-}
-body * {
-visibility: hidden;
-}
-#eticketsModal, #eticketsModal * {
-visibility: visible;
-}
-#eticketsModal {
-position: absolute;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-background: white !important;
-overflow: visible !important;
-display: block !important;
-}
-.modal-content {
-box-shadow: none !important;
-margin: 0 !important;
-padding: 0 !important;
-max-width: 100% !important;
-width: 100% !important;
-height: auto !important;
-border: none !important;
-overflow: visible !important;
-}
-.no-print, .close-modal {
-display: none !important;
-}
-.professional-ticket {
-width: 160mm !important;
-margin: 0 auto !important;
-padding: 8mm !important;
-box-sizing: border-box !important;
-border: 2px solid #0A4D3C !important;
-display: block !important;
-overflow: visible !important;
-page-break-after: always !important;
-page-break-inside: avoid !important;
-}
-.professional-ticket * {
-page-break-inside: avoid !important;
-}
-* {
--webkit-print-color-adjust: exact !important;
-print-color-adjust: exact !important;
-color-adjust: exact !important;
-}
 }
 .print-only-footer {
 display: none;
@@ -2394,6 +2376,7 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </div>
 </div>
 </div>
+</div>
 <!-- Admin Modals -->
 <div id="staffLoginModal" class="modal">
 <div class="modal-content" style="max-width: 450px;">
@@ -2871,7 +2854,6 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <div class="modal-content" style="max-width: 1400px; width: 95%;">
 <span class="close-modal" onclick="closeModal('invoiceGeneratorModal')">&times;</span>
 <h2 style="color: var(--primary-green); margin-bottom: 20px;"><i class="fas fa-file-invoice-dollar"></i> Invoice / Delivery Note Generator</h2>
-
 <div class="invoice-generator-container">
 <!-- Form Section -->
 <div class="invoice-form-section">
@@ -2890,64 +2872,91 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </label>
 </div>
 </div>
-
 <div class="form-group">
 <label><i class="fas fa-calendar" style="color: var(--accent-gold); margin-right: 8px;"></i>Date</label>
 <input type="date" id="invDate" required onchange="updateInvoicePreview()">
 </div>
 
-<div class="form-group">
-<label><i class="fas fa-user" style="color: var(--accent-gold); margin-right: 8px;"></i>Customer Name</label>
-<input type="text" id="invCustomerName" placeholder="Enter customer name" required oninput="updateInvoicePreview()">
-</div>
-
-<div class="form-group">
-<label><i class="fas fa-phone" style="color: var(--accent-gold); margin-right: 8px;"></i>Phone Number</label>
-<input type="tel" id="invPhone" placeholder="03XX-XXXXXXX" oninput="updateInvoicePreview()">
-</div>
-
-<div class="form-group">
-<label><i class="fas fa-envelope" style="color: var(--accent-gold); margin-right: 8px;"></i>Email Address</label>
-<input type="email" id="invEmail" placeholder="customer@email.com" oninput="updateInvoicePreview()">
-</div>
-
-<div class="form-group">
-<label><i class="fas fa-ticket-alt" style="color: var(--accent-gold); margin-right: 8px;"></i>Service Type</label>
-<select id="invServiceType" onchange="updateInvoicePreview()">
-<option value="Umrah Package">Umrah Package</option>
-<option value="Flight Ticket">Flight Ticket</option>
-<option value="Visa Processing">Visa Processing</option>
-<option value="Hotel Booking">Hotel Booking</option>
-<option value="Holiday Tour">Holiday Tour</option>
-<option value="Other Services">Other Services</option>
-</select>
-</div>
-
-<div class="form-group">
-<label><i class="fas fa-info-circle" style="color: var(--accent-gold); margin-right: 8px;"></i>Service Details</label>
-<textarea id="invServiceDetails" rows="3" placeholder="Enter service details..." oninput="updateInvoicePreview()"></textarea>
-</div>
-
+<!-- Customer Information Section -->
+<h4 style="color: var(--primary-green); margin: 20px 0 10px; border-bottom: 2px solid var(--accent-gold); padding-bottom: 5px;">
+<i class="fas fa-user" style="color: var(--accent-gold);"></i> Customer Information
+</h4>
 <div class="search-grid">
 <div class="form-group">
-<label><i class="fas fa-tag" style="color: var(--accent-gold); margin-right: 8px;"></i>Subtotal (PKR)</label>
-<input type="number" id="invSubtotal" placeholder="0" oninput="calculateTotals()" required>
+<label>Customer Name *</label>
+<input type="text" id="invCustomerName" placeholder="Enter customer name" required oninput="updateInvoicePreview()">
+</div>
+<div class="form-group">
+<label>Phone Number</label>
+<input type="tel" id="invPhone" placeholder="03XX-XXXXXXX" oninput="updateInvoicePreview()">
+</div>
+<div class="form-group">
+<label>Email Address</label>
+<input type="email" id="invEmail" placeholder="customer@email.com" oninput="updateInvoicePreview()">
+</div>
+<div class="form-group">
+<label>CNIC / NTN Number</label>
+<input type="text" id="invCNIC" placeholder="XXXXX-XXXXXXX-X" oninput="updateInvoicePreview()">
+</div>
+</div>
+<div class="form-group">
+<label>Billing Address</label>
+<textarea id="invAddress" rows="2" placeholder="Complete billing address" oninput="updateInvoicePreview()"></textarea>
 </div>
 
+<!-- Line Items Section -->
+<h4 style="color: var(--primary-green); margin: 20px 0 10px; border-bottom: 2px solid var(--accent-gold); padding-bottom: 5px;">
+<i class="fas fa-list" style="color: var(--accent-gold);"></i> Line Items / Services
+</h4>
+<div id="lineItemsContainer">
+<!-- Line items will be added here dynamically -->
+</div>
+<button type="button" class="btn" style="background: var(--accent-gold); color: var(--primary-green); margin-top: 15px; width: 100%;" onclick="addLineItem()">
+<i class="fas fa-plus"></i> Add More Item
+</button>
+
+<!-- Totals Section -->
+<h4 style="color: var(--primary-green); margin: 20px 0 10px; border-bottom: 2px solid var(--accent-gold); padding-bottom: 5px;">
+<i class="fas fa-calculator" style="color: var(--accent-gold);"></i> Totals & Taxes
+</h4>
+<input type="hidden" id="invSubtotal" value="0">
+<div class="search-grid">
 <div class="form-group">
-<label><i class="fas fa-percentage" style="color: var(--accent-gold); margin-right: 8px;"></i>Tax (%)</label>
+<label><i class="fas fa-percentage" style="color: var(--accent-gold); margin-right: 8px;"></i>Tax Rate (%)</label>
 <input type="number" id="invTaxRate" placeholder="0" value="0" oninput="calculateTotals()">
 </div>
-</div>
-
 <div class="form-group">
 <label><i class="fas fa-money-bill-wave" style="color: var(--accent-gold); margin-right: 8px;"></i>Discount (PKR)</label>
 <input type="number" id="invDiscount" placeholder="0" value="0" oninput="calculateTotals()">
 </div>
+</div>
 
+<!-- Payment Information -->
+<h4 style="color: var(--primary-green); margin: 20px 0 10px; border-bottom: 2px solid var(--accent-gold); padding-bottom: 5px;">
+<i class="fas fa-credit-card" style="color: var(--accent-gold);"></i> Payment Information
+</h4>
 <div class="form-group">
-<label><i class="fas fa-sticky-note" style="color: var(--accent-gold); margin-right: 8px;"></i>Notes / Terms</label>
-<textarea id="invNotes" rows="3" placeholder="Payment terms, conditions, etc."></textarea>
+<label>Payment Method</label>
+<select id="invPaymentMethod" onchange="updateInvoicePreview()">
+<option value="Bank Transfer">Bank Transfer</option>
+<option value="Cash">Cash</option>
+<option value="JazzCash">JazzCash</option>
+<option value="EasyPaisa">EasyPaisa</option>
+<option value="Credit Card">Credit Card</option>
+<option value="Cheque">Cheque</option>
+</select>
+</div>
+<div class="form-group">
+<label>Bank Details / Payment Instructions</label>
+<textarea id="invBankDetails" rows="3" placeholder="Account Title: Nadeem Hadi Travel&#10;Account Number: 1234-5678-9012&#10;Bank: Meezan Bank, Sargodha Branch&#10;IBAN: PK00MEZN0012345678901234" oninput="updateInvoicePreview()"></textarea>
+</div>
+
+<!-- Additional Notes -->
+<div class="form-group">
+<label><i class="fas fa-sticky-note" style="color: var(--accent-gold); margin-right: 8px;"></i>Terms & Conditions</label>
+<textarea id="invNotes" rows="3" placeholder="Payment terms, warranty, return policy, etc.">1. Payment is due within 7 days of invoice date.
+2. Late payments may incur additional charges.
+3. All prices are in PKR and inclusive of applicable taxes unless stated otherwise.</textarea>
 </div>
 
 <div class="form-group">
@@ -2957,7 +2966,6 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </label>
 </div>
 </form>
-
 <div class="invoice-actions">
 <button class="btn" style="background: var(--primary-green); color: white;" onclick="printInvoice()">
 <i class="fas fa-print"></i> Print
@@ -2970,7 +2978,6 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </button>
 </div>
 </div>
-
 <!-- Preview Section -->
 <div class="invoice-preview-section">
 <h3><i class="fas fa-eye"></i> Live Preview</h3>
@@ -2998,7 +3005,6 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <span><i class="fas fa-envelope"></i> nadeemabbas38403@gmail.com</span>
 </div>
 </div>
-
 <!-- Invoice Meta Info -->
 <div class="invoice-meta-info">
 <div>
@@ -3016,6 +3022,12 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <div class="invoice-meta-item">
 <div class="invoice-meta-value" id="previewEmail">Email: -</div>
 </div>
+<div class="invoice-meta-item">
+<div class="invoice-meta-value" id="previewCNIC">CNIC: -</div>
+</div>
+<div class="invoice-meta-item">
+<div class="invoice-meta-value" id="previewAddress" style="white-space: pre-line;">Address: -</div>
+</div>
 </div>
 <div style="text-align: right;">
 <div class="invoice-meta-item">
@@ -3026,30 +3038,37 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <div class="invoice-meta-label">Invoice #:</div>
 <div class="invoice-meta-value">NHT-<span id="previewInvNumber">001</span></div>
 </div>
+<div class="invoice-meta-item">
+<div class="invoice-meta-label">Payment Method:</div>
+<div class="invoice-meta-value" id="previewPaymentMethod">Bank Transfer</div>
 </div>
 </div>
-
+</div>
 <!-- Invoice Title -->
 <h2 class="invoice-title" id="previewTitle">INVOICE</h2>
-
 <!-- Service Details Table -->
 <table class="invoice-details-table">
 <thead>
 <tr>
-<th>Service Type</th>
-<th>Description</th>
-<th style="text-align: right;">Amount (PKR)</th>
+<th style="width: 5%;">#</th>
+<th style="width: 20%;">Service Type</th>
+<th style="width: 40%;">Description</th>
+<th style="width: 10%; text-align: center;">Qty</th>
+<th style="width: 15%; text-align: right;">Rate (PKR)</th>
+<th style="width: 15%; text-align: right;">Amount (PKR)</th>
 </tr>
 </thead>
-<tbody>
+<tbody id="previewItemsBody">
 <tr>
-<td id="previewServiceType">Umrah Package</td>
-<td id="previewServiceDetails">Service details will appear here...</td>
-<td style="text-align: right;" id="previewSubtotal">0</td>
+<td>1</td>
+<td>Umrah Package</td>
+<td>Service details</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
 </tr>
 </tbody>
 </table>
-
 <!-- Totals -->
 <div class="invoice-totals">
 <div class="invoice-total-row">
@@ -3069,11 +3088,18 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <span id="previewGrandTotal">PKR 0</span>
 </div>
 </div>
-
+<!-- Bank Details -->
+<div id="previewBankDetails" style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-radius: 8px; border-left: 4px solid var(--accent-gold);">
+<h4 style="color: var(--primary-green); margin-bottom: 10px;"><i class="fas fa-university"></i> Payment Details</h4>
+<p id="previewBankDetailsText" style="white-space: pre-line; line-height: 1.8; color: #555;">Bank details will appear here...</p>
+</div>
 <!-- Invoice Footer -->
 <div class="invoice-footer">
 <p><strong>Thank you for your business!</strong></p>
-<p>Payment is due within 7 days of invoice date.</p>
+<div id="previewNotes" style="margin: 15px 0; padding: 15px; background: #fff3cd; border-radius: 8px; text-align: left; font-size: 0.85rem;">
+<strong>Terms & Conditions:</strong><br>
+<span id="previewNotesText">Payment terms will appear here...</span>
+</div>
 <div class="invoice-footer-address">
 STREET # 2 NEAR IBNA SEENA HOSPITAL QANCHI MORE SARGODHA
 </div>
@@ -5828,41 +5854,157 @@ window.openInvoiceGenerator = function() {
 document.getElementById('invoiceGeneratorModal').style.display = 'block';
 const today = new Date().toISOString().split('T')[0];
 document.getElementById('invDate').value = today;
+// Reset to one line item
+const container = document.getElementById('lineItemsContainer');
+container.innerHTML = '';
+addLineItem();
 updateInvoicePreview();
 }
+
+window.addLineItem = function() {
+const container = document.getElementById('lineItemsContainer');
+const itemCount = container.children.length + 1;
+const newItem = document.createElement('div');
+newItem.className = 'line-item';
+newItem.dataset.index = itemCount - 1;
+newItem.innerHTML = `
+<div class="search-grid" style="grid-template-columns: 2fr 3fr 1fr 1fr 1fr auto; gap: 10px; align-items: end;">
+<div class="form-group" style="margin-bottom: 0;">
+<label>Service Type</label>
+<select class="item-service-type" onchange="updateInvoicePreview()">
+<option value="Umrah Package">Umrah Package</option>
+<option value="Flight Ticket">Flight Ticket</option>
+<option value="Visa Processing">Visa Processing</option>
+<option value="Hotel Booking">Hotel Booking</option>
+<option value="Holiday Tour">Holiday Tour</option>
+<option value="Transport">Transport</option>
+<option value="Other Services">Other Services</option>
+</select>
+</div>
+<div class="form-group" style="margin-bottom: 0;">
+<label>Description</label>
+<input type="text" class="item-description" placeholder="Service details" oninput="updateInvoicePreview()">
+</div>
+<div class="form-group" style="margin-bottom: 0;">
+<label>Qty</label>
+<input type="number" class="item-qty" value="1" min="1" oninput="calculateLineItem(this); updateInvoicePreview()">
+</div>
+<div class="form-group" style="margin-bottom: 0;">
+<label>Rate (PKR)</label>
+<input type="number" class="item-rate" placeholder="0" oninput="calculateLineItem(this); updateInvoicePreview()">
+</div>
+<div class="form-group" style="margin-bottom: 0;">
+<label>Amount</label>
+<input type="text" class="item-amount" value="0" readonly style="background: #f5f5f5;">
+</div>
+<div style="padding-bottom: 10px;">
+<button type="button" class="action-btn btn-delete" onclick="removeLineItem(this)" title="Remove Item">
+<i class="fas fa-trash"></i>
+</button>
+</div>
+</div>
+`;
+container.appendChild(newItem);
+updateInvoicePreview();
+}
+
+window.removeLineItem = function(btn) {
+const container = document.getElementById('lineItemsContainer');
+if (container.children.length > 1) {
+btn.closest('.line-item').remove();
+// Re-number items
+Array.from(container.children).forEach((item, index) => {
+item.dataset.index = index;
+});
+updateInvoicePreview();
+} else {
+showToast('At least one item is required!');
+}
+}
+
+window.calculateLineItem = function(input) {
+const lineItem = input.closest('.line-item');
+const qty = parseFloat(lineItem.querySelector('.item-qty').value) || 0;
+const rate = parseFloat(lineItem.querySelector('.item-rate').value) || 0;
+const amount = qty * rate;
+lineItem.querySelector('.item-amount').value = amount.toLocaleString();
+calculateTotals();
+}
+
 window.updateInvoicePreview = function() {
 const docType = document.querySelector('input[name="docType"]:checked')?.value || 'Invoice';
 const date = document.getElementById('invDate').value;
 const customerName = document.getElementById('invCustomerName').value || 'Customer Name';
 const phone = document.getElementById('invPhone').value || '-';
 const email = document.getElementById('invEmail').value || '-';
-const serviceType = document.getElementById('invServiceType').value;
-const serviceDetails = document.getElementById('invServiceDetails').value || 'Service details will appear here...';
+const cnic = document.getElementById('invCNIC').value || '-';
+const address = document.getElementById('invAddress').value || '-';
+const paymentMethod = document.getElementById('invPaymentMethod').value;
+const bankDetails = document.getElementById('invBankDetails').value || 'Bank details will appear here...';
+const notes = document.getElementById('invNotes').value || 'Payment terms will appear here...';
+
 document.getElementById('previewDocType').textContent = docType;
 document.getElementById('previewTitle').textContent = docType.toUpperCase();
 document.getElementById('previewDate').textContent = date ? new Date(date).toLocaleDateString() : '-';
 document.getElementById('previewCustomerName').textContent = customerName;
 document.getElementById('previewPhone').textContent = `Phone: ${phone}`;
 document.getElementById('previewEmail').textContent = `Email: ${email}`;
-document.getElementById('previewServiceType').textContent = serviceType;
-document.getElementById('previewServiceDetails').textContent = serviceDetails;
+document.getElementById('previewCNIC').textContent = `CNIC/NTN: ${cnic}`;
+document.getElementById('previewAddress').textContent = `Address: ${address}`;
+document.getElementById('previewPaymentMethod').textContent = paymentMethod;
+document.getElementById('previewBankDetailsText').textContent = bankDetails;
+document.getElementById('previewNotesText').textContent = notes;
+
 if (!window.lastInvNumber) window.lastInvNumber = Math.floor(100 + Math.random() * 900);
 document.getElementById('previewInvNumber').textContent = window.lastInvNumber;
+
+// Update line items in preview
+const itemsContainer = document.getElementById('lineItemsContainer');
+const previewBody = document.getElementById('previewItemsBody');
+let itemsHTML = '';
+let subtotal = 0;
+
+Array.from(itemsContainer.children).forEach((item, index) => {
+const serviceType = item.querySelector('.item-service-type').value;
+const description = item.querySelector('.item-description').value || 'Service details';
+const qty = parseFloat(item.querySelector('.item-qty').value) || 0;
+const rate = parseFloat(item.querySelector('.item-rate').value) || 0;
+const amount = qty * rate;
+subtotal += amount;
+
+itemsHTML += `
+<tr>
+<td>${index + 1}</td>
+<td>${serviceType}</td>
+<td>${description}</td>
+<td style="text-align: center;">${qty}</td>
+<td style="text-align: right;">${rate.toLocaleString()}</td>
+<td style="text-align: right;">${amount.toLocaleString()}</td>
+</tr>
+`;
+});
+
+previewBody.innerHTML = itemsHTML || '<tr><td colspan="6" style="text-align: center; color: #999;">No items added</td></tr>';
+
+// Update subtotal in form (hidden calculation)
+document.getElementById('invSubtotal').value = subtotal;
 calculateTotals();
 }
+
 window.calculateTotals = function() {
 const subtotal = parseFloat(document.getElementById('invSubtotal').value) || 0;
 const taxRate = parseFloat(document.getElementById('invTaxRate').value) || 0;
 const discount = parseFloat(document.getElementById('invDiscount').value) || 0;
 const taxAmount = (subtotal * taxRate) / 100;
 const grandTotal = subtotal + taxAmount - discount;
-document.getElementById('previewSubtotal').textContent = subtotal.toLocaleString();
+
 document.getElementById('previewSubtotalTotal').textContent = `PKR ${subtotal.toLocaleString()}`;
 document.getElementById('previewTaxRate').textContent = taxRate;
 document.getElementById('previewTaxAmount').textContent = `PKR ${taxAmount.toLocaleString()}`;
 document.getElementById('previewDiscount').textContent = `- PKR ${discount.toLocaleString()}`;
 document.getElementById('previewGrandTotal').textContent = `PKR ${grandTotal.toLocaleString()}`;
 }
+
 window.toggleWatermark = function() {
 const preview = document.getElementById('invoicePreview');
 const addWatermark = document.getElementById('invWatermark').checked;
@@ -5872,12 +6014,15 @@ preview.classList.add('watermarked');
 preview.classList.remove('watermarked');
 }
 }
+
 window.printInvoice = function() {
 window.print();
 }
+
 window.saveInvoicePDF = function() {
 window.print();
 }
+
 window.resetInvoiceForm = function() {
 document.getElementById('invoiceForm').reset();
 const today = new Date().toISOString().split('T')[0];
@@ -5886,10 +6031,15 @@ document.getElementById('invTaxRate').value = '0';
 document.getElementById('invDiscount').value = '0';
 document.getElementById('invWatermark').checked = true;
 document.querySelector('input[name="docType"][value="Invoice"]').checked = true;
+// Reset line items
+const container = document.getElementById('lineItemsContainer');
+container.innerHTML = '';
+addLineItem();
 updateInvoicePreview();
 showToast('Form reset successfully!');
 }
-console.log("✅ All systems operational - Invoice Generator with Delivery Note option added!");
+
+console.log("✅ All systems operational - Invoice Generator with Multiple Line Items!");
 </script>
 </body>
 </html>
