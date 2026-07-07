@@ -393,6 +393,11 @@ body * { visibility: hidden !important; }
 .cat-other { background: #eceff1; color: #546e7a; }
 #admin-fullscreen::-webkit-scrollbar, .admin-pages-container::-webkit-scrollbar, .modern-main-content::-webkit-scrollbar, .data-table-container::-webkit-scrollbar, .activity-log::-webkit-scrollbar, .nav-tabs::-webkit-scrollbar { display: none; }
 #admin-fullscreen, .admin-pages-container, .modern-main-content, .data-table-container, .activity-log, .nav-tabs { -ms-overflow-style: none; scrollbar-width: none; }
+/* Chart Styles */
+.chart-container { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
+.chart-bar { height: 20px; background: var(--primary-green); border-radius: 4px; margin-bottom: 10px; transition: width 1s ease; position: relative; }
+.chart-bar span { position: absolute; right: -40px; top: 0; font-size: 0.8rem; font-weight: 600; }
+.chart-label { font-size: 0.9rem; color: #666; margin-bottom: 5px; display: block; }
 </style>
 </head>
 <body>
@@ -527,18 +532,18 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <div class="stat-card" style="border-left-color: #17a2b8;"><h4>Registered Users</h4><h2 id="fs-users">0</h2></div>
 </div>
 <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 30px;">
-<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
-<h3 style="color: var(--primary-green); margin-bottom: 15px;">Booking Status Overview</h3>
-<div id="booking-status-chart" style="display: flex; align-items: flex-end; height: 150px; gap: 15px; padding: 20px 0;"></div>
+<div class="chart-container">
+<h3 style="color: var(--primary-green); margin-bottom: 15px;">Monthly Sales Trend</h3>
+<div id="sales-chart-bars"></div>
 </div>
-<div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
-<h3 style="color: var(--primary-green); margin-bottom: 15px;">Recent Activity</h3>
-<div id="recent-activity" style="max-height: 150px; overflow-y: auto;"></div>
+<div class="chart-container">
+<h3 style="color: var(--primary-green); margin-bottom: 15px;">Top Destinations</h3>
+<div id="destination-chart-bars"></div>
 </div>
 </div>
 <div class="data-table-container" style="background: white; padding: 20px; border-radius: 10px;">
 <h3 style="color: var(--primary-green); margin-bottom: 15px;">Recent Bookings</h3>
-<table class="data-table"><thead><tr><th>Ref ID</th><th>Customer</th><th>Package</th><th>Status</th></tr></thead><tbody id="fs-recent-bookings"></tbody></table>
+<table class="data-table"><thead><tr><th>Ref ID</th><th>Customer</th><th>Package</th><th>Status</th><th>Action</th></tr></thead><tbody id="fs-recent-bookings"></tbody></table>
 </div>
 </div>
 <!-- Bookings -->
@@ -1066,6 +1071,8 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 </div>
 </div>
 </div>
+</div>
+</div>
 <!-- Admin Modals -->
 <div id="staffLoginModal" class="modal">
 <div class="modal-content" style="max-width: 450px;">
@@ -1254,16 +1261,22 @@ Tools <i class="fas fa-chevron-down chevron"></i>
 <div class="booking-type-option" onclick="selectBookingType('umrah', this)"><i class="fas fa-kaaba"></i><h4>Umrah Package</h4><p>Complete Umrah service</p></div>
 <div class="booking-type-option" onclick="selectBookingType('hotel', this)"><i class="fas fa-hotel"></i><h4>Hotel Booking</h4><p>Worldwide hotels</p></div>
 <div class="booking-type-option" onclick="selectBookingType('holiday', this)"><i class="fas fa-umbrella-beach"></i><h4>Holiday Tour</h4><p>Family & leisure tours</p></div>
+<div class="booking-type-option" onclick="selectBookingType('group', this)"><i class="fas fa-users"></i><h4>Group Booking</h4><p>Multiple passengers</p></div>
 </div>
 <input type="hidden" id="newBookingType">
 <form onsubmit="saveNewBooking(event)" id="newBookingForm" style="display: none;">
 <div class="search-grid">
-<div class="form-group"><label>Customer Name</label><input type="text" id="nb-name" required></div>
+<div class="form-group"><label>Customer Name / Leader</label><input type="text" id="nb-name" required></div>
 <div class="form-group"><label>Phone</label><input type="tel" id="nb-phone" required></div>
 <div class="form-group"><label>Email</label><input type="email" id="nb-email"></div>
 <div class="form-group"><label>Gender</label>
 <select id="nb-gender" required><option value="">Select Gender</option><option value="Male">Male</option><option value="Female">Female</option><option value="Other">Other</option></select>
 </div>
+</div>
+<div id="groupFields" style="display: none; margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+<h4 style="color: var(--primary-green); margin-bottom: 10px;">Group Members</h4>
+<div id="groupMembersList"></div>
+<button type="button" class="btn" style="background: var(--accent-gold); color: var(--primary-green); padding: 5px 15px; font-size: 0.9rem;" onclick="addGroupMember()"><i class="fas fa-plus"></i> Add Member</button>
 </div>
 <div id="flightFields" style="display: none;"><div class="search-grid"><div class="form-group"><label>From</label><input type="text" id="nb-from" placeholder="Departure City"></div><div class="form-group"><label>To</label><input type="text" id="nb-to" placeholder="Arrival City"></div><div class="form-group"><label>Departure Date</label><input type="date" id="nb-departure"></div><div class="form-group"><label>Return Date</label><input type="date" id="nb-return"></div><div class="form-group"><label>Airline</label><input type="text" id="nb-airline"></div><div class="form-group"><label>Class</label><select id="nb-class"><option value="Economy">Economy</option><option value="Business">Business</option><option value="First">First Class</option></select></div></div></div>
 <div id="visaFields" style="display: none;"><div class="search-grid"><div class="form-group"><label>Visa Type</label><select id="nb-visa-type"><option value="Umrah">Umrah Visa</option><option value="Tourist">Tourist Visa</option><option value="Business">Business Visa</option><option value="Work">Work Visa</option><option value="Family">Family Visit</option></select></div><div class="form-group"><label>Country</label><input type="text" id="nb-country" value="Saudi Arabia"></div><div class="form-group"><label>Passport Number</label><input type="text" id="nb-passport"></div><div class="form-group"><label>Processing Time</label><select id="nb-processing"><option value="Normal">Normal (7-14 days)</option><option value="Urgent">Urgent (3-5 days)</option><option value="Express">Express (24-48 hours)</option></select></div></div></div>
@@ -2171,14 +2184,42 @@ document.getElementById('fs-pending-bookings').textContent = pending;
 document.getElementById('fs-revenue').textContent = confirmed;
 document.getElementById('fs-inquiries').textContent = window.inquiries.length;
 document.getElementById('fs-users').textContent = window.users.length;
-const maxVal = Math.max(pending, confirmed, rejected, 1);
-document.getElementById('booking-status-chart').innerHTML = `
-<div style="flex: 1; text-align: center;"><div style="height: ${(pending/maxVal)*100}%; background: #ffc107; border-radius: 5px 5px 0 0; min-height: 10px;"></div><p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Pending<br>${pending}</p></div>
-<div style="flex: 1; text-align: center;"><div style="height: ${(confirmed/maxVal)*100}%; background: #28a745; border-radius: 5px 5px 0 0; min-height: 10px;"></div><p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Confirmed<br>${confirmed}</p></div>
-<div style="flex: 1; text-align: center;"><div style="height: ${(rejected/maxVal)*100}%; background: #dc3545; border-radius: 5px 5px 0 0; min-height: 10px;"></div><p style="margin-top: 10px; font-weight: 600; font-size: 0.9rem;">Rejected<br>${rejected}</p></div>`;
+// Charts Logic
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+const monthlyData = months.map((m, i) => {
+return window.bookings.filter(b => {
+const d = new Date(b.createdAt?.toDate ? b.createdAt.toDate() : b.createdAt);
+return d.getMonth() === i;
+}).length;
+});
+const maxVal = Math.max(...monthlyData, 1);
+document.getElementById('sales-chart-bars').innerHTML = months.map((m, i) => 
+`<div><span class="chart-label">${m}</span><div class="chart-bar" style="width: ${(monthlyData[i]/maxVal)*100}%"><span>${monthlyData[i]}</span></div></div>`
+).join('');
+
+// Destination Logic (Mockup based on item name)
+const destinations = { 'Makkah': 0, 'Dubai': 0, 'Istanbul': 0, 'Other': 0 };
+window.bookings.forEach(b => {
+if(b.item.toLowerCase().includes('makkah') || b.item.toLowerCase().includes('umrah')) destinations['Makkah']++;
+else if(b.item.toLowerCase().includes('dubai')) destinations['Dubai']++;
+else if(b.item.toLowerCase().includes('istanbul')) destinations['Istanbul']++;
+else destinations['Other']++;
+});
+const maxDest = Math.max(...Object.values(destinations), 1);
+document.getElementById('destination-chart-bars').innerHTML = Object.keys(destinations).map(k => 
+`<div><span class="chart-label">${k}</span><div class="chart-bar" style="width: ${(destinations[k]/maxDest)*100}%; background: var(--accent-gold);"><span>${destinations[k]}</span></div></div>`
+).join('');
+
 document.getElementById('fs-recent-bookings').innerHTML = window.bookings.slice(-5).reverse().map(b =>
-`<tr><td><strong>${b.id}</strong></td><td>${b.userName}</td><td>${b.item}</td><td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td></tr>`
-).join('') || '<tr><td colspan="4" style="text-align:center;">No recent bookings</td></tr>';
+`<tr><td><strong>${b.id}</strong></td><td>${b.userName}</td><td>${b.item}</td><td><span class="status-pill pill-${b.status}">${b.status.toUpperCase()}</span></td><td><button class="action-btn btn-view" onclick="sendWhatsAppUpdate('${b.id}')"><i class="fab fa-whatsapp"></i></button></td></tr>`
+).join('') || '<tr><td colspan="5" style="text-align:center;">No recent bookings</td></tr>';
+}
+window.sendWhatsAppUpdate = function(id) {
+const b = window.bookings.find(bk => bk.id === id);
+if(!b) return;
+const msg = `Dear ${b.userName}, your booking (Ref: ${b.id}) for ${b.item} has been updated to ${b.status}. Contact us for details.`;
+const url = `https://wa.me/92${b.phone.replace(/^0/, '')}?text=${encodeURIComponent(msg)}`;
+window.open(url, '_blank');
 }
 window.loadRecentActivity = function() {
 const recentDiv = document.getElementById('recent-activity');
@@ -2821,6 +2862,20 @@ document.getElementById('visaFields').style.display = type === 'visa' ? 'block' 
 document.getElementById('umrahFields').style.display = type === 'umrah' ? 'block' : 'none';
 document.getElementById('hotelFields').style.display = type === 'hotel' ? 'block' : 'none';
 document.getElementById('holidayFields').style.display = type === 'holiday' ? 'block' : 'none';
+document.getElementById('groupFields').style.display = type === 'group' ? 'block' : 'none';
+}
+window.addGroupMember = function() {
+const list = document.getElementById('groupMembersList');
+const div = document.createElement('div');
+div.className = 'form-group';
+div.style.display = 'flex';
+div.style.gap = '10px';
+div.innerHTML = `
+<input type="text" placeholder="Member Name" class="group-member-name" style="flex:2;">
+<input type="text" placeholder="Passport No" class="group-member-passport" style="flex:1;">
+<button type="button" class="action-btn btn-delete" onclick="this.parentElement.remove()"><i class="fas fa-trash"></i></button>
+`;
+list.appendChild(div);
 }
 window.saveNewBooking = async function(e) {
 e.preventDefault();
@@ -2848,6 +2903,16 @@ details = { city: document.getElementById('nb-hotel-city').value, hotelName: doc
 } else if(type === 'holiday') {
 item = `Holiday Tour: ${document.getElementById('nb-destination').value}`;
 details = { destination: document.getElementById('nb-destination').value, tourType: document.getElementById('nb-tour-type').value, start: document.getElementById('nb-tour-start').value, end: document.getElementById('nb-tour-end').value, travelers: document.getElementById('nb-travelers').value };
+} else if(type === 'group') {
+item = `Group Booking - ${name}`;
+const members = [];
+document.querySelectorAll('#groupMembersList > div').forEach(div => {
+members.push({
+name: div.querySelector('.group-member-name').value,
+passport: div.querySelector('.group-member-passport').value
+});
+});
+details = { members: members };
 }
 const data = {
 userName: name, phone, email, gender, item, amount: parseFloat(amount), notes,
@@ -2861,6 +2926,7 @@ await logActivity('create', `New ${type} booking for ${name}`);
 showToast("Booking created successfully!");
 closeModal('newBookingModal');
 document.getElementById('newBookingForm').reset();
+document.getElementById('groupMembersList').innerHTML = '';
 } catch(err) { showToast("Error: " + err.message); }
 }
 // ============ EXPENSES - ENHANCED WITH DOCUMENT LINKING ============
@@ -4123,7 +4189,7 @@ list.innerHTML = templates.map(d => `
 </div>
 </div>`).join('') || '<p style="text-align:center; color:#999; padding:40px;">No templates uploaded yet</p>';
 }
-console.log("✅ All systems operational - Invoice Generator Removed, Enhanced Attendance, Expenses-Document Linking, Advanced Settings!");
+console.log("✅ All systems operational - Advanced Features Added!");
 </script>
 </body>
 </html>
